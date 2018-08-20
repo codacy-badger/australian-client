@@ -2,9 +2,10 @@
   "name": "australien-client",
   "version": "0.1.0",
   "private": true,
-  "description": "Web application for australian sheperd using australian sheperd API",
+  "description": "Web application for australian shepherd using australian shepherd API",
   "dependencies": {
     "bootstrap": "^4.1.3",
+    "proptypes": "^1.1.0",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-redux": "^5.0.7",
