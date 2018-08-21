@@ -26,6 +26,7 @@ import {translate} from "react-i18next";
 library.add(faIdCardAlt, faSignOutAlt, faUser, faUserCog);
 
 class Header extends React.Component {
+
   constructor(props) {
     super(props);
     this.toggle = this.toggle.bind(this);
@@ -55,6 +56,9 @@ class Header extends React.Component {
           <Nav className="ml-auto" navbar>
             <NavItem>
               <NavLink href="#" onClick={() => changeLanguage('de')}>DE</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="#" onClick={() => changeLanguage('fr')}>FR</NavLink>
             </NavItem>
             <NavItem>
               <NavLink href="#" onClick={() => changeLanguage('en')}>EN</NavLink>

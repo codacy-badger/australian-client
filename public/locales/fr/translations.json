@@ -1,0 +1,7 @@
+{
+  "title": "Bienvenue à react utilisant i18n",
+  "description": {
+    "part1": "Pour débuter, éditer <1>src/App.js</1> et sauvegarder pour lancer le rechargement automatique.",
+    "part2": "Changer de langage en cliquant sur les boutons du menu."
+  }
+}
