@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Dropdown, DropdownItem, DropdownMenu, DropdownToggle} from 'reactstrap';
+import {DropdownItem, DropdownMenu, DropdownToggle, UncontrolledDropdown} from 'reactstrap';
 import {translate} from 'react-i18next';
+import frFlag from '../../images/flags/32/France.png';
+import ukFlag from '../../images/flags/32/United-Kingdom.png';
 
 /**
  * Language dropdown
@@ -10,19 +12,11 @@ class LanguageDropdown extends React.Component {
   constructor(props) {
     super(props);
     const {i18n} = this.props;
-    this.toggle = this.toggle.bind(this);
     this.changeEn = this.changeEn.bind(this);
     this.changeFr = this.changeFr.bind(this);
     this.state = {
-      dropdownOpen: false,
       language: i18n.language
     };
-  }
-
-  toggle() {
-    this.setState(prevState => ({
-      dropdownOpen: !prevState.dropdownOpen
-    }));
   }
 
   changeEn() {
@@ -42,18 +36,18 @@ class LanguageDropdown extends React.Component {
   }
 
   renderFlag() {
+    const { t } = this.props;
+
     if ('fr' === this.state.language) {
-      return <span>FR</span>
-    } else if ('en' === this.state.language) {
-      return <span>EN</span>
+      return <img src={frFlag} alt={t('French flag')}/>
     } else {
-      return <span>Select language</span>
+      return <img src={ukFlag} alt={t('United Kingdom flag')}/>
     }
   }
 
   render() {
     return (
-      <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+      <UncontrolledDropdown nav inNavbar>
         <DropdownToggle caret>
           {this.renderFlag(this.state.language)}
         </DropdownToggle>
@@ -66,14 +60,15 @@ class LanguageDropdown extends React.Component {
             English
           </DropdownItem>
         </DropdownMenu>
-      </Dropdown>
+      </UncontrolledDropdown>
     );
   }
 }
 
 // The propTypes.
 LanguageDropdown.propTypes = {
-  i18n: PropTypes.object.isRequired
+  i18n: PropTypes.object.isRequired,
+  t: PropTypes.func.isRequired
 };
 
 
