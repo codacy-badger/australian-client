@@ -20,6 +20,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import LanguageDropdown from "./LanguageDropdown";
+import {translate, Trans} from 'react-i18next';
 
 library.add(faIdCardAlt, faSignOutAlt, faUser, faUserCog);
 
@@ -40,9 +41,15 @@ class Header extends React.Component {
   }
 
   render() {
+    const {t} = this.props;
+
     return (
       <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">Australian Shepherd</NavbarBrand>
+        <NavbarBrand href="/">
+          <Trans i18nKey="navbar.brand">
+            Australian shepherd
+          </Trans>
+        </NavbarBrand>
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
@@ -54,15 +61,16 @@ class Header extends React.Component {
               <DropdownMenu right>
                 <DropdownItem>
                   <FontAwesomeIcon fixedWidth icon="id-card-alt" />{' '}
-                  Profile&hellip;
+                  {t('navbar.user-profile')}
                 </DropdownItem>
                 <DropdownItem>
                   <FontAwesomeIcon fixedWidth icon="user-cog" />{' '}
-                  Settings&hellip;
+                  {t('navbar.user-settings')}
                 </DropdownItem>
                 <DropdownItem divider />
                 <DropdownItem>
-                  <FontAwesomeIcon fixedWidth icon="sign-out-alt" /> Logout
+                  <FontAwesomeIcon fixedWidth icon="sign-out-alt" />
+                  {t('navbar.user-logout')}
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
@@ -74,7 +82,8 @@ class Header extends React.Component {
 }
 
 Header.propTypes = {
-  user: PropTypes.object
+  t: PropTypes.func.isRequired,
+  user: PropTypes.object,
 };
 
-export default /*translate('translations')*/(Header);
+export default translate('translations')(Header);

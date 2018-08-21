@@ -1,7 +1,17 @@
 {
   "title": "Welcome to react using react-i18next",
+  "navbar": {
+    "brand": "Australian shepherd",
+    "user-profile": "Profile…",
+    "user-settings": "Settings…",
+    "user-logout": "Lougout"
+  },
   "description": {
     "part1": "To get started, edit <1>src/App.js</1> and save to reload.",
     "part2": "Switch language between english and german using buttons above."
+  },
+  "img-alt": {
+    "french-flag": "French flag",
+    "united-kingdom-flag": "British flag"
   }
 }
