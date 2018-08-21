@@ -6,8 +6,6 @@ import {
   NavbarToggler,
   NavbarBrand,
   Nav,
-  NavItem,
-  NavLink,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
@@ -21,7 +19,7 @@ import {
   faUserCog
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {translate} from "react-i18next";
+import LanguageDropdown from "./LanguageDropdown";
 
 library.add(faIdCardAlt, faSignOutAlt, faUser, faUserCog);
 
@@ -32,7 +30,7 @@ class Header extends React.Component {
     this.toggle = this.toggle.bind(this);
     this.state = {
       isOpen: false
-    };
+    }
   }
 
   toggle() {
@@ -42,24 +40,13 @@ class Header extends React.Component {
   }
 
   render() {
-    const { i18n } = this.props;
-
-    const changeLanguage = (lng) => {
-      i18n.changeLanguage(lng);
-    };
-
     return (
       <Navbar color="light" light expand="md">
         <NavbarBrand href="/">Australian Shepherd</NavbarBrand>
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
-            <NavItem>
-              <NavLink href="#" onClick={() => changeLanguage('fr')}>FR</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="#" onClick={() => changeLanguage('en')}>EN</NavLink>
-            </NavItem>
+            <LanguageDropdown/>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
                 <FontAwesomeIcon icon="user" fixedWidth /> User1
@@ -90,4 +77,4 @@ Header.propTypes = {
   user: PropTypes.object
 };
 
-export default translate('translations')(Header);
+export default /*translate('translations')*/(Header);
