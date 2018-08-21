@@ -21,6 +21,7 @@ import {
   faUserCog
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {translate} from "react-i18next";
 
 library.add(faIdCardAlt, faSignOutAlt, faUser, faUserCog);
 
@@ -40,6 +41,12 @@ class Header extends React.Component {
   }
 
   render() {
+    const { i18n } = this.props;
+
+    const changeLanguage = (lng) => {
+      i18n.changeLanguage(lng);
+    };
+
     return (
       <Navbar color="light" light expand="md">
         <NavbarBrand href="/">Australian Shepherd</NavbarBrand>
@@ -47,7 +54,10 @@ class Header extends React.Component {
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <NavLink href="/foo/">Foo</NavLink>
+              <NavLink href="#" onClick={() => changeLanguage('de')}>DE</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="#" onClick={() => changeLanguage('en')}>EN</NavLink>
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
@@ -79,4 +89,4 @@ Header.propTypes = {
   user: PropTypes.object
 };
 
-export default Header;
+export default translate('translations')(Header);

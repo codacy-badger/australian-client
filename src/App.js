@@ -6,19 +6,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component {
   render() {
-    const { t, i18n } = this.props;
-
-    const changeLanguage = (lng) => {
-      i18n.changeLanguage(lng);
-    };
+    const { t } = this.props;
 
     return (
       <div className="App">
         <Header/>
         <div className="App-header">
           <h2>{t('title')}</h2>
-          <button onClick={() => changeLanguage('de')}>de</button>
-          <button onClick={() => changeLanguage('en')}>en</button>
         </div>
         <div className="App-intro">
           <Trans i18nKey="description.part1">
