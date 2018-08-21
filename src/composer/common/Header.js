@@ -55,9 +55,6 @@ class Header extends React.Component {
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <NavLink href="#" onClick={() => changeLanguage('de')}>DE</NavLink>
-            </NavItem>
-            <NavItem>
               <NavLink href="#" onClick={() => changeLanguage('fr')}>FR</NavLink>
             </NavItem>
             <NavItem>
