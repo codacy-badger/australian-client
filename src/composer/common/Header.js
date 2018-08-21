@@ -13,6 +13,16 @@ import {
   DropdownMenu,
   DropdownItem
 } from 'reactstrap';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import {
+  faIdCardAlt,
+  faSignOutAlt,
+  faUser,
+  faUserCog
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+library.add(faIdCardAlt, faSignOutAlt, faUser, faUserCog);
 
 class Header extends React.Component {
   constructor(props) {
@@ -41,13 +51,21 @@ class Header extends React.Component {
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
-                User1
+                <FontAwesomeIcon icon="user" fixedWidth /> User1
               </DropdownToggle>
               <DropdownMenu right>
-                <DropdownItem>Profile&hellip;</DropdownItem>
-                <DropdownItem>Settings&hellip;</DropdownItem>
+                <DropdownItem>
+                  <FontAwesomeIcon fixedWidth icon="id-card-alt" />{' '}
+                  Profile&hellip;
+                </DropdownItem>
+                <DropdownItem>
+                  <FontAwesomeIcon fixedWidth icon="user-cog" />{' '}
+                  Settings&hellip;
+                </DropdownItem>
                 <DropdownItem divider />
-                <DropdownItem>Logout</DropdownItem>
+                <DropdownItem>
+                  <FontAwesomeIcon fixedWidth icon="sign-out-alt" /> Logout
+                </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
           </Nav>
