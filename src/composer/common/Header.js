@@ -15,7 +15,6 @@ import {
 } from 'reactstrap';
 
 class Header extends React.Component {
-
   constructor(props) {
     super(props);
     this.toggle = this.toggle.bind(this);
@@ -34,7 +33,7 @@ class Header extends React.Component {
     return (
       <Navbar color="light" light expand="md">
         <NavbarBrand href="/">Australian Shepherd</NavbarBrand>
-        <NavbarToggler onClick={this.toggle}/>
+        <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
@@ -45,16 +44,10 @@ class Header extends React.Component {
                 User1
               </DropdownToggle>
               <DropdownMenu right>
-                <DropdownItem>
-                  Profile&hellip;
-                </DropdownItem>
-                <DropdownItem>
-                  Settings&hellip;
-                </DropdownItem>
-                <DropdownItem divider/>
-                <DropdownItem>
-                  Logout
-                </DropdownItem>
+                <DropdownItem>Profile&hellip;</DropdownItem>
+                <DropdownItem>Settings&hellip;</DropdownItem>
+                <DropdownItem divider />
+                <DropdownItem>Logout</DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
           </Nav>
@@ -65,7 +58,7 @@ class Header extends React.Component {
 }
 
 Header.propTypes = {
-  user: PropTypes.object,
+  user: PropTypes.object
 };
 
 export default Header;
