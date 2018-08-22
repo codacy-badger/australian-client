@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import dogReducer from "./dogReducer";
+import authReducer from "./authReducer";
 
 const rootReducer = combineReducers({
-  dogReducer
+  authReducer
 });
 
 export default rootReducer;
