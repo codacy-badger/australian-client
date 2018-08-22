@@ -6,23 +6,11 @@ import {
   NavbarToggler,
   NavbarBrand,
   Nav,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem
 } from "reactstrap";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import {
-  faIdCardAlt,
-  faSignOutAlt,
-  faUser,
-  faUserCog
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import LanguageDropdown from "./LanguageDropdown";
 import { translate, Trans } from "react-i18next";
-
-library.add(faIdCardAlt, faSignOutAlt, faUser, faUserCog);
+import UserDropdown from "./UserDropdown";
 
 class Header extends React.Component {
   constructor(props) {
@@ -40,8 +28,6 @@ class Header extends React.Component {
   }
 
   render() {
-    const { t } = this.props;
-
     return (
       <Navbar color="light" light expand="md">
         <NavbarBrand href="/">
@@ -51,26 +37,7 @@ class Header extends React.Component {
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <LanguageDropdown />
-            <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-                <FontAwesomeIcon icon="user" fixedWidth /> User1
-              </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem>
-                  <FontAwesomeIcon fixedWidth icon="id-card-alt" />{" "}
-                  {t("navbar.user-profile")}
-                </DropdownItem>
-                <DropdownItem>
-                  <FontAwesomeIcon fixedWidth icon="user-cog" />{" "}
-                  {t("navbar.user-settings")}
-                </DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem>
-                  <FontAwesomeIcon fixedWidth icon="sign-out-alt" />
-                  {t("navbar.user-logout")}
-                </DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
+            <UserDropdown />
           </Nav>
         </Collapse>
       </Navbar>
