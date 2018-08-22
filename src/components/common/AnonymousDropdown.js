@@ -15,6 +15,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { translate } from "react-i18next";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faSignInAlt, faUserSecret } from "@fortawesome/free-solid-svg-icons";
+import LoginForm from "../form/LoginForm";
+import RegisterForm from "../form/RegisterForm";
 
 library.add(faUserSecret, faSignInAlt);
 
@@ -72,7 +74,9 @@ class UserDropdown extends React.Component {
             <FontAwesomeIcon fixedWidth icon="sign-in-alt" />{" "}
             {t("navbar.user-login")}
           </ModalHeader>
-          <ModalBody>FORM</ModalBody>
+          <ModalBody>
+            <LoginForm/>
+          </ModalBody>
           <ModalFooter>
             <Button color="primary" onClick={this.toggleLoginModal}>
               {t("button.login")}
@@ -91,7 +95,9 @@ class UserDropdown extends React.Component {
             <FontAwesomeIcon fixedWidth icon="sign-in-alt" rotation="270" />{" "}
             {t("navbar.user-register")}
           </ModalHeader>
-          <ModalBody>FORM</ModalBody>
+          <ModalBody>
+            <RegisterForm/>
+          </ModalBody>
           <ModalFooter>
             <Button color="primary" onClick={this.toggleRegisterModal}>
               {t("button.register")}
