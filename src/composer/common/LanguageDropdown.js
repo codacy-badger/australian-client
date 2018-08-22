@@ -39,9 +39,9 @@ class LanguageDropdown extends React.Component {
     const { t } = this.props;
 
     if ('fr' === this.state.language) {
-      return <img src={frFlag} alt={t('img-alt.french-flag')} className="flag-in-navbar mr-1 float-left"/>
+      return <img src={frFlag} alt={t('img-alt.french-flag')} className="flag-in-navbar mr-1 float-left"/>;
     } else {
-      return <img src={ukFlag} alt={t('img-alt.united-kingdom-flag')} className="flag-in-navbar mr-1 float-left"/>
+      return <img src={ukFlag} alt={t('img-alt.united-kingdom-flag')} className="flag-in-navbar mr-1 float-left"/>;
     }
   }
 
