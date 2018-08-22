@@ -29,10 +29,12 @@ class UserDropdown extends React.Component {
         </DropdownToggle>
         <DropdownMenu right>
           <DropdownItem>
-            <FontAwesomeIcon fixedWidth icon="id-card-alt" /> {t("navbar.user-profile")}
+            <FontAwesomeIcon fixedWidth icon="id-card-alt" />{" "}
+            {t("navbar.user-profile")}
           </DropdownItem>
           <DropdownItem>
-            <FontAwesomeIcon fixedWidth icon="user-cog" /> {t("navbar.user-settings")}
+            <FontAwesomeIcon fixedWidth icon="user-cog" />{" "}
+            {t("navbar.user-settings")}
           </DropdownItem>
           <DropdownItem divider />
           <DropdownItem>
