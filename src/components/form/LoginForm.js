@@ -4,6 +4,19 @@ import { translate } from "react-i18next";
 import {Col, Form, FormGroup, Input, Label} from "reactstrap";
 
 class LoginForm extends Component {
+
+  componentDidMount() {
+    this.props.onRef(this);
+  }
+  componentWillUnmount() {
+    this.props.onRef(undefined);
+  }
+
+  //All tests will be done here.
+  submit() {
+    alert('login submit function called');
+  }
+
   render() {
     const {t} = this.props;
 
@@ -27,7 +40,8 @@ class LoginForm extends Component {
 }
 
 LoginForm.propTypes = {
-  t: PropTypes.func.isRequired
+  t: PropTypes.func.isRequired,
+  onRef: PropTypes.func.isRequired,
 };
 
 export default translate("translations")(LoginForm);

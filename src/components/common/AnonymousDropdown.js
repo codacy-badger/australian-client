@@ -30,7 +30,16 @@ class UserDropdown extends React.Component {
 
     this.toggleLoginModal = this.toggleLoginModal.bind(this);
     this.toggleRegisterModal = this.toggleRegisterModal.bind(this);
+
   }
+
+  submitLoginForm = () => {
+    this.loginForm.submit();
+  };
+
+  submitRegisterForm = () => {
+    this.registerForm.submit();
+  };
 
   toggleLoginModal() {
     this.setState({
@@ -75,10 +84,10 @@ class UserDropdown extends React.Component {
             {t("navbar.user-login")}
           </ModalHeader>
           <ModalBody>
-            <LoginForm/>
+            <LoginForm onRef={(ref) => (this.loginForm = ref)}/>
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={this.toggleLoginModal}>
+            <Button color="primary" onClick={this.submitLoginForm}>
               {t("button.login")}
             </Button>{" "}
             <Button color="secondary" onClick={this.toggleLoginModal}>
@@ -96,10 +105,10 @@ class UserDropdown extends React.Component {
             {t("navbar.user-register")}
           </ModalHeader>
           <ModalBody>
-            <RegisterForm/>
+            <RegisterForm onRef={(ref) => (this.registerForm = ref)}/>
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={this.toggleRegisterModal}>
+            <Button color="primary" onClick={this.submitRegisterForm}>
               {t("button.register")}
             </Button>{" "}
             <Button color="secondary" onClick={this.toggleRegisterModal}>
