@@ -1,22 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {
-  Button,
   DropdownItem,
   DropdownMenu,
   DropdownToggle,
-  Modal,
-  ModalBody,
-  ModalFooter,
-  ModalHeader,
   UncontrolledDropdown
 } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { translate } from "react-i18next";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faSignInAlt, faUserSecret } from "@fortawesome/free-solid-svg-icons";
-import LoginForm from "../form/LoginForm";
-import RegisterForm from "../form/RegisterForm";
+import LoginModal from "../modal/LoginModal";
+import RegisterModal from "../modal/RegisterModal";
 
 library.add(faUserSecret, faSignInAlt);
 
@@ -24,7 +19,6 @@ class UserDropdown extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loginModal: false,
       registerModal: false
     };
 
@@ -33,24 +27,12 @@ class UserDropdown extends React.Component {
 
   }
 
-  submitLoginForm = () => {
-    this.loginForm.submit();
+  toggleLoginModal = () => {
+    this.loginModal.toggle();
   };
-
-  submitRegisterForm = () => {
-    this.registerForm.submit();
-  };
-
-  toggleLoginModal() {
-    this.setState({
-      loginModal: !this.state.loginModal
-    });
-  }
 
   toggleRegisterModal() {
-    this.setState({
-      registerModal: !this.state.registerModal
-    });
+    this.registerModal.toggle();
   }
 
   render() {
@@ -69,53 +51,14 @@ class UserDropdown extends React.Component {
               {t("navbar.user-login")}
             </DropdownItem>
             <DropdownItem onClick={this.toggleRegisterModal}>
-              <FontAwesomeIcon fixedWidth icon="sign-in-alt" rotation="270" />{" "}
+              <FontAwesomeIcon fixedWidth icon="sign-in-alt" rotation={270} />{" "}
               {t("navbar.user-register")}
             </DropdownItem>
           </DropdownMenu>
         </UncontrolledDropdown>
-        <Modal
-          isOpen={this.state.loginModal}
-          toggle={this.toggleLoginModal}
-          className={this.props.className}
-        >
-          <ModalHeader toggle={this.toggleLoginModal}>
-            <FontAwesomeIcon fixedWidth icon="sign-in-alt" />{" "}
-            {t("navbar.user-login")}
-          </ModalHeader>
-          <ModalBody>
-            <LoginForm onRef={(ref) => (this.loginForm = ref)}/>
-          </ModalBody>
-          <ModalFooter>
-            <Button color="primary" onClick={this.submitLoginForm}>
-              {t("button.login")}
-            </Button>{" "}
-            <Button color="secondary" onClick={this.toggleLoginModal}>
-              {t("button.cancel")}
-            </Button>
-          </ModalFooter>
-        </Modal>
-        <Modal
-          isOpen={this.state.registerModal}
-          toggle={this.toggleRegisterModal}
-          className={this.props.className}
-        >
-          <ModalHeader toggle={this.toggleRegisterModal}>
-            <FontAwesomeIcon fixedWidth icon="sign-in-alt" rotation="270" />{" "}
-            {t("navbar.user-register")}
-          </ModalHeader>
-          <ModalBody>
-            <RegisterForm onRef={(ref) => (this.registerForm = ref)}/>
-          </ModalBody>
-          <ModalFooter>
-            <Button color="primary" onClick={this.submitRegisterForm}>
-              {t("button.register")}
-            </Button>{" "}
-            <Button color="secondary" onClick={this.toggleRegisterModal}>
-              {t("button.cancel")}
-            </Button>
-          </ModalFooter>
-        </Modal>
+        <LoginModal onRef={(ref) => (this.loginModal = ref)}/>
+        <RegisterModal onRef={(ref) => (this.registerModal = ref)}/>
+
       </div>
     );
   }

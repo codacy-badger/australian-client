@@ -7,8 +7,17 @@
   "form": {
     "login": {
       "email": "Email",
+      "email-placeholder": "Enter your email",
       "password": "Password",
-      "password-placeholder": "Enter you password"
+      "password-placeholder": "Enter your password"
+    },
+    "register": {
+      "email": "Email",
+      "email-placeholder": "Enter your email",
+      "password": "Password",
+      "password-placeholder": "Enter your password",
+      "password-confirmation": "Confirmation",
+      "password-confirmation-placeholder": "Confirm your password"
     }
   },
   "title": "Welcome to react using react-i18next",
