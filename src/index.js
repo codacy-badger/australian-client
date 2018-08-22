@@ -1,14 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
 
-import configureStore from './store/configureStore.prod';
+import configureStore from "./store/configureStore.prod";
 
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
-import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
-import './i18n';
+import "./index.css";
+import App from "./App";
+import registerServiceWorker from "./registerServiceWorker";
+import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
+import "./i18n";
 
 const store = configureStore();
 
@@ -18,6 +18,6 @@ ReactDOM.render(
       <App />
     </BrowserRouter>
   </Provider>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 registerServiceWorker();

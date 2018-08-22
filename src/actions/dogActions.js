@@ -1,7 +1,7 @@
-import * as types from './actionTypes';
-import dogActionApi from '../api/dogApi';
+import * as types from "./actionTypes";
+import dogActionApi from "../api/dogApi";
 //import dogActionApi from '../api/mockDogApi';
-import { beginDogCall, dogCallError } from './ajaxStatusActions';
+import { beginDogCall, dogCallError } from "./ajaxStatusActions";
 
 export function loadDogSuccess(dogs) {
   return { type: types.DOGS_LOAD_SUCCESS, dogs };

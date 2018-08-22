@@ -1,5 +1,5 @@
-import { combineReducers } from 'redux';
-import dogReducer from './dogReducer';
+import { combineReducers } from "redux";
+import dogReducer from "./dogReducer";
 
 const rootReducer = combineReducers({
   dogReducer
