@@ -19,7 +19,7 @@ import {
   faUserCog
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import LanguageDropdown from "./LanguageDropdown";
+import LanguageDropdown from './LanguageDropdown';
 import {translate, Trans} from 'react-i18next';
 
 library.add(faIdCardAlt, faSignOutAlt, faUser, faUserCog);
