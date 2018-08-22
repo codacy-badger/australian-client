@@ -2,6 +2,7 @@
   "title": "Bienvenue à react utilisant i18n",
   "navbar": {
     "brand": "Berger australien",
+    "select-language": "Sélectionner votre langue",
     "user-profile": "Profil…",
     "user-settings": "Paramètres…",
     "user-logout": "Déconnexion"

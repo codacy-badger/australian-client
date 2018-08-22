@@ -39,20 +39,22 @@ class LanguageDropdown extends React.Component {
     const { t } = this.props;
 
     if ('fr' === this.state.language) {
-      return <img src={frFlag} alt={t('img-alt.french-flag')}/>
+      return <img src={frFlag} alt={t('img-alt.french-flag')} className="flag-in-navbar mr-1 float-left"/>
     } else {
-      return <img src={ukFlag} alt={t('img-alt.united-kingdom-flag')}/>
+      return <img src={ukFlag} alt={t('img-alt.united-kingdom-flag')} className="flag-in-navbar mr-1 float-left"/>
     }
   }
 
   render() {
+    const { t } = this.props;
+
     return (
       <UncontrolledDropdown nav inNavbar>
-        <DropdownToggle caret>
+        <DropdownToggle nav caret>
           {this.renderFlag(this.state.language)}
         </DropdownToggle>
         <DropdownMenu right>
-          <DropdownItem header>Application language</DropdownItem>
+          <DropdownItem header>{t('navbar.select-language')}</DropdownItem>
           <DropdownItem active={'fr' === this.state.language} tag="button" onClick={this.changeFr}>
             Français
           </DropdownItem>
@@ -70,6 +72,5 @@ LanguageDropdown.propTypes = {
   i18n: PropTypes.object.isRequired,
   t: PropTypes.func.isRequired
 };
-
 
 export default translate('translations')(LanguageDropdown);
