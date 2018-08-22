@@ -1,4 +1,9 @@
 {
+  "button": {
+    "cancel": "Cancel",
+    "login": "Login",
+    "register": "Register"
+  },
   "title": "Welcome to react using react-i18next",
   "navbar": {
     "brand": "Australian shepherd",

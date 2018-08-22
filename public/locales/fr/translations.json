@@ -1,4 +1,9 @@
 {
+  "button": {
+    "cancel": "Annuler",
+    "login": "Se connecter",
+    "register": "S’inscrire"
+  },
   "title": "Bienvenue à react utilisant i18n",
   "navbar": {
     "brand": "Berger australien",
