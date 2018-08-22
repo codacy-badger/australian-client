@@ -3,6 +3,9 @@
   "navbar": {
     "brand": "Berger australien",
     "select-language": "Sélectionner votre langue",
+    "user-anonymous": "Anonyme",
+    "user-login": "Se connecter…",
+    "user-register": "S’inscrire…",
     "user-profile": "Profil…",
     "user-settings": "Paramètres…",
     "user-logout": "Déconnexion"

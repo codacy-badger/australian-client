@@ -3,9 +3,12 @@
   "navbar": {
     "brand": "Australian shepherd",
     "select-language": "Select your language",
+    "user-anonymous": "Anonymous",
+    "user-login": "Login…",
+    "user-register": "Register…",
     "user-profile": "Profile…",
     "user-settings": "Settings…",
-    "user-logout": "Lougout"
+    "user-logout": "Logout"
   },
   "description": {
     "part1": "To get started, edit <1>src/App.js</1> and save to reload.",

@@ -11,6 +11,7 @@ import {
 import LanguageDropdown from "./LanguageDropdown";
 import { translate, Trans } from "react-i18next";
 import UserDropdown from "./UserDropdown";
+import AnonymousDropdown from "./AnonymousDropdown";
 
 class Header extends React.Component {
   constructor(props) {
@@ -37,6 +38,7 @@ class Header extends React.Component {
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <LanguageDropdown />
+            <AnonymousDropdown />
             <UserDropdown />
           </Nav>
         </Collapse>

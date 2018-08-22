@@ -9,14 +9,9 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { translate } from "react-i18next";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import {
-  faIdCardAlt,
-  faSignOutAlt,
-  faUser,
-  faUserCog
-} from "@fortawesome/free-solid-svg-icons";
+import { faSignInAlt, faUserSecret } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faIdCardAlt, faSignOutAlt, faUser, faUserCog);
+library.add(faUserSecret, faSignInAlt);
 
 class UserDropdown extends React.Component {
   render() {
@@ -25,19 +20,17 @@ class UserDropdown extends React.Component {
     return (
       <UncontrolledDropdown nav inNavbar>
         <DropdownToggle nav caret>
-          <FontAwesomeIcon icon="user" fixedWidth /> User1
+          <FontAwesomeIcon icon="user-secret" fixedWidth />{" "}
+          {t("navbar.user-anonymous")}
         </DropdownToggle>
         <DropdownMenu right>
           <DropdownItem>
-            <FontAwesomeIcon fixedWidth icon="id-card-alt" /> {t("navbar.user-profile")}
+            <FontAwesomeIcon fixedWidth icon="sign-in-alt" />{" "}
+            {t("navbar.user-login")}
           </DropdownItem>
           <DropdownItem>
-            <FontAwesomeIcon fixedWidth icon="user-cog" /> {t("navbar.user-settings")}
-          </DropdownItem>
-          <DropdownItem divider />
-          <DropdownItem>
-            <FontAwesomeIcon fixedWidth icon="sign-out-alt" />
-            {t("navbar.user-logout")}
+            <FontAwesomeIcon fixedWidth icon="sign-in-alt" rotation="270" />{" "}
+            {t("navbar.user-register")}
           </DropdownItem>
         </DropdownMenu>
       </UncontrolledDropdown>
