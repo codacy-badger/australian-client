@@ -4,6 +4,13 @@
     "login": "Se connecter",
     "register": "S’inscrire"
   },
+  "form": {
+    "login": {
+      "email": "Email",
+      "password": "Mot de passe",
+      "password-placeholder": "Entrez votre mot de passe"
+    }
+  },
   "title": "Bienvenue à react utilisant i18n",
   "navbar": {
     "brand": "Berger australien",

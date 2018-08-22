@@ -4,6 +4,13 @@
     "login": "Login",
     "register": "Register"
   },
+  "form": {
+    "login": {
+      "email": "Email",
+      "password": "Password",
+      "password-placeholder": "Enter you password"
+    }
+  },
   "title": "Welcome to react using react-i18next",
   "navbar": {
     "brand": "Australian shepherd",
