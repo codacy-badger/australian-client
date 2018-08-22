@@ -8,14 +8,14 @@ export function loadDogSuccess(dogs) {
 }
 
 export function loadDogs(page = 1, sizePerPage = 30) {
-  return dispatch => {
+  return (dispatch) => {
     dispatch(beginDogCall());
     return dogActionApi
       .getAllDogs(page, sizePerPage)
-      .then(dogs => {
+      .then((dogs) => {
         dispatch(loadDogSuccess(dogs));
       })
-      .catch(error => {
+      .catch((error) => {
         dispatch(dogCallError(error));
       });
   };
