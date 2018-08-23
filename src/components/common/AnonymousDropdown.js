@@ -67,4 +67,5 @@ class UserDropdown extends React.Component {
 UserDropdown.propTypes = {
   t: PropTypes.func.isRequired
 };
+
 export default translate("translations")(UserDropdown);
