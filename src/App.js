@@ -3,6 +3,7 @@ import { translate, Trans } from "react-i18next";
 import Header from "./components/common/Header";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "toastr/toastr.scss";
 
 class App extends Component {
   render() {

@@ -12,16 +12,16 @@ function setLoginPending(isLoginPending) {
 function setLoginSuccess(isLoginSuccess, auth = {}) {
   return {
     type: types.SET_LOGIN_SUCCESS,
-    isLoginSuccess: isLoginSuccess,
-    auth: auth
+    isLoginSuccess,
+    auth
   };
 }
 
 function setLoginError(isLoginError, error = {}) {
   return {
     type: types.SET_LOGIN_ERROR,
-    isLoginError: isLoginError,
-    error: error
+    isLoginError,
+    error
   };
 }
 
@@ -33,7 +33,6 @@ export function login(email, password) {
 
     authActionApi.callLoginApi(email, password, (result) => {
       dispatch(setLoginPending(false));
-      console.log(JSON.stringify(result));
       if (result.user_id) {
         dispatch(setLoginSuccess(true, result));
       } else {
