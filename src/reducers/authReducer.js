@@ -12,6 +12,7 @@ export default function authReducer(state = initialState.login, action) {
       return Object.assign({}, state, {
         isLoginSuccess: action.isLoginSuccess,
         isAuthenticated: action.isLoginSuccess,
+        sendMessage: action.isLoginSuccess,
         auth: action.auth
       });
 

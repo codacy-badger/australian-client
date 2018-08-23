@@ -10,6 +10,7 @@ export default {
     isLoginSuccess: false,
     isLoginPending: false,
     isLoginError: false,
-    error: {}
+    error: {},
+    sendMessage: false,
   }
 };
