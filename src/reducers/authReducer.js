@@ -10,12 +10,15 @@ export default function authReducer(state = initialState.login, action) {
 
     case types.SET_LOGIN_SUCCESS:
       return Object.assign({}, state, {
-        isLoginSuccess: action.isLoginSuccess
+        isLoginSuccess: action.isLoginSuccess,
+        isAuthenticated: (typeof action.auth === "object") && (action.auth !== null),
+        auth: action.auth
       });
 
     case types.SET_LOGIN_ERROR:
       return Object.assign({}, state, {
-        loginError: action.loginError
+        isLoginError: action.isLoginError,
+        error: action.error
       });
 
     default:

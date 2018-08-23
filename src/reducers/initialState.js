@@ -5,9 +5,10 @@ export default {
     isError: false
   },
   login: {
-    token: "",
+    auth: {},
     isLoginSuccess: false,
     isLoginPending: false,
-    loginError: null
+    isLoginError: false,
+    error: {}
   }
 };

@@ -65,29 +65,9 @@ class LoginModal extends Component {
     });
   }
 
-  getSubmitButtonContent() {
-    const {isLoginPending, t} = this.props;
-
-    if (isLoginPending) {
-      return (
-        <span>
-          <FontAwesomeIcon icon="spinner" spin className="mr-1"/>
-          {t('form.login.submitting')}
-        </span>
-      );
-    } else {
-      return (
-        <span>
-          <FontAwesomeIcon icon="sign-in-alt" rotate={270} className="mr-1"/>
-          {t('form.login.submit')}
-        </span>
-      );
-    }
-  }
-
   render() {
     const {email, modal, password} = this.state;
-    const {isLoginPending, isLoginSuccess, loginError, t} = this.props;
+    const {isLoginPending, isLoginSuccess, isLoginError, t} = this.props;
 
     return (
       <Modal isOpen={modal} toggle={this.toggle}>
@@ -97,7 +77,7 @@ class LoginModal extends Component {
             {t("navbar.user-login")}
           </ModalHeader>
           <ModalBody>
-            {loginError && <span>{loginError.message}</span>}
+            {isLoginError && <span>{isLoginError.message}</span>}
             <FormGroup row>
               <Label for="loginEmail" sm={4}>
                 {t("form.login.email")}
@@ -133,7 +113,8 @@ class LoginModal extends Component {
           </ModalBody>
           <ModalFooter>
             <Button color="primary" onClick={this.submit} disabled={isLoginPending}>
-              {this.getSubmitButtonContent()}
+              {isLoginPending && <span><FontAwesomeIcon icon="spinner" spin className="mr-1"/>{t('form.login.submitting')}</span>}
+              {!isLoginPending && <span>< FontAwesomeIcon icon="sign-in-alt" rotate={270} className="mr-1"/>{t('form.login.submit')}</span>}
             </Button>
             <Button color="secondary" onClick={this.toggle}>
               {t("button.cancel")}
@@ -148,7 +129,8 @@ class LoginModal extends Component {
 LoginModal.propTypes = {
   isLoginPending: PropTypes.bool.isRequired,
   isLoginSuccess: PropTypes.bool.isRequired,
-  loginError: PropTypes.string,
+  isLoginError: PropTypes.bool.isRequired,
+  error: PropTypes.object.isRequired,
   onRef: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired
 };
@@ -158,7 +140,8 @@ function mapStateToProps(state) {
   return {
     isLoginPending: state.authReducer.isLoginPending,
     isLoginSuccess: state.authReducer.isLoginSuccess,
-    loginError: state.authReducer.loginError
+    isLoginError: state.authReducer.isLoginError,
+    error: state.authReducer.error,
   };
 }
 

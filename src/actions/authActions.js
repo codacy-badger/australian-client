@@ -9,17 +9,19 @@ function setLoginPending(isLoginPending) {
   };
 }
 
-function setLoginSuccess(isLoginSuccess) {
+function setLoginSuccess(isLoginSuccess, auth) {
   return {
     type: types.SET_LOGIN_SUCCESS,
-    isLoginSuccess
+    isLoginSuccess,
+    auth
   };
 }
 
-function setLoginError(loginError) {
+function setLoginError(isLoginError, error) {
   return {
     type: types.SET_LOGIN_ERROR,
-    loginError
+    isLoginError,
+    error
   };
 }
 
@@ -29,12 +31,13 @@ export function login(email, password) {
     dispatch(setLoginSuccess(false));
     dispatch(setLoginError(null));
 
-    authActionApi.callLoginApi(email, password, error => {
+    authActionApi.callLoginApi(email, password, (result) => {
       dispatch(setLoginPending(false));
-      if (!error) {
-        dispatch(setLoginSuccess(true));
+      console.log(JSON.stringify(result));
+      if (result.user_id) {
+        dispatch(setLoginSuccess(true, result));
       } else {
-        dispatch(setLoginError(error));
+        dispatch(setLoginError(true, result));
       }
     });
   };
