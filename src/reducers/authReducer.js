@@ -8,7 +8,13 @@ export default function authReducer(state = initialState.login, action) {
         isLoginPending: action.isLoginPending
       });
 
+    case types.SET_LOGIN_MESSAGE_PRINTED:
+      return Object.assign({}, state, {
+        sendMessage: action.sendMessage
+      });
+
     case types.SET_LOGIN_SUCCESS:
+
       return Object.assign({}, state, {
         isLoginSuccess: action.isLoginSuccess,
         isAuthenticated: action.isLoginSuccess,

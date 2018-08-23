@@ -10,13 +10,17 @@ import {toastr} from 'react-redux-toastr';
 import ReduxToastr from 'react-redux-toastr';
 
 class App extends Component {
-  render() {
+
+  componentDidUpdate() {
     const { t, isJustAuthenticated } = this.props;
 
     if (isJustAuthenticated) {
-      toastr.success('Login successful', 'Welcome back!');
-      //TODO Action pour mettre à faux le isJustAuthenticated.
+      toastr.success(t('message.login-successful'), t('message.welcome-back'));
     }
+  }
+
+  render() {
+    const { t } = this.props;
 
     return (
       <div className="App">
@@ -31,10 +35,9 @@ class App extends Component {
         </div>
         <div>{t("description.part2")}</div>
         <ReduxToastr
-          timeOut={4000}
-          newestOnTop={false}
           preventDuplicates
-          position="top-left"
+          className="mt-5"
+          position="top-right"
           transitionIn="fadeIn"
           transitionOut="fadeOut"
           progressBar
@@ -55,10 +58,10 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    //login: (email, password) => dispatch(login(email, password))
-  };
-}
+// function mapDispatchToProps(dispatch) {
+//   return {
+//     //login: (email, password) => dispatch(login(email, password))
+//   };
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(translate("translations")(App));
+export default connect(mapStateToProps, null)(translate("translations")(App));

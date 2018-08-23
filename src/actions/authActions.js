@@ -9,6 +9,13 @@ function setLoginPending(isLoginPending) {
   };
 }
 
+function setLoginMessagePrinted(sendMessage) {
+  return {
+    type: types.SET_LOGIN_MESSAGE_PRINTED,
+    sendMessage
+  };
+}
+
 function setLoginSuccess(isLoginSuccess, auth = {}) {
   return {
     type: types.SET_LOGIN_SUCCESS,
@@ -35,6 +42,9 @@ export function login(email, password) {
       dispatch(setLoginPending(false));
       if (result.user_id) {
         dispatch(setLoginSuccess(true, result));
+        setTimeout(() => {
+          dispatch(setLoginMessagePrinted(false));
+        }, 1000);
       } else {
         dispatch(setLoginError(true, result));
       }

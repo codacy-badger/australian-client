@@ -26,7 +26,8 @@
     }
   },
   "message": {
-    "login-successful": "Login successful."
+    "login-successful": "Login successful.",
+    "welcome-back": "Welcome back!"
   },
   "title": "Welcome to react using react-i18next",
   "navbar": {

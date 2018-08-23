@@ -26,7 +26,8 @@
     }
   },
   "message": {
-    "login-successful": "Identification réussie."
+    "login-successful": "Identification réussie.",
+    "welcome-back": "Bon retour parmi nous !"
   },
   "title": "Bienvenue à react utilisant i18n",
   "navbar": {
