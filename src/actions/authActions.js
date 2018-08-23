@@ -9,19 +9,19 @@ function setLoginPending(isLoginPending) {
   };
 }
 
-function setLoginSuccess(isLoginSuccess, auth) {
+function setLoginSuccess(isLoginSuccess, auth = {}) {
   return {
     type: types.SET_LOGIN_SUCCESS,
-    isLoginSuccess,
-    auth
+    isLoginSuccess: isLoginSuccess,
+    auth: auth
   };
 }
 
-function setLoginError(isLoginError, error) {
+function setLoginError(isLoginError, error = {}) {
   return {
     type: types.SET_LOGIN_ERROR,
-    isLoginError,
-    error
+    isLoginError: isLoginError,
+    error: error
   };
 }
 
@@ -29,7 +29,7 @@ export function login(email, password) {
   return dispatch => {
     dispatch(setLoginPending(true));
     dispatch(setLoginSuccess(false));
-    dispatch(setLoginError(null));
+    dispatch(setLoginError(false));
 
     authActionApi.callLoginApi(email, password, (result) => {
       dispatch(setLoginPending(false));

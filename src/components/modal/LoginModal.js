@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import {translate} from "react-i18next";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
+  Alert,
   Button,
   Col,
   Form,
@@ -67,7 +68,7 @@ class LoginModal extends Component {
 
   render() {
     const {email, modal, password} = this.state;
-    const {isLoginPending, isLoginSuccess, isLoginError, t} = this.props;
+    const {error, isLoginPending, isLoginSuccess, isLoginError, t} = this.props;
 
     return (
       <Modal isOpen={modal} toggle={this.toggle}>
@@ -77,7 +78,8 @@ class LoginModal extends Component {
             {t("navbar.user-login")}
           </ModalHeader>
           <ModalBody>
-            {isLoginError && <span>{isLoginError.message}</span>}
+            {isLoginError && <Alert color="danger" className="text-center">{t("error." + error.code)}</Alert>}
+            {isLoginSuccess && <Alert color="success" className="text-center">{t('message.login-successful')}</Alert>}
             <FormGroup row>
               <Label for="loginEmail" sm={4}>
                 {t("form.login.email")}
@@ -112,7 +114,7 @@ class LoginModal extends Component {
             </FormGroup>
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={this.submit} disabled={isLoginPending}>
+            <Button color="primary" onClick={this.submit} disabled={isLoginPending || isLoginSuccess}>
               {isLoginPending && <span><FontAwesomeIcon icon="spinner" spin className="mr-1"/>{t('form.login.submitting')}</span>}
               {!isLoginPending && <span>< FontAwesomeIcon icon="sign-in-alt" rotate={270} className="mr-1"/>{t('form.login.submit')}</span>}
             </Button>

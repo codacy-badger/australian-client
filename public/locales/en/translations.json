@@ -4,6 +4,9 @@
     "login": "Login",
     "register": "Register"
   },
+  "error": {
+    "10": "Invalid credentials."
+  },
   "form": {
     "login": {
       "email": "Email",
@@ -21,6 +24,9 @@
       "password-confirmation": "Confirmation",
       "password-confirmation-placeholder": "Confirm your password"
     }
+  },
+  "message": {
+    "login-successful": "Login successful."
   },
   "title": "Welcome to react using react-i18next",
   "navbar": {
