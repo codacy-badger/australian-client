@@ -6,6 +6,7 @@ import LanguageDropdown from "./LanguageDropdown";
 import { translate, Trans } from "react-i18next";
 import UserDropdown from "./UserDropdown";
 import AnonymousDropdown from "./AnonymousDropdown";
+import {connect} from "react-redux";
 
 class Header extends React.Component {
   constructor(props) {
@@ -23,6 +24,8 @@ class Header extends React.Component {
   }
 
   render() {
+    const {isAuthenticated} = this.props;
+
     return (
       <Navbar color="light" light expand="md">
         <NavbarBrand href="/">
@@ -32,8 +35,8 @@ class Header extends React.Component {
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <LanguageDropdown />
-            <AnonymousDropdown />
-            <UserDropdown />
+            {!isAuthenticated && <AnonymousDropdown />}
+            {isAuthenticated && <UserDropdown />}
           </Nav>
         </Collapse>
       </Navbar>
@@ -43,7 +46,21 @@ class Header extends React.Component {
 
 Header.propTypes = {
   t: PropTypes.func.isRequired,
-  user: PropTypes.object
+//  user: PropTypes.object.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
 };
 
-export default translate("translations")(Header);
+// Redux connect begin here
+function mapStateToProps(state) {
+  return {
+    isAuthenticated: state.authReducer.isAuthenticated,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    //login: (email, password) => dispatch(login(email, password))
+  };
+}
+
+export default translate("translations")(connect(mapStateToProps, mapDispatchToProps)(Header));

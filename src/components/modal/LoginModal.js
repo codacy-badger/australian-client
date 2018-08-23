@@ -79,7 +79,6 @@ class LoginModal extends Component {
           </ModalHeader>
           <ModalBody>
             {isLoginError && <Alert color="danger" className="text-center">{t("error." + error.code)}</Alert>}
-            {isLoginSuccess && <Alert color="success" className="text-center">{t('message.login-successful')}</Alert>}
             <FormGroup row>
               <Label for="loginEmail" sm={4}>
                 {t("form.login.email")}
