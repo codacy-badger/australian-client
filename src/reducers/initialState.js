@@ -6,6 +6,7 @@ export default {
   },
   login: {
     auth: {},
+    isAuthenticated: false,
     isLoginSuccess: false,
     isLoginPending: false,
     isLoginError: false,
