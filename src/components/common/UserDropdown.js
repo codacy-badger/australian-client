@@ -51,13 +51,13 @@ class UserDropdown extends React.Component {
 
 UserDropdown.propTypes = {
   t: PropTypes.func.isRequired,
-  username: PropTypes.string.isRequired,
+  username: PropTypes.string.isRequired
 };
 
 // Redux connect begin here
 function mapStateToProps(state) {
   return {
-    username: state.authReducer.auth.user.givenName,
+    username: state.authReducer.auth.user.givenName
   };
 }
 
@@ -67,4 +67,9 @@ function mapStateToProps(state) {
 //   };
 // }
 
-export default translate("translations")(connect(mapStateToProps, null)(UserDropdown));
+export default translate("translations")(
+  connect(
+    mapStateToProps,
+    null
+  )(UserDropdown)
+);

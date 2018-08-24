@@ -14,7 +14,6 @@ export default function authReducer(state = initialState.login, action) {
       });
 
     case types.SET_LOGIN_SUCCESS:
-
       return Object.assign({}, state, {
         isLoginSuccess: action.isLoginSuccess,
         isAuthenticated: action.isLoginSuccess,

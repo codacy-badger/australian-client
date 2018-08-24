@@ -4,18 +4,17 @@ import { translate, Trans } from "react-i18next";
 import Header from "./components/common/Header";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import 'react-redux-toastr/lib/css/react-redux-toastr.min.css'
-import {connect} from "react-redux";
-import {toastr} from 'react-redux-toastr';
-import ReduxToastr from 'react-redux-toastr';
+import "react-redux-toastr/lib/css/react-redux-toastr.min.css";
+import { connect } from "react-redux";
+import { toastr } from "react-redux-toastr";
+import ReduxToastr from "react-redux-toastr";
 
 class App extends Component {
-
   componentDidUpdate() {
     const { t, isJustAuthenticated } = this.props;
 
     if (isJustAuthenticated) {
-      toastr.success(t('message.login-successful'), t('message.welcome-back'));
+      toastr.success(t("message.login-successful"), t("message.welcome-back"));
     }
   }
 
@@ -41,20 +40,21 @@ class App extends Component {
           transitionIn="fadeIn"
           transitionOut="fadeOut"
           progressBar
-          closeOnToastrClick/>
+          closeOnToastrClick
+        />
       </div>
     );
   }
 }
 
 App.propTypes = {
-  isJustAuthenticated: PropTypes.bool.isRequired,
+  isJustAuthenticated: PropTypes.bool.isRequired
 };
 
 // Redux connect begin here
 function mapStateToProps(state) {
   return {
-    isJustAuthenticated: state.authReducer.sendMessage,
+    isJustAuthenticated: state.authReducer.sendMessage
   };
 }
 
@@ -64,4 +64,7 @@ function mapStateToProps(state) {
 //   };
 // }
 
-export default connect(mapStateToProps, null)(translate("translations")(App));
+export default connect(
+  mapStateToProps,
+  null
+)(translate("translations")(App));

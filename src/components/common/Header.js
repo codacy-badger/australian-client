@@ -6,7 +6,7 @@ import LanguageDropdown from "./LanguageDropdown";
 import { translate, Trans } from "react-i18next";
 import UserDropdown from "./UserDropdown";
 import AnonymousDropdown from "./AnonymousDropdown";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 
 class Header extends React.Component {
   constructor(props) {
@@ -24,7 +24,7 @@ class Header extends React.Component {
   }
 
   render() {
-    const {isAuthenticated} = this.props;
+    const { isAuthenticated } = this.props;
 
     return (
       <Navbar color="light" light expand="md">
@@ -46,14 +46,14 @@ class Header extends React.Component {
 
 Header.propTypes = {
   t: PropTypes.func.isRequired,
-//  user: PropTypes.object.isRequired,
-  isAuthenticated: PropTypes.bool.isRequired,
+  //  user: PropTypes.object.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired
 };
 
 // Redux connect begin here
 function mapStateToProps(state) {
   return {
-    isAuthenticated: state.authReducer.isAuthenticated,
+    isAuthenticated: state.authReducer.isAuthenticated
   };
 }
 
@@ -63,4 +63,9 @@ function mapStateToProps(state) {
 //   };
 // }
 
-export default translate("translations")(connect(mapStateToProps, null)(Header));
+export default translate("translations")(
+  connect(
+    mapStateToProps,
+    null
+  )(Header)
+);

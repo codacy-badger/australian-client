@@ -7,26 +7,25 @@ import delay from "./mockDelay";
 const auth = {
   user: {
     id: 1,
-    email: 'admin@example.org',
-    givenName: 'John',
-    familyName: 'Doe',
+    email: "admin@example.org",
+    givenName: "John",
+    familyName: "Doe"
   },
-  token: 'foo42bar'
+  token: "foo42bar"
 };
 
 const error = {
   code: 10,
-  message: "toto",
+  message: "toto"
 };
-
 
 class AuthApi {
   static callLoginApi(email, password, callback) {
     return new Promise(() => {
       setTimeout(() => {
         if (email === "admin@example.org" && password === "admin") {
-          localStorage.setItem('user', auth.user);
-          localStorage.setItem('accessToken', auth.token);
+          localStorage.setItem("user", auth.user);
+          localStorage.setItem("accessToken", auth.token);
           return callback(auth);
         } else {
           return callback(error);

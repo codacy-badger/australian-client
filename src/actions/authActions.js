@@ -33,7 +33,7 @@ function setLoginError(isLoginError, error = {}) {
 }
 
 export function login(email, password) {
-  return dispatch => {
+  return (dispatch) => {
     dispatch(setLoginPending(true));
     dispatch(setLoginSuccess(false));
     dispatch(setLoginError(false));

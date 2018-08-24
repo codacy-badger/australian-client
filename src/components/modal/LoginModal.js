@@ -1,7 +1,7 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
-import {translate} from "react-i18next";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import { translate } from "react-i18next";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   Alert,
   Button,
@@ -15,21 +15,20 @@ import {
   ModalFooter,
   ModalHeader
 } from "reactstrap";
-import {library} from "@fortawesome/fontawesome-svg-core";
-import {faSignInAlt, faSpinner} from "@fortawesome/free-solid-svg-icons";
-import {connect} from "react-redux";
-import {login} from '../../actions/authActions';
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faSignInAlt, faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { connect } from "react-redux";
+import { login } from "../../actions/authActions";
 
 library.add(faSignInAlt, faSpinner);
-
 
 class LoginModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
       modal: false,
-      email: '',
-      password: '',
+      email: "",
+      password: ""
     };
 
     this.onChange = this.onChange.bind(this);
@@ -47,15 +46,15 @@ class LoginModal extends Component {
 
   onChange(e) {
     this.setState({
-      [e.target.name]: e.target.value,
-    })
+      [e.target.name]: e.target.value
+    });
   }
 
   onSubmit(e) {
     e.preventDefault();
 
-    const {login} = this.props;
-    const {email, password} = this.state;
+    const { login } = this.props;
+    const { email, password } = this.state;
 
     login(email, password);
   }
@@ -67,18 +66,28 @@ class LoginModal extends Component {
   }
 
   render() {
-    const {email, modal, password} = this.state;
-    const {error, isLoginPending, isLoginSuccess, isLoginError, t} = this.props;
+    const { email, modal, password } = this.state;
+    const {
+      error,
+      isLoginPending,
+      isLoginSuccess,
+      isLoginError,
+      t
+    } = this.props;
 
     return (
       <Modal isOpen={modal} toggle={this.toggle}>
         <Form onSubmit={this.onSubmit}>
           <ModalHeader toggle={this.toggleLoginModal}>
-            <FontAwesomeIcon fixedWidth icon="sign-in-alt"/>{" "}
+            <FontAwesomeIcon fixedWidth icon="sign-in-alt" />{" "}
             {t("navbar.user-login")}
           </ModalHeader>
           <ModalBody>
-            {isLoginError && <Alert color="danger" className="text-center">{t("error." + error.code)}</Alert>}
+            {isLoginError && (
+              <Alert color="danger" className="text-center">
+                {t("error." + error.code)}
+              </Alert>
+            )}
             <FormGroup row>
               <Label for="loginEmail" sm={4}>
                 {t("form.login.email")}
@@ -113,9 +122,27 @@ class LoginModal extends Component {
             </FormGroup>
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={this.submit} disabled={isLoginPending || isLoginSuccess}>
-              {isLoginPending && <span><FontAwesomeIcon icon="spinner" spin className="mr-1"/>{t('form.login.submitting')}</span>}
-              {!isLoginPending && <span>< FontAwesomeIcon icon="sign-in-alt" rotate={270} className="mr-1"/>{t('form.login.submit')}</span>}
+            <Button
+              color="primary"
+              onClick={this.submit}
+              disabled={isLoginPending || isLoginSuccess}
+            >
+              {isLoginPending && (
+                <span>
+                  <FontAwesomeIcon icon="spinner" spin className="mr-1" />
+                  {t("form.login.submitting")}
+                </span>
+              )}
+              {!isLoginPending && (
+                <span>
+                  <FontAwesomeIcon
+                    icon="sign-in-alt"
+                    rotate={270}
+                    className="mr-1"
+                  />
+                  {t("form.login.submit")}
+                </span>
+              )}
             </Button>
             <Button color="secondary" onClick={this.toggle}>
               {t("button.cancel")}
@@ -142,7 +169,7 @@ function mapStateToProps(state) {
     isLoginPending: state.authReducer.isLoginPending,
     isLoginSuccess: state.authReducer.isLoginSuccess,
     isLoginError: state.authReducer.isLoginError,
-    error: state.authReducer.error,
+    error: state.authReducer.error
   };
 }
 
@@ -152,4 +179,9 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default translate("translations")(connect(mapStateToProps, mapDispatchToProps)(LoginModal));
+export default translate("translations")(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(LoginModal)
+);

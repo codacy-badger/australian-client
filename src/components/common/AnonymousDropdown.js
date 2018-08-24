@@ -24,7 +24,6 @@ class AnonymousDropdown extends React.Component {
 
     this.toggleLoginModal = this.toggleLoginModal.bind(this);
     this.toggleRegisterModal = this.toggleRegisterModal.bind(this);
-
   }
 
   toggleLoginModal = () => {
@@ -56,9 +55,8 @@ class AnonymousDropdown extends React.Component {
             </DropdownItem>
           </DropdownMenu>
         </UncontrolledDropdown>
-        <LoginModal onRef={(ref) => (this.loginModal = ref)}/>
-        <RegisterModal onRef={(ref) => (this.registerModal = ref)}/>
-
+        <LoginModal onRef={(ref) => (this.loginModal = ref)} />
+        <RegisterModal onRef={(ref) => (this.registerModal = ref)} />
       </div>
     );
   }

@@ -11,6 +11,6 @@ export default {
     isLoginPending: false,
     isLoginError: false,
     error: {},
-    sendMessage: false,
+    sendMessage: false
   }
 };
