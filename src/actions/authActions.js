@@ -40,8 +40,9 @@ export function login(email, password) {
 
     authActionApi.callLoginApi(email, password, (result) => {
       dispatch(setLoginPending(false));
-      if (result.user_id) {
+      if (result.token) {
         dispatch(setLoginSuccess(true, result));
+        //TODO try to dispatch Toastr directly
         setTimeout(() => {
           dispatch(setLoginMessagePrinted(false));
         }, 1000);

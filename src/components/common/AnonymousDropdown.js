@@ -15,7 +15,7 @@ import RegisterModal from "../modal/RegisterModal";
 
 library.add(faUserSecret, faSignInAlt);
 
-class UserDropdown extends React.Component {
+class AnonymousDropdown extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -64,8 +64,8 @@ class UserDropdown extends React.Component {
   }
 }
 
-UserDropdown.propTypes = {
+AnonymousDropdown.propTypes = {
   t: PropTypes.func.isRequired
 };
 
-export default translate("translations")(UserDropdown);
+export default translate("translations")(AnonymousDropdown);

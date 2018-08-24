@@ -57,10 +57,10 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    //login: (email, password) => dispatch(login(email, password))
-  };
-}
+// function mapDispatchToProps(dispatch) {
+//   return {
+//     //login: (email, password) => dispatch(login(email, password))
+//   };
+// }
 
-export default translate("translations")(connect(mapStateToProps, mapDispatchToProps)(Header));
+export default translate("translations")(connect(mapStateToProps, null)(Header));
