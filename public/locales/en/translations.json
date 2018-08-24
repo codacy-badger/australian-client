@@ -27,6 +27,8 @@
   },
   "message": {
     "login-successful": "Login successful.",
+    "logout-successful": "Logout successful",
+    "logout-successful-explanations": "Your disconnection has been logged. Hope to see you soon!",
     "welcome-back": "Welcome back!"
   },
   "title": "Welcome to react using react-i18next",

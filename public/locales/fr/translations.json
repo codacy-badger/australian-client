@@ -27,6 +27,8 @@
   },
   "message": {
     "login-successful": "Identification réussie.",
+    "logout-successful": "Déconnexion confirmée.",
+    "logout-successful-explanations": "Votre déconnexion a été correctement enregistrée. À bientôt !",
     "welcome-back": "Bon retour parmi nous !"
   },
   "title": "Bienvenue à react utilisant i18n",

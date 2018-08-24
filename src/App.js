@@ -11,10 +11,16 @@ import ReduxToastr from "react-redux-toastr";
 
 class App extends Component {
   componentDidUpdate() {
-    const { t, isJustAuthenticated } = this.props;
+    const { t, isJustAuthenticated, isJustDisconnected } = this.props;
 
     if (isJustAuthenticated) {
       toastr.success(t("message.login-successful"), t("message.welcome-back"));
+    }
+    if (isJustDisconnected) {
+      toastr.success(
+        t("message.logout-successful"),
+        t("message.logout-successful-explanations")
+      );
     }
   }
 
@@ -48,13 +54,15 @@ class App extends Component {
 }
 
 App.propTypes = {
-  isJustAuthenticated: PropTypes.bool.isRequired
+  isJustAuthenticated: PropTypes.bool.isRequired,
+  isJustDisconnected: PropTypes.bool.isRequired
 };
 
 // Redux connect begin here
 function mapStateToProps(state) {
   return {
-    isJustAuthenticated: state.authReducer.sendMessage
+    isJustAuthenticated: state.authReducer.sendLoginMessage || false,
+    isJustDisconnected: state.authReducer.sendLogoutMessage || false
   };
 }
 

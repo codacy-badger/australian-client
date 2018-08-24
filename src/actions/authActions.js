@@ -32,6 +32,28 @@ function setLoginError(isLoginError, error = {}) {
   };
 }
 
+function setLogoutPending(isLogoutPending) {
+  return {
+    type: types.SET_LOGOUT_PENDING,
+    isLogoutPending
+  };
+}
+
+function setLogoutMessagePrinted(sendMessage) {
+  return {
+    type: types.SET_LOGOUT_MESSAGE_PRINTED,
+    sendMessage
+  };
+}
+
+function setLogoutSuccess(isLogoutSuccess, auth = {}) {
+  return {
+    type: types.SET_LOGOUT_SUCCESS,
+    isLogoutSuccess,
+    auth
+  };
+}
+
 export function login(email, password) {
   return (dispatch) => {
     dispatch(setLoginPending(true));
@@ -49,6 +71,23 @@ export function login(email, password) {
       } else {
         dispatch(setLoginError(true, result));
       }
+    });
+  };
+}
+
+export function logout() {
+  return (dispatch) => {
+    dispatch(setLogoutPending(true));
+    dispatch(setLogoutSuccess(false));
+
+    authActionApi.callLogoutApi(() => {
+      dispatch(setLogoutPending(false));
+      dispatch(setLogoutSuccess(true));
+      dispatch(setLoginSuccess(false));
+      //TODO try to dispatch Toastr directly
+      setTimeout(() => {
+        dispatch(setLogoutMessagePrinted(false));
+      }, 1000);
     });
   };
 }

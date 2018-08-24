@@ -15,11 +15,22 @@ import {
   faUser,
   faUserCog
 } from "@fortawesome/free-solid-svg-icons";
-import connect from "react-redux/es/connect/connect";
+import { connect } from "react-redux";
+import { logout } from "../../actions/authActions";
 
 library.add(faIdCardAlt, faSignOutAlt, faUser, faUserCog);
 
 class UserDropdown extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.logoutClick = this.logoutClick.bind(this);
+  }
+
+  logoutClick() {
+    this.props.logout();
+  }
+
   render() {
     const { t, username } = this.props;
 
@@ -39,7 +50,7 @@ class UserDropdown extends React.Component {
             {t("navbar.user-settings")}
           </DropdownItem>
           <DropdownItem divider />
-          <DropdownItem>
+          <DropdownItem onClick={this.logoutClick}>
             <FontAwesomeIcon fixedWidth icon="sign-out-alt" />{" "}
             {t("navbar.user-logout")}
           </DropdownItem>
@@ -56,20 +67,25 @@ UserDropdown.propTypes = {
 
 // Redux connect begin here
 function mapStateToProps(state) {
+  if (undefined !== state.authReducer.auth.user) {
+    return {
+      username: state.authReducer.auth.user.givenName
+    };
+  }
   return {
-    username: state.authReducer.auth.user.givenName
+    username: ""
   };
 }
 
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     //login: (email, password) => dispatch(login(email, password))
-//   };
-// }
+function mapDispatchToProps(dispatch) {
+  return {
+    logout: () => dispatch(logout())
+  };
+}
 
 export default translate("translations")(
   connect(
     mapStateToProps,
-    null
+    mapDispatchToProps
   )(UserDropdown)
 );

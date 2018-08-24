@@ -33,6 +33,16 @@ class AuthApi {
       }, delay);
     });
   }
+
+  static callLogoutApi(callback) {
+    return new Promise(() => {
+      setTimeout(() => {
+        localStorage.removeItem("user");
+        localStorage.removeItem("accessToken");
+        return callback({});
+      }, delay);
+    });
+  }
 }
 
 export default AuthApi;
