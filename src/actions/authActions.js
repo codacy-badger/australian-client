@@ -64,7 +64,6 @@ export function login(email, password) {
       dispatch(setLoginPending(false));
       if (result.token) {
         dispatch(setLoginSuccess(true, result));
-        //TODO try to dispatch Toastr directly
         setTimeout(() => {
           dispatch(setLoginMessagePrinted(false));
         }, 1000);
@@ -84,7 +83,6 @@ export function logout() {
       dispatch(setLogoutPending(false));
       dispatch(setLogoutSuccess(true));
       dispatch(setLoginSuccess(false));
-      //TODO try to dispatch Toastr directly
       setTimeout(() => {
         dispatch(setLogoutMessagePrinted(false));
       }, 1000);
