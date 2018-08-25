@@ -5,7 +5,11 @@
     "register": "S’inscrire"
   },
   "error": {
-    "10": "Identifiants invalides."
+    "10": "Identifiants invalides.",
+    "20": "Il existe déjà un compte enregistré avec cette adresse mail.",
+    "30": "L’adresse entrée appartient à un fournisseur banni parce que trop de robots s'inscrivaient.",
+    "40": "Le mot de passe choisi n’est pas suffisamment fort. Pour le complexifier, ajoutez des caractères, des nombres et symboles.",
+    "50": "L’adresse email fournie n’est pas valide."
   },
   "form": {
     "login": {
@@ -22,13 +26,24 @@
       "password": "Mot de passe",
       "password-placeholder": "Entrez votre mot de passe",
       "password-confirmation": "Confirmation",
-      "password-confirmation-placeholder": "Confirmer votre mot de passe"
+      "password-confirmation-placeholder": "Confirmer ce mot de passe",
+      "password-confirmation-helpBlock": "Les deux saisies doivent être identiques",
+      "submit": "S’inscrire",
+      "submitting": "Inscription en cours…"
     }
   },
   "message": {
     "login-successful": "Identification réussie.",
     "logout-successful": "Déconnexion confirmée.",
     "logout-successful-explanations": "Votre déconnexion a été correctement enregistrée. À bientôt !",
+    "register-nextStep": {
+      "10": "Vous pouvez vous connecter au site.",
+      "20": "Un administrateur du site va activer votre compte rapidement. Vous en serez averti par mail.",
+      "30": "Pour vérifier votre adresse email, nous vous avons envoyé un mail. Il contient un lien, cliquez dessus pour finaliser votre inscription."
+    },
+    "register-successful": "Inscription réussie !",
+    "password-confirmed": "Le mot de passe et sa confirmation correspondent bien.",
+    "password-not-confirmed": "Le mot de passe et sa confirmation doivent être identiques",
     "welcome-back": "Bon retour parmi nous !"
   },
   "title": "Bienvenue à react utilisant i18n",

@@ -5,7 +5,11 @@
     "register": "Register"
   },
   "error": {
-    "10": "Invalid credentials."
+    "10": "Invalid credentials.",
+    "20": "An account already exists with this email.",
+    "30": "The mail provider was ban because to many robots are doning automatic registers.",
+    "40": "Your password isn't enough strong. Add some alpha, numeric and special chars.",
+    "50": "The sent mail address is not valid."
   },
   "form": {
     "login": {
@@ -22,13 +26,24 @@
       "password": "Password",
       "password-placeholder": "Enter your password",
       "password-confirmation": "Confirmation",
-      "password-confirmation-placeholder": "Confirm your password"
+      "password-confirmation-placeholder": "Confirm your password",
+      "password-confirmation-helpBlock": "Password and confirmation fields should be equals.",
+      "submit": "Register",
+      "submitting": "Registering…"
     }
   },
   "message": {
     "login-successful": "Login successful.",
     "logout-successful": "Logout successful",
     "logout-successful-explanations": "Your disconnection has been logged. Hope to see you soon!",
+    "register-nextStep": {
+      "10": "You can login to the website.",
+      "20": "An administrator will activate your account. You will be alert by a mail when it will be done.",
+      "30": "To verify your mail address, we have sent a mail with a link. Click it to finalize your registration."
+    },
+    "register-successful": "Registration successful!",
+    "password-confirmed": "Your password and its confirmation match.",
+    "password-not-confirmed": "Password and confirmation doesn't match.",
     "welcome-back": "Welcome back!"
   },
   "title": "Welcome to react using react-i18next",

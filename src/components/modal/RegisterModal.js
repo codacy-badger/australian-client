@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { translate } from "react-i18next";
+import { translate, Trans } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  Alert,
   Button,
   Col,
   Form,
   FormGroup,
+  FormText,
   Input,
   Label,
   Modal,
@@ -14,15 +16,37 @@ import {
   ModalFooter,
   ModalHeader
 } from "reactstrap";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import {
+  faInfoCircle,
+  faCheckCircle,
+  faExclamationTriangle,
+  faSignInAlt,
+  faSpinner
+} from "@fortawesome/free-solid-svg-icons";
+import { connect } from "react-redux";
+import { register } from "../../actions/registerActions";
+
+library.add(
+  faInfoCircle,
+  faCheckCircle,
+  faExclamationTriangle,
+  faSignInAlt,
+  faSpinner
+);
 
 class RegisterModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      modal: false
+      modal: false,
+      email: "",
+      password: "",
+      confirmation: ""
     };
 
-    this.submit = this.submit.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
     this.toggle = this.toggle.bind(this);
   }
 
@@ -34,10 +58,21 @@ class RegisterModal extends Component {
     this.props.onRef(undefined);
   }
 
-  //All tests will be done here.
-  submit() {
-    //TODO send API request
-    //TODO disable launching button
+  onChange(e) {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  }
+
+  onSubmit(e) {
+    e.preventDefault();
+
+    const { register } = this.props;
+    const { email, password, confirmation } = this.state;
+
+    if (password === confirmation) {
+      register(email, password);
+    }
   }
 
   toggle() {
@@ -47,19 +82,38 @@ class RegisterModal extends Component {
   }
 
   render() {
-    const { t } = this.props;
+    const { confirmation, email, modal, password } = this.state;
+    const {
+      error,
+      isRegisterPending,
+      isRegisterSuccess,
+      isRegisterError,
+      nextStep,
+      t
+    } = this.props;
+
     return (
-      <Modal
-        isOpen={this.state.modal}
-        toggle={this.toggle}
-        className={this.props.className}
-      >
-        <ModalHeader toggle={this.toggleRegisterModal}>
-          <FontAwesomeIcon fixedWidth icon="sign-in-alt" rotation={270} />{" "}
-          {t("navbar.user-register")}
-        </ModalHeader>
-        <ModalBody>
-          <Form>
+      <Modal isOpen={modal} toggle={this.toggle} size="lg">
+        <Form onSubmit={this.onSubmit}>
+          <ModalHeader toggle={this.toggleRegisterModal}>
+            <FontAwesomeIcon fixedWidth icon="sign-in-alt" rotation={270} />{" "}
+            {t("navbar.user-register")}
+          </ModalHeader>
+          <ModalBody>
+            {isRegisterError && (
+              <Alert color="danger" className="text-center">
+                <Trans i18nKey={"error." + error.code}>{error.message}</Trans>
+              </Alert>
+            )}
+            {isRegisterSuccess && (
+              <Alert color="success" className="text-center">
+                {t("message.register-successful")}
+                <br />
+                <Trans i18nKey={"message.register-nextStep." + nextStep.code}>
+                  {nextStep.message}
+                </Trans>
+              </Alert>
+            )}
             <FormGroup row>
               <Label for="registerEmail" sm={4}>
                 {t("form.register.email")}
@@ -70,7 +124,9 @@ class RegisterModal extends Component {
                   name="email"
                   id="registerEmail"
                   placeholder={t("form.register.email-placeholder")}
+                  value={email}
                   required
+                  onChange={this.onChange}
                 />
               </Col>
             </FormGroup>
@@ -85,6 +141,8 @@ class RegisterModal extends Component {
                   id="registerPassword"
                   placeholder={t("form.register.password-placeholder")}
                   required
+                  onChange={this.onChange}
+                  value={password}
                 />
               </Col>
             </FormGroup>
@@ -95,33 +153,114 @@ class RegisterModal extends Component {
               <Col sm={8}>
                 <Input
                   type="password"
-                  name="password-confirmation"
+                  name="confirmation"
                   id="registerPasswordConfirmation"
                   placeholder={t(
                     "form.register.password-confirmation-placeholder"
                   )}
                   required
+                  onChange={this.onChange}
+                  value={confirmation}
                 />
+                {password === confirmation &&
+                  "" === password && (
+                    <FormText color="muted">
+                      <FontAwesomeIcon
+                        fixedWidth
+                        icon="info-circle"
+                        className="mr-1"
+                      />
+                      {t("form.register.password-confirmation-helpBlock")}
+                    </FormText>
+                  )}
+                {password !== confirmation &&
+                  ("" !== password || "" !== confirmation) && (
+                    <FormText color="warning">
+                      <FontAwesomeIcon
+                        fixedWidth
+                        icon="exclamation-triangle"
+                        className="mr-1"
+                      />
+                      {t("message.password-not-confirmed")}
+                    </FormText>
+                  )}
+                {password === confirmation &&
+                  ("" !== password || "" !== confirmation) && (
+                    <FormText color="success">
+                      <FontAwesomeIcon
+                        fixedWidth
+                        icon="check-circle"
+                        className="mr-1"
+                      />
+                      {t("message.password-confirmed")}
+                    </FormText>
+                  )}
               </Col>
             </FormGroup>
-          </Form>
-        </ModalBody>
-        <ModalFooter>
-          <Button color="primary" onClick={this.submit}>
-            {t("button.register")}
-          </Button>{" "}
-          <Button color="secondary" onClick={this.toggle}>
-            {t("button.cancel")}
-          </Button>
-        </ModalFooter>
+          </ModalBody>
+          <ModalFooter>
+            <Button
+              color="primary"
+              onClick={this.submit}
+              disabled={isRegisterPending || isRegisterSuccess}
+            >
+              {isRegisterPending && (
+                <span>
+                  <FontAwesomeIcon icon="spinner" spin className="mr-1" />
+                  {t("form.register.submitting")}
+                </span>
+              )}
+              {!isRegisterPending && (
+                <span>
+                  <FontAwesomeIcon
+                    icon="sign-in-alt"
+                    rotate={270}
+                    className="mr-1"
+                  />
+                  {t("form.register.submit")}
+                </span>
+              )}
+            </Button>{" "}
+            <Button color="secondary" onClick={this.toggle}>
+              {t("button.cancel")}
+            </Button>
+          </ModalFooter>
+        </Form>
       </Modal>
     );
   }
 }
 
 RegisterModal.propTypes = {
-  t: PropTypes.func.isRequired,
-  onRef: PropTypes.func.isRequired
+  error: PropTypes.object.isRequired,
+  isRegisterPending: PropTypes.bool.isRequired,
+  isRegisterSuccess: PropTypes.bool.isRequired,
+  isRegisterError: PropTypes.bool.isRequired,
+  nextStep: PropTypes.object.isRequired,
+  onRef: PropTypes.func.isRequired,
+  t: PropTypes.func.isRequired
 };
 
-export default translate("translations")(RegisterModal);
+// Redux connect begin here
+function mapStateToProps(state) {
+  return {
+    error: state.registerReducer.error,
+    isRegisterPending: state.registerReducer.isRegisterPending,
+    isRegisterSuccess: state.registerReducer.isRegisterSuccess,
+    isRegisterError: state.registerReducer.isRegisterError,
+    nextStep: state.registerReducer.nextStep
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    register: (email, password) => dispatch(register(email, password))
+  };
+}
+
+export default translate("translations")(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(RegisterModal)
+);

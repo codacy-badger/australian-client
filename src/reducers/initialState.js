@@ -10,5 +10,12 @@ export default {
     isLogoutSuccess: false,
     sendLoginMessage: false,
     sendLogoutMessage: false
+  },
+  register: {
+    error: {},
+    isRegisterPending: false,
+    isRegisterSuccess: false,
+    isRegisterError: false,
+    nextStep: {}
   }
 };
