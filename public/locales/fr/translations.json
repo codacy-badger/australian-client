@@ -32,6 +32,10 @@
       "submitting": "Inscription en cours…"
     }
   },
+  "link": {
+    "forgot-your-password": "Mot de passe perdu…",
+    "forgot-your-password-title": "Accédez au formulaire de récupération de mot de passe"
+  },
   "message": {
     "login-successful": "Identification réussie.",
     "logout-successful": "Déconnexion confirmée.",

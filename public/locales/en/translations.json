@@ -32,6 +32,10 @@
       "submitting": "Registering…"
     }
   },
+  "link": {
+    "forgot-your-password": "Forgot your password?",
+    "forgot-your-password-title": "Go to our form which will help you to create a new one."
+  },
   "message": {
     "login-successful": "Login successful.",
     "logout-successful": "Logout successful",

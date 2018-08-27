@@ -8,6 +8,7 @@ import {
   Col,
   Form,
   FormGroup,
+  FormText,
   Input,
   Label,
   Modal,
@@ -118,6 +119,16 @@ class LoginModal extends Component {
                   required
                   onChange={this.onChange}
                 />
+                <FormText color="muted">
+                  <FontAwesomeIcon
+                    fixedWidth
+                    icon="info-circle"
+                    className="mr-1 text-info"
+                  />
+                  <a href="/forgot-your-password" title={t("link.forgot-your-password-title")}>
+                    {t("link.forgot-your-password")}
+                  </a>
+                </FormText>
               </Col>
             </FormGroup>
           </ModalBody>
