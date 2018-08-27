@@ -6,7 +6,7 @@
   },
   "error": {
     "10": "Invalid credentials.",
-    "20": "An account already exists with this email.",
+    "20": "An account already exist with this email.",
     "30": "The mail provider was ban because to many robots are doning automatic registers.",
     "40": "Your password isn't enough strong. Add some alpha, numeric and special chars.",
     "50": "The sent mail address is not valid."
