@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { translate } from "react-i18next";
-import {Switch, Route} from 'react-router-dom';
+import {Switch, Route, withRouter} from 'react-router-dom';
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "react-redux-toastr/lib/css/react-redux-toastr.min.css";
@@ -10,6 +10,7 @@ import { toastr } from "react-redux-toastr";
 import ReduxToastr from "react-redux-toastr";
 import HomePage from "./components/page/HomePage";
 import Error404Page from "./components/page/Error404Page";
+import ForgotPasswordPage from "./components/page/ForgotPasswordPage";
 
 class App extends Component {
   componentDidUpdate() {
@@ -32,6 +33,7 @@ class App extends Component {
       <div className="App">
         <Switch>
           <Route exact path="/" component={HomePage}/>
+          <Route exact path="/forgot-your-password" component={ForgotPasswordPage}/>
           <Route path="*" component={Error404Page} />
         </Switch>
         <ReduxToastr
@@ -67,7 +69,7 @@ function mapStateToProps(state) {
 //   };
 // }
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   null
-)(translate("translations")(App));
+)(translate("translations")(App)));

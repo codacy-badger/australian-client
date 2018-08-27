@@ -20,6 +20,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { faSignInAlt, faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
 import { login } from "../../actions/authActions";
+import {Link} from "react-router-dom";
 
 library.add(faSignInAlt, faSpinner);
 
@@ -125,9 +126,9 @@ class LoginModal extends Component {
                     icon="info-circle"
                     className="mr-1 text-info"
                   />
-                  <a href="/forgot-your-password" title={t("link.forgot-your-password-title")}>
+                  <Link to="/forgot-your-password" title={t("link.forgot-your-password-title")} onClick={this.toggle}>
                     {t("link.forgot-your-password")}
-                  </a>
+                  </Link>
                 </FormText>
               </Col>
             </FormGroup>
