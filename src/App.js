@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { translate, Trans } from "react-i18next";
-import Header from "./components/common/Header";
+import { translate } from "react-i18next";
+import {Switch, Route} from 'react-router-dom';
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "react-redux-toastr/lib/css/react-redux-toastr.min.css";
 import { connect } from "react-redux";
 import { toastr } from "react-redux-toastr";
 import ReduxToastr from "react-redux-toastr";
+import HomePage from "./components/page/HomePage";
+import Error404Page from "./components/page/Error404Page";
 
 class App extends Component {
   componentDidUpdate() {
@@ -25,20 +27,13 @@ class App extends Component {
   }
 
   render() {
-    const { t } = this.props;
 
     return (
       <div className="App">
-        <Header />
-        <div className="App-header">
-          <h2>{t("title")}</h2>
-        </div>
-        <div className="App-intro">
-          <Trans i18nKey="description.part1">
-            To get started, edit <code>src/App.js</code> and save to reload.
-          </Trans>
-        </div>
-        <div>{t("description.part2")}</div>
+        <Switch>
+          <Route exact path="/" component={HomePage}/>
+          <Route path="*" component={Error404Page} />
+        </Switch>
         <ReduxToastr
           preventDuplicates
           className="mt-5"

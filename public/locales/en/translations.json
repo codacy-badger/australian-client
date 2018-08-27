@@ -34,9 +34,12 @@
   },
   "link": {
     "forgot-your-password": "Forgot your password?",
-    "forgot-your-password-title": "Go to our form which will help you to create a new one."
+    "forgot-your-password-title": "Go to our form which will help you to create a new one.",
+    "home-page": "Home",
+    "home-page-title": "Go back to home page"
   },
   "message": {
+    "404-explanation": "The requested page doesn't more exists.",
     "login-successful": "Login successful.",
     "logout-successful": "Logout successful",
     "logout-successful-explanations": "Your disconnection has been logged. Hope to see you soon!",
@@ -50,7 +53,10 @@
     "password-not-confirmed": "Password and confirmation doesn't match.",
     "welcome-back": "Welcome back!"
   },
-  "title": "Welcome to react using react-i18next",
+  "title": {
+    "ooops": "Oooops!",
+    "app": "Welcome to react using react-i18next"
+  },
   "navbar": {
     "brand": "Australian shepherd",
     "select-language": "Select your language",
