@@ -21,8 +21,7 @@ import {
   faInfoCircle,
   faCheckCircle,
   faExclamationTriangle,
-  faSignInAlt,
-  faSpinner
+  faSignInAlt
 } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
 import { register } from "../../actions/registerActions";
@@ -33,7 +32,6 @@ library.add(
   faCheckCircle,
   faExclamationTriangle,
   faSignInAlt,
-  faSpinner
 );
 
 class RegisterModal extends Component {

@@ -17,12 +17,13 @@ import {
   ModalHeader
 } from "reactstrap";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faSignInAlt, faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { faSignInAlt } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
 import { login } from "../../actions/authActions";
 import {Link} from "react-router-dom";
+import Submit from "../common/button/Submit";
 
-library.add(faSignInAlt, faSpinner);
+library.add(faSignInAlt);
 
 class LoginModal extends Component {
   constructor(props) {
@@ -134,28 +135,7 @@ class LoginModal extends Component {
             </FormGroup>
           </ModalBody>
           <ModalFooter>
-            <Button
-              color="primary"
-              onClick={this.submit}
-              disabled={isLoginPending || isLoginSuccess}
-            >
-              {isLoginPending && (
-                <span>
-                  <FontAwesomeIcon icon="spinner" spin className="mr-1" />
-                  {t("form.login.submitting")}
-                </span>
-              )}
-              {!isLoginPending && (
-                <span>
-                  <FontAwesomeIcon
-                    icon="sign-in-alt"
-                    rotate={270}
-                    className="mr-1"
-                  />
-                  {t("form.login.submit")}
-                </span>
-              )}
-            </Button>
+            <Submit icon="sign-in-alt" name="login" isPending={isLoginPending} isSuccess={isLoginSuccess} submitCallback={this.onSubmit}/>
             <Button color="secondary" onClick={this.toggle}>
               {t("button.cancel")}
             </Button>
