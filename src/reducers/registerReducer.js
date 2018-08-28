@@ -15,7 +15,6 @@ export default function registerReducer(state = initialState.register, action) {
       });
 
     case types.SET_REGISTER_ERROR:
-      console.log(action);
       return Object.assign({}, state, {
         isRegisterError: action.isRegisterError,
         error: action.error
