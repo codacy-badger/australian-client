@@ -26,6 +26,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
 import { register } from "../../actions/registerActions";
+import Submit from "../common/button/Submit";
 
 library.add(
   faInfoCircle,
@@ -199,28 +200,8 @@ class RegisterModal extends Component {
             </FormGroup>
           </ModalBody>
           <ModalFooter>
-            <Button
-              color="primary"
-              onClick={this.submit}
-              disabled={isRegisterPending || isRegisterSuccess}
-            >
-              {isRegisterPending && (
-                <span>
-                  <FontAwesomeIcon icon="spinner" spin className="mr-1" />
-                  {t("form.register.submitting")}
-                </span>
-              )}
-              {!isRegisterPending && (
-                <span>
-                  <FontAwesomeIcon
-                    icon="sign-in-alt"
-                    rotate={270}
-                    className="mr-1"
-                  />
-                  {t("form.register.submit")}
-                </span>
-              )}
-            </Button>{" "}
+            <Submit icon="sign-in-alt" name="register" isPending={isRegisterPending} isSuccess={isRegisterSuccess} submitCallback={this.onSubmit} rotate={270}/>
+            {" "}
             <Button color="secondary" onClick={this.toggle}>
               {t("button.cancel")}
             </Button>
