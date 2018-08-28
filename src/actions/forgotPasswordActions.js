@@ -1,6 +1,6 @@
 import * as types from "./actionTypes";
-//import forgot_passwordActionApi from "../api/forgot_passwordApi";
-import forgot_passwordActionApi from "../api/mockForgotPasswordApi";
+//import forgotPasswordActionApi from "../api/forgot_passwordApi";
+import forgotPasswordActionApi from "../api/mockForgotPasswordApi";
 
 function setForgotPasswordPending(isForgotPasswordPending) {
   return {
@@ -31,7 +31,7 @@ export function sendMail(email) {
     dispatch(setForgotPasswordSuccess(false));
     dispatch(setForgotPasswordError(false));
 
-    forgot_passwordActionApi.callForgotPasswordApi(email, (result) => {
+    forgotPasswordActionApi.callForgotPasswordApi(email, (result) => {
       dispatch(setForgotPasswordPending(false));
       if (result.nextStep) {
         dispatch(setForgotPasswordSuccess(true, result.nextStep));
