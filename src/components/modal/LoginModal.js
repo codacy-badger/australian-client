@@ -20,7 +20,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { faSignInAlt } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
 import { login } from "../../actions/authActions";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import Submit from "../common/button/Submit";
 
 library.add(faSignInAlt);
@@ -70,20 +70,13 @@ class LoginModal extends Component {
 
   render() {
     const { email, modal, password } = this.state;
-    const {
-      error,
-      isLoginPending,
-      isLoginSuccess,
-      isLoginError,
-      t
-    } = this.props;
+    const { error, isLoginPending, isLoginSuccess, isLoginError, t } = this.props;
 
     return (
       <Modal isOpen={modal} toggle={this.toggle}>
         <Form onSubmit={this.onSubmit}>
           <ModalHeader toggle={this.toggleLoginModal}>
-            <FontAwesomeIcon fixedWidth icon="sign-in-alt" />{" "}
-            {t("navbar.user-login")}
+            <FontAwesomeIcon fixedWidth icon="sign-in-alt" /> {t("navbar.user-login")}
           </ModalHeader>
           <ModalBody>
             {isLoginError && (
@@ -122,11 +115,7 @@ class LoginModal extends Component {
                   onChange={this.onChange}
                 />
                 <FormText color="muted">
-                  <FontAwesomeIcon
-                    fixedWidth
-                    icon="info-circle"
-                    className="mr-1 text-info"
-                  />
+                  <FontAwesomeIcon fixedWidth icon="info-circle" className="mr-1 text-info" />
                   <Link to="/forgot-your-password" title={t("link.forgot-your-password-title")} onClick={this.toggle}>
                     {t("link.forgot-your-password")}
                   </Link>
@@ -135,7 +124,13 @@ class LoginModal extends Component {
             </FormGroup>
           </ModalBody>
           <ModalFooter>
-            <Submit icon="sign-in-alt" name="login" isPending={isLoginPending} isSuccess={isLoginSuccess} submitCallback={this.onSubmit}/>
+            <Submit
+              icon="sign-in-alt"
+              name="login"
+              isPending={isLoginPending}
+              isSuccess={isLoginSuccess}
+              submitCallback={this.onSubmit}
+            />
             <Button color="secondary" onClick={this.toggle}>
               {t("button.cancel")}
             </Button>

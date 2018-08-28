@@ -1,10 +1,7 @@
 import * as types from "../actions/actionTypes";
 import initialState from "./initialState";
 
-export default function forgotPasswordReducer(
-  state = initialState.forgotPassword,
-  action
-) {
+export default function forgotPasswordReducer(state = initialState.forgotPassword, action) {
   switch (action.type) {
     case types.SET_FORGOT_PASSWORD_PENDING:
       return Object.assign({}, state, {

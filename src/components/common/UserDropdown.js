@@ -1,20 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {
-  DropdownItem,
-  DropdownMenu,
-  DropdownToggle,
-  UncontrolledDropdown
-} from "reactstrap";
+import { DropdownItem, DropdownMenu, DropdownToggle, UncontrolledDropdown } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { translate } from "react-i18next";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import {
-  faIdCardAlt,
-  faSignOutAlt,
-  faUser,
-  faUserCog
-} from "@fortawesome/free-solid-svg-icons";
+import { faIdCardAlt, faSignOutAlt, faUser, faUserCog } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
 import { logout } from "../../actions/authActions";
 
@@ -42,17 +32,14 @@ class UserDropdown extends React.Component {
         </DropdownToggle>
         <DropdownMenu right>
           <DropdownItem>
-            <FontAwesomeIcon fixedWidth icon="id-card-alt" />{" "}
-            {t("navbar.user-profile")}
+            <FontAwesomeIcon fixedWidth icon="id-card-alt" /> {t("navbar.user-profile")}
           </DropdownItem>
           <DropdownItem>
-            <FontAwesomeIcon fixedWidth icon="user-cog" />{" "}
-            {t("navbar.user-settings")}
+            <FontAwesomeIcon fixedWidth icon="user-cog" /> {t("navbar.user-settings")}
           </DropdownItem>
           <DropdownItem divider />
           <DropdownItem onClick={this.logoutClick}>
-            <FontAwesomeIcon fixedWidth icon="sign-out-alt" />{" "}
-            {t("navbar.user-logout")}
+            <FontAwesomeIcon fixedWidth icon="sign-out-alt" /> {t("navbar.user-logout")}
           </DropdownItem>
         </DropdownMenu>
       </UncontrolledDropdown>

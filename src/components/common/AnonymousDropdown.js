@@ -1,11 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {
-  DropdownItem,
-  DropdownMenu,
-  DropdownToggle,
-  UncontrolledDropdown
-} from "reactstrap";
+import { DropdownItem, DropdownMenu, DropdownToggle, UncontrolledDropdown } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { translate } from "react-i18next";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -41,17 +36,14 @@ class AnonymousDropdown extends React.Component {
       <div>
         <UncontrolledDropdown nav inNavbar>
           <DropdownToggle nav caret>
-            <FontAwesomeIcon icon="user-secret" fixedWidth />{" "}
-            {t("navbar.user-anonymous")}
+            <FontAwesomeIcon icon="user-secret" fixedWidth /> {t("navbar.user-anonymous")}
           </DropdownToggle>
           <DropdownMenu right>
             <DropdownItem onClick={this.toggleLoginModal}>
-              <FontAwesomeIcon fixedWidth icon="sign-in-alt" />{" "}
-              {t("navbar.user-login")}
+              <FontAwesomeIcon fixedWidth icon="sign-in-alt" /> {t("navbar.user-login")}
             </DropdownItem>
             <DropdownItem onClick={this.toggleRegisterModal}>
-              <FontAwesomeIcon fixedWidth icon="sign-in-alt" rotation={270} />{" "}
-              {t("navbar.user-register")}
+              <FontAwesomeIcon fixedWidth icon="sign-in-alt" rotation={270} /> {t("navbar.user-register")}
             </DropdownItem>
           </DropdownMenu>
         </UncontrolledDropdown>

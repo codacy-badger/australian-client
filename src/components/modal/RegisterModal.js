@@ -17,22 +17,12 @@ import {
   ModalHeader
 } from "reactstrap";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import {
-  faInfoCircle,
-  faCheckCircle,
-  faExclamationTriangle,
-  faSignInAlt
-} from "@fortawesome/free-solid-svg-icons";
+import { faInfoCircle, faCheckCircle, faExclamationTriangle, faSignInAlt } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
 import { register } from "../../actions/registerActions";
 import Submit from "../common/button/Submit";
 
-library.add(
-  faInfoCircle,
-  faCheckCircle,
-  faExclamationTriangle,
-  faSignInAlt,
-);
+library.add(faInfoCircle, faCheckCircle, faExclamationTriangle, faSignInAlt);
 
 class RegisterModal extends Component {
   constructor(props) {
@@ -82,21 +72,13 @@ class RegisterModal extends Component {
 
   render() {
     const { confirmation, email, modal, password } = this.state;
-    const {
-      error,
-      isRegisterPending,
-      isRegisterSuccess,
-      isRegisterError,
-      nextStep,
-      t
-    } = this.props;
+    const { error, isRegisterPending, isRegisterSuccess, isRegisterError, nextStep, t } = this.props;
 
     return (
       <Modal isOpen={modal} toggle={this.toggle} size="lg">
         <Form onSubmit={this.onSubmit}>
           <ModalHeader toggle={this.toggleRegisterModal}>
-            <FontAwesomeIcon fixedWidth icon="sign-in-alt" rotation={270} />{" "}
-            {t("navbar.user-register")}
+            <FontAwesomeIcon fixedWidth icon="sign-in-alt" rotation={270} /> {t("navbar.user-register")}
           </ModalHeader>
           <ModalBody>
             {isRegisterError && (
@@ -108,9 +90,7 @@ class RegisterModal extends Component {
               <Alert color="success" className="text-center">
                 {t("message.register-successful")}
                 <br />
-                <Trans i18nKey={"message.register-nextStep." + nextStep.code}>
-                  {nextStep.message}
-                </Trans>
+                <Trans i18nKey={"message.register-nextStep." + nextStep.code}>{nextStep.message}</Trans>
               </Alert>
             )}
             <FormGroup row>
@@ -154,9 +134,7 @@ class RegisterModal extends Component {
                   type="password"
                   name="confirmation"
                   id="registerPasswordConfirmation"
-                  placeholder={t(
-                    "form.register.password-confirmation-placeholder"
-                  )}
+                  placeholder={t("form.register.password-confirmation-placeholder")}
                   required
                   onChange={this.onChange}
                   value={confirmation}
@@ -164,33 +142,21 @@ class RegisterModal extends Component {
                 {password === confirmation &&
                   "" === password && (
                     <FormText color="muted">
-                      <FontAwesomeIcon
-                        fixedWidth
-                        icon="info-circle"
-                        className="mr-1"
-                      />
+                      <FontAwesomeIcon fixedWidth icon="info-circle" className="mr-1" />
                       {t("form.register.password-confirmation-helpBlock")}
                     </FormText>
                   )}
                 {password !== confirmation &&
                   ("" !== password || "" !== confirmation) && (
                     <FormText color="warning">
-                      <FontAwesomeIcon
-                        fixedWidth
-                        icon="exclamation-triangle"
-                        className="mr-1"
-                      />
+                      <FontAwesomeIcon fixedWidth icon="exclamation-triangle" className="mr-1" />
                       {t("message.password-not-confirmed")}
                     </FormText>
                   )}
                 {password === confirmation &&
                   ("" !== password || "" !== confirmation) && (
                     <FormText color="success">
-                      <FontAwesomeIcon
-                        fixedWidth
-                        icon="check-circle"
-                        className="mr-1"
-                      />
+                      <FontAwesomeIcon fixedWidth icon="check-circle" className="mr-1" />
                       {t("message.password-confirmed")}
                     </FormText>
                   )}
@@ -198,8 +164,14 @@ class RegisterModal extends Component {
             </FormGroup>
           </ModalBody>
           <ModalFooter>
-            <Submit icon="sign-in-alt" name="register" isPending={isRegisterPending} isSuccess={isRegisterSuccess} submitCallback={this.onSubmit} rotation={270}/>
-            {" "}
+            <Submit
+              icon="sign-in-alt"
+              name="register"
+              isPending={isRegisterPending}
+              isSuccess={isRegisterSuccess}
+              submitCallback={this.onSubmit}
+              rotation={270}
+            />{" "}
             <Button color="secondary" onClick={this.toggle}>
               {t("button.cancel")}
             </Button>

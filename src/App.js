@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { translate } from "react-i18next";
-import {Switch, Route, withRouter} from 'react-router-dom';
+import { Switch, Route, withRouter } from "react-router-dom";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "react-redux-toastr/lib/css/react-redux-toastr.min.css";
@@ -20,20 +20,16 @@ class App extends Component {
       toastr.success(t("message.login-successful"), t("message.welcome-back"));
     }
     if (isJustDisconnected) {
-      toastr.success(
-        t("message.logout-successful"),
-        t("message.logout-successful-explanations")
-      );
+      toastr.success(t("message.logout-successful"), t("message.logout-successful-explanations"));
     }
   }
 
   render() {
-
     return (
       <div className="App">
         <Switch>
-          <Route exact path="/" component={HomePage}/>
-          <Route exact path="/forgot-your-password" component={ForgotPasswordPage}/>
+          <Route exact path="/" component={HomePage} />
+          <Route exact path="/forgot-your-password" component={ForgotPasswordPage} />
           <Route path="*" component={Error404Page} />
         </Switch>
         <ReduxToastr
@@ -69,7 +65,9 @@ function mapStateToProps(state) {
 //   };
 // }
 
-export default withRouter(connect(
-  mapStateToProps,
-  null
-)(translate("translations")(App)));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    null
+  )(translate("translations")(App))
+);

@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Collapse, Navbar, NavbarToggler, Nav } from "reactstrap";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import LanguageDropdown from "./LanguageDropdown";
 import UserDropdown from "./UserDropdown";
 import AnonymousDropdown from "./AnonymousDropdown";

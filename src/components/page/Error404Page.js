@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Container, Jumbotron } from "reactstrap";
 import { translate } from "react-i18next";
+import {Link} from "react-router-dom";
 
 const Error404Page = ({ t }) => {
   return (
@@ -11,13 +12,9 @@ const Error404Page = ({ t }) => {
         <p>{t("message.404-explanation")}</p>
         <hr />
         <div className="text-right">
-          <a
-            href="/"
-            title={t("link.home-page-title")}
-            className="btn btn-primary"
-          >
+          <Link to="/" title={t("link.home-page-title")} className="btn btn-primary">
             {t("link.home-page")}
-          </a>
+          </Link>
         </div>
       </Jumbotron>
     </Container>

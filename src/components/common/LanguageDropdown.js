@@ -1,11 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {
-  DropdownItem,
-  DropdownMenu,
-  DropdownToggle,
-  UncontrolledDropdown
-} from "reactstrap";
+import { DropdownItem, DropdownMenu, DropdownToggle, UncontrolledDropdown } from "reactstrap";
 import { translate } from "react-i18next";
 import frFlag from "../../images/flags/32/France.png";
 import ukFlag from "../../images/flags/32/United-Kingdom.png";
@@ -44,21 +39,9 @@ class LanguageDropdown extends React.Component {
     const { t } = this.props;
 
     if ("fr" === this.state.language) {
-      return (
-        <img
-          src={frFlag}
-          alt={t("img-alt.french-flag")}
-          className="flag-in-navbar mr-1 float-left"
-        />
-      );
+      return <img src={frFlag} alt={t("img-alt.french-flag")} className="flag-in-navbar mr-1 float-left" />;
     } else {
-      return (
-        <img
-          src={ukFlag}
-          alt={t("img-alt.united-kingdom-flag")}
-          className="flag-in-navbar mr-1 float-left"
-        />
-      );
+      return <img src={ukFlag} alt={t("img-alt.united-kingdom-flag")} className="flag-in-navbar mr-1 float-left" />;
     }
   }
 
@@ -72,18 +55,10 @@ class LanguageDropdown extends React.Component {
         </DropdownToggle>
         <DropdownMenu right>
           <DropdownItem header>{t("navbar.select-language")}</DropdownItem>
-          <DropdownItem
-            active={"fr" === this.state.language}
-            tag="button"
-            onClick={this.changeFr}
-          >
+          <DropdownItem active={"fr" === this.state.language} tag="button" onClick={this.changeFr}>
             Français
           </DropdownItem>
-          <DropdownItem
-            active={"en" === this.state.language}
-            tag="button"
-            onClick={this.changeEn}
-          >
+          <DropdownItem active={"en" === this.state.language} tag="button" onClick={this.changeEn}>
             English
           </DropdownItem>
         </DropdownMenu>

@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { translate, Trans } from "react-i18next";
 import {
@@ -10,20 +10,20 @@ import {
   Col,
   Container,
   Form,
-  FormGroup, Input,
+  FormGroup,
+  Input,
   Label
 } from "reactstrap";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { sendMail } from "../../actions/forgotPasswordActions";
 import Submit from "../common/button/Submit";
 
 class ForgotPasswordPage extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      "email": ""
+      email: ""
     };
 
     this.onChange = this.onChange.bind(this);
@@ -47,38 +47,33 @@ class ForgotPasswordPage extends Component {
   }
 
   render() {
-    const {error, isMailPending, isMailSuccess, isMailError, nextStep, t} = this.props;
-    const {email} = this.state;
+    const { error, isMailPending, isMailSuccess, isMailError, nextStep, t } = this.props;
+    const { email } = this.state;
 
     return (
       <Container className="mt-3 text-justify">
         <Form onSubmit={this.onSubmit}>
           <Card>
-            <CardHeader>
-              {t("title.forgot-your-password")}
-            </CardHeader>
+            <CardHeader>{t("title.forgot-your-password")}</CardHeader>
             <CardBody>
               {isMailError && (
                 <Alert color="danger" className="text-center">
-                  <Trans i18nKey={"error.." + error.code}>
-                    {error.message}
-                  </Trans>
+                  <Trans i18nKey={"error.." + error.code}>{error.message}</Trans>
                 </Alert>
               )}
               {isMailSuccess && (
                 <Alert color="success" className="text-center">
                   {t("message.forgot-your-password-successful")}
                   <br />
-                  <Trans i18nKey={"message.forgot-your-password-nextStep." + nextStep.code}>
-                    {nextStep.message}
-                  </Trans>
+                  <Trans i18nKey={"message.forgot-your-password-nextStep." + nextStep.code}>{nextStep.message}</Trans>
                 </Alert>
               )}
-              {!isMailError && !isMailSuccess && (
-                <Alert color="info" className="text-center">
-                  {t("help.forgot-your-password")}
-                </Alert>
-              )}
+              {!isMailError &&
+                !isMailSuccess && (
+                  <Alert color="info" className="text-center">
+                    {t("help.forgot-your-password")}
+                  </Alert>
+                )}
               <FormGroup row>
                 <Label for="forgotPasswordEmail" sm={4}>
                   {t("form.forgot-password.email")}
@@ -97,8 +92,15 @@ class ForgotPasswordPage extends Component {
               </FormGroup>
             </CardBody>
             <CardFooter className="text-right">
-              <Submit isPending={isMailPending} isSuccess={isMailSuccess} name="forgot-password" submitCallback={this.onSubmit} />
-              <Link to="/" title={t("link.home-page-title")} className="ml-2 btn btn-secondary">{t("link.home-page")}</Link>
+              <Submit
+                isPending={isMailPending}
+                isSuccess={isMailSuccess}
+                name="forgot-password"
+                submitCallback={this.onSubmit}
+              />
+              <Link to="/" title={t("link.home-page-title")} className="ml-2 btn btn-secondary">
+                {t("link.home-page")}
+              </Link>
             </CardFooter>
           </Card>
         </Form>
@@ -137,4 +139,5 @@ export default translate("translations")(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(ForgotPasswordPage));
+  )(ForgotPasswordPage)
+);
