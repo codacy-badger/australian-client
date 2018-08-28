@@ -9,9 +9,16 @@
     "20": "An account already exist with this email.",
     "30": "The mail provider was ban because to many robots are doning automatic registers.",
     "40": "Your password isn't enough strong. Add some alpha, numeric and special chars.",
-    "50": "The sent mail address is not valid."
+    "50": "The sent mail address is not valid.",
+    "60": "Any account exists with this mail. Please, register!"
   },
   "form": {
+    "forgot-password": {
+      "email": "Email",
+      "email-placeholder": "Enter your email",
+      "submit": "Send",
+      "submitting": "Sending…"
+    },
     "login": {
       "email": "Email",
       "email-placeholder": "Enter your email",
@@ -32,6 +39,9 @@
       "submitting": "Registering…"
     }
   },
+  "help": {
+    "forgot-your-password" : "You have forgotten your password? Please send us your email, you will receive a mail which will help you step by step to recover your accesses."
+  },
   "link": {
     "forgot-your-password": "Forgot your password?",
     "forgot-your-password-title": "Go to our form which will help you to create a new one.",
@@ -40,6 +50,12 @@
   },
   "message": {
     "404-explanation": "The requested page doesn't more exists.",
+    "forgot-your-password-nextStep": {
+      "10": "A mail to update your password have been sent. Please, check your mailbox.",
+      "20": "A temporary password has been sent by mail. Please, check your mailbox.",
+      "30": "Administrators have been informed, they will contact you by mail as soon as possible."
+    },
+    "forgot-your-password-successful": "Sent successfull",
     "login-successful": "Login successful.",
     "logout-successful": "Logout successful",
     "logout-successful-explanations": "Your disconnection has been logged. Hope to see you soon!",
@@ -54,8 +70,9 @@
     "welcome-back": "Welcome back!"
   },
   "title": {
-    "ooops": "Oooops!",
-    "app": "Welcome to react using react-i18next"
+    "app": "Welcome to react using react-i18next",
+    "forgot-your-password": "Forgot your password?",
+    "ooops": "Oooops!"
   },
   "navbar": {
     "brand": "Australian shepherd",

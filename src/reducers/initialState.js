@@ -1,4 +1,11 @@
 export default {
+  forgotPassword: {
+    error: {},
+    isForgotPasswordPending: false,
+    isForgotPasswordSuccess: false,
+    isForgotPasswordError: false,
+    nextStep: {}
+  },
   login: {
     auth: {},
     error: {},

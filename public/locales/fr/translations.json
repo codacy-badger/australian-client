@@ -9,9 +9,16 @@
     "20": "Il existe déjà un compte enregistré avec cette adresse mail.",
     "30": "L’adresse entrée appartient à un fournisseur banni parce que trop de robots s'inscrivaient.",
     "40": "Le mot de passe choisi n’est pas suffisamment fort. Pour le complexifier, ajoutez des caractères, des nombres et symboles.",
-    "50": "L’adresse email fournie n’est pas valide."
+    "50": "L’adresse email fournie n’est pas valide.",
+    "60": "Il n’existe pas de compte avec cette adresse email. N’hésitez pas à vous inscrire !"
   },
   "form": {
+    "forgot-password": {
+      "email": "Email",
+      "email-placeholder": "Entrez votre adresse email",
+      "submit": "Envoyer",
+      "submitting": "Envoi en cours…"
+    },
     "login": {
       "email": "Email",
       "email-placeholder": "Entrez votre adresse email",
@@ -32,6 +39,9 @@
       "submitting": "Inscription en cours…"
     }
   },
+  "help": {
+    "forgot-your-password" : "Vous avez perdu votre mot de passe ? Entrez votre adresse email et vous recevrez un mail qui vous guidera étape par étape pour que vous puissiez créer un nouveau mot de passe et vous reconnecter au site."
+  },
   "link": {
     "forgot-your-password": "Mot de passe perdu…",
     "forgot-your-password-title": "Accédez au formulaire de récupération de mot de passe",
@@ -40,6 +50,12 @@
   },
   "message": {
     "404-explanation": "La page que vous demandez n’existe pas, ou n’existe plus.",
+    "forgot-your-password-nextStep": {
+      "10": "Un mail pour modifier votre mot de passe vient de vous être envoyé.",
+      "20": "Un mot de passe temporaire vient de vous être envoyé.",
+      "30": "Les administrateurs ont été informés de vos difficultés, ils vont reprendre contact avec vous par mail."
+    },
+    "forgot-your-password-successful": "Envoi réussi",
     "login-successful": "Identification réussie.",
     "logout-successful": "Déconnexion confirmée.",
     "logout-successful-explanations": "Votre déconnexion a été correctement enregistrée. À bientôt !",
@@ -54,8 +70,9 @@
     "welcome-back": "Bon retour parmi nous !"
   },
   "title": {
-    "ooops": "Oups !",
-    "app": "Bienvenue à react utilisant i18n"
+    "app": "Bienvenue à react utilisant i18n",
+    "forgot-your-password": "Mot de passe perdu ?",
+    "ooops": "Oups !"
   },
   "navbar": {
     "brand": "Berger australien",
