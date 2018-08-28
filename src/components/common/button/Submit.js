@@ -8,7 +8,7 @@ import {translate} from "react-i18next";
 
 library.add(faSpinner);
 
-const Submit = ({icon, name, isPending, isSuccess, rotate = 0, submitCallback, t}) => {
+const Submit = ({icon="", name, isPending, isSuccess, rotation = 0, submitCallback, t}) => {
 
   return (
     <Button
@@ -18,17 +18,13 @@ const Submit = ({icon, name, isPending, isSuccess, rotate = 0, submitCallback, t
     >
       {isPending && (
         <span>
-          <FontAwesomeIcon icon="spinner" spin className="mr-1" />
+          {"" !== icon && <FontAwesomeIcon icon="spinner" spin className="mr-1" />}
           {t("form." + name+ ".submitting")}
         </span>
       )}
       {!isPending && (
         <span>
-          <FontAwesomeIcon
-            icon={icon}
-            rotate={rotate}
-            className="mr-1"
-          />
+          {"" !== icon && <FontAwesomeIcon icon={icon} rotation={rotation} className="mr-1" />}
           {t("form." + name+ ".submit")}
         </span>
       )}
@@ -38,11 +34,11 @@ const Submit = ({icon, name, isPending, isSuccess, rotate = 0, submitCallback, t
 
 // The propTypes.
 Submit.propTypes = {
-  icon: PropTypes.string.isRequired,
+  icon: PropTypes.string,
   name: PropTypes.string.isRequired,
   isPending: PropTypes.bool.isRequired,
   isSuccess: PropTypes.bool.isRequired,
-  rotate: PropTypes.oneOf([0,90,180,270]),
+  rotation: PropTypes.oneOf([0,90,180,270]),
   submitCallback: PropTypes.func.isRequired,
 };
 

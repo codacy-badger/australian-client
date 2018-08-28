@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { translate, Trans } from "react-i18next";
 import {
   Alert,
-  Button,
   Card,
   CardBody,
   CardFooter,
@@ -17,6 +16,7 @@ import {
 import {Link} from "react-router-dom";
 import { connect } from "react-redux";
 import { sendMail } from "../../actions/forgotPasswordActions";
+import Submit from "../common/button/Submit";
 
 class ForgotPasswordPage extends Component {
 
@@ -97,10 +97,7 @@ class ForgotPasswordPage extends Component {
               </FormGroup>
             </CardBody>
             <CardFooter className="text-right">
-              <Button color="primary" onClick={this.onSubmit} disabled={isMailSuccess || isMailPending}>
-                {(isMailSuccess || isMailPending) && t("form.forgot-password.submitting")}
-                {!(isMailSuccess || isMailPending) && t("form.forgot-password.submit")}
-              </Button>
+              <Submit isPending={isMailPending} isSuccess={isMailSuccess} name="forgot-password" submitCallback={this.onSubmit} />
               <Link to="/" title={t("link.home-page-title")} className="ml-2 btn btn-secondary">{t("link.home-page")}</Link>
             </CardFooter>
           </Card>

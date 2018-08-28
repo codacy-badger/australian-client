@@ -198,7 +198,7 @@ class RegisterModal extends Component {
             </FormGroup>
           </ModalBody>
           <ModalFooter>
-            <Submit icon="sign-in-alt" name="register" isPending={isRegisterPending} isSuccess={isRegisterSuccess} submitCallback={this.onSubmit} rotate={270}/>
+            <Submit icon="sign-in-alt" name="register" isPending={isRegisterPending} isSuccess={isRegisterSuccess} submitCallback={this.onSubmit} rotation={270}/>
             {" "}
             <Button color="secondary" onClick={this.toggle}>
               {t("button.cancel")}
