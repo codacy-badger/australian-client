@@ -66,12 +66,11 @@
     "login-successful": "Identification réussie.",
     "logout-successful": "Déconnexion confirmée.",
     "logout-successful-explanations": "Votre déconnexion a été correctement enregistrée. À bientôt !",
-    "register-nextStep": {
+    "register": {
       "10": "Vous pouvez vous connecter au site.",
       "20": "Un administrateur du site va activer votre compte rapidement. Vous en serez averti par mail.",
       "30": "Pour vérifier votre adresse email, nous vous avons envoyé un mail. Il contient un lien, cliquez dessus pour finaliser votre inscription."
     },
-    "register-successful": "Inscription réussie !",
     "password-confirmed": "Le mot de passe et sa confirmation correspondent bien.",
     "password-not-confirmed": "Le mot de passe et sa confirmation doivent être identiques",
     "welcome-back": "Bon retour parmi nous !"

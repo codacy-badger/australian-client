@@ -1,23 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { translate, Trans } from "react-i18next";
-import {
-  Alert,
-  Card,
-  CardBody,
-  CardFooter,
-  CardHeader,
-  Col,
-  Container,
-  Form,
-  FormGroup,
-  Input,
-  Label
-} from "reactstrap";
+import { translate } from "react-i18next";
+import { Card, CardBody, CardFooter, CardHeader, Col, Container, Form, FormGroup, Input, Label } from "reactstrap";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { sendMail } from "../../actions/forgotPasswordActions";
 import Submit from "../common/button/Submit";
+import StatusAlert from "../common/alert/StatusAlert";
 
 class ForgotPasswordPage extends Component {
   constructor(props) {
@@ -56,24 +45,13 @@ class ForgotPasswordPage extends Component {
           <Card>
             <CardHeader>{t("title.forgot-your-password")}</CardHeader>
             <CardBody>
-              {isMailError && (
-                <Alert color="danger" className="text-center">
-                  <Trans i18nKey={"error.." + error.code}>{error.message}</Trans>
-                </Alert>
-              )}
-              {isMailSuccess && (
-                <Alert color="success" className="text-center">
-                  {t("message.forgot-your-password-successful")}
-                  <br />
-                  <Trans i18nKey={"message.forgot-your-password-nextStep." + nextStep.code}>{nextStep.message}</Trans>
-                </Alert>
-              )}
-              {!isMailError &&
-                !isMailSuccess && (
-                  <Alert color="info" className="text-center">
-                    {t("help.forgot-your-password")}
-                  </Alert>
-                )}
+              <StatusAlert
+                code="forgot-your-password"
+                error={error}
+                isError={isMailError}
+                isSuccess={isMailSuccess}
+                success={nextStep}
+              />
               <FormGroup row>
                 <Label for="forgotPasswordEmail" sm={4}>
                   {t("form.forgot-password.email")}

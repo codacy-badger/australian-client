@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { translate, Trans } from "react-i18next";
+import { translate } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  Alert,
   Button,
   Col,
   Form,
@@ -21,6 +20,7 @@ import { faInfoCircle, faCheckCircle, faExclamationTriangle, faSignInAlt } from 
 import { connect } from "react-redux";
 import { register } from "../../actions/registerActions";
 import Submit from "../common/button/Submit";
+import ResultAlert from "../common/alert/ResultAlert";
 
 library.add(faInfoCircle, faCheckCircle, faExclamationTriangle, faSignInAlt);
 
@@ -81,18 +81,13 @@ class RegisterModal extends Component {
             <FontAwesomeIcon fixedWidth icon="sign-in-alt" rotation={270} /> {t("navbar.user-register")}
           </ModalHeader>
           <ModalBody>
-            {isRegisterError && (
-              <Alert color="danger" className="text-center">
-                <Trans i18nKey={"error." + error.code}>{error.message}</Trans>
-              </Alert>
-            )}
-            {isRegisterSuccess && (
-              <Alert color="success" className="text-center">
-                {t("message.register-successful")}
-                <br />
-                <Trans i18nKey={"message.register-nextStep." + nextStep.code}>{nextStep.message}</Trans>
-              </Alert>
-            )}
+            <ResultAlert
+              code="register"
+              isError={isRegisterError}
+              isSuccess={isRegisterSuccess}
+              error={error}
+              success={nextStep}
+            />
             <FormGroup row>
               <Label for="registerEmail" sm={4}>
                 {t("form.register.email")}

@@ -66,12 +66,11 @@
     "login-successful": "Login successful.",
     "logout-successful": "Logout successful",
     "logout-successful-explanations": "Your disconnection has been logged. Hope to see you soon!",
-    "register-nextStep": {
+    "register": {
       "10": "You can login to the website.",
       "20": "An administrator will activate your account. You will be alert by a mail when it will be done.",
       "30": "To verify your mail address, we have sent a mail with a link. Click it to finalize your registration."
     },
-    "register-successful": "Registration successful!",
     "password-confirmed": "Your password and its confirmation match.",
     "password-not-confirmed": "Password and confirmation doesn't match.",
     "welcome-back": "Welcome back!"
