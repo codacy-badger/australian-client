@@ -13,6 +13,12 @@
     "60": "Any account exists with this mail. Please, register!"
   },
   "form": {
+    "activation": {
+      "activationCode": "Activation code",
+      "activationCode-placeholder": "You can find activation in the mail sent just after your registration.",
+      "submit": "Activation",
+      "submitting": "Activating…"
+    },
     "forgot-password": {
       "email": "Email",
       "email-placeholder": "Enter your email",
@@ -40,6 +46,7 @@
     }
   },
   "help": {
+    "activation": "To activate your account, please enter the activation code provided in our mail.",
     "forgot-your-password" : "You have forgotten your password? Please send us your email, you will receive a mail which will help you step by step to recover your accesses."
   },
   "link": {
@@ -70,6 +77,7 @@
     "welcome-back": "Welcome back!"
   },
   "title": {
+    "activation": "Account activation",
     "app": "Welcome to react using react-i18next",
     "forgot-your-password": "Forgot your password?",
     "ooops": "Oooops!"

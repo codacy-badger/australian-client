@@ -13,6 +13,12 @@
     "60": "Il n’existe pas de compte avec cette adresse email. N’hésitez pas à vous inscrire !"
   },
   "form": {
+    "activation": {
+      "activationCode": "Code d’activation",
+      "activationCode-placeholder": "Le code d’activation se trouve dans le mail que vous avez reçu.",
+      "submit": "Activer",
+      "submitting": "Activation en cours…"
+    },
     "forgot-password": {
       "email": "Email",
       "email-placeholder": "Entrez votre adresse email",
@@ -40,6 +46,7 @@
     }
   },
   "help": {
+    "activation" : "Pour activer votre compte, veuillez entrer le code d’activation qui vous a été envoyé par mail.",
     "forgot-your-password" : "Vous avez perdu votre mot de passe ? Entrez votre adresse email et vous recevrez un mail qui vous guidera étape par étape pour que vous puissiez créer un nouveau mot de passe et vous reconnecter au site."
   },
   "link": {
@@ -70,6 +77,7 @@
     "welcome-back": "Bon retour parmi nous !"
   },
   "title": {
+    "activation": "Activation de votre compte",
     "app": "Bienvenue à react utilisant i18n",
     "forgot-your-password": "Mot de passe perdu ?",
     "ooops": "Oups !"

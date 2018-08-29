@@ -1,4 +1,11 @@
 export default {
+  activation: {
+    error: {},
+    isActivationPending: false,
+    isActivationSuccess: false,
+    isActivationError: false,
+    nextStep: {}
+  },
   forgotPassword: {
     error: {},
     isForgotPasswordPending: false,

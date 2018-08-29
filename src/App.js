@@ -11,6 +11,7 @@ import ReduxToastr from "react-redux-toastr";
 import HomePage from "./components/page/HomePage";
 import Error404Page from "./components/page/Error404Page";
 import ForgotPasswordPage from "./components/page/ForgotPasswordPage";
+import ActivationPage from "./components/page/ActivationPage";
 
 class App extends Component {
   componentDidUpdate() {
@@ -29,6 +30,8 @@ class App extends Component {
       <div className="App">
         <Switch>
           <Route exact path="/" component={HomePage} />
+          <Route exact path="/activate" component={ActivationPage} />
+          <Route exact path="/activate/:activationCode" component={ActivationPage} />
           <Route exact path="/forgot-your-password" component={ForgotPasswordPage} />
           <Route path="*" component={Error404Page} />
         </Switch>
