@@ -14,9 +14,11 @@ export default {
     nextStep: {}
   },
   login: {
-    auth: {},
+    auth: {
+      user: !!localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : false
+    },
     error: {},
-    isAuthenticated: false,
+    isAuthenticated: !!localStorage.getItem("accessToken"),
     isLoginPending: false,
     isLoginSuccess: false,
     isLoginError: false,

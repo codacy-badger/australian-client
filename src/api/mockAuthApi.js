@@ -24,7 +24,7 @@ class AuthApi {
     return new Promise(() => {
       setTimeout(() => {
         if (email === "admin@example.org" && password === "admin") {
-          localStorage.setItem("user", auth.user);
+          localStorage.setItem("user", JSON.stringify(auth.user));
           localStorage.setItem("accessToken", auth.token);
           return callback(auth);
         } else {

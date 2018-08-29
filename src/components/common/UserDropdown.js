@@ -27,8 +27,7 @@ class UserDropdown extends React.Component {
     return (
       <UncontrolledDropdown nav inNavbar>
         <DropdownToggle nav caret>
-          <FontAwesomeIcon icon="user" fixedWidth />
-          {username}
+          <FontAwesomeIcon icon="user" fixedWidth className="mr-1" /> {username}
         </DropdownToggle>
         <DropdownMenu right>
           <DropdownItem>
