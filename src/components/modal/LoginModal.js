@@ -129,7 +129,7 @@ class LoginModal extends Component {
               name="login"
               isPending={isLoginPending}
               isSuccess={isLoginSuccess}
-              submitCallback={this.onSubmit}
+              onClick={this.onSubmit}
             />
             <Button color="secondary" onClick={this.toggle}>
               {t("button.cancel")}

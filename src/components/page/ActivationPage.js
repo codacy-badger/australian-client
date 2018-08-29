@@ -74,7 +74,7 @@ class ActivationPage extends Component {
                 isPending={isActivationPending}
                 isSuccess={isActivationSuccess}
                 name="activation"
-                submitCallback={this.onSubmit}
+                onClick={this.onSubmit}
               />
               <Link to="/" title={t("link.home-page-title")} className="ml-2 btn btn-secondary">
                 {t("link.home-page")}

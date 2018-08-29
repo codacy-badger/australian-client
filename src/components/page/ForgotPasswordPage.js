@@ -74,7 +74,7 @@ class ForgotPasswordPage extends Component {
                 isPending={isMailPending}
                 isSuccess={isMailSuccess}
                 name="forgot-password"
-                submitCallback={this.onSubmit}
+                onClick={this.onSubmit}
               />
               <Link to="/" title={t("link.home-page-title")} className="ml-2 btn btn-secondary">
                 {t("link.home-page")}

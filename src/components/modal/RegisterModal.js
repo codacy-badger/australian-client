@@ -164,7 +164,7 @@ class RegisterModal extends Component {
               name="register"
               isPending={isRegisterPending}
               isSuccess={isRegisterSuccess}
-              submitCallback={this.onSubmit}
+              onClick={this.onSubmit}
               rotation={270}
             />{" "}
             <Button color="secondary" onClick={this.toggle}>
