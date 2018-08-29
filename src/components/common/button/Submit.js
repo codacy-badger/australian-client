@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Button } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,7 +10,7 @@ library.add(faSpinner);
 
 class Submit extends Component {
   render() {
-    const { icon, name, isPending, isSuccess, onClick, rotation, t} = this.props;
+    const { icon, name, isPending, isSuccess, onClick, rotation, t } = this.props;
     return (
       <Button color="primary" onClick={onClick} disabled={isPending || isSuccess}>
         {isPending && (
