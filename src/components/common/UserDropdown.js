@@ -54,7 +54,7 @@ UserDropdown.propTypes = {
 
 // Redux connect begin here
 function mapStateToProps(state) {
-  if (undefined !== state.authReducer.auth.user) {
+  if (state.authReducer.auth.user) {
     return {
       username: state.authReducer.auth.user.givenName
     };

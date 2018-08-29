@@ -44,7 +44,7 @@ class LoginModal extends Component {
   }
 
   componentWillUnmount() {
-    this.props.onRef(undefined);
+    this.props.onRef();
   }
 
   onChange(e) {
