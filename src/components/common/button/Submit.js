@@ -19,7 +19,8 @@ const Submit = ({ icon = "", name, isPending, isSuccess, rotation = 0, submitCal
       )}
       {!isPending && (
         <span>
-          {"" !== icon && <FontAwesomeIcon icon={icon} rotation={rotation} className="mr-1" />}
+          {"" !== icon && 0 === rotation && <FontAwesomeIcon icon={icon} className="mr-1" />}
+          {"" !== icon && 0 !== rotation && <FontAwesomeIcon icon={icon} rotation={rotation} className="mr-1" />}
           {t("form." + name + ".submit")}
         </span>
       )}
