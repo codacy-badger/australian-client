@@ -1,11 +1,12 @@
-import React, {Component} from "react";
-import PropTypes from "prop-types"
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 import Submit from "../common/button/Submit";
-import {connect} from 'react-redux';
-import {Link} from "react-router-dom";
-import {Alert, Card, CardBody, CardFooter, CardHeader, Col, Container, Form, FormGroup, Input, Label} from "reactstrap";
-import {translate, Trans} from "react-i18next";
-import {activate} from "../../actions/activationActions";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import { Card, CardBody, CardFooter, CardHeader, Col, Container, Form, FormGroup, Input, Label } from "reactstrap";
+import { translate } from "react-i18next";
+import { activate } from "../../actions/activationActions";
+import StatusAlert from "../common/alert/StatusAlert";
 
 class ActivationPage extends Component {
   constructor(props, context) {
@@ -44,22 +45,13 @@ class ActivationPage extends Component {
           <Card>
             <CardHeader>{t("title.activation")}</CardHeader>
             <CardBody>
-              {isActivationError && (
-                <Alert color="danger" className="text-center">
-                  <Trans i18nKey={"error.." + error.code}>{error.message}</Trans>
-                </Alert>
-              )}
-              {isActivationSuccess && (
-                <Alert color="success" className="text-center">
-                  <Trans i18nKey={"message.activation-nextStep." + nextStep.code}>{nextStep.message}</Trans>
-                </Alert>
-              )}
-              {!isActivationError &&
-              !isActivationSuccess && (
-                <Alert color="info" className="text-center">
-                  {t("help.activation")}
-                </Alert>
-              )}
+              <StatusAlert
+                code="activation"
+                error={error}
+                isError={isActivationError}
+                isSuccess={isActivationSuccess}
+                success={nextStep}
+              />
               <FormGroup row>
                 <Label for="activationCode" sm={4}>
                   {t("form.activation.activationCode")}
@@ -99,7 +91,7 @@ ActivationPage.propTypes = {
   activate: PropTypes.func.isRequired,
   isActivationError: PropTypes.bool.isRequired,
   isActivationPending: PropTypes.bool.isRequired,
-  isActivationSuccess: PropTypes.bool.isRequired,
+  isActivationSuccess: PropTypes.bool.isRequired
 };
 
 function mapStateToProps(state) {
@@ -118,7 +110,9 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default translate("translations")(connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ActivationPage));
+export default translate("translations")(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(ActivationPage)
+);
