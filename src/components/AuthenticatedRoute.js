@@ -2,11 +2,11 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Route, Redirect} from 'react-router-dom'
 
-export const PrivateRoute = ({component: ComposedComponent, ...rest}) => {
+export const AuthenticatedRoute = ({component: ComposedComponent, ...rest}) => {
 
   class Authentication extends Component {
 
-    /* Redirect if not authenticated; otherwise, return the component imputted into <PrivateRoute /> */
+    /* Redirect if not authenticated; otherwise, return the component imputted into <AuthenticatedRoute /> */
     handleRender = props => {
       if (!this.props.isAuthenticated) {
         return <Redirect to="/" />
