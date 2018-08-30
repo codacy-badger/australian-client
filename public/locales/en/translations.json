@@ -73,6 +73,7 @@
     },
     "password-confirmed": "Your password and its confirmation match.",
     "password-not-confirmed": "Password and confirmation doesn't match.",
+    "please-login": "To unlock access to this page, please login.",
     "welcome-back": "Welcome back!"
   },
   "title": {

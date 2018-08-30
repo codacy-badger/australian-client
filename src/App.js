@@ -13,7 +13,7 @@ import { translate } from "react-i18next";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "react-redux-toastr/lib/css/react-redux-toastr.min.css";
-import {AuthenticatedRoute} from "./components/AuthenticatedRoute";
+import { AuthenticatedRoute } from "./components/AuthenticatedRoute";
 
 class App extends Component {
   componentDidUpdate() {

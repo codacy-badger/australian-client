@@ -1,16 +1,18 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { translate } from "react-i18next";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 
 class ProfilePage extends Component {
-  render(){
+  render() {
     const { isAuthenticated, user, t } = this.props;
 
     return (
       <div>
-        isAuthenticated: {JSON.stringify(isAuthenticated)}<br/>
-        user: {JSON.stringify(user)}<br/>
+        isAuthenticated: {JSON.stringify(isAuthenticated)}
+        <br />
+        user: {JSON.stringify(user)}
+        <br />
       </div>
     );
   }
@@ -31,9 +33,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default translate("translations")(
-  connect(
-    mapStateToProps
-  )(ProfilePage)
-);
-
+export default translate("translations")(connect(mapStateToProps)(ProfilePage));

@@ -70,15 +70,21 @@ class LoginModal extends Component {
 
   render() {
     const { email, modal, password } = this.state;
-    const { error, isLoginPending, isLoginSuccess, isLoginError, t } = this.props;
+    const { error, isLoginPending, isLoginSuccess, isLoginError, t, warning } = this.props;
 
     return (
-      <Modal isOpen={modal} toggle={this.toggle}>
+      <Modal isOpen={warning || modal} toggle={this.toggle}>
         <Form onSubmit={this.onSubmit}>
           <ModalHeader toggle={this.toggleLoginModal}>
             <FontAwesomeIcon fixedWidth icon="sign-in-alt" /> {t("navbar.user-login")}
           </ModalHeader>
           <ModalBody>
+            {warning &&
+              !isLoginError && (
+                <Alert color="warning" className="text-center">
+                  {t("message.please-login")}
+                </Alert>
+              )}
             {isLoginError && (
               <Alert color="danger" className="text-center">
                 {t("error." + error.code)}
@@ -131,9 +137,16 @@ class LoginModal extends Component {
               isSuccess={isLoginSuccess}
               onClick={this.onSubmit}
             />
-            <Button color="secondary" onClick={this.toggle}>
-              {t("button.cancel")}
-            </Button>
+            {warning || (
+              <Button color="secondary" onClick={this.toggle}>
+                {t("button.cancel")}
+              </Button>
+            )}
+            {!warning || (
+              <Link to="/" className="btn btn-secondary">
+                {t("button.cancel")}
+              </Link>
+            )}
           </ModalFooter>
         </Form>
       </Modal>
@@ -141,13 +154,18 @@ class LoginModal extends Component {
   }
 }
 
+LoginModal.defaultProps = {
+  warning: false
+};
+
 LoginModal.propTypes = {
   isLoginPending: PropTypes.bool.isRequired,
   isLoginSuccess: PropTypes.bool.isRequired,
   isLoginError: PropTypes.bool.isRequired,
   error: PropTypes.object.isRequired,
   onRef: PropTypes.func.isRequired,
-  t: PropTypes.func.isRequired
+  t: PropTypes.func.isRequired,
+  warning: PropTypes.bool.isRequired
 };
 
 // Redux connect begin here

@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { DropdownItem, DropdownMenu, DropdownToggle, UncontrolledDropdown } from "reactstrap";
+import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { translate } from "react-i18next";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -30,7 +31,8 @@ class UserDropdown extends React.Component {
           <FontAwesomeIcon icon="user" fixedWidth className="mr-1" /> {username}
         </DropdownToggle>
         <DropdownMenu right>
-          <DropdownItem>
+          {/* TODO https://stackoverflow.com/questions/34418254/how-do-i-add-an-active-class-to-a-link-from-react-router */}
+          <DropdownItem to="/profile" tag={NavLink}>
             <FontAwesomeIcon fixedWidth icon="id-card-alt" /> {t("navbar.user-profile")}
           </DropdownItem>
           <DropdownItem>

@@ -1,33 +1,30 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {Route, Redirect} from 'react-router-dom'
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Route } from "react-router-dom";
+import LoginPage from "./page/LoginPage";
 
-export const AuthenticatedRoute = ({component: ComposedComponent, ...rest}) => {
-
+export const AuthenticatedRoute = ({ component: ComposedComponent, ...rest }) => {
   class Authentication extends Component {
-
-    /* Redirect if not authenticated; otherwise, return the component imputted into <AuthenticatedRoute /> */
-    handleRender = props => {
+    /* LoginPage displayed if not authenticated; otherwise, return the component imputted into <AuthenticatedRoute /> */
+    handleRender = (props) => {
       if (!this.props.isAuthenticated) {
-        return <Redirect to="/" />
+        return <LoginPage onRef={(ref) => (this.loginModal = ref)} />;
       } else {
-        return <ComposedComponent {...props}/>
+        return <ComposedComponent {...props} />;
       }
     };
 
     render() {
-      return (
-        <Route {...rest} render={this.handleRender}/>
-      );
+      return <Route {...rest} render={this.handleRender} />;
     }
   }
 
-  const mapStateToProps = state => {
+  const mapStateToProps = (state) => {
     return {
-      isAuthenticated: state.authReducer.isAuthenticated,
+      isAuthenticated: state.authReducer.isAuthenticated
     };
   };
 
   const AuthenticationContainer = connect(mapStateToProps)(Authentication);
-  return <AuthenticationContainer/>
+  return <AuthenticationContainer />;
 };
