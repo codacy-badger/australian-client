@@ -13,6 +13,7 @@ import { translate } from "react-i18next";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "react-redux-toastr/lib/css/react-redux-toastr.min.css";
+import {PrivateRoute} from "./components/PrivateRoute";
 
 class App extends Component {
   componentDidUpdate() {
@@ -34,7 +35,7 @@ class App extends Component {
           <Route exact path="/activate" component={ActivationPage} />
           <Route exact path="/activate/:activationCode" component={ActivationPage} />
           <Route exact path="/forgot-your-password" component={ForgotPasswordPage} />
-          <Route exact path="/profile" component={ProfilePage} />
+          <PrivateRoute exact path="/profile" component={ProfilePage} />
           <Route path="*" component={Error404Page} />
         </Switch>
         <ReduxToastr
