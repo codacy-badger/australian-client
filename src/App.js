@@ -1,17 +1,18 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { translate } from "react-i18next";
+import ActivationPage from "./components/page/ActivationPage";
+import Error404Page from "./components/page/Error404Page";
+import HomePage from "./components/page/HomePage";
+import ForgotPasswordPage from "./components/page/ForgotPasswordPage";
+import ProfilePage from "./components/page/ProfilePage";
+import ReduxToastr from "react-redux-toastr";
 import { Switch, Route, withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { toastr } from "react-redux-toastr";
+import { translate } from "react-i18next";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "react-redux-toastr/lib/css/react-redux-toastr.min.css";
-import { connect } from "react-redux";
-import { toastr } from "react-redux-toastr";
-import ReduxToastr from "react-redux-toastr";
-import HomePage from "./components/page/HomePage";
-import Error404Page from "./components/page/Error404Page";
-import ForgotPasswordPage from "./components/page/ForgotPasswordPage";
-import ActivationPage from "./components/page/ActivationPage";
 
 class App extends Component {
   componentDidUpdate() {
@@ -33,6 +34,7 @@ class App extends Component {
           <Route exact path="/activate" component={ActivationPage} />
           <Route exact path="/activate/:activationCode" component={ActivationPage} />
           <Route exact path="/forgot-your-password" component={ForgotPasswordPage} />
+          <Route exact path="/profile" component={ProfilePage} />
           <Route path="*" component={Error404Page} />
         </Switch>
         <ReduxToastr

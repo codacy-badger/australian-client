@@ -39,6 +39,7 @@ class AuthApi {
       setTimeout(() => {
         localStorage.removeItem("user");
         localStorage.removeItem("accessToken");
+        localStorage.setItem("user", JSON.stringify(false));
         return callback({});
       }, delay);
     });
