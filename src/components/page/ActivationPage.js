@@ -7,6 +7,7 @@ import { Card, CardBody, CardFooter, CardHeader, Col, Container, Form, FormGroup
 import { translate } from "react-i18next";
 import { activate } from "../../actions/activationActions";
 import StatusAlert from "../common/alert/StatusAlert";
+import Header from "../common/Header";
 
 class ActivationPage extends Component {
   constructor(props, context) {
@@ -40,49 +41,52 @@ class ActivationPage extends Component {
     const { activationCode } = this.state;
 
     return (
-      <Container className="mt-3 text-justify">
-        <Form onSubmit={this.onSubmit}>
-          <Card>
-            <CardHeader>{t("title.activation")}</CardHeader>
-            <CardBody>
-              <StatusAlert
-                code="activation"
-                error={error}
-                isError={isActivationError}
-                isSuccess={isActivationSuccess}
-                success={nextStep}
-              />
-              <FormGroup row>
-                <Label for="activationCode" sm={4}>
-                  {t("form.activation.activationCode")}
-                </Label>
-                <Col sm={8}>
-                  <Input
-                    type="text"
-                    name="activationCode"
-                    id="activationCode"
-                    placeholder={t("form.activation.activationCode-placeholder")}
-                    value={activationCode}
-                    required
-                    onChange={this.onChange}
-                  />
-                </Col>
-              </FormGroup>
-            </CardBody>
-            <CardFooter className="text-right">
-              <Submit
-                isPending={isActivationPending}
-                isSuccess={isActivationSuccess}
-                name="activation"
-                onClick={this.onSubmit}
-              />
-              <Link to="/" title={t("link.home-page-title")} className="ml-2 btn btn-secondary">
-                {t("link.home-page")}
-              </Link>
-            </CardFooter>
-          </Card>
-        </Form>
-      </Container>
+      <div>
+        <Header />
+        <Container className="mt-3 text-justify">
+          <Form onSubmit={this.onSubmit}>
+            <Card>
+              <CardHeader>{t("title.activation")}</CardHeader>
+              <CardBody>
+                <StatusAlert
+                  code="activation"
+                  error={error}
+                  isError={isActivationError}
+                  isSuccess={isActivationSuccess}
+                  success={nextStep}
+                />
+                <FormGroup row>
+                  <Label for="activationCode" sm={4}>
+                    {t("form.activation.activationCode")}
+                  </Label>
+                  <Col sm={8}>
+                    <Input
+                      type="text"
+                      name="activationCode"
+                      id="activationCode"
+                      placeholder={t("form.activation.activationCode-placeholder")}
+                      value={activationCode}
+                      required
+                      onChange={this.onChange}
+                    />
+                  </Col>
+                </FormGroup>
+              </CardBody>
+              <CardFooter className="text-right">
+                <Submit
+                  isPending={isActivationPending}
+                  isSuccess={isActivationSuccess}
+                  name="activation"
+                  onClick={this.onSubmit}
+                />
+                <Link to="/" title={t("link.home-page-title")} className="ml-2 btn btn-secondary">
+                  {t("link.home-page")}
+                </Link>
+              </CardFooter>
+            </Card>
+          </Form>
+        </Container>
+      </div>
     );
   }
 }

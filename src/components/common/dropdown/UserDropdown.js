@@ -31,7 +31,6 @@ class UserDropdown extends React.Component {
           <FontAwesomeIcon icon="user" fixedWidth className="mr-1" /> {username}
         </DropdownToggle>
         <DropdownMenu right>
-          {/* TODO https://stackoverflow.com/questions/34418254/how-do-i-add-an-active-class-to-a-link-from-react-router */}
           <DropdownItem to="/profile" tag={NavLink}>
             <FontAwesomeIcon fixedWidth icon="id-card-alt" /> {t("navbar.user-profile")}
           </DropdownItem>
@@ -47,6 +46,9 @@ class UserDropdown extends React.Component {
     );
   }
 }
+UserDropdown.contextTypes = {
+  router: PropTypes.object
+};
 
 UserDropdown.propTypes = {
   t: PropTypes.func.isRequired,

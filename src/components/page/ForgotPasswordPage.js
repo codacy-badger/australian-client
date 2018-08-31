@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 import { sendMail } from "../../actions/forgotPasswordActions";
 import Submit from "../common/button/Submit";
 import StatusAlert from "../common/alert/StatusAlert";
+import Header from "../common/Header";
 
 class ForgotPasswordPage extends Component {
   constructor(props) {
@@ -40,49 +41,52 @@ class ForgotPasswordPage extends Component {
     const { email } = this.state;
 
     return (
-      <Container className="mt-3 text-justify">
-        <Form onSubmit={this.onSubmit}>
-          <Card>
-            <CardHeader>{t("title.forgot-your-password")}</CardHeader>
-            <CardBody>
-              <StatusAlert
-                code="forgot-your-password"
-                error={error}
-                isError={isMailError}
-                isSuccess={isMailSuccess}
-                success={nextStep}
-              />
-              <FormGroup row>
-                <Label for="forgotPasswordEmail" sm={4}>
-                  {t("form.forgot-password.email")}
-                </Label>
-                <Col sm={8}>
-                  <Input
-                    type="email"
-                    name="email"
-                    id="forgotPasswordEmail"
-                    placeholder={t("form.forgot-password.email-placeholder")}
-                    value={email}
-                    required
-                    onChange={this.onChange}
-                  />
-                </Col>
-              </FormGroup>
-            </CardBody>
-            <CardFooter className="text-right">
-              <Submit
-                isPending={isMailPending}
-                isSuccess={isMailSuccess}
-                name="forgot-password"
-                onClick={this.onSubmit}
-              />
-              <Link to="/" title={t("link.home-page-title")} className="ml-2 btn btn-secondary">
-                {t("link.home-page")}
-              </Link>
-            </CardFooter>
-          </Card>
-        </Form>
-      </Container>
+      <div>
+        <Header />
+        <Container className="mt-3 text-justify">
+          <Form onSubmit={this.onSubmit}>
+            <Card>
+              <CardHeader>{t("title.forgot-your-password")}</CardHeader>
+              <CardBody>
+                <StatusAlert
+                  code="forgot-your-password"
+                  error={error}
+                  isError={isMailError}
+                  isSuccess={isMailSuccess}
+                  success={nextStep}
+                />
+                <FormGroup row>
+                  <Label for="forgotPasswordEmail" sm={4}>
+                    {t("form.forgot-password.email")}
+                  </Label>
+                  <Col sm={8}>
+                    <Input
+                      type="email"
+                      name="email"
+                      id="forgotPasswordEmail"
+                      placeholder={t("form.forgot-password.email-placeholder")}
+                      value={email}
+                      required
+                      onChange={this.onChange}
+                    />
+                  </Col>
+                </FormGroup>
+              </CardBody>
+              <CardFooter className="text-right">
+                <Submit
+                  isPending={isMailPending}
+                  isSuccess={isMailSuccess}
+                  name="forgot-password"
+                  onClick={this.onSubmit}
+                />
+                <Link to="/" title={t("link.home-page-title")} className="ml-2 btn btn-secondary">
+                  {t("link.home-page")}
+                </Link>
+              </CardFooter>
+            </Card>
+          </Form>
+        </Container>
+      </div>
     );
   }
 }

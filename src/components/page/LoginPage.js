@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Container, UncontrolledAlert } from "reactstrap";
 import { translate } from "react-i18next";
 import LoginModal from "../modal/LoginModal";
+import Header from "../common/Header";
 
 class LoginPage extends Component {
   toggleLoginModal = () => {
@@ -16,10 +17,13 @@ class LoginPage extends Component {
   render() {
     const { t } = this.props;
     return (
-      <Container className="mt-3">
-        <UncontrolledAlert color="warning">{t("message.please-login")}</UncontrolledAlert>
-        <LoginModal onRef={(ref) => (this.loginModal = ref)} warning={true} />
-      </Container>
+      <div>
+        <Header />
+        <Container className="mt-3">
+          <UncontrolledAlert color="warning">{t("message.please-login")}</UncontrolledAlert>
+          <LoginModal onRef={(ref) => (this.loginModal = ref)} warning={true} />
+        </Container>
+      </div>
     );
   }
 }

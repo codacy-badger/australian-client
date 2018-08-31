@@ -6,6 +6,7 @@ import HomePage from "./components/page/HomePage";
 import ForgotPasswordPage from "./components/page/ForgotPasswordPage";
 import ProfilePage from "./components/page/ProfilePage";
 import ReduxToastr from "react-redux-toastr";
+import { AuthenticatedRoute } from "./components/AuthenticatedRoute";
 import { Switch, Route, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { toastr } from "react-redux-toastr";
@@ -13,7 +14,6 @@ import { translate } from "react-i18next";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "react-redux-toastr/lib/css/react-redux-toastr.min.css";
-import { AuthenticatedRoute } from "./components/AuthenticatedRoute";
 
 class App extends Component {
   componentDidUpdate() {

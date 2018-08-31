@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { translate } from "react-i18next";
 import { connect } from "react-redux";
+import Header from "../common/Header";
 
 class ProfilePage extends Component {
   render() {
@@ -9,6 +10,7 @@ class ProfilePage extends Component {
 
     return (
       <div>
+        <Header />
         isAuthenticated: {JSON.stringify(isAuthenticated)}
         <br />
         user: {JSON.stringify(user)}
