@@ -7,7 +7,7 @@ import { translate } from "react-i18next";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faIdCardAlt, faSignOutAlt, faUser, faUserCog } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
-import { logout } from "../../actions/authActions";
+import { logout } from "../../../actions/authActions";
 
 library.add(faIdCardAlt, faSignOutAlt, faUser, faUserCog);
 

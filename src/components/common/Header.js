@@ -2,9 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Collapse, Navbar, NavbarToggler, Nav } from "reactstrap";
 import { Link } from "react-router-dom";
-import LanguageDropdown from "./LanguageDropdown";
-import UserDropdown from "./UserDropdown";
-import AnonymousDropdown from "./AnonymousDropdown";
+import LanguageDropdown from "./dropdown/LanguageDropdown";
+import UserDropdown from "./dropdown/UserDropdown";
+import AnonymousDropdown from "./dropdown/AnonymousDropdown";
 import { connect } from "react-redux";
 import { translate, Trans } from "react-i18next";
 

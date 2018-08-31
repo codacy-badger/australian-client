@@ -2,8 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { DropdownItem, DropdownMenu, DropdownToggle, UncontrolledDropdown } from "reactstrap";
 import { translate } from "react-i18next";
-import frFlag from "../../images/flags/32/France.png";
-import ukFlag from "../../images/flags/32/United-Kingdom.png";
+import frFlag from "../../../images/flags/32/France.png";
+import ukFlag from "../../../images/flags/32/United-Kingdom.png";
 
 /**
  * Language dropdown

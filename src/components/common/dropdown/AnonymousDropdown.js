@@ -5,8 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { translate } from "react-i18next";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faSignInAlt, faUserSecret } from "@fortawesome/free-solid-svg-icons";
-import LoginModal from "../modal/LoginModal";
-import RegisterModal from "../modal/RegisterModal";
+import LoginModal from "../../modal/LoginModal";
+import RegisterModal from "../../modal/RegisterModal";
 
 library.add(faUserSecret, faSignInAlt);
 
