@@ -31,7 +31,7 @@ class UserDropdown extends React.Component {
           <FontAwesomeIcon icon="user" fixedWidth className="mr-1" /> {username}
         </DropdownToggle>
         <DropdownMenu right>
-          <DropdownItem to="/profile" tag={NavLink}>
+          <DropdownItem to="/profile/general" tag={NavLink}>
             <FontAwesomeIcon fixedWidth icon="id-card-alt" /> {t("navbar.user-profile")}
           </DropdownItem>
           <DropdownItem>

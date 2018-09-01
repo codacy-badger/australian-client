@@ -27,6 +27,14 @@ export default {
     sendLoginMessage: false,
     sendLogoutMessage: false
   },
+  profile: {
+    error: {},
+    isProfilePending: false,
+    isProfileSuccess: false,
+    isProfileError: false,
+    success: {},
+    user: !!localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : false
+  },
   register: {
     error: {},
     isRegisterPending: false,
