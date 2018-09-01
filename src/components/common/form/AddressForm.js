@@ -11,11 +11,11 @@ class ProfileForm extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      country: '',
-      locality: '',
-      latitude: '',
-      longitude: '',
-      name: '',
+      country: "",
+      locality: "",
+      latitude: "",
+      longitude: "",
+      name: "",
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
