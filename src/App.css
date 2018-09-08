@@ -1,3 +1,6 @@
+body{
+  counter-reset: h2;
+}
 img.flag-in-navbar {
   margin-top: -3px;
 }
@@ -18,4 +21,15 @@ img.flag-in-navbar {
 
 .App-intro {
   font-size: large;
+}
+
+h2.article {
+  width: 100%;
+  border-bottom: thin solid gray;
+  padding-bottom: 0.2em;
+}
+
+h2.article:before {
+  content: counter(h2) ". ";
+  counter-increment: h2;
 }

@@ -1,0 +1,110 @@
+{
+  "title": {
+    "cgu": "Usage general conditions"
+  },
+  "cgu": {
+    "article1": {
+      "paragraph": "The website which can be accessed by {url} allow each visitor to :",
+      "title": "Service presentation",
+      "usage1": "TODO Complete usage1",
+      "usage2": "TODO Complete usage2",
+      "usage3": "TODO Complete usage3"
+    },
+    "article2": {
+      "address1": "TODO Complete address line1",
+      "address2": "TODO Complete address line2",
+      "address3": "TODO Complete address line3",
+      "contact1": "The mail address : {mail}",
+      "contact2": "The above postal address.",
+      "title": "Legal mentions",
+      "paragraph1": "The service provider, editor service, publication director and the data responsable is:",
+      "paragraph2": "To contact them, use :"
+    },
+    "article3": {
+      "definition1": "{url}: the website {url} and mails,",
+      "definition2": "Surfer(s) : Website {url} visitors,",
+      "definition3": "Customer(s) : Physic or moral person which own an account on {url},",
+      "definition4": "Website(s) : All Internet website added to customer account,",
+      "paragraph": "In this general usage condition, the following words mean:",
+      "title": "Definitions"
+    },
+    "article4": {
+      "object1": "register as a customer,",
+      "object2": "define general usage conditions,",
+      "object3": "define warranty,",
+      "object4": "define availabilities and responsibilities,",
+      "object5": "define personal data analyses,",
+      "object6": "inform how to resolve litigation,",
+      "object7": "define the rules in case of contract partial nullity,",
+      "object8": "define modification conditions,",
+      "object9": "define duration of the contract and resiliation conditions,",
+      "object10": "define applicable law and juridiction.",
+      "paragraph": "These general usage conditions fix and define process to:",
+      "title": "Object"
+    },
+    "article5": {
+      "condition1": "To be major and to have juridic capacityto use these services,",
+      "condition2": "to provide exact informations during registration or account modification,",
+      "condition3": "to own and use a valid email address.",
+      "paragraph": "Any physical or moral person could become a Customer on {url} on conditions :",
+      "title": "Registration"
+    },
+    "article6": {
+      "condition1": "Be 18+ years old and to have juridic capacity to use these services.",
+      "paragraph": "To use this service, Surfer must :",
+      "title": "Service usage conditions"
+    },
+    "article7": {
+      "paragraph": "Customer can contact services for any question or information about usage of {url} service by mail (cf. Article2).",
+      "title": "Post-sale services"
+    },
+    "article8": {
+      "paragraph1": "Data provided are only information free of interpratation and {url} cannot be responsable in case of:",
+      "paragraph2": "Customer is the only one responsible of its password confidentiality and is responsible of usage after a login connection on Website, authorized or not by Customer.",
+      "paragraph3": "{url} diploids its best efforts graciously, but cannot be submit to any obligation of undertaking and of results.",
+      "paragraph4": "As kind as possible, {url} maintain access on services H24, but have no obligation of undertaking and nor results. It can stop access for technical or maintenance operations.",
+      "responsability1": "Cost linked to advise can not be the responsability of Site,",
+      "responsability2": "Any other damage concerning Customer or a tier  concernant le Client ou un tiers résultant directement ou indirectement de l'utilisation du service.",
+      "title": "Responsability"
+    },
+    "article9": {
+      "paragraph1": "The personal data stored can be :",
+      "paragraph2": "Personnal information recolted are use to :",
+      "paragraph3": "Data destinator are :",
+      "paragraph4": "Data are stored during commercial relationship and can be archived in conformity with legal disposition.",
+      "paragraph5": "In conformity with « informatique et libertés » law (6th january 1978 updated in 2004), Surfer and Customer can access and rectify all their personnal data. They can access data via their Customer account or ask a copy by mail.",
+      "paragraph6": "{url} have attachment to a transparent managment about personnal data.",
+      "paragraph7": "Data personal operation are declared to the CNIL under number: {CNIL number}",
+      "data1": "Cost linked to advises,",
+      "data2": "Any other damage concerning Customer or a tier.",
+      "title": "Personnal data operations."
+    },
+    "article10": {
+      "paragraph": "In case of ligiation involving {url}, Customer can contact Editor (cf article2) to provide his reclamation to start a mediation step and try to find a settlement solution.",
+      "title": "Litigation resolution"
+    },
+    "article11": {
+      "paragraph": "This is an english translation. In case of partial nullity or in case of a traduction error, the French usage condition will be applied.",
+      "title": "English translation"
+    },
+    "article12": {
+      "paragraph": "All are advertised that {url} can update its service and this current conditions.",
+      "title": "Update"
+    },
+    "article13": {
+      "motif": {
+        "client1": "Without cause",
+        "client2": "Immediatly",
+        "owner1": "With a legal cause,",
+        "owner2": "With 15 days delay."
+      },
+      "paragraph1": "Customer can stop contract :",
+      "paragraph2": "{url} can stop contract :",
+      "title": "Term of the contract"
+    },
+    "article14": {
+      "paragraph": "By using {url}, Customer and Client accept without reserve French laws. The actuel general conditions are in French languages. in case of legacy, French courts will be the competent only ones.",
+      "title": "Law and juridiction"
+    }
+  }
+}

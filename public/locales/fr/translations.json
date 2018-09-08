@@ -79,6 +79,7 @@
   "title": {
     "activation": "Activation de votre compte",
     "app": "Bienvenue à react utilisant i18n",
+    "cgu": "Conditions générales d’utilisation",
     "forgot-your-password": "Mot de passe perdu ?",
     "ooops": "Oups !"
   },

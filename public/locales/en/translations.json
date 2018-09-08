@@ -4,6 +4,11 @@
     "login": "Login",
     "register": "Register"
   },
+  "cgu": {
+    "article1":{
+      "title": "Service presentation"
+    }
+  },
   "error": {
     "10": "Invalid credentials.",
     "20": "An account already exist with this email.",
@@ -80,6 +85,7 @@
     "activation": "Account activation",
     "app": "Welcome to react using react-i18next",
     "forgot-your-password": "Forgot your password?",
+    "cgu": "Usage general conditions",
     "ooops": "Oooops!"
   },
   "navbar": {

@@ -1,0 +1,110 @@
+{
+  "title": {
+    "cgu": "Conditions générales d’utilisation"
+  },
+  "cgu": {
+    "article1": {
+      "paragraph": "Le site accessible à l’adresse {url} permet à tout visiteur de :",
+      "title": "Présentation du service",
+      "usage1": "TODO Complete usage1",
+      "usage2": "TODO Complete usage2",
+      "usage3": "TODO Complete usage3"
+    },
+    "article2": {
+      "address1": "TODO Complete address line1",
+      "address2": "TODO Complete address line2",
+      "address3": "TODO Complete address line3",
+      "contact1": "L’adresse mail : {mail}",
+      "contact2": "L’adresse postale ci-dessus",
+      "title": "Mentions légales",
+      "paragraph1": "Le fournisseur du service, éditeur de service, directeur de publication et responsable du traitement des données est :",
+      "paragraph2": "Les différents moyens de contact sont :"
+    },
+    "article3": {
+      "definition1": "{url}: le site internet {url} et les mails,",
+      "definition2": "Internaute(s) : tous les visiteurs du site {url},",
+      "definition3": "Client(s) : toute personne physique ou morale détentrice d’un compte sur {url},",
+      "definition4": "Site(s) : tout site(s) internet ajouté au compte {url} du Client,",
+      "paragraph": "Dans ces présentes conditions générales de vente, les mots suivants signifient :",
+      "title": "Définitions"
+    },
+    "article4": {
+      "object1": "à l'Internaute de s'inscrire en tant que Client,",
+      "object2": "de définir les conditions d'utilisation du service,",
+      "object3": "de définir la garantie,",
+      "object4": "de définir les responsabilités et la disponibilité,",
+      "object5": "de définir les conditions de traitement des données à caractère personnel,",
+      "object6": "d'informer sur la résolution des litiges,",
+      "object7": "de définir la règle en cas de nullité partielle du contrat,",
+      "object8": "de définir les conditions de modification,",
+      "object9": "de définir la durée du contrat et les conditions de résiliation,",
+      "object10": "de définir la loi applicable et la juridiction.",
+      "paragraph": "Ces présentes conditions générales de vente ont pour objet de fixer et définir les conditions et de décrire la procédure permettant :",
+      "title": "Objet"
+    },
+    "article5": {
+      "condition1": "D’être majeur et de disposer de la capacité juridique à utiliser le service,",
+      "condition2": "De fournir des informations exactes lors de l'inscription et de la modification du compte,",
+      "condition3": "De posséder une adresse mail valide.",
+      "paragraph": "Toute personne physique ou morale peut devenir Client sur {url} à condition :",
+      "title": "Inscription"
+    },
+    "article6": {
+      "condition1": "Être majeur et disposer de la capacité juridique à utiliser le service.",
+      "paragraph": "Pour utiliser le service l’Internaute doit :",
+      "title": "Conditions d'utilisation du service"
+    },
+    "article7": {
+      "paragraph": "Le Client pourra contacter le service après-vente pour toute question ou information concernant l'utilisation du service {url} par mail (voir article 2).",
+      "title": "Service après vente"
+    },
+    "article8": {
+      "paragraph1": "Il est convenu que les données ne sont que des informations libres d’interprétation et que {url} ne pourra pas être tenu responsable en cas de :",
+      "paragraph2": "Le Client est seul responsable de la confidentialité du mot de passe d'accès à son compte et est responsable de toutes les utilisations suite à une connexion, qu'elles soient ou non autorisées par le Client.",
+      "paragraph3": "{url} déploie ses meilleurs efforts bénévolement pour y parvenir, mais n'est en aucun cas soumis à une obligation de moyens encore moins de résultat.",
+      "paragraph4": "{url} s'efforce dans la mesure du possible de maintenir l'accès aux services 24/24h mais n'est tenu à aucune obligation d'y parvenir et peut interrompre momentanément l'accès pour des raisons techniques ou de maintenance.",
+      "responsability1": "Coût lié à l'application des conseils,",
+      "responsability2": "Ou tout autre dommmages concernant le Client ou un tiers résultant directement ou indirectement de l'utilisation du service.",
+      "title": "Responsabilité"
+    },
+    "article9": {
+      "paragraph1": "Les données à caractère personnel qui peuvent être recueillies sont :",
+      "paragraph2": "Les informations à caractère personnel recueillies font l'objet d'un traitement informatique destiné à :",
+      "paragraph3": "Les destinataires des données sont :",
+      "paragraph4": "Les données sont conservées pendant toute la durée de la relation commerciale et peuvent être archivées conformément aux dispositions en vigueur si les données sont nécessaires à l'établissement de la preuve d'un contrat ou doivent être conservées au titre du respect d'une obligation légale.",
+      "paragraph5": "Conformément à la loi « informatique et libertés » du 6 janvier 1978 modifiée en 2004, les Internautes et Clients bénéficient d'un droit d'accès et de rectification aux informations les concernant, qu'ils peuvent exercer depuis le compte client ou par simple demande par mail.",
+      "paragraph6": "{url} attache une importance particulière à la gestion des données à caractère personnel et met en œuvre toutes mesures appropriées aux fins de restreindre les risques de perte, détérioration ou mauvaise utilisation de celles-ci.",
+      "paragraph7": "Le traitement des données à caractères personnels est déclaré à la CNIL sous le numéro : {CNIL number}",
+      "data1": "Coût lié à l'application des conseils,",
+      "data2": "Ou tout autre dommmages concernant le Client ou un tiers résultant directement ou indirectement de l'utilisation du service.",
+      "title": "Traitements des données à caractère personnel"
+    },
+    "article10": {
+      "paragraph": "En cas de litige découlant de l'utilisation de {url}, le Client peut contacter l'éditeur (voir article 2) afin de formuler sa réclamation pour démarrer une phase de médiation et tenter de trouver une solution à l'amiable.",
+      "title": "Litige"
+    },
+    "article11": {
+      "paragraph": "Si un article des présentes conditions générales de vente s'avère non valable ou inopposable en vertu d'une loi ou à la suite d'une décision de justice, cet article sera réputé non écrit et le reste des conditions générales de vente conserveront leurs effets.",
+      "title": "Nullité partielle"
+    },
+    "article12": {
+      "paragraph": "Les parties sont convenues que {url} peut modifier le service et/ou les présentes conditions générales de vente, compte tenu notamment des évolutions techniques en respectant un délai de préavis de 30 jours et informant le client.",
+      "title": "Modifications"
+    },
+    "article13": {
+      "motif": {
+        "client1": "Sans motif",
+        "client2": "Sans préavis",
+        "owner1": "Avec un motif légitime,",
+        "owner2": "En respectant un délai de quinze jours."
+      },
+      "paragraph1": "Le Client pourra y mettre fin :",
+      "paragraph2": "{url} pourra y mettre fin :",
+      "title": "Durée du contrat"
+    },
+    "article14": {
+      "paragraph": "En utilisant {url}, l'Internaute ou le Client accepte sans réserve de se soumettre à la loi Française. Les présentes conditions générales de vente sont en langue Française. En cas de litige, de quelque nature que ce soit, les tribunaux français seront les seuls compétents.",
+      "title": "Loi applicable et juridiction"
+    }
+  }
+}

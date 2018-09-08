@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import ActivationPage from "./components/page/ActivationPage";
+import CguPage from "./components/page/CguPage";
 import Error404Page from "./components/page/Error404Page";
 import ForgotPasswordPage from "./components/page/ForgotPasswordPage";
 import HomePage from "./components/page/HomePage";
@@ -36,6 +37,7 @@ class App extends Component {
           <Route exact path="/activate" component={ActivationPage} />
           <Route exact path="/activate/:activationCode" component={ActivationPage} />
           <Route exact path="/forgot-your-password" component={ForgotPasswordPage} />
+          <Route exact path="/cgu" component={CguPage} />
           {/* TODO Redirect profile to profile/general */}
           <AuthenticatedRoute exact path="/profile/*" component={ProfilePage} />
           {/* TODO https://www.cookiebot.com/fr/cookie-consent/?utm_source=bing&utm_medium=cpc&utm_campaign=BING%3A%20FR%20-%20Generic&utm_content=FR%20-%20FR%20-%20Cookie%20Consent*/}
