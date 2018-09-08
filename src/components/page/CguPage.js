@@ -9,14 +9,15 @@ import { faFileSignature } from "@fortawesome/free-solid-svg-icons";
 
 library.add(faFileSignature);
 
-const CguPage = ({t}) => {
-  
-  return(
-    
+const CguPage = ({ t }) => {
+  return (
     <div>
       <Header />
       <Container className="text-justify mt-2">
-        <h1><FontAwesomeIcon icon={faFileSignature} className="mr-1" />{t("title.cgu")}</h1>
+        <h1>
+          <FontAwesomeIcon icon={faFileSignature} className="mr-1" />
+          {t("title.cgu")}
+        </h1>
         <h2 className="article mt-3">{t("cgu.article1.title")}</h2>
         <p>{t("cgu.article1.paragraph")}</p>
         <ul>
@@ -27,9 +28,12 @@ const CguPage = ({t}) => {
         <h2 className="article">{t("cgu.article2.title")}</h2>
         <p>{t("cgu.article2.paragraph1")}</p>
         <address>
-          <strong>{t("cgu.article2.address1")}</strong><br />
-          {t("cgu.article2.address2")}<br />
-          {t("cgu.article2.address3")}<br />
+          <strong>{t("cgu.article2.address1")}</strong>
+          <br />
+          {t("cgu.article2.address2")}
+          <br />
+          {t("cgu.article2.address3")}
+          <br />
         </address>
         <p>{t("cgu.article2.paragraph2")}</p>
         <ul>
@@ -67,7 +71,9 @@ const CguPage = ({t}) => {
         </ul>
         <h2 className="article">{t("cgu.article6.title")}</h2>
         <p>{t("cgu.article6.paragraph")}</p>
-        <ul><li>{t("cgu.article6.condition1")}</li></ul>
+        <ul>
+          <li>{t("cgu.article6.condition1")}</li>
+        </ul>
         <h2 className="article">{t("cgu.article7.title")}</h2>
         <p>{t("cgu.article7.paragraph")}</p>
         <h2 className="article">{t("cgu.article8.title")}</h2>
@@ -114,9 +120,9 @@ const CguPage = ({t}) => {
     </div>
   );
 };
-          
+
 CguPage.propTypes = {
   t: PropTypes.func.isRequired
 };
 
-export default translate(['cgu','translations'])(CguPage);
+export default translate(["cgu", "translations"])(CguPage);
