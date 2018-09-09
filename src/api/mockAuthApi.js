@@ -20,12 +20,17 @@ const error = {
 };
 
 class AuthApi {
-  static callLoginApi(email, password, callback) {
+  static callLoginApi(email, password, remember, callback) {
     return new Promise(() => {
       setTimeout(() => {
         if (email === "admin@example.org" && password === "admin") {
-          localStorage.setItem("user", JSON.stringify(auth.user));
-          localStorage.setItem("accessToken", auth.token);
+          if (remember) {
+            localStorage.setItem("user", JSON.stringify(auth.user));
+            localStorage.setItem("accessToken", auth.token);
+          } else {
+            sessionStorage.setItem("user", JSON.stringify(auth.user));
+            sessionStorage.setItem("accessToken", auth.token);
+          }
           return callback(auth);
         } else {
           return callback(error);
@@ -40,6 +45,7 @@ class AuthApi {
         localStorage.removeItem("user");
         localStorage.removeItem("accessToken");
         localStorage.setItem("user", JSON.stringify(false));
+        sessionStorage.clear();
         return callback({});
       }, delay);
     });

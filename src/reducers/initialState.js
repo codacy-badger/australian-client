@@ -1,3 +1,5 @@
+const user = !!localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : !!sessionStorage.getItem("user") ? JSON.parse(sessionStorage.getItem("user")) : false;
+
 export default {
   activation: {
     error: {},
@@ -15,10 +17,10 @@ export default {
   },
   login: {
     auth: {
-      user: !!localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : false
+      user: user
     },
     error: {},
-    isAuthenticated: !!localStorage.getItem("accessToken"),
+    isAuthenticated: !!localStorage.getItem("accessToken") || !!sessionStorage.getItem("accessToken"),
     isLoginPending: false,
     isLoginSuccess: false,
     isLoginError: false,
@@ -33,7 +35,7 @@ export default {
     isProfileSuccess: false,
     isProfileError: false,
     success: {},
-    user: !!localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : false
+    user: user
   },
   register: {
     error: {},

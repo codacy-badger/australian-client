@@ -31,7 +31,8 @@ class LoginModal extends Component {
     this.state = {
       modal: false,
       email: "",
-      password: ""
+      password: "",
+      rememberMe: false
     };
 
     this.onChange = this.onChange.bind(this);
@@ -49,7 +50,7 @@ class LoginModal extends Component {
 
   onChange(e) {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: "checkbox" === e.target.type ? e.target.checked : e.target.value
     });
   }
 
@@ -57,9 +58,9 @@ class LoginModal extends Component {
     e.preventDefault();
 
     const { login } = this.props;
-    const { email, password } = this.state;
+    const { email, password, rememberMe} = this.state;
 
-    login(email, password);
+    login(email, password, rememberMe);
   }
 
   toggle() {
@@ -69,7 +70,7 @@ class LoginModal extends Component {
   }
 
   render() {
-    const { email, modal, password } = this.state;
+    const { email, modal, password, rememberMe } = this.state;
     const { error, isLoginPending, isLoginSuccess, isLoginError, t, warning } = this.props;
 
     return (
@@ -126,6 +127,20 @@ class LoginModal extends Component {
                     {t("link.forgot-your-password")}
                   </Link>
                 </FormText>
+              </Col>
+            </FormGroup>
+            <FormGroup check>
+              <Col sm={{size:8, offset:4}}>
+                <Label check>
+                  <Input
+                    type="checkbox"
+                    name="rememberMe"
+                    id="rememberMe"
+                    checked={rememberMe}
+                    onChange={this.onChange}
+                  />
+                  {t("form.login.rememberMe")}
+                </Label>
               </Col>
             </FormGroup>
           </ModalBody>

@@ -6,6 +6,7 @@ import { translate } from "react-i18next";
 import ProfileForm from "../common/form/ProfileForm";
 import {NavLink, Route, Switch} from "react-router-dom";
 import AddressForm from "../common/form/AddressForm";
+import Error404Page from "./Error404Page";
 
 class ProfilePage extends Component {
 
@@ -13,6 +14,10 @@ class ProfilePage extends Component {
 
     const { t } = this.props;
 
+    console.log(localStorage.getItem("question1"));
+    console.log(sessionStorage.getItem("question1"));
+    console.log(localStorage.getItem("question2"));
+    console.log(sessionStorage.getItem("question2"));
     return (
       <div>
         <Header />
@@ -33,6 +38,7 @@ class ProfilePage extends Component {
               <Switch>
                 <Route exact path="/profile/general" component={ProfileForm}/>
                 <Route exact path="/profile/address" component={AddressForm}/>
+                <Route path="/profile/*" component={Error404Page}/>
               </Switch>
             </Col>
           </Row>

@@ -54,13 +54,13 @@ function setLogoutSuccess(isLogoutSuccess, auth = {}) {
   };
 }
 
-export function login(email, password) {
+export function login(email, password, rememberMe) {
   return (dispatch) => {
     dispatch(setLoginPending(true));
     dispatch(setLoginSuccess(false));
     dispatch(setLoginError(false));
 
-    authActionApi.callLoginApi(email, password, (result) => {
+    authActionApi.callLoginApi(email, password, rememberMe, (result) => {
       dispatch(setLoginPending(false));
       if (result.token) {
         dispatch(setLoginSuccess(true, result));
