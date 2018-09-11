@@ -5,14 +5,19 @@ import AppStorage from "../tools/AppStorage";
 // This file mocks a web API by working with the hard-coded data below.
 // It uses setTimeout to simulate the delay of an AJAX call.
 // All calls return promises
-const profileResponse = {
+const getProfileSuccess = {
   user: {
-    id: 42,
-    uuid: "42",
-    name: "John",
+    additionalName: "",
     givenName: "Johann",
-    familyName: "Doe"
-  }
+    familyName: "Doe",
+    name: "John",
+    jobTitle: "Administrator"
+  },
+  success: true,
+};
+const getProfileError = {
+  success: false,
+  message: "Profil unavailable"
 };
 const successfulResponse = {
   success: {
@@ -29,7 +34,7 @@ const successfulResponse = {
 const erroredResponse = {
   error: {
     code: 30,
-    message: "User does not exists"
+    message: "Unable to retrieve profile information."
   }
 };
 
@@ -37,14 +42,15 @@ class ProfileApi {
   static callGetProfileApi(callback) {
     return new Promise(() => {
       setTimeout(() => {
-        if ("foo42bar" === AppStorage.getItem("token")) {
-          return callback(profileResponse);
+        if ("foo42bar" === AppStorage.getItem("accessToken")) {
+          return callback(getProfileSuccess);
         } else {
-          return callback(erroredResponse);
+          return callback(getProfileError);
         }
       }, delay);
     });
   }
+
   static callUpdateApi(email, password, callback) {
     return new Promise(() => {
       setTimeout(() => {

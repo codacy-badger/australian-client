@@ -1,26 +1,35 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import StatusAlert from "../../common/alert/StatusAlert";
-import InputLoading from "../../common/input/InputLoading";
 import HelpBlock from "../help/HelpBlock";
 import Submit from "../../common/button/Submit";
 import { connect } from "react-redux";
-import { Col, Form, FormGroup, Label } from "reactstrap";
+import { Col, Form, FormGroup, Label, Input } from "reactstrap";
 import { translate } from "react-i18next";
-import { getProfile, profileUpdate } from "../../../actions/profileActions";
+import { profileUpdate } from "../../../actions/profileActions";
 
 class ProfileForm extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      additionalName: "",
-      familyName: "",
-      givenName: "",
-      jobTitle: "",
-      name: ""
+      additionalName: props.additionalName,
+      familyName: props.familyName,
+      givenName: props.givenName,
+      jobTitle: props.jobTitle,
+      name: props.name
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState ({
+      additionalName: nextProps.additionalName,
+      familyName: nextProps.familyName,
+      givenName: nextProps.givenName,
+      jobTitle: nextProps.jobTitle,
+      name: nextProps.name
+    });
   }
 
   onChange(e) {
@@ -32,12 +41,12 @@ class ProfileForm extends Component {
   onSubmit(e) {
     e.preventDefault();
 
-    const { name } = this.state;
+    const { name, profileUpdate } = this.state;
     profileUpdate(name);
   }
 
   render() {
-    const { error, isLoading, isPending, isSuccess, isError, success, t } = this.props;
+    const { error, isPending, isSuccess, isError, success, t } = this.props;
     const { additionalName, familyName, givenName, jobTitle, name } = this.state;
 
     return (
@@ -48,11 +57,10 @@ class ProfileForm extends Component {
             {t("form.profile.name.label")}
           </Label>
           <Col sm={8}>
-            <InputLoading
+            <Input
               type="text"
               name="name"
               id="Name"
-              isLoading={isLoading}
               placeholder={t("form.profile.name.placeholder")}
               value={name}
               required
@@ -68,11 +76,10 @@ class ProfileForm extends Component {
             {t("form.profile.givenName.label")}
           </Label>
           <Col sm={8}>
-            <InputLoading
+            <Input
               type="text"
               name="givenName"
               id="givenName"
-              isLoading={isLoading}
               placeholder={t("form.profile.givenName.placeholder")}
               value={givenName}
               required
@@ -88,11 +95,10 @@ class ProfileForm extends Component {
             {t("form.profile.additionalName.label")}
           </Label>
           <Col sm={8}>
-            <InputLoading
+            <Input
               type="text"
               name="additionalName"
               id="AdditionalName"
-              isLoading={isLoading}
               placeholder={t("form.profile.additionalName.placeholder")}
               value={additionalName}
               required
@@ -108,11 +114,10 @@ class ProfileForm extends Component {
             {t("form.profile.familyName.label")}
           </Label>
           <Col sm={8}>
-            <InputLoading
+            <Input
               type="text"
               name="familyName"
               id="familyName"
-              isLoading={isLoading}
               placeholder={t("form.profile.familyName.placeholder")}
               value={familyName}
               required
@@ -128,11 +133,10 @@ class ProfileForm extends Component {
             {t("form.profile.jobTitle.label")}
           </Label>
           <Col sm={8}>
-            <InputLoading
+            <Input
               type="text"
               name="jobTitle"
               id="jobTitle"
-              isLoading={isLoading}
               placeholder={t("form.profile.jobTitle.placeholder")}
               value={jobTitle}
               required
@@ -143,7 +147,7 @@ class ProfileForm extends Component {
             </HelpBlock>
           </Col>
         </FormGroup>
-        <Submit isLoading={isLoading} isPending={isPending} isSuccess={isSuccess} name="profile" onClick={this.onSubmit}/>
+        <Submit isPending={isPending} isSuccess={isSuccess} name="profile" onClick={this.onSubmit}/>
       </Form>
     );
   }
@@ -156,7 +160,6 @@ ProfileForm.propTypes = {
   familyName: PropTypes.string.isRequired,
   givenName: PropTypes.string.isRequired,
   isError: PropTypes.bool.isRequired,
-  isLoading: PropTypes.bool.isRequired,
   isPending: PropTypes.bool.isRequired,
   isSuccess: PropTypes.bool.isRequired,
   jobTitle: PropTypes.string.isRequired,
@@ -168,23 +171,18 @@ ProfileForm.propTypes = {
 function mapStateToProps(state) {
 
   return {
-    additionalName: state.profileReducer.user.additionalName,
     error: state.profileReducer.error,
-    familyName: state.profileReducer.user.familyName,
-    givenName: state.profileReducer.user.givenName,
     isError: state.profileReducer.isProfileError,
     isLoading: state.profileReducer.isProfileLoading,
     isPending: state.profileReducer.isProfilePending,
     isSuccess: state.profileReducer.isProfileSuccess,
-    jobTitle: state.profileReducer.user.jobTitle,
-    name: state.profileReducer.user.name,
     success: state.profileReducer.success
   };
 }
 
 function mapDispatchToProps(dispatch) {
+
   return {
-    getProfile: () => dispatch(getProfile()),
     profileUpdate: (name) => dispatch(profileUpdate(name))
   };
 }

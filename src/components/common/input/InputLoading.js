@@ -7,10 +7,12 @@ import { translate } from "react-i18next";
 class InputLoading extends Component {
   render() {
     const {isLoading, t, ...other} = this.props;
+    delete other["tReady"]; //because of translation.
 
     if (isLoading) {
       return <Input {...other} value={t("message.loading")} disabled />;
     }
+
     return (
       <Input {...other} />
     );
