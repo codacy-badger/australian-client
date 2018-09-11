@@ -35,6 +35,7 @@
       "email-placeholder": "Enter your email",
       "password": "Password",
       "password-placeholder": "Enter your password",
+      "rememberMe": "Remember me",
       "submit": "Send",
       "submitting": "Sending…"
     },

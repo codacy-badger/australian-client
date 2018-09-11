@@ -18,7 +18,7 @@ export default function authReducer(state = initialState.login, action) {
         isLoginSuccess: action.isLoginSuccess,
         isAuthenticated: action.isLoginSuccess,
         sendLoginMessage: action.isLoginSuccess,
-        auth: action.auth
+        username: action.auth.username
       });
 
     case types.SET_LOGIN_ERROR:
