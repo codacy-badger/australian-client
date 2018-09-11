@@ -5,12 +5,7 @@ import delay from "./mockDelay";
 // It uses setTimeout to simulate the delay of an AJAX call.
 // All calls return promises.
 const auth = {
-  user: {
-    id: 1,
-    email: "admin@example.org",
-    givenName: "John",
-    familyName: "Doe"
-  },
+  username: "John",
   token: "foo42bar"
 };
 
@@ -25,10 +20,10 @@ class AuthApi {
       setTimeout(() => {
         if (email === "admin@example.org" && password === "admin") {
           if (remember) {
-            localStorage.setItem("user", JSON.stringify(auth.user));
+            localStorage.setItem("username", auth.username);
             localStorage.setItem("accessToken", auth.token);
           } else {
-            sessionStorage.setItem("user", JSON.stringify(auth.user));
+            sessionStorage.setItem("username", auth.username);
             sessionStorage.setItem("accessToken", auth.token);
           }
           return callback(auth);
@@ -42,9 +37,7 @@ class AuthApi {
   static callLogoutApi(callback) {
     return new Promise(() => {
       setTimeout(() => {
-        localStorage.removeItem("user");
-        localStorage.removeItem("accessToken");
-        localStorage.setItem("user", JSON.stringify(false));
+        localStorage.clear();
         sessionStorage.clear();
         return callback({});
       }, delay);

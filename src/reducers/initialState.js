@@ -1,4 +1,4 @@
-const user = !!localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : !!sessionStorage.getItem("user") ? JSON.parse(sessionStorage.getItem("user")) : false;
+import AppStorage from "../tools/AppStorage";
 
 export default {
   activation: {
@@ -16,11 +16,9 @@ export default {
     nextStep: {}
   },
   login: {
-    auth: {
-      user: user
-    },
+    username: AppStorage.getItem("username", ""),
     error: {},
-    isAuthenticated: !!localStorage.getItem("accessToken") || !!sessionStorage.getItem("accessToken"),
+    isAuthenticated: !!AppStorage.getItem("accessToken", false),
     isLoginPending: false,
     isLoginSuccess: false,
     isLoginError: false,
@@ -31,11 +29,18 @@ export default {
   },
   profile: {
     error: {},
+    isProfileError: false,
+    isProfileLoading: true,
     isProfilePending: false,
     isProfileSuccess: false,
-    isProfileError: false,
     success: {},
-    user: user
+    user: {
+      additionalName: "",
+      name: "",
+      familyName: "",
+      givenName: "",
+      jobTitle: "",
+    }
   },
   register: {
     error: {},

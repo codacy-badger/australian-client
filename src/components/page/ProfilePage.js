@@ -14,10 +14,6 @@ class ProfilePage extends Component {
 
     const { t } = this.props;
 
-    console.log(localStorage.getItem("question1"));
-    console.log(sessionStorage.getItem("question1"));
-    console.log(localStorage.getItem("question2"));
-    console.log(sessionStorage.getItem("question2"));
     return (
       <div>
         <Header />
@@ -26,18 +22,19 @@ class ProfilePage extends Component {
           <Row>
             <Col sm={4} lg={3}>
               <ListGroup>
-                <ListGroupItem tag={NavLink} to="/profile/general">{t("profile.general")}</ListGroupItem>
-                <ListGroupItem tag={NavLink} to="/profile/address">{t("profile.address")}</ListGroupItem>
-                <ListGroupItem tag={NavLink} to="/profile/mail">{t("profile.mail")}</ListGroupItem>
-                <ListGroupItem tag={NavLink} to="/profile/password">{t("profile.password")}</ListGroupItem>
-                <ListGroupItem tag={NavLink} to="/profile/account">{t("profile.account")}</ListGroupItem>
-                <ListGroupItem tag={NavLink} to="/profile/cookie">{t("profile.cookie")}</ListGroupItem>
+                <ListGroupItem tag={NavLink} to="/profile/general">{t("profile.tab.general")}</ListGroupItem>
+                <ListGroupItem tag={NavLink} to="/profile/address">{t("profile.tab.address")}</ListGroupItem>
+                <ListGroupItem tag={NavLink} to="/profile/mail">{t("profile.tab.mail")}</ListGroupItem>
+                <ListGroupItem tag={NavLink} to="/profile/password">{t("profile.tab.password")}</ListGroupItem>
+                <ListGroupItem tag={NavLink} to="/profile/account">{t("profile.tab.account")}</ListGroupItem>
+                <ListGroupItem tag={NavLink} to="/profile/cookies">{t("profile.tab.cookies")}</ListGroupItem>
               </ListGroup>
             </Col>
             <Col>
               <Switch>
                 <Route exact path="/profile/general" component={ProfileForm}/>
                 <Route exact path="/profile/address" component={AddressForm}/>
+                {/* TODO replace by a component non displaying header */}
                 <Route path="/profile/*" component={Error404Page}/>
               </Switch>
             </Col>
@@ -50,7 +47,6 @@ class ProfilePage extends Component {
 
 // The propTypes.
 ProfilePage.propTypes = {
-  user: PropTypes.object.isRequired,
   t: PropTypes.func.isRequired
 };
 

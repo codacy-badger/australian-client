@@ -52,12 +52,14 @@ export function profileUpdate(email, password) {
   };
 }
 
-export function getProfile(uuid) {
+export function getProfile() {
   return (dispatch) => {
     dispatch(setProfilePending(true));
     dispatch(setProfileSuccess(false));
     dispatch(setProfileError(false));
-    profileActionApi.callGetProfileApi(uuid, (result) => {
+    profileActionApi.callGetProfileApi((result) => {
+      console.log('-+++++++++++++++++++++++');
+      console.dir(result);
       dispatch(setProfilePending(false));
       if (result.success) {
         dispatch(setProfileSuccess(true, result));

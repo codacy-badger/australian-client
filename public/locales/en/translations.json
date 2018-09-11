@@ -68,6 +68,7 @@
       "30": "Administrators have been informed, they will contact you by mail as soon as possible."
     },
     "forgot-your-password-successful": "Sent successfull",
+    "loading": "Loading…",
     "login-successful": "Login successful.",
     "logout-successful": "Logout successful",
     "logout-successful-explanations": "Your disconnection has been logged. Hope to see you soon!",
@@ -81,13 +82,6 @@
     "please-login": "To unlock access to this page, please login.",
     "welcome-back": "Welcome back!"
   },
-  "title": {
-    "activation": "Account activation",
-    "app": "Welcome to react using react-i18next",
-    "forgot-your-password": "Forgot your password?",
-    "cgu": "Usage general conditions",
-    "ooops": "Oooops!"
-  },
   "navbar": {
     "brand": "Australian shepherd",
     "select-language": "Select your language",
@@ -97,6 +91,23 @@
     "user-profile": "Profile…",
     "user-settings": "Settings…",
     "user-logout": "Logout"
+  },
+  "profile": {
+    "tab": {
+      "general": "General",
+      "address": "Address",
+      "mail": "Mail",
+      "password": "Password",
+      "account": "Account",
+      "cookies": "Cookies"
+    }
+  },
+  "title": {
+    "activation": "Account activation",
+    "app": "Welcome to react using react-i18next",
+    "forgot-your-password": "Forgot your password?",
+    "cgu": "Usage general conditions",
+    "ooops": "Oooops!"
   },
   "description": {
     "part1": "To get started, edit <1>src/App.js</1> and save to reload.",

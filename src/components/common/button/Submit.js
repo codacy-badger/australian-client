@@ -10,9 +10,9 @@ library.add(faSpinner);
 
 class Submit extends Component {
   render() {
-    const { icon, name, isPending, isSuccess, onClick, rotation, t } = this.props;
+    const { icon, name, isLoading, isPending, isSuccess, onClick, rotation, t } = this.props;
     return (
-      <Button color="primary" onClick={onClick} disabled={isPending || isSuccess}>
+      <Button color="primary" onClick={onClick} disabled={isLoading || isPending || isSuccess}>
         {isPending && (
           <span>
             {"" !== icon && <FontAwesomeIcon icon="spinner" spin className="mr-1" />}
@@ -33,6 +33,7 @@ class Submit extends Component {
 
 Submit.defaultProps = {
   icon: "",
+  isLoading: false,
   rotation: 0
 };
 
@@ -40,6 +41,7 @@ Submit.defaultProps = {
 Submit.propTypes = {
   icon: PropTypes.string,
   name: PropTypes.string.isRequired,
+  isLoading: PropTypes.bool,
   isPending: PropTypes.bool.isRequired,
   isSuccess: PropTypes.bool.isRequired,
   rotation: PropTypes.oneOf([0, 90, 180, 270]),

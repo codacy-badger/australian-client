@@ -33,6 +33,34 @@
       "submit": "S’identifier",
       "submitting": "Identification en cours…"
     },
+    "profile": {
+      "additionalName": {
+        "label": "Particule",
+        "placeholder": "",
+        "helpBlock": ""
+      },
+      "familyName": {
+        "label": "Nom de famille",
+        "placeholder": "",
+        "helpBlock": ""
+      },
+      "jobTitle": {
+        "label": "Profession",
+        "placeholder": "",
+        "helpBlock": ""
+      },
+      "givenName": {
+        "label": "Prénom",
+        "placeholder": "",
+        "helpBlock": ""
+      },
+      "name": {
+        "label": "Nom affiché",
+        "placeholder": "",
+        "helpBlock": ""
+      },
+      "submit": "Enregistrer"
+    },
     "register": {
       "email": "Email",
       "email-placeholder": "Entrez votre adresse email",
@@ -47,7 +75,8 @@
   },
   "help": {
     "activation" : "Pour activer votre compte, veuillez entrer le code d’activation qui vous a été envoyé par mail.",
-    "forgot-your-password" : "Vous avez perdu votre mot de passe ? Entrez votre adresse email et vous recevrez un mail qui vous guidera étape par étape pour que vous puissiez créer un nouveau mot de passe et vous reconnecter au site."
+    "forgot-your-password" : "Vous avez perdu votre mot de passe ? Entrez votre adresse email et vous recevrez un mail qui vous guidera étape par étape pour que vous puissiez créer un nouveau mot de passe et vous reconnecter au site.",
+    "profile": "Ce formulaire vous permet de modifier votre profil. Remplissez les différents champs et cliquez sur le bouton « Enregistrer »."
   },
   "link": {
     "forgot-your-password": "Mot de passe perdu…",
@@ -63,6 +92,7 @@
       "30": "Les administrateurs ont été informés de vos difficultés, ils vont reprendre contact avec vous par mail."
     },
     "forgot-your-password-successful": "Envoi réussi",
+    "loading": "Chargement en cours…",
     "login-successful": "Identification réussie.",
     "logout-successful": "Déconnexion confirmée.",
     "logout-successful-explanations": "Votre déconnexion a été correctement enregistrée. À bientôt !",
@@ -76,13 +106,6 @@
     "please-login": "Pour accéder à cette page, vous devez vous connecter.",
     "welcome-back": "Bon retour parmi nous !"
   },
-  "title": {
-    "activation": "Activation de votre compte",
-    "app": "Bienvenue à react utilisant i18n",
-    "cgu": "Conditions générales d’utilisation",
-    "forgot-your-password": "Mot de passe perdu ?",
-    "ooops": "Oups !"
-  },
   "navbar": {
     "brand": "Berger australien",
     "select-language": "Sélectionner votre langue",
@@ -92,6 +115,24 @@
     "user-profile": "Profil…",
     "user-settings": "Paramètres…",
     "user-logout": "Déconnexion"
+  },
+  "profile": {
+    "tab": {
+      "general": "Généralités",
+      "address": "Adresse",
+      "mail": "Email",
+      "password": "Mot de passe",
+      "account": "Votre compte",
+      "cookies": "Cookies"
+    }
+  },
+  "title": {
+    "activation": "Activation de votre compte",
+    "app": "Bienvenue à react utilisant i18n",
+    "cgu": "Conditions générales d’utilisation",
+    "forgot-your-password": "Mot de passe perdu ?",
+    "ooops": "Oups !",
+    "profile": "Gestion de votre compte"
   },
   "description": {
     "part1": "Pour débuter, éditer <1>src/App.js</1> et sauvegarder pour lancer le rechargement automatique.",

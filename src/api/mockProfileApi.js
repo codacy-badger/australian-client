@@ -1,4 +1,5 @@
 import delay from "./mockDelay";
+import AppStorage from "../tools/AppStorage";
 //import * as codes from './errorCode';
 
 // This file mocks a web API by working with the hard-coded data below.
@@ -8,7 +9,9 @@ const profileResponse = {
   user: {
     id: 42,
     uuid: "42",
-    name: "toto"
+    name: "John",
+    givenName: "Johann",
+    familyName: "Doe"
   }
 };
 const successfulResponse = {
@@ -31,10 +34,10 @@ const erroredResponse = {
 };
 
 class ProfileApi {
-  static callGetProfileApi(uuid, callback) {
+  static callGetProfileApi(callback) {
     return new Promise(() => {
       setTimeout(() => {
-        if ("42" === uuid) {
+        if ("foo42bar" === AppStorage.getItem("token")) {
           return callback(profileResponse);
         } else {
           return callback(erroredResponse);

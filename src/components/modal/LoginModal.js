@@ -17,13 +17,13 @@ import {
   ModalHeader
 } from "reactstrap";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faSignInAlt } from "@fortawesome/free-solid-svg-icons";
+import { faInfoCircle, faSignInAlt } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
 import { login } from "../../actions/authActions";
 import { Link } from "react-router-dom";
 import Submit from "../common/button/Submit";
 
-library.add(faSignInAlt);
+library.add(faInfoCircle, faSignInAlt);
 
 class LoginModal extends Component {
   constructor(props) {
