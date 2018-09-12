@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Submit from "../common/button/Submit";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import { Card, CardBody, CardFooter, CardHeader, Col, Container, Form, FormGroup, Input, Label } from "reactstrap";
-import { translate } from "react-i18next";
-import { activate } from "../../actions/activationActions";
-import StatusAlert from "../common/alert/StatusAlert";
 import Header from "../common/Header";
+import StatusAlert from "../common/alert/StatusAlert";
+import Submit from "../common/button/Submit";
+import { Card, CardBody, CardFooter, CardHeader, Col, Container, Form, FormGroup, Input, Label } from "reactstrap";
+import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
+import { activate } from "../../actions/activationActions";
+import { connect } from "react-redux";
+import { translate } from "react-i18next";
 
 class ActivationPage extends Component {
   constructor(props, context) {
@@ -42,6 +43,11 @@ class ActivationPage extends Component {
 
     return (
       <div>
+        <Helmet>
+          <title>{t("meta.title.activation")}</title>
+          <meta name="description" content={t("meta.description.activation")} />
+          <meta name="keywords" content={t("meta.keywords.activation")} />
+        </Helmet>
         <Header />
         <Container className="mt-3 text-justify">
           <Form onSubmit={this.onSubmit}>

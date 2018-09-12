@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { translate } from "react-i18next";
+import Header from "../common/Header";
+import StatusAlert from "../common/alert/StatusAlert";
+import Submit from "../common/button/Submit";
 import { Card, CardBody, CardFooter, CardHeader, Col, Container, Form, FormGroup, Input, Label } from "reactstrap";
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { sendMail } from "../../actions/forgotPasswordActions";
-import Submit from "../common/button/Submit";
-import StatusAlert from "../common/alert/StatusAlert";
-import Header from "../common/Header";
+import { translate } from "react-i18next";
 
 class ForgotPasswordPage extends Component {
   constructor(props) {
@@ -42,6 +43,11 @@ class ForgotPasswordPage extends Component {
 
     return (
       <div>
+        <Helmet>
+          <title>{t("meta.title.forgotten-password")}</title>
+          <meta name="description" content={t("meta.description.forgotten-password")} />
+          <meta name="keywords" content={t("meta.keywords.forgotten-password")} />
+        </Helmet>
         <Header />
         <Container className="mt-3 text-justify">
           <Form onSubmit={this.onSubmit}>

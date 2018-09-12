@@ -1,13 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Container, Jumbotron } from "reactstrap";
-import { translate } from "react-i18next";
-import { Link } from "react-router-dom";
 import Header from "../common/Header";
+import { Container, Jumbotron } from "reactstrap";
+import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
+import { translate } from "react-i18next";
 
 const Error404Page = ({ t }) => {
   return (
     <div>
+      <Helmet>
+        <title>{t("meta.title.404")}</title>
+        <meta name="description" content={t("meta.description.404")} />
+        <meta name="keywords" content={t("meta.keywords.404")} />
+      </Helmet>
       <Header />
       <Container className="mt-3">
         <Jumbotron className="text-left">

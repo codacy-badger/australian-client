@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Header from "../common/Header";
-import { Col, Container, ListGroup, ListGroupItem, Row } from "reactstrap";
-import { translate } from "react-i18next";
-import { NavLink, Route, Switch } from "react-router-dom";
 import AddressForm from "../form/AddressForm";
 import Error404Page from "./Error404Page";
 import ProfileContainer from "../container/profile/ProfileContainer";
+import { Col, Container, ListGroup, ListGroupItem, Row } from "reactstrap";
+import { Helmet } from "react-helmet";
+import { NavLink, Route, Switch } from "react-router-dom";
+import { translate } from "react-i18next";
 
 class ProfilePage extends Component {
   render() {
@@ -14,6 +15,11 @@ class ProfilePage extends Component {
 
     return (
       <div>
+        <Helmet>
+          <title>{t("meta.title.profile")}</title>
+          <meta name="description" content={t("meta.description.profile")} />
+          <meta name="keywords" content={t("meta.keywords.profile")} />
+        </Helmet>
         <Header />
         <Container className="mt-3 text-justify">
           <h1>{t("title.profile")}</h1>

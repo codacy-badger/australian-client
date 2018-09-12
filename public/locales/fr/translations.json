@@ -107,6 +107,29 @@
     "please-login": "Pour accéder à cette page, vous devez vous connecter.",
     "welcome-back": "Bon retour parmi nous !"
   },
+  "meta": {
+    "description": {
+      "404": "Page non trouvée.",
+      "activation": "Formulaire d’activation de votre compte.",
+      "forgotten-password": "Procédure de récupération de mot de passe perdu.",
+      "profile": "Formulaires de gestion de votre profil.",
+      "homepage": "Recensement des bergers australiens."
+    },
+    "keywords": {
+      "404": "404,berger,australien,base de données,chien,aussie",
+      "activation": "compte,activation,berger,australien,base de données,chien,aussie",
+      "forgotten-password": "compte,récupération,mot de passe,berger,australien,base de données,chien,aussie",
+      "profil": "profil,gestion,berger,australien,base de données,chien,aussie",
+      "homepage": "berger,australien,base de données,chien,aussie"
+    },
+    "title": {
+      "404": "Berger australien",
+      "activation": "Activation de votre compte",
+      "forgotten-password": "Mot de passe perdu",
+      "profil": "Gestion du profil utilisateur",
+      "homepage": "Berger australien"
+    }
+  },
   "navbar": {
     "brand": "Berger australien",
     "select-language": "Sélectionner votre langue",
