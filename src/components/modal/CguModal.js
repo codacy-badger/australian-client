@@ -4,24 +4,29 @@ import { translate } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faInfoCircle, faSignInAlt } from "@fortawesome/free-solid-svg-icons";
+import { faFileSignature, faTimes } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faInfoCircle, faSignInAlt);
+library.add(faFileSignature, faTimes);
 
 class CguModal extends Component {
   render() {
-    const { accept, decline, isOpen, toggle } = this.props;
+    const { accept, decline, isOpen, t, toggle } = this.props;
 
     return (
       <Modal isOpen={isOpen} toggle={toggle}>
-        <ModalHeader>CGU</ModalHeader>
+        <ModalHeader>
+          <FontAwesomeIcon icon={faFileSignature} className="mr-1" />
+          {t("title.cgu")}
+        </ModalHeader>
         <ModalBody>Bla bla</ModalBody>
         <ModalFooter>
           <Button color="primary" onClick={accept}>
-            Accept
+            <FontAwesomeIcon icon={faFileSignature} className="mr-1" />
+            {t("button.accept")}
           </Button>
           <Button color="secondary" onClick={decline}>
-            Decline
+            <FontAwesomeIcon icon={faTimes} className="mr-1" />
+            {t("button.decline")}
           </Button>
         </ModalFooter>
       </Modal>
@@ -33,7 +38,8 @@ CguModal.propTypes = {
   accept: PropTypes.func.isRequired,
   decline: PropTypes.func.isRequired,
   isOpen: PropTypes.bool.isRequired,
+  t: PropTypes.func.isRequired,
   toggle: PropTypes.func.isRequired
 };
 
-export default translate("translations")(CguModal);
+export default translate(["cgu", "translations"])(CguModal);

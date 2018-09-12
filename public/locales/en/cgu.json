@@ -1,4 +1,8 @@
 {
+  "button": {
+    "accept": "Accept",
+    "decline": "Décline"
+  },
   "title": {
     "cgu": "Usage general conditions"
   },

@@ -21,6 +21,7 @@ class RegisterModal extends Component {
       confirmation: "",
       email: "",
       modal: false,
+      modalCgu: false,
       password: "",
       read: false,
       warning: false
