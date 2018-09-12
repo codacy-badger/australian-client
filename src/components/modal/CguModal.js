@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { translate } from "react-i18next";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import CguContent from "../common/CguContent";
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faFileSignature, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { translate } from "react-i18next";
 
 library.add(faFileSignature, faTimes);
 
@@ -18,7 +19,9 @@ class CguModal extends Component {
           <FontAwesomeIcon icon={faFileSignature} className="mr-1" />
           {t("title.cgu")}
         </ModalHeader>
-        <ModalBody>Bla bla</ModalBody>
+        <ModalBody>
+          <CguContent />
+        </ModalBody>
         <ModalFooter>
           <Button color="primary" onClick={accept}>
             <FontAwesomeIcon icon={faFileSignature} className="mr-1" />
