@@ -1,9 +1,11 @@
-body{
+body {
   counter-reset: h2;
 }
+
 img.flag-in-navbar {
   margin-top: -3px;
 }
+
 .App {
   text-align: center;
 }
@@ -32,4 +34,8 @@ h2.article {
 h2.article:before {
   content: counter(h2) ". ";
   counter-increment: h2;
+}
+
+.jumbotron.loading {
+  font-size: xx-large;
 }

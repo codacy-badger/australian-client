@@ -2,8 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import ProfileForm from "../../common/form/ProfileForm";
+import ProfileForm from "../../form/ProfileForm";
 import { getProfile, profileUpdate } from "../../../actions/profileActions";
+import LoadingJumbotron from "../../common/jumbotron/LoadingJumbotron";
 
 class ProfileContainer extends React.Component {
   constructor(props, context) {
@@ -42,10 +43,11 @@ class ProfileContainer extends React.Component {
   }
 
   render() {
-    const { user, isLoading, ...status } = this.props;
+    const { isLoading, ...status } = this.props;
+    delete status.user;
 
     if (isLoading) {
-      return <div>Loading</div>;
+      return <LoadingJumbotron />;
     }
 
     return <ProfileForm {...this.state} {...status} onSubmit={this.onSubmit} onChange={this.onChange} />;

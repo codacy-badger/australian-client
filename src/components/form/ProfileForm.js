@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import StatusAlert from "../../common/alert/StatusAlert";
-import HelpBlock from "../help/HelpBlock";
-import Submit from "../../common/button/Submit";
+import StatusAlert from "../common/alert/StatusAlert";
+import HelpBlock from "../common/help/HelpBlock";
+import Submit from "../common/button/Submit";
 import { Col, Form, FormGroup, Label, Input } from "reactstrap";
 import { translate } from "react-i18next";
 
