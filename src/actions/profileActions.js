@@ -59,28 +59,27 @@ function setProfileError(isProfileError, error = initialState.profile.error) {
   };
 }
 
-export function profileUpdate(email, password) {
+export function profileUpdate(data) {
   return (dispatch) => {
     dispatch(setProfilePending(true));
-    dispatch(setProfileSuccess(false));
+    dispatch(setProfileSuccess(false, data));
     dispatch(setProfileError(false));
 
-    profileActionApi.callUpdateApi(email, password, (result) => {
+    profileActionApi.callUpdateApi(data, (result) => {
       dispatch(setProfilePending(false));
-      if (result.token) {
+      if (result.success) {
         dispatch(setProfileSuccess(true, result.user, result.success));
         setTimeout(() => {
           dispatch(setProfileMessagePrinted(false));
         }, 1000);
       } else {
-        dispatch(setProfileError(true, result));
+        dispatch(setProfileError(true, result.error));
       }
     });
   };
 }
 
 export function getProfile() {
-
   return (dispatch) => {
     dispatch(setProfileLoading(true));
     profileActionApi.callGetProfileApi((result) => {

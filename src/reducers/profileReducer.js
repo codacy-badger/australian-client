@@ -27,8 +27,8 @@ export default function profileReducer(state = initialState.profile, action) {
     case types.SET_PROFILE_SUCCESS:
       return Object.assign({}, state, {
         isProfileSuccess: action.isProfileSuccess,
-        success: action.success,
-        user: action.user
+        user: action.user,
+        success: action.success
       });
 
     case types.SET_PROFILE_ERROR:

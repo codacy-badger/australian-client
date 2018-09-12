@@ -13,7 +13,7 @@ const getProfileSuccess = {
     name: "John",
     jobTitle: "Administrator"
   },
-  success: true,
+  success: true
 };
 const getProfileError = {
   success: false,
@@ -25,12 +25,13 @@ const successfulResponse = {
     message: "Profile updated"
   },
   user: {
-    id: 42,
-    uuid: "42",
-    name: "toto"
+    additionalName: "42",
+    givenName: "Johann",
+    familyName: "Doe",
+    name: "John",
+    jobTitle: "Administrator"
   }
 };
-
 const erroredResponse = {
   error: {
     code: 30,
@@ -51,10 +52,11 @@ class ProfileApi {
     });
   }
 
-  static callUpdateApi(email, password, callback) {
+  static callUpdateApi(data, callback) {
     return new Promise(() => {
       setTimeout(() => {
-        if ("profile@example.org" === email) {
+        const { additionalName } = data;
+        if ("42" === additionalName) {
           return callback(successfulResponse);
         } else {
           return callback(erroredResponse);

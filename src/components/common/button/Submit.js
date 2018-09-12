@@ -33,8 +33,8 @@ class Submit extends Component {
 
 Submit.defaultProps = {
   icon: "",
-  isLoading: false,
-  rotation: 0
+  rotation: 0,
+  isSuccess: false
 };
 
 // The propTypes.
@@ -42,7 +42,7 @@ Submit.propTypes = {
   icon: PropTypes.string,
   name: PropTypes.string.isRequired,
   isPending: PropTypes.bool.isRequired,
-  isSuccess: PropTypes.bool.isRequired,
+  isSuccess: PropTypes.bool,
   rotation: PropTypes.oneOf([0, 90, 180, 270]),
   onClick: PropTypes.func.isRequired
 };
