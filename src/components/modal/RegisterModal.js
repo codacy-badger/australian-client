@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { translate } from "react-i18next";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ResultAlert from "../common/alert/ResultAlert";
+import Submit from "../common/button/Submit";
+import HelpBlock from "../common/help/HelpBlock";
 import {
   Button,
   Col,
   Form,
   FormGroup,
-  FormText,
   Input,
   Label,
   Modal,
@@ -15,12 +15,12 @@ import {
   ModalFooter,
   ModalHeader
 } from "reactstrap";
-import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInfoCircle, faCheckCircle, faExclamationTriangle, faSignInAlt } from "@fortawesome/free-solid-svg-icons";
+import { library } from "@fortawesome/fontawesome-svg-core";
 import { connect } from "react-redux";
 import { register } from "../../actions/registerActions";
-import Submit from "../common/button/Submit";
-import ResultAlert from "../common/alert/ResultAlert";
+import { translate } from "react-i18next";
 
 library.add(faInfoCircle, faCheckCircle, faExclamationTriangle, faSignInAlt);
 
@@ -28,10 +28,12 @@ class RegisterModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      modal: false,
+      confirmation: "",
       email: "",
+      modal: false,
       password: "",
-      confirmation: ""
+      read: false,
+      warning: false
     };
 
     this.onChange = this.onChange.bind(this);
@@ -49,17 +51,23 @@ class RegisterModal extends Component {
 
   onChange(e) {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: "checkbox" === e.target.type ? e.target.checked : e.target.value
     });
   }
+
 
   onSubmit(e) {
     e.preventDefault();
 
     const { register } = this.props;
-    const { email, password, confirmation } = this.state;
+    const { confirmation, email, password, read } = this.state;
 
-    if (password === confirmation) {
+    this.setState({
+      warning: !read
+    });
+
+    //FIXME Validation job is not done.
+    if (read && email && password && password === confirmation) {
       register(email, password);
     }
   }
@@ -71,7 +79,7 @@ class RegisterModal extends Component {
   }
 
   render() {
-    const { confirmation, email, modal, password } = this.state;
+    const { confirmation, email, modal, read, password, warning } = this.state;
     const { error, isRegisterPending, isRegisterSuccess, isRegisterError, nextStep, t } = this.props;
 
     return (
@@ -109,6 +117,7 @@ class RegisterModal extends Component {
                 {t("form.register.password")}
               </Label>
               <Col sm={8}>
+                {/* TODO Create a component which evaluate password strength */}
                 <Input
                   type="password"
                   name="password"
@@ -136,25 +145,34 @@ class RegisterModal extends Component {
                 />
                 {password === confirmation &&
                   "" === password && (
-                    <FormText color="muted">
-                      <FontAwesomeIcon fixedWidth icon="info-circle" className="mr-1" />
-                      {t("form.register.password-confirmation-helpBlock")}
-                    </FormText>
+                  <HelpBlock>{t("form.register.password-confirmation-helpBlock")}</HelpBlock>
                   )}
                 {password !== confirmation &&
                   ("" !== password || "" !== confirmation) && (
-                    <FormText color="warning">
-                      <FontAwesomeIcon fixedWidth icon="exclamation-triangle" className="mr-1" />
-                      {t("message.password-not-confirmed")}
-                    </FormText>
+                    <HelpBlock color="warning">{t("message.password-not-confirmed")}</HelpBlock>
                   )}
                 {password === confirmation &&
                   ("" !== password || "" !== confirmation) && (
-                    <FormText color="success">
-                      <FontAwesomeIcon fixedWidth icon="check-circle" className="mr-1" />
-                      {t("message.password-confirmed")}
-                    </FormText>
+                    <HelpBlock color="success">{t("message.password-confirmed")}</HelpBlock>
                   )}
+              </Col>
+            </FormGroup>
+            <FormGroup check>
+              <Col sm={{size:8, offset:4}}>
+                <Label check>
+                  <Input
+                    type="checkbox"
+                    name="read"
+                    id="read"
+                    checked={read}
+                    required
+                    onChange={this.onChange}
+                  />
+                  {t("form.register.read.label")}
+                </Label>
+                {warning && !read && (
+                  <HelpBlock color="warning">{t("form.register.read.helpBlock")}</HelpBlock>
+                )}
               </Col>
             </FormGroup>
           </ModalBody>

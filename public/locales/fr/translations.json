@@ -70,6 +70,10 @@
       "password-confirmation": "Confirmation",
       "password-confirmation-placeholder": "Confirmer ce mot de passe",
       "password-confirmation-helpBlock": "Les deux saisies doivent être identiques",
+      "read": {
+        "label": "J’ai lu et accepte les conditions générales d’utilisation",
+        "helpBlock": "Veuillez lire et accepter les CGU"
+      },
       "submit": "S’inscrire",
       "submitting": "Inscription en cours…"
     }

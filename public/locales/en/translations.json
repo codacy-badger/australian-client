@@ -47,6 +47,7 @@
       "password-confirmation": "Confirmation",
       "password-confirmation-placeholder": "Confirm your password",
       "password-confirmation-helpBlock": "Password and confirmation fields should be equals.",
+      "read": "I read and accept usage general conditions.",
       "submit": "Register",
       "submitting": "Registering…"
     }
