@@ -3,24 +3,14 @@ import PropTypes from "prop-types";
 import ResultAlert from "../common/alert/ResultAlert";
 import Submit from "../common/button/Submit";
 import HelpBlock from "../common/help/HelpBlock";
-import {
-  Button,
-  Col,
-  Form,
-  FormGroup,
-  Input,
-  Label,
-  Modal,
-  ModalBody,
-  ModalFooter,
-  ModalHeader
-} from "reactstrap";
+import { Button, Col, Form, FormGroup, Input, Label, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInfoCircle, faCheckCircle, faExclamationTriangle, faSignInAlt } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { connect } from "react-redux";
 import { register } from "../../actions/registerActions";
 import { translate } from "react-i18next";
+import CguModal from "./CguModal";
 
 library.add(faInfoCircle, faCheckCircle, faExclamationTriangle, faSignInAlt);
 
@@ -51,7 +41,7 @@ class RegisterModal extends Component {
     });
     this.toggleCgu();
   }
-  
+
   decline() {
     this.setState({
       read: false,
@@ -101,7 +91,6 @@ class RegisterModal extends Component {
       modalCgu: !this.state.modalCgu
     });
   }
-
 
   render() {
     const { confirmation, email, modal, modalCgu, read, password, warning } = this.state;
@@ -170,9 +159,7 @@ class RegisterModal extends Component {
                     value={confirmation}
                   />
                   {password === confirmation &&
-                    "" === password && (
-                    <HelpBlock>{t("form.register.password-confirmation-helpBlock")}</HelpBlock>
-                    )}
+                    "" === password && <HelpBlock>{t("form.register.password-confirmation-helpBlock")}</HelpBlock>}
                   {password !== confirmation &&
                     ("" !== password || "" !== confirmation) && (
                       <HelpBlock color="warning">{t("message.password-not-confirmed")}</HelpBlock>
@@ -184,21 +171,14 @@ class RegisterModal extends Component {
                 </Col>
               </FormGroup>
               <FormGroup check>
-                <Col sm={{size:8, offset:4}}>
+                <Col sm={{ size: 8, offset: 4 }}>
                   <Label check>
-                    <Input
-                      type="checkbox"
-                      name="read"
-                      id="read"
-                      checked={read}
-                      required
-                      onChange={this.onChange}
-                    />
-                    <a href={"#"} onClick={this.toggleCgu}>{t("form.register.read.label")}</a>
+                    <Input type="checkbox" name="read" id="read" checked={read} required onChange={this.onChange} />
+                    <a href={"#"} onClick={this.toggleCgu}>
+                      {t("form.register.read.label")}
+                    </a>
                   </Label>
-                  {warning && !read && (
-                    <HelpBlock color="warning">{t("form.register.read.helpBlock")}</HelpBlock>
-                  )}
+                  {warning && !read && <HelpBlock color="warning">{t("form.register.read.helpBlock")}</HelpBlock>}
                 </Col>
               </FormGroup>
             </ModalBody>
@@ -217,14 +197,7 @@ class RegisterModal extends Component {
             </ModalFooter>
           </Form>
         </Modal>
-        <Modal isOpen={modalCgu} toggle={this.toggleCgu}>
-          <ModalHeader>CGU</ModalHeader>
-          <ModalBody>Bla bla</ModalBody>
-          <ModalFooter>
-            <Button color="primary" onClick={this.accept}>Accept</Button>
-            <Button color="secondary" onClick={this.decline}>Decline</Button>
-          </ModalFooter>
-        </Modal>
+        <CguModal accept={this.accept} decline={this.decline} isOpen={modalCgu} toggle={this.toggleCgu} />
       </div>
     );
   }
