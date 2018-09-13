@@ -12,7 +12,7 @@ class Submit extends Component {
   render() {
     const { icon, name, isPending, isSuccess, onClick, rotation, t } = this.props;
     return (
-      <Button color="primary" onClick={onClick} disabled={isPending || isSuccess}>
+      <Button type="submit" color="primary" onClick={onClick} disabled={isPending || isSuccess}>
         {isPending && (
           <span>
             {"" !== icon && <FontAwesomeIcon icon="spinner" spin className="mr-1" />}
