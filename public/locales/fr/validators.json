@@ -1,0 +1,5 @@
+{
+  "email is not a valid email": "Veuillez entrer une adresse email valide.",
+  "email is required": "Veuillez renseigner votre adresse email.",
+  "password is required": "Veuillez entrer votre mot de passe."
+}

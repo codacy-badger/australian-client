@@ -1,0 +1,5 @@
+{
+  "email is not a valid email": "Please enter a valid email.",
+  "email is required": "Your email is required.",
+  "password is required": "Please, enter your password."
+}

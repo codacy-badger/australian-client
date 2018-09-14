@@ -1,68 +1,108 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
+import Submit from "../common/button/Submit";
 import { Col, Form, FormGroup, FormText, Input, Label } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
-import Submit from "../common/button/Submit";
+import { createForm, formShape } from "rc-form";
 import { translate } from "react-i18next";
+import HelpBlockErrors from "../common/help/HelpBlockErrors";
 
-const LoginForm = ({ email, isPending, isSuccess, onChange, onSubmit, password, rememberMe, t }) => {
-  return (
-    <Form onSubmit={onSubmit}>
-      <FormGroup row>
-        <Label for="loginEmail" sm={4}>
-          {t("form.login.email")}
-        </Label>
-        <Col sm={8}>
-          <Input
-            type="email"
-            name="email"
-            id="loginEmail"
-            value={email}
-            placeholder="john.doe@example.org"
-            required
-            onChange={onChange}
-          />
-        </Col>
-      </FormGroup>
-      <FormGroup row>
-        <Label for="loginPassword" sm={4}>
-          {t("form.login.password")}
-        </Label>
-        <Col sm={8}>
-          <Input
-            type="password"
-            name="password"
-            id="loginPassword"
-            value={password}
-            placeholder={t("form.login.password-placeholder")}
-            required
-            onChange={onChange}
-          />
-          <FormText color="muted">
-            <FontAwesomeIcon fixedWidth icon="info-circle" className="mr-1 text-info" />
-            <Link to="/forgot-your-password" title={t("link.forgot-your-password-title")}>
-              {t("link.forgot-your-password")}
-            </Link>
-          </FormText>
-        </Col>
-      </FormGroup>
-      <FormGroup check>
-        <Col sm={{ size: 8, offset: 4 }}>
-          <Label check>
-            <Input type="checkbox" name="rememberMe" id="rememberMe" checked={rememberMe} onChange={onChange} />
-            {t("form.login.rememberMe")}
+class LoginForm extends Component {
+  constructor(props) {
+    super(props);
+
+    this.internalSubmit = this.internalSubmit.bind(this);
+  }
+
+  internalSubmit(e) {
+    e.preventDefault();
+
+    this.props.form.validateFields((error) => {
+      if (!error) {
+        this.props.onSubmit(e);
+      }
+    });
+  }
+
+  render() {
+    const { email, isPending, isSuccess, onChange, password, rememberMe, t } = this.props;
+    const { getFieldProps, getFieldError } = this.props.form;
+
+    return (
+      <Form onSubmit={this.internalSubmit}>
+        <FormGroup row>
+          <Label for="loginEmail" sm={4}>
+            {t("form.login.email")}
           </Label>
-        </Col>
-      </FormGroup>
-      <Submit icon="sign-in-alt" name="login" isPending={isPending} isSuccess={isSuccess} onClick={onSubmit} />
-    </Form>
-  );
-};
+          <Col sm={8}>
+            <Input
+              id="loginEmail"
+              placeholder="john.doe@example.org"
+              name="email"
+              {...getFieldProps("email", {
+                initialValue: email,
+                onChange: onChange,
+                rules: [
+                  {
+                    type: "email",
+                    required: true
+                  }
+                ]
+              })}
+            />
+            <HelpBlockErrors errors={getFieldError("email")} />
+          </Col>
+        </FormGroup>
+        <FormGroup row>
+          <Label for="loginPassword" sm={4}>
+            {t("form.login.password")}
+          </Label>
+          <Col sm={8}>
+            <Input
+              type="password"
+              name="password"
+              id="loginPassword"
+              {...getFieldProps("password", {
+                initialValue: password,
+                onChange: onChange,
+                rules: [{ required: true }]
+              })}
+              placeholder={t("form.login.password-placeholder")}
+            />
+            <HelpBlockErrors errors={getFieldError("password")} />
+            <FormText color="muted">
+              <FontAwesomeIcon fixedWidth icon="info-circle" className="mr-1 text-info" />
+              <Link to="/forgot-your-password" title={t("link.forgot-your-password-title")}>
+                {t("link.forgot-your-password")}
+              </Link>
+            </FormText>
+          </Col>
+        </FormGroup>
+        <FormGroup check>
+          <Col sm={{ size: 8, offset: 4 }}>
+            <Label check>
+              <Input type="checkbox" name="rememberMe" id="rememberMe" checked={rememberMe} onChange={onChange} />
+              {t("form.login.rememberMe")}
+            </Label>
+          </Col>
+        </FormGroup>
+        <Submit
+          icon="sign-in-alt"
+          name="login"
+          isPending={isPending}
+          isSuccess={isSuccess}
+          onClick={this.internalSubmit}
+        />
+      </Form>
+    );
+  }
+}
 
 // The propTypes.
 LoginForm.propTypes = {
   email: PropTypes.string.isRequired,
+  form: formShape,
   isPending: PropTypes.bool.isRequired,
   isSuccess: PropTypes.bool.isRequired,
   onChange: PropTypes.func.isRequired,
@@ -72,4 +112,4 @@ LoginForm.propTypes = {
   t: PropTypes.func.isRequired
 };
 
-export default translate("translations")(LoginForm);
+export default translate(["translations"])(createForm()(LoginForm));
