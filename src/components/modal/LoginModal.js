@@ -36,8 +36,6 @@ class LoginModal extends Component {
   }
 
   onChange(e) {
-    console.dir(e.target);
-    console.dir(e);
     this.setState({
       [e.target.name]: "checkbox" === e.target.type ? e.target.checked : e.target.value
     });
