@@ -9,6 +9,7 @@ import { connect } from "react-redux";
 import { login } from "../../actions/authActions";
 import { Link } from "react-router-dom";
 import LoginForm from "../form/LoginForm";
+import Submit from "../common/button/Submit";
 
 library.add(faInfoCircle, faSignInAlt);
 
@@ -23,6 +24,7 @@ class LoginModal extends Component {
     };
 
     this.onChange = this.onChange.bind(this);
+    this.onClick = this.onClick.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.toggle = this.toggle.bind(this);
   }
@@ -48,6 +50,15 @@ class LoginModal extends Component {
     const { email, password, rememberMe } = this.state;
 
     login(email, password, rememberMe);
+
+    this.setState({
+      password: ""
+    });
+  }
+
+  onClick(e) {
+    e.preventDefault();
+    this.loginForm.internalSubmit(e);
   }
 
   toggle() {
@@ -86,10 +97,18 @@ class LoginModal extends Component {
             isPending={isLoginPending}
             isSuccess={isLoginSuccess}
             onChange={this.onChange}
+            onRef={(ref) => (this.loginForm = ref)}
             onSubmit={this.onSubmit}
           />
         </ModalBody>
         <ModalFooter>
+          <Submit
+            icon="sign-in-alt"
+            name="login"
+            isPending={isLoginPending}
+            isSuccess={isLoginSuccess}
+            onClick={this.onClick}
+          />
           {warning || (
             <Button color="secondary" onClick={this.toggle}>
               {t("button.cancel")}

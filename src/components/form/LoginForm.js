@@ -15,6 +15,14 @@ class LoginForm extends Component {
     this.internalSubmit = this.internalSubmit.bind(this);
   }
 
+  componentDidMount() {
+    this.props.onRef(this);
+  }
+
+  componentWillUnmount() {
+    this.props.onRef();
+  }
+
   internalSubmit(e) {
     e.preventDefault();
 
@@ -26,7 +34,7 @@ class LoginForm extends Component {
   }
 
   render() {
-    const { email, isPending, isSuccess, onChange, password, rememberMe, t } = this.props;
+    const { email, isPending, isSuccess, onChange, password, rememberMe, submitRender, t } = this.props;
     const { getFieldProps, getFieldError } = this.props.form;
 
     return (
@@ -87,17 +95,23 @@ class LoginForm extends Component {
             </Label>
           </Col>
         </FormGroup>
-        <Submit
-          icon="sign-in-alt"
-          name="login"
-          isPending={isPending}
-          isSuccess={isSuccess}
-          onClick={this.internalSubmit}
-        />
+        {submitRender && (
+          <Submit
+            icon="sign-in-alt"
+            name="login"
+            isPending={isPending}
+            isSuccess={isSuccess}
+            onClick={this.internalSubmit}
+          />
+        )}
       </Form>
     );
   }
 }
+
+LoginForm.defaultProps = {
+  submitRender: false
+};
 
 // The propTypes.
 LoginForm.propTypes = {
@@ -109,6 +123,7 @@ LoginForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   password: PropTypes.string.isRequired,
   rememberMe: PropTypes.bool.isRequired,
+  submitRender: PropTypes.bool,
   t: PropTypes.func.isRequired
 };
 
