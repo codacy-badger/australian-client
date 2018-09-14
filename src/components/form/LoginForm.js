@@ -53,7 +53,7 @@ class LoginForm extends Component {
               name="email"
               {...getFieldProps("email", {
                 initialValue: email,
-                onChange: onChange,
+                onChange,
                 rules: [
                   {
                     type: "email",
@@ -77,7 +77,7 @@ class LoginForm extends Component {
               className={passwordErrors ? "is-invalid" : ""}
               {...getFieldProps("password", {
                 initialValue: password,
-                onChange: onChange,
+                onChange,
                 rules: [{ required: true }]
               })}
               placeholder={t("form.login.password-placeholder")}
