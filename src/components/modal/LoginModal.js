@@ -151,7 +151,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    login: (email, password) => dispatch(login(email, password))
+    login: (email, password, remember) => dispatch(login(email, password, remember))
   };
 }
 

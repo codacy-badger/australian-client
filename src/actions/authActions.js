@@ -54,7 +54,7 @@ function setLogoutSuccess(isLogoutSuccess, auth = {}) {
   };
 }
 
-export function login(email, password, rememberMe) {
+export function login(email, password, rememberMe = false) {
   return (dispatch) => {
     dispatch(setLoginPending(true));
     dispatch(setLoginSuccess(false));
