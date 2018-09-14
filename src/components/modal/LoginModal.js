@@ -2,26 +2,13 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { translate } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  Alert,
-  Button,
-  Col,
-  Form,
-  FormGroup,
-  FormText,
-  Input,
-  Label,
-  Modal,
-  ModalBody,
-  ModalFooter,
-  ModalHeader
-} from "reactstrap";
+import { Alert, Button, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faInfoCircle, faSignInAlt } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
 import { login } from "../../actions/authActions";
 import { Link } from "react-router-dom";
-import Submit from "../common/button/Submit";
+import LoginForm from "../form/LoginForm";
 
 library.add(faInfoCircle, faSignInAlt);
 
@@ -49,6 +36,8 @@ class LoginModal extends Component {
   }
 
   onChange(e) {
+    console.dir(e.target);
+    console.dir(e);
     this.setState({
       [e.target.name]: "checkbox" === e.target.type ? e.target.checked : e.target.value
     });
@@ -58,7 +47,7 @@ class LoginModal extends Component {
     e.preventDefault();
 
     const { login } = this.props;
-    const { email, password, rememberMe} = this.state;
+    const { email, password, rememberMe } = this.state;
 
     login(email, password, rememberMe);
   }
@@ -75,95 +64,45 @@ class LoginModal extends Component {
 
     return (
       <Modal isOpen={warning || modal} toggle={this.toggle}>
-        <Form onSubmit={this.onSubmit}>
-          <ModalHeader toggle={this.toggleLoginModal}>
-            <FontAwesomeIcon fixedWidth icon="sign-in-alt" /> {t("navbar.user-login")}
-          </ModalHeader>
-          <ModalBody>
-            {warning &&
-              !isLoginError && (
-                <Alert color="warning" className="text-center">
-                  {t("message.please-login")}
-                </Alert>
-              )}
-            {isLoginError && (
-              <Alert color="danger" className="text-center">
-                {t("error." + error.code)}
+        <ModalHeader toggle={this.toggleLoginModal}>
+          <FontAwesomeIcon fixedWidth icon="sign-in-alt" /> {t("navbar.user-login")}
+        </ModalHeader>
+        <ModalBody>
+          {warning &&
+            !isLoginError && (
+              <Alert color="warning" className="text-center">
+                {t("message.please-login")}
               </Alert>
             )}
-            <FormGroup row>
-              <Label for="loginEmail" sm={4}>
-                {t("form.login.email")}
-              </Label>
-              <Col sm={8}>
-                <Input
-                  type="email"
-                  name="email"
-                  id="loginEmail"
-                  value={email}
-                  placeholder="john.doe@example.org"
-                  required
-                  onChange={this.onChange}
-                />
-              </Col>
-            </FormGroup>
-            <FormGroup row>
-              <Label for="loginPassword" sm={4}>
-                {t("form.login.password")}
-              </Label>
-              <Col sm={8}>
-                <Input
-                  type="password"
-                  name="password"
-                  id="loginPassword"
-                  value={password}
-                  placeholder={t("form.login.password-placeholder")}
-                  required
-                  onChange={this.onChange}
-                />
-                <FormText color="muted">
-                  <FontAwesomeIcon fixedWidth icon="info-circle" className="mr-1 text-info" />
-                  <Link to="/forgot-your-password" title={t("link.forgot-your-password-title")} onClick={this.toggle}>
-                    {t("link.forgot-your-password")}
-                  </Link>
-                </FormText>
-              </Col>
-            </FormGroup>
-            <FormGroup check>
-              <Col sm={{size:8, offset:4}}>
-                <Label check>
-                  <Input
-                    type="checkbox"
-                    name="rememberMe"
-                    id="rememberMe"
-                    checked={rememberMe}
-                    onChange={this.onChange}
-                  />
-                  {t("form.login.rememberMe")}
-                </Label>
-              </Col>
-            </FormGroup>
-          </ModalBody>
-          <ModalFooter>
-            <Submit
-              icon="sign-in-alt"
-              name="login"
-              isPending={isLoginPending}
-              isSuccess={isLoginSuccess}
-              onClick={this.onSubmit}
-            />
-            {warning || (
-              <Button color="secondary" onClick={this.toggle}>
-                {t("button.cancel")}
-              </Button>
-            )}
-            {!warning || (
-              <Link to="/" className="btn btn-secondary">
-                {t("button.cancel")}
-              </Link>
-            )}
-          </ModalFooter>
-        </Form>
+          {isLoginError && (
+            <Alert color="danger" className="text-center">
+              {t("error." + error.code)}
+            </Alert>
+          )}
+          <LoginForm
+            email={email}
+            error={error}
+            password={password}
+            rememberMe={rememberMe}
+            isError={isLoginError}
+            isPending={isLoginPending}
+            isSuccess={isLoginSuccess}
+            onChange={this.onChange}
+            onSubmit={this.onSubmit}
+          />
+        </ModalBody>
+        <ModalFooter>
+          {warning || (
+            <Button color="secondary" onClick={this.toggle}>
+              {t("button.cancel")}
+            </Button>
+          )}
+          {!warning || (
+            <Link to="/" className="btn btn-secondary">
+              {t("button.cancel")}
+            </Link>
+          )}
+        </ModalFooter>
       </Modal>
     );
   }
