@@ -36,6 +36,8 @@ class LoginForm extends Component {
   render() {
     const { email, isPending, isSuccess, onChange, password, rememberMe, submitRender, t } = this.props;
     const { getFieldProps, getFieldError } = this.props.form;
+    const passwordErrors = getFieldError("password");
+    const emailErrors = getFieldError("email");
 
     return (
       <Form onSubmit={this.internalSubmit}>
@@ -47,6 +49,7 @@ class LoginForm extends Component {
             <Input
               id="loginEmail"
               placeholder="john.doe@example.org"
+              className={emailErrors ? "is-invalid" : ""}
               name="email"
               {...getFieldProps("email", {
                 initialValue: email,
@@ -59,7 +62,7 @@ class LoginForm extends Component {
                 ]
               })}
             />
-            <HelpBlockErrors errors={getFieldError("email")} />
+            <HelpBlockErrors errors={emailErrors} />
           </Col>
         </FormGroup>
         <FormGroup row>
@@ -71,6 +74,7 @@ class LoginForm extends Component {
               type="password"
               name="password"
               id="loginPassword"
+              className={passwordErrors ? "is-invalid" : ""}
               {...getFieldProps("password", {
                 initialValue: password,
                 onChange: onChange,
@@ -78,7 +82,7 @@ class LoginForm extends Component {
               })}
               placeholder={t("form.login.password-placeholder")}
             />
-            <HelpBlockErrors errors={getFieldError("password")} />
+            <HelpBlockErrors errors={passwordErrors} />
             <FormText color="muted">
               <FontAwesomeIcon fixedWidth icon="info-circle" className="mr-1 text-info" />
               <Link to="/forgot-your-password" title={t("link.forgot-your-password-title")}>
