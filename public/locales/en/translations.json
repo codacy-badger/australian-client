@@ -90,6 +90,7 @@
       "activation": "Account activation.",
       "forgotten-password": "This process help you to recover your forgotten password.",
       "homepage": "Australian shepherd census.",
+      "login": "Login form",
       "profile": "Profile forms.",
       "register": "Inscription"
     },
@@ -98,6 +99,7 @@
       "activation": "account,activation,shepherd,australian,database,dog,aussie",
       "forgotten-password": "account,recovering,password,shepherd,australian,database,dog,aussie",
       "homepage": "shepherd,australian,database,dog,aussie",
+      "login": "login,shepherd,australian,database,dog,aussie",
       "profile": "profile,management,shepherd,australian,database,dog,aussie",
       "register": "register,shepherd,australian,database,dog,aussie"
     },
@@ -106,6 +108,7 @@
       "activation": "Account activation",
       "forgotten-password": "Forgotten password",
       "homepage": "Australian shepherd",
+      "login": "Australian shepherd - Login",
       "profile": "User profile",
       "register": "Registration"
     }

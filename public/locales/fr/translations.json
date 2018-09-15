@@ -117,6 +117,7 @@
       "activation": "Formulaire d’activation de votre compte.",
       "forgotten-password": "Procédure de récupération de mot de passe perdu.",
       "homepage": "Recensement des bergers australiens.",
+      "login": "Formulaire de connexion au site référençant les bergers australiens.",
       "profile": "Formulaires de gestion de votre profil.",
       "register": "Formulaire d’inscription"
     },
@@ -125,6 +126,7 @@
       "activation": "compte,activation,berger,australien,base de données,chien,aussie",
       "forgotten-password": "compte,récupération,mot de passe,berger,australien,base de données,chien,aussie",
       "homepage": "berger,australien,base de données,chien,aussie",
+      "login": "login,berger,australien,base de données,chien,aussie",
       "profile": "profil,gestion,berger,australien,base de données,chien,aussie",
       "register": "register,berger,australien,base de données,chien,aussie"
     },
@@ -133,6 +135,7 @@
       "activation": "Activation de votre compte",
       "forgotten-password": "Mot de passe perdu",
       "homepage": "Berger australien",
+      "login": "Berger australien - Page de connexion",
       "profile": "Gestion du profil utilisateur",
       "register": "Inscription"
     }
