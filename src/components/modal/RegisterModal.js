@@ -1,18 +1,18 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import CguModal from "./CguModal";
 import ResultAlert from "../common/alert/ResultAlert";
+import RegisterForm from "../form/RegisterForm";
 import Submit from "../common/button/Submit";
-import HelpBlock from "../common/help/HelpBlock";
-import { Button, Col, Form, FormGroup, Input, Label, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
+import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInfoCircle, faCheckCircle, faExclamationTriangle, faSignInAlt } from "@fortawesome/free-solid-svg-icons";
-import { library } from "@fortawesome/fontawesome-svg-core";
 import { connect } from "react-redux";
+import { faSignInAlt } from "@fortawesome/free-solid-svg-icons";
+import { library } from "@fortawesome/fontawesome-svg-core";
 import { register } from "../../actions/registerActions";
 import { translate } from "react-i18next";
-import CguModal from "./CguModal";
 
-library.add(faInfoCircle, faCheckCircle, faExclamationTriangle, faSignInAlt);
+library.add(faSignInAlt);
 
 class RegisterModal extends Component {
   constructor(props) {
@@ -23,13 +23,13 @@ class RegisterModal extends Component {
       modal: false,
       modalCgu: false,
       password: "",
-      read: false,
-      warning: false
+      read: false
     };
 
     this.accept = this.accept.bind(this);
     this.decline = this.decline.bind(this);
     this.onChange = this.onChange.bind(this);
+    this.onClick = this.onClick.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.toggle = this.toggle.bind(this);
     this.toggleCgu = this.toggleCgu.bind(this);
@@ -37,16 +37,14 @@ class RegisterModal extends Component {
 
   accept() {
     this.setState({
-      read: true,
-      warning: false
+      read: true
     });
     this.toggleCgu();
   }
 
   decline() {
     this.setState({
-      read: false,
-      warning: true
+      read: false
     });
     this.toggleCgu();
   }
@@ -65,20 +63,18 @@ class RegisterModal extends Component {
     });
   }
 
+  onClick(e) {
+    e.preventDefault();
+    this.registerForm.internalSubmit(e);
+  }
+
   onSubmit(e) {
     e.preventDefault();
 
     const { register } = this.props;
-    const { confirmation, email, password, read } = this.state;
+    const { email, password } = this.state;
 
-    this.setState({
-      warning: !read
-    });
-
-    //FIXME Validation job is not done.
-    if (read && email && password && password === confirmation) {
-      register(email, password);
-    }
+    register(email, password);
   }
 
   toggle() {
@@ -94,109 +90,50 @@ class RegisterModal extends Component {
   }
 
   render() {
-    const { confirmation, email, modal, modalCgu, read, password, warning } = this.state;
+    const { confirmation, email, modal, modalCgu, read, password } = this.state;
     const { error, isRegisterPending, isRegisterSuccess, isRegisterError, nextStep, t } = this.props;
 
     return (
       <div>
         <Modal isOpen={modal} toggle={this.toggle} size="lg">
-          <Form onSubmit={this.onSubmit}>
-            <ModalHeader toggle={this.toggleRegisterModal}>
-              <FontAwesomeIcon fixedWidth icon="sign-in-alt" rotation={270} /> {t("navbar.user-register")}
-            </ModalHeader>
-            <ModalBody>
-              <ResultAlert
-                code="register"
-                isError={isRegisterError}
-                isSuccess={isRegisterSuccess}
-                error={error}
-                success={nextStep}
-              />
-              <FormGroup row>
-                <Label for="registerEmail" sm={4}>
-                  {t("form.register.email")}
-                </Label>
-                <Col sm={8}>
-                  <Input
-                    type="email"
-                    name="email"
-                    id="registerEmail"
-                    placeholder={t("form.register.email-placeholder")}
-                    value={email}
-                    required
-                    onChange={this.onChange}
-                  />
-                </Col>
-              </FormGroup>
-              <FormGroup row>
-                <Label for="registerPassword" sm={4}>
-                  {t("form.register.password")}
-                </Label>
-                <Col sm={8}>
-                  {/* TODO Create a component which evaluate password strength */}
-                  <Input
-                    type="password"
-                    name="password"
-                    id="registerPassword"
-                    placeholder={t("form.register.password-placeholder")}
-                    required
-                    onChange={this.onChange}
-                    value={password}
-                  />
-                </Col>
-              </FormGroup>
-              <FormGroup row>
-                <Label for="registerPasswordConfirmation" sm={4}>
-                  {t("form.register.password-confirmation")}
-                </Label>
-                <Col sm={8}>
-                  <Input
-                    type="password"
-                    name="confirmation"
-                    id="registerPasswordConfirmation"
-                    placeholder={t("form.register.password-confirmation-placeholder")}
-                    required
-                    onChange={this.onChange}
-                    value={confirmation}
-                  />
-                  {password === confirmation &&
-                    "" === password && <HelpBlock>{t("form.register.password-confirmation-helpBlock")}</HelpBlock>}
-                  {password !== confirmation &&
-                    ("" !== password || "" !== confirmation) && (
-                      <HelpBlock color="warning">{t("message.password-not-confirmed")}</HelpBlock>
-                    )}
-                  {password === confirmation &&
-                    ("" !== password || "" !== confirmation) && (
-                      <HelpBlock color="success">{t("message.password-confirmed")}</HelpBlock>
-                    )}
-                </Col>
-              </FormGroup>
-              <FormGroup check>
-                <Col sm={{ size: 8, offset: 4 }}>
-                  <Label check>
-                    <Input type="checkbox" name="read" id="read" checked={read} required onChange={this.onChange} />
-                    <a href={"#"} onClick={this.toggleCgu}>
-                      {t("form.register.read.label")}
-                    </a>
-                  </Label>
-                  {warning && !read && <HelpBlock color="warning">{t("form.register.read.helpBlock")}</HelpBlock>}
-                </Col>
-              </FormGroup>
-            </ModalBody>
-            <ModalFooter>
-              <Submit
-                icon="sign-in-alt"
-                name="register"
-                isPending={isRegisterPending}
-                isSuccess={isRegisterSuccess}
-                onClick={this.onSubmit}
-                rotation={270}
-              />{" "}
-              <Button color="secondary" onClick={this.toggle}>
-                {t("button.cancel")}
-              </Button>
-            </ModalFooter>
-          </Form>
+          <ModalHeader toggle={this.toggleRegisterModal}>
+            <FontAwesomeIcon fixedWidth icon="sign-in-alt" rotation={270} /> {t("navbar.user-register")}
+          </ModalHeader>
+          <ModalBody>
+            <ResultAlert
+              code="register"
+              isError={isRegisterError}
+              isSuccess={isRegisterSuccess}
+              error={error}
+              success={nextStep}
+            />
+            <RegisterForm
+              confirmation={confirmation}
+              email={email}
+              password={password}
+              read={read}
+              isError={isRegisterError}
+              isPending={isRegisterPending}
+              isSuccess={isRegisterSuccess}
+              onChange={this.onChange}
+              onClickCgu={this.toggleCgu}
+              onRef={(ref) => (this.registerForm = ref)}
+              onSubmit={this.onSubmit}
+            />
+          </ModalBody>
+          <ModalFooter>
+            <Submit
+              icon="sign-in-alt"
+              name="register"
+              isPending={isRegisterPending}
+              isSuccess={isRegisterSuccess}
+              onClick={this.onClick}
+              rotation={270}
+            />{" "}
+            <Button color="secondary" onClick={this.toggle}>
+              {t("button.cancel")}
+            </Button>
+          </ModalFooter>
         </Modal>
         <CguModal accept={this.accept} decline={this.decline} isOpen={modalCgu} toggle={this.toggleCgu} />
       </div>
