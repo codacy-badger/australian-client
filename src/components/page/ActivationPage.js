@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Header from "../common/Header";
+import Meta from "../common/Meta";
 import StatusAlert from "../common/alert/StatusAlert";
 import Submit from "../common/button/Submit";
 import { Card, CardBody, CardFooter, CardHeader, Col, Container, Form, FormGroup, Input, Label } from "reactstrap";
-import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import { activate } from "../../actions/activationActions";
 import { connect } from "react-redux";
@@ -43,11 +43,7 @@ class ActivationPage extends Component {
 
     return (
       <div>
-        <Helmet>
-          <title>{t("meta.title.activation")}</title>
-          <meta name="description" content={t("meta.description.activation")} />
-          <meta name="keywords" content={t("meta.keywords.activation")} />
-        </Helmet>
+        <Meta code="activation" />
         <Header />
         <Container className="mt-3 text-justify">
           <Form onSubmit={this.onSubmit}>

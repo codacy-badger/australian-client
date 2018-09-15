@@ -1,17 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Header from "../common/Header";
-import { Helmet } from "react-helmet";
 import { translate, Trans } from "react-i18next";
+import Meta from "../common/Meta";
 
 const HomePage = ({ t }) => {
   return (
     <div>
-      <Helmet>
-        <title>{t("meta.title.homepage")}</title>
-        <meta name="description" content={t("meta.description.homepage")} />
-        <meta name="keywords" content={t("meta.keywords.homepage")} />
-      </Helmet>
+      <Meta code="homepage" />
       <Header />
       <div className="App-header">
         <h1>{t("title.app")}</h1>

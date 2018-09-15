@@ -5,9 +5,9 @@ import AddressForm from "../form/AddressForm";
 import Error404Page from "./Error404Page";
 import ProfileContainer from "../container/profile/ProfileContainer";
 import { Col, Container, ListGroup, ListGroupItem, Row } from "reactstrap";
-import { Helmet } from "react-helmet";
 import { NavLink, Route, Switch } from "react-router-dom";
 import { translate } from "react-i18next";
+import Meta from "../common/Meta";
 
 class ProfilePage extends Component {
   render() {
@@ -15,11 +15,7 @@ class ProfilePage extends Component {
 
     return (
       <div>
-        <Helmet>
-          <title>{t("meta.title.profile")}</title>
-          <meta name="description" content={t("meta.description.profile")} />
-          <meta name="keywords" content={t("meta.keywords.profile")} />
-        </Helmet>
+        <Meta code="profile" />
         <Header />
         <Container className="mt-3 text-justify">
           <h1>{t("title.profile")}</h1>

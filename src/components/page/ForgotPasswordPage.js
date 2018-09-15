@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Header from "../common/Header";
+import Meta from "../common/Meta";
 import StatusAlert from "../common/alert/StatusAlert";
 import Submit from "../common/button/Submit";
 import { Card, CardBody, CardFooter, CardHeader, Col, Container, Form, FormGroup, Input, Label } from "reactstrap";
-import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { sendMail } from "../../actions/forgotPasswordActions";
@@ -43,11 +43,7 @@ class ForgotPasswordPage extends Component {
 
     return (
       <div>
-        <Helmet>
-          <title>{t("meta.title.forgotten-password")}</title>
-          <meta name="description" content={t("meta.description.forgotten-password")} />
-          <meta name="keywords" content={t("meta.keywords.forgotten-password")} />
-        </Helmet>
+        <Meta code="forgotten-password" />
         <Header />
         <Container className="mt-3 text-justify">
           <Form onSubmit={this.onSubmit}>

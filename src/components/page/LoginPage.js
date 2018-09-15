@@ -4,6 +4,7 @@ import { Container, UncontrolledAlert } from "reactstrap";
 import { translate } from "react-i18next";
 import LoginModal from "../modal/LoginModal";
 import Header from "../common/Header";
+import Meta from "../common/Meta";
 
 class LoginPage extends Component {
   toggleLoginModal = () => {
@@ -18,6 +19,7 @@ class LoginPage extends Component {
     const { t } = this.props;
     return (
       <div>
+        <Meta code="login" />
         <Header />
         <Container className="mt-3">
           <UncontrolledAlert color="warning">{t("message.please-login")}</UncontrolledAlert>
