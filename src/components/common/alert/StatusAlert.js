@@ -4,18 +4,48 @@ import { Alert } from "reactstrap";
 import { translate, Trans } from "react-i18next";
 
 class StatusAlert extends Component {
-  render() {
+
+  getColor() {
+    const {isError, isSuccess} = this.props;
+
+    return isError ? "danger" : isSuccess ? "success" : "info";
+  }
+
+  getKey() {
+    const { code, error, isError, isSuccess, success } = this.props;
+
+    if (isError && error && error.code) {
+      return "error." + error.code;
+    }
+
+    if (isSuccess && success && success.code) {
+      return "message." + code + "." + success.code
+    }
+
+    return null;
+  }
+
+  getMessage() {
     const { code, error, isError, isSuccess, success, t } = this.props;
 
-    //Calculation
-    const color = isError ? "danger" : isSuccess ? "success" : "info";
-    const key = isError ? "error." + error.code : isSuccess ? "message." + code + "." + success.code : null;
-    const message = isError ? error.message : isSuccess ? success.message : t("help." + code);
+    if (isError && error && error.message) {
+      return error.message;
+    }
+    if (isSuccess && success && success.message) {
+      return success.message;
+    }
+
+    return t("help." + code);
+  }
+
+  render() {
+
+    const key = this.getKey();
 
     return (
-      <Alert color={color} className="text-center">
-        {null !== key && <Trans i18nKey={key}>{message}</Trans>}
-        {null === key && message}
+      <Alert color={this.getColor()} className="text-center">
+        {null !== key && <Trans i18nKey={key}>{this.getMessage()}</Trans>}
+        {null === key && this.getMessage()}
       </Alert>
     );
   }
