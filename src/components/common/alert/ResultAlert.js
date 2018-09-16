@@ -4,12 +4,36 @@ import { Alert } from "reactstrap";
 import { translate, Trans } from "react-i18next";
 
 class ResultAlert extends Component {
-  render() {
+  getKey() {
     const { code, error, isError, isSuccess, success } = this.props;
 
-    //Calculation
-    const key = isError ? "error." + error.code : isSuccess ? "message." + code + "." + success.code : null;
-    const message = isError ? error.message : isSuccess ? success.message : "";
+    if (isError && error && error.code) {
+      return "error." + error.code;
+    }
+    if (isSuccess && success && success.code) {
+      return "message." + code + "." + success.code;
+    }
+
+    return null;
+  }
+
+  getMessage() {
+    const { error, isError, isSuccess, success } = this.props;
+
+    if (isError && error && error.message) {
+      return error.message;
+    }
+
+    if (isSuccess && success && success.message) {
+      return success.message;
+    }
+
+    return "";
+  }
+  render() {
+    const { isError } = this.props;
+
+    const message = this.getMessage();
 
     if ("" === message) {
       return <div />;
@@ -17,7 +41,7 @@ class ResultAlert extends Component {
 
     return (
       <Alert color={isError ? "danger" : "success"} className="text-center">
-        <Trans i18nKey={key}>{message}</Trans>
+        <Trans i18nKey={this.getKey()}>{message}</Trans>
       </Alert>
     );
   }
