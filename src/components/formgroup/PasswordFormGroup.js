@@ -14,7 +14,7 @@ const PasswordFormGroup = ({children, form, onChange, t, value}) => {
   return (
     <FormGroup row>
       <Label for="password" sm={4}>
-        {t("form.general.password")}
+        {t("form.general.password.label")}
       </Label>
       <Col sm={8}>
         <Input
@@ -27,7 +27,7 @@ const PasswordFormGroup = ({children, form, onChange, t, value}) => {
             onChange,
             rules: [{ required: true }]
           })}
-          placeholder={t("form.general.password-placeholder")}
+          placeholder={t("form.general.password.placeholder")}
         />
         <HelpBlockErrors errors={passwordErrors} />
         {children}
@@ -41,4 +41,4 @@ PasswordFormGroup.propTypes = {
   value: PropTypes.string.isRequired,
 };
 
-export default translate("translators")(createForm()(PasswordFormGroup));
+export default translate("translations")(createForm()(PasswordFormGroup));

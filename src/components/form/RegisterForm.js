@@ -6,6 +6,7 @@ import Submit from "../common/button/Submit";
 import { Button, Col, Form, FormGroup, Input, Label } from "reactstrap";
 import { createForm, formShape } from "rc-form";
 import { translate } from "react-i18next";
+import PasswordFormGroup from "../formgroup/PasswordFormGroup";
 
 class registerForm extends Component {
   constructor(props) {
@@ -49,7 +50,6 @@ class registerForm extends Component {
     const confirmationErrors = getFieldError("confirmation") || [];
     const cguErrors = getFieldError("read");
     const emailErrors = getFieldError("email");
-    const passwordErrors = getFieldError("password");
 
     return (
       <Form onSubmit={this.internalSubmit}>
@@ -78,27 +78,7 @@ class registerForm extends Component {
             <HelpBlockErrors errors={emailErrors} />
           </Col>
         </FormGroup>
-        <FormGroup row>
-          <Label for="registerPassword" sm={4}>
-            {t("form.register.password")}
-          </Label>
-          <Col sm={8}>
-            {/* TODO Create a component which evaluate password strength */}
-            <Input
-              type="password"
-              name="password"
-              id="registerPassword"
-              className={passwordErrors ? "is-invalid" : ""}
-              {...getFieldProps("password", {
-                initialValue: password,
-                onChange,
-                rules: [{ required: true }]
-              })}
-              placeholder={t("form.register.password-placeholder")}
-            />
-            <HelpBlockErrors errors={passwordErrors} />
-          </Col>
-        </FormGroup>
+        <PasswordFormGroup onChange={onChange} value={password} />
         <FormGroup row>
           <Label for="registerPasswordConfirmation" sm={4}>
             {t("form.register.password-confirmation")}

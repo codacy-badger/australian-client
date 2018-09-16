@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { createForm, formShape } from "rc-form";
 import { translate } from "react-i18next";
 import HelpBlockErrors from "../common/help/HelpBlockErrors";
+import PasswordFormGroup from "../formgroup/PasswordFormGroup";
 
 class LoginForm extends Component {
   constructor(props) {
@@ -36,7 +37,6 @@ class LoginForm extends Component {
   render() {
     const { email, isPending, isSuccess, onChange, password, rememberMe, submitRender, t } = this.props;
     const { getFieldProps, getFieldError } = this.props.form;
-    const passwordErrors = getFieldError("password");
     const emailErrors = getFieldError("email");
 
     return (
@@ -65,32 +65,14 @@ class LoginForm extends Component {
             <HelpBlockErrors errors={emailErrors} />
           </Col>
         </FormGroup>
-        <FormGroup row>
-          <Label for="loginPassword" sm={4}>
-            {t("form.login.password")}
-          </Label>
-          <Col sm={8}>
-            <Input
-              type="password"
-              name="password"
-              id="loginPassword"
-              className={passwordErrors ? "is-invalid" : ""}
-              {...getFieldProps("password", {
-                initialValue: password,
-                onChange,
-                rules: [{ required: true }]
-              })}
-              placeholder={t("form.login.password-placeholder")}
-            />
-            <HelpBlockErrors errors={passwordErrors} />
-            <FormText color="muted">
-              <FontAwesomeIcon fixedWidth icon="info-circle" className="mr-1 text-info" />
-              <Link to="/forgot-your-password" title={t("link.forgot-your-password-title")}>
-                {t("link.forgot-your-password")}
-              </Link>
-            </FormText>
-          </Col>
-        </FormGroup>
+        <PasswordFormGroup onChange={onChange} value={password}>
+          <FormText color="muted">
+            <FontAwesomeIcon fixedWidth icon="info-circle" className="mr-1 text-info" />
+            <Link to="/forgot-your-password" title={t("link.forgot-your-password-title")}>
+              {t("link.forgot-your-password")}
+            </Link>
+          </FormText>
+        </PasswordFormGroup>
         <FormGroup check>
           <Col sm={{ size: 8, offset: 4 }}>
             <Label check>

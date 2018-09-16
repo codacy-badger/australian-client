@@ -32,7 +32,10 @@
     "general": {
       "latitude": "Latitude",
       "longitude": "Longitude",
-      "password": "Password"
+      "password": {
+        "label": "Password",
+        "placeholder": "Enter your password"
+      }
     },
     "login": {
       "email": "Email",
