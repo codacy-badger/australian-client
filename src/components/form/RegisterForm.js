@@ -130,7 +130,8 @@ class registerForm extends Component {
         {submitRender && (
           <Submit
             icon="sign-in-alt"
-            name="login"
+            rotate={270}
+            name="register"
             isPending={isPending}
             isSuccess={isSuccess}
             onClick={this.internalSubmit}
