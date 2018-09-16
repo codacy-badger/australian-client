@@ -13,6 +13,10 @@
     "60": "Il n’existe pas de compte avec cette adresse email. N’hésitez pas à vous inscrire !"
   },
   "form": {
+    "account": {
+      "description": "Ici, vous pouvez supprimer votre compte. Entrez votre mot de passe et cliquez sur le bouton de suppression. Attention, cette suppression sera définitive. Après avoir pressé le bouton, le compte sera définitivement supprimé et vous serez déconnecté.",
+      "submit": "Supprimer le compte"
+    },
     "activation": {
       "activationCode": "Code d’activation",
       "activationCode-placeholder": "Le code d’activation se trouve dans le mail que vous avez reçu.",
@@ -27,7 +31,8 @@
     },
     "general": {
       "latitude": "Latitude",
-      "longitude": "Longitude"
+      "longitude": "Longitude",
+      "password": "Mot de passe"
     },
     "login": {
       "email": "Email",
@@ -165,6 +170,7 @@
     }
   },
   "title": {
+    "account": "Suppression de votre compte",
     "activation": "Activation de votre compte",
     "app": "Bienvenue à react utilisant i18n",
     "cgu": "Conditions générales d’utilisation",

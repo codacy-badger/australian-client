@@ -4,11 +4,6 @@
     "login": "Login",
     "register": "Register"
   },
-  "cgu": {
-    "article1":{
-      "title": "Service presentation"
-    }
-  },
   "error": {
     "10": "Invalid credentials.",
     "20": "An account already exist with this email.",
@@ -18,6 +13,10 @@
     "60": "Any account exists with this mail. Please, register!"
   },
   "form": {
+    "account": {
+      "description": "Here you can delete your account. To do it, enter your password and press the submit button. Be careful, this deletion will be definitive. After you press the button, your account will be deleted and you will be definitively disconnected.",
+      "submit": "Delete account"
+    },
     "activation": {
       "activationCode": "Activation code",
       "activationCode-placeholder": "You can find activation in the mail sent just after your registration.",
@@ -32,7 +31,8 @@
     },
     "general": {
       "latitude": "Latitude",
-      "longitude": "Longitude"
+      "longitude": "Longitude",
+      "password": "Password"
     },
     "login": {
       "email": "Email",
@@ -43,6 +43,34 @@
       "submit": "Send",
       "submitting": "Sending…"
     },
+    "profile": {
+      "additionalName": {
+        "label": "Additional name",
+        "placeholder": "",
+        "helpBlock": ""
+      },
+      "familyName": {
+        "label": "Family name",
+        "placeholder": "",
+        "helpBlock": ""
+      },
+      "jobTitle": {
+        "label": "Job title",
+        "placeholder": "",
+        "helpBlock": ""
+      },
+      "givenName": {
+        "label": "First name",
+        "placeholder": "",
+        "helpBlock": ""
+      },
+      "name": {
+        "label": "Nickname",
+        "placeholder": "",
+        "helpBlock": ""
+      },
+      "submit": "Save"
+    },
     "register": {
       "email": "Email",
       "email-placeholder": "Enter your email",
@@ -51,14 +79,18 @@
       "password-confirmation": "Confirmation",
       "password-confirmation-placeholder": "Confirm your password",
       "password-confirmation-helpBlock": "Password and confirmation fields should be equals.",
-      "read": "I read and accept usage general conditions.",
+      "read": {
+        "label": "I read and accept usage general conditions.",
+        "helpBlock": "Please read and accept UGC"
+      },
       "submit": "Register",
       "submitting": "Registering…"
     }
   },
   "help": {
     "activation": "To activate your account, please enter the activation code provided in our mail.",
-    "forgot-your-password" : "You have forgotten your password? Please send us your email, you will receive a mail which will help you step by step to recover your accesses."
+    "forgot-your-password" : "You have forgotten your password? Please send us your email, you will receive a mail which will help you step by step to recover your accesses.",
+    "profile": "Ce formulaire vous permet de modifier votre profil. Remplissez les différents champs et cliquez sur le bouton « Enregistrer »."
   },
   "link": {
     "forgot-your-password": "Forgot your password?",
@@ -138,10 +170,12 @@
     }
   },
   "title": {
+    "account": "Account deletion",
     "activation": "Account activation",
     "app": "Welcome to react using react-i18next",
     "cgu": "Usage general conditions",
     "forgot-your-password": "Forgot your password?",
+    "profile": "Your profile",
     "profile-address": "Address form",
     "ooops": "Oooops!"
   },

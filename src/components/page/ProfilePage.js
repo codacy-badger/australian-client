@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import AccountContainer from "../container/profile/AccountContainer";
 import AddressForm from "../form/AddressForm";
 import CookieContainer from "../container/profile/CookieContainer";
 import Header from "../common/Header";
@@ -48,6 +49,7 @@ class ProfilePage extends Component {
                 <Route exact path="/profile/general" component={ProfileContainer} />
                 <Route exact path="/profile/address" component={AddressForm} />
                 <Route exact path="/profile/cookies" component={CookieContainer} />
+                <Route exact path="/profile/account" component={AccountContainer} />
                 {/* TODO replace by a component non displaying header */}
                 <Route path="/profile/*" component={NotFoundJumbotron} />
               </Switch>
