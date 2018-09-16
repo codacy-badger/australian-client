@@ -66,10 +66,10 @@ class AddressForm extends Component {
         <Row>
           <Col sm={6}>
             <FormGroup row>
-              <Label for="longitude" sm={6}>
+²              <Label for="longitude" sm={3}>
                 {t("form.general.longitude")}
               </Label>
-              <Col sm={6}>
+              <Col sm={9}>
                 <Input
                   type="text"
                   name="longitude"
@@ -81,10 +81,10 @@ class AddressForm extends Component {
               </Col>
             </FormGroup>
             <FormGroup row>
-              <Label for="latitude" sm={6}>
+              <Label for="latitude" sm={3}>
                 {t("form.general.latitude")}
               </Label>
-              <Col sm={6}>
+              <Col sm={9}>
                 <Input
                   type="text"
                   name="latitude"
