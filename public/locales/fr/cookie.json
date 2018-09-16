@@ -1,0 +1,12 @@
+{
+  "cookie": {
+    "title": "Les cookies",
+    "paragraph1": "Nous sommes très attentifs au respect des informations privées. C’est pourquoi, ce site n’installe aucun cookie sur votre ordinateur. Un cookie est un fichier installé par un site web. Ce cookie est ensuite renvoyé par votre navigateur dès que vous interrogez de nouveau le site l’ayant installé. Cela permet à ces sites de cumuler les informations à votre sujet et à vous traquer sur Internet. Cela ne fait pas partie de nos valeurs. Nous respectons votre vie privée.",
+    "paragraph2": "En revanche, nous plaçons deux informations que votre navigateur stocke et nous allons vous les expliquer en détail et leur utilité.",
+    "information1": "Le jeton JWT ({{value}})",
+    "description1": "Quand vous vous êtes connecté, nous avons créé ce jeton. Ce jeton ne contient aucune information vous concernant. Quand vous souhaitez récupérer des informations comme votre profil, ce jeton nous est envoyé. Il permet à notre site de savoir que vous êtes identifié. Cela vous évite de vous reconnecter à chaque changement de page.",
+    "information2": "Votre pseudonyme ({{value}})",
+    "description2": "Quand vous vous êtes connecté, nous avons demandé à votre navigateur de se souvenir de votre pseudonyme pour l’afficher dans le menu.",
+    "paragraph3": "Si vous n’avez pas choisi de cocher la case « Se souvenir de moi », alors ces données s’effaceront dès que vous fermerez cet onglet ou votre navigateur. Si vous avez coché la case, elles s’effaceront dès que vous vous déconnecterez via le menu."
+  }
+}

@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Header from "../common/Header";
 import AddressForm from "../form/AddressForm";
+import CookieContainer from "../container/profile/CookieContainer";
+import Header from "../common/Header";
+import Meta from "../common/Meta";
+import NotFoundJumbotron from "../common/jumbotron/NotFoundJumbotron";
 import ProfileContainer from "../container/profile/ProfileContainer";
 import { Col, Container, ListGroup, ListGroupItem, Row } from "reactstrap";
 import { NavLink, Route, Switch } from "react-router-dom";
 import { translate } from "react-i18next";
-import Meta from "../common/Meta";
-import NotFoundJumbotron from "../common/jumbotron/NotFoundJumbotron";
 
 class ProfilePage extends Component {
   render() {
@@ -46,6 +47,7 @@ class ProfilePage extends Component {
               <Switch>
                 <Route exact path="/profile/general" component={ProfileContainer} />
                 <Route exact path="/profile/address" component={AddressForm} />
+                <Route exact path="/profile/cookies" component={CookieContainer} />
                 {/* TODO replace by a component non displaying header */}
                 <Route path="/profile/*" component={NotFoundJumbotron} />
               </Switch>

@@ -1,0 +1,12 @@
+{
+  "cookie": {
+    "title": "Cookies",
+    "paragraph1": "We want to preserve your personnal data. So, this site doesn't install any cookie on your computer. A cookie is a file installed on a computer by a web site. Then it is submit by your browser each time you are consulting the original website. This helps some sites to acumulate data about you and track you on Internet. This is not our way of life.",
+    "paragraph2": "We are only putting two data on your computer to help you on this website. We will describe them and explain their utilities.",
+    "information1": "JWT Token ({{value}})",
+    "description1": "After your connection, we have created this token. It contains no private information. When you want to retrieve or edit some data, like your profile, your browser sent this token. It is used by our server to identify you. With this token, you do not have to identify each time you're changing page.",
+    "information2": "Your nickname ({{value}})",
+    "description2": "After your connection, we ask to you your browser to store your nickname to display it on the navbar.",
+    "paragraph3": "If you do not check the \"Remember me\" checkbox, these data will be deleting when you will close your browser (or this website tabs). If you have checked the checkbox, these data will be erased as soon as you're disconnecting via the navbar."
+  }
+}

@@ -36,9 +36,11 @@ img.flag-in-navbar {
   font-size: large;
 }
 
+h2{
+  border-bottom: thin solid gray;
+}
 h2.article {
   width: 100%;
-  border-bottom: thin solid gray;
   padding-bottom: 0.2em;
 }
 
