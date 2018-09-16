@@ -66,7 +66,7 @@ class AddressForm extends Component {
         <Row>
           <Col sm={6}>
             <FormGroup row>
-²              <Label for="longitude" sm={3}>
+              <Label for="longitude" sm={3}>
                 {t("form.general.longitude")}
               </Label>
               <Col sm={9}>
