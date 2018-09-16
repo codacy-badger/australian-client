@@ -4,9 +4,8 @@ import { Alert } from "reactstrap";
 import { translate, Trans } from "react-i18next";
 
 class StatusAlert extends Component {
-
   getColor() {
-    const {isError, isSuccess} = this.props;
+    const { isError, isSuccess } = this.props;
 
     return isError ? "danger" : isSuccess ? "success" : "info";
   }
@@ -19,7 +18,7 @@ class StatusAlert extends Component {
     }
 
     if (isSuccess && success && success.code) {
-      return "message." + code + "." + success.code
+      return "message." + code + "." + success.code;
     }
 
     return null;
@@ -39,7 +38,6 @@ class StatusAlert extends Component {
   }
 
   render() {
-
     const key = this.getKey();
 
     return (
