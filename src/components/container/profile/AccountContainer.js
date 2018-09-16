@@ -22,8 +22,9 @@ class AccountContainer extends Component {
   onChange(e) {
     this.setState({
       password: e.target.value
-    })
+    });
   }
+
   render () {
     const {password} = this.state;
     const {t} = this.props;
