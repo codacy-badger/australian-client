@@ -64,6 +64,19 @@ class ProfileApi {
       }, delay);
     });
   }
+
+  static callAddressUpdateApi(data, callback) {
+    return new Promise(() => {
+      setTimeout(() => {
+        const { locality } = data;
+        if ("Lacanau" === locality) {
+          return callback(successfulResponse);
+        } else {
+          return callback(erroredResponse);
+        }
+      }, delay);
+    });
+  }
 }
 
 export default ProfileApi;

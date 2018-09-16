@@ -6,6 +6,17 @@ img.flag-in-navbar {
   margin-top: -3px;
 }
 
+#mapid {
+  height: calc(100vh - 200px) !important;
+  width: 100%;
+}
+
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+}
+
+/* Default app values, can be deleted */
 .App {
   text-align: center;
 }

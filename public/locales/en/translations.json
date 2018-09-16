@@ -30,6 +30,10 @@
       "submit": "Send",
       "submitting": "Sending…"
     },
+    "general": {
+      "latitude": "Latitude",
+      "longitude": "Longitude"
+    },
     "login": {
       "email": "Email",
       "email-placeholder": "Enter your email",
@@ -136,8 +140,9 @@
   "title": {
     "activation": "Account activation",
     "app": "Welcome to react using react-i18next",
-    "forgot-your-password": "Forgot your password?",
     "cgu": "Usage general conditions",
+    "forgot-your-password": "Forgot your password?",
+    "profile-address": "Address form",
     "ooops": "Oooops!"
   },
   "description": {

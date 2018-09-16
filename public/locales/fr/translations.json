@@ -25,6 +25,10 @@
       "submit": "Envoyer",
       "submitting": "Envoi en cours…"
     },
+    "general": {
+      "latitude": "Latitude",
+      "longitude": "Longitude"
+    },
     "login": {
       "email": "Email",
       "email-placeholder": "Entrez votre adresse email",
@@ -166,7 +170,8 @@
     "cgu": "Conditions générales d’utilisation",
     "forgot-your-password": "Mot de passe perdu ?",
     "ooops": "Oups !",
-    "profile": "Gestion de votre compte"
+    "profile": "Gestion de votre compte",
+    "profile-address": "Votre adresse"
   },
   "description": {
     "part1": "Pour débuter, éditer <1>src/App.js</1> et sauvegarder pour lancer le rechargement automatique.",

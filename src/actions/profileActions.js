@@ -79,6 +79,26 @@ export function profileUpdate(data) {
   };
 }
 
+export function profileAddressUpdate(data) {
+  return (dispatch) => {
+    dispatch(setProfilePending(true));
+    dispatch(setProfileSuccess(false, data));
+    dispatch(setProfileError(false));
+
+    profileActionApi.callAddressUpdateApi(data, (result) => {
+      dispatch(setProfilePending(false));
+      if (result.success) {
+        dispatch(setProfileSuccess(true, result.user, result.success));
+        setTimeout(() => {
+          dispatch(setProfileMessagePrinted(false));
+        }, 1000);
+      } else {
+        dispatch(setProfileError(true, result.error));
+      }
+    });
+  };
+}
+
 export function getProfile() {
   return (dispatch) => {
     dispatch(setProfileLoading(true));
