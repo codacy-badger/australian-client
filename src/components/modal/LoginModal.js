@@ -17,7 +17,6 @@ class LoginModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      modal: false,
       email: "",
       password: "",
       rememberMe: false
@@ -26,15 +25,6 @@ class LoginModal extends Component {
     this.onChange = this.onChange.bind(this);
     this.onClick = this.onClick.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-    this.toggle = this.toggle.bind(this);
-  }
-
-  componentDidMount() {
-    this.props.onRef(this);
-  }
-
-  componentWillUnmount() {
-    this.props.onRef();
   }
 
   onChange(e) {
@@ -61,19 +51,13 @@ class LoginModal extends Component {
     this.loginForm.internalSubmit(e);
   }
 
-  toggle() {
-    this.setState({
-      modal: !this.state.modal
-    });
-  }
-
   render() {
-    const { email, modal, password, rememberMe } = this.state;
-    const { error, isLoginPending, isLoginSuccess, isLoginError, t, warning } = this.props;
+    const { email, password, rememberMe } = this.state;
+    const { error, isLoginPending, isLoginSuccess, isLoginError, isOpen, t, toggle, warning } = this.props;
 
     return (
-      <Modal isOpen={warning || modal} toggle={this.toggle}>
-        <ModalHeader toggle={this.toggleLoginModal}>
+      <Modal isOpen={warning || isOpen} toggle={toggle}>
+        <ModalHeader toggle={toggle}>
           <FontAwesomeIcon fixedWidth icon="sign-in-alt" /> {t("navbar.user-login")}
         </ModalHeader>
         <ModalBody>
@@ -110,7 +94,7 @@ class LoginModal extends Component {
             onClick={this.onClick}
           />
           {warning || (
-            <Button color="secondary" onClick={this.toggle}>
+            <Button color="secondary" onClick={toggle}>
               {t("button.cancel")}
             </Button>
           )}
@@ -133,9 +117,10 @@ LoginModal.propTypes = {
   isLoginPending: PropTypes.bool.isRequired,
   isLoginSuccess: PropTypes.bool.isRequired,
   isLoginError: PropTypes.bool.isRequired,
+  isOpen: PropTypes.bool.isRequired,
   error: PropTypes.object.isRequired,
-  onRef: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired,
+  toggle: PropTypes.func.isRequired,
   warning: PropTypes.bool.isRequired
 };
 
