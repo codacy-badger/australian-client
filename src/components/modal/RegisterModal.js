@@ -20,7 +20,6 @@ class RegisterModal extends Component {
     this.state = {
       confirmation: "",
       email: "",
-      modal: false,
       modalCgu: false,
       password: "",
       read: false
@@ -31,7 +30,6 @@ class RegisterModal extends Component {
     this.onChange = this.onChange.bind(this);
     this.onClick = this.onClick.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-    this.toggle = this.toggle.bind(this);
     this.toggleCgu = this.toggleCgu.bind(this);
   }
 
@@ -47,14 +45,6 @@ class RegisterModal extends Component {
       read: false
     });
     this.toggleCgu();
-  }
-
-  componentDidMount() {
-    this.props.onRef(this);
-  }
-
-  componentWillUnmount() {
-    this.props.onRef();
   }
 
   onChange(e) {
@@ -77,12 +67,6 @@ class RegisterModal extends Component {
     register(email, password);
   }
 
-  toggle() {
-    this.setState({
-      modal: !this.state.modal
-    });
-  }
-
   toggleCgu() {
     this.setState({
       modalCgu: !this.state.modalCgu
@@ -90,13 +74,13 @@ class RegisterModal extends Component {
   }
 
   render() {
-    const { confirmation, email, modal, modalCgu, read, password } = this.state;
-    const { error, isRegisterPending, isRegisterSuccess, isRegisterError, nextStep, t } = this.props;
+    const { confirmation, email, modalCgu, read, password } = this.state;
+    const { error, isOpen, isRegisterPending, isRegisterSuccess, isRegisterError, nextStep, t, toggle } = this.props;
 
     return (
       <div>
-        <Modal isOpen={modal} toggle={this.toggle} size="lg">
-          <ModalHeader toggle={this.toggleRegisterModal}>
+        <Modal isOpen={isOpen} toggle={toggle} size="lg">
+          <ModalHeader toggle={toggle}>
             <FontAwesomeIcon fixedWidth icon="sign-in-alt" rotation={270} /> {t("navbar.user-register")}
           </ModalHeader>
           <ModalBody>
@@ -130,7 +114,7 @@ class RegisterModal extends Component {
               onClick={this.onClick}
               rotation={270}
             />{" "}
-            <Button color="secondary" onClick={this.toggle}>
+            <Button color="secondary" onClick={toggle}>
               {t("button.cancel")}
             </Button>
           </ModalFooter>
@@ -144,11 +128,12 @@ class RegisterModal extends Component {
 RegisterModal.propTypes = {
   error: PropTypes.object.isRequired,
   isRegisterPending: PropTypes.bool.isRequired,
+  isOpen: PropTypes.bool.isRequired,
   isRegisterSuccess: PropTypes.bool.isRequired,
   isRegisterError: PropTypes.bool.isRequired,
   nextStep: PropTypes.object.isRequired,
-  onRef: PropTypes.func.isRequired,
-  t: PropTypes.func.isRequired
+  t: PropTypes.func.isRequired,
+  toggle: PropTypes.func.isRequired
 };
 
 // Redux connect begin here
