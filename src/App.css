@@ -9,6 +9,7 @@ img.flag-in-navbar {
 #mapid {
   height: calc(100vh - 200px);
   width: 100%;
+  max-height: 400px;
 }
 
 .leaflet-container {
