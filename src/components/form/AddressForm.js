@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import InputGroupIcon from "../common/input/InputGroupIcon";
 import Submit from "../common/button/Submit";
-import {Col, Form, FormGroup, Input, InputGroup, InputGroupAddon, Label, Row} from "reactstrap";
+import { Col, Form, FormGroup, Input, InputGroup, Label, Row } from "reactstrap";
 import { Map as LeafletMap, Marker, Popup, TileLayer } from "react-leaflet";
 import { connect } from "react-redux";
-import { profileAddressUpdate } from "../../actions/profileActions";
-import { translate } from "react-i18next";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faGlobe } from "@fortawesome/free-solid-svg-icons";
+import { profileAddressUpdate } from "../../actions/profileActions";
+import { translate } from "react-i18next";
 
 library.add(faGlobe);
 
@@ -76,11 +76,7 @@ class AddressForm extends Component {
               </Label>
               <Col sm={9}>
                 <InputGroup>
-                  <InputGroupAddon addonType="prepend">
-                    <span className="input-group-text">
-                      <FontAwesomeIcon icon="globe"/>
-                    </span>
-                  </InputGroupAddon>
+                  <InputGroupIcon icon="globe" />
                   <Input
                     type="text"
                     name="longitude"
@@ -99,11 +95,7 @@ class AddressForm extends Component {
               </Label>
               <Col sm={9}>
                 <InputGroup>
-                  <InputGroupAddon addonType="prepend">
-                    <span className="input-group-text">
-                      <FontAwesomeIcon icon="globe"/>
-                    </span>
-                  </InputGroupAddon>
+                  <InputGroupIcon icon="globe" />
                   <Input
                     type="text"
                     name="latitude"
