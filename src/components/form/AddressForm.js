@@ -1,11 +1,16 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Submit from "../common/button/Submit";
-import { Col, Form, FormGroup, Input, Label, Row } from "reactstrap";
+import {Col, Form, FormGroup, Input, InputGroup, InputGroupAddon, Label, Row} from "reactstrap";
 import { Map as LeafletMap, Marker, Popup, TileLayer } from "react-leaflet";
 import { connect } from "react-redux";
 import { profileAddressUpdate } from "../../actions/profileActions";
 import { translate } from "react-i18next";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+
+library.add(faSpinner);
 
 class AddressForm extends Component {
   constructor(props, context) {
@@ -70,14 +75,21 @@ class AddressForm extends Component {
                 {t("form.general.longitude")}
               </Label>
               <Col sm={9}>
-                <Input
-                  type="text"
-                  name="longitude"
-                  id="longitude"
-                  value={this.state.marker.lng}
-                  required
-                  onChange={this.onChange}
-                />
+                <InputGroup>
+                  <InputGroupAddon addonType="prepend">
+                    <span className="input-group-text input-group-fa">
+                      <FontAwesomeIcon icon="spinner"/>
+                    </span>
+                  </InputGroupAddon>
+                  <Input
+                    type="text"
+                    name="longitude"
+                    id="longitude"
+                    value={this.state.marker.lng}
+                    required
+                    onChange={this.onChange}
+                  />
+                </InputGroup>
               </Col>
             </FormGroup>
             <FormGroup row>
@@ -85,14 +97,17 @@ class AddressForm extends Component {
                 {t("form.general.latitude")}
               </Label>
               <Col sm={9}>
-                <Input
-                  type="text"
-                  name="latitude"
-                  id="latitude"
-                  value={this.state.marker.lat}
-                  required
-                  onChange={this.onChange}
-                />
+                <InputGroup>
+                  <InputGroupAddon addonType="prepend">@</InputGroupAddon>
+                  <Input
+                    type="text"
+                    name="latitude"
+                    id="latitude"
+                    value={this.state.marker.lat}
+                    required
+                    onChange={this.onChange}
+                  />
+                </InputGroup>
               </Col>
             </FormGroup>
             <Submit isPending={isPending} isError={isSuccess} name="profile" onClick={this.onSubmit} />
