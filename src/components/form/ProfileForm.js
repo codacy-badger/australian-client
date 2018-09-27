@@ -2,9 +2,14 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import StatusAlert from "../common/alert/StatusAlert";
 import HelpBlock from "../common/help/HelpBlock";
+import InputGroupIcon from "../common/input/InputGroupIcon";
 import Submit from "../common/button/Submit";
-import { Col, Form, FormGroup, Label, Input } from "reactstrap";
+import { Col, Form, FormGroup, Input, InputGroup, Label } from "reactstrap";
+import { faUser, faUserMd } from "@fortawesome/free-solid-svg-icons";
+import { library } from "@fortawesome/fontawesome-svg-core";
 import { translate } from "react-i18next";
+
+library.add(faUser, faUserMd);
 
 class ProfileForm extends Component {
   render() {
@@ -32,15 +37,18 @@ class ProfileForm extends Component {
             {t("form.profile.name.label")}
           </Label>
           <Col sm={8}>
-            <Input
-              type="text"
-              name="name"
-              id="Name"
-              placeholder={t("form.profile.name.placeholder")}
-              value={name}
-              required
-              onChange={onChange}
-            />
+            <InputGroup>
+              <InputGroupIcon icon="user" />
+              <Input
+                type="text"
+                name="name"
+                id="Name"
+                placeholder={t("form.profile.name.placeholder")}
+                value={name}
+                required
+                onChange={onChange}
+              />
+            </InputGroup>
             <HelpBlock>{t("form.profile.name.helpBlock")}</HelpBlock>
           </Col>
         </FormGroup>
@@ -49,15 +57,18 @@ class ProfileForm extends Component {
             {t("form.profile.givenName.label")}
           </Label>
           <Col sm={8}>
-            <Input
-              type="text"
-              name="givenName"
-              id="givenName"
-              placeholder={t("form.profile.givenName.placeholder")}
-              value={givenName}
-              required
-              onChange={onChange}
-            />
+            <InputGroup>
+              <InputGroupIcon icon="user" />
+              <Input
+                type="text"
+                name="givenName"
+                id="givenName"
+                placeholder={t("form.profile.givenName.placeholder")}
+                value={givenName}
+                required
+                onChange={onChange}
+              />
+            </InputGroup>
             <HelpBlock>{t("form.profile.givenName.helpBlock")}</HelpBlock>
           </Col>
         </FormGroup>
@@ -66,15 +77,18 @@ class ProfileForm extends Component {
             {t("form.profile.additionalName.label")}
           </Label>
           <Col sm={8}>
-            <Input
-              type="text"
-              name="additionalName"
-              id="AdditionalName"
-              placeholder={t("form.profile.additionalName.placeholder")}
-              value={additionalName}
-              required
-              onChange={onChange}
-            />
+            <InputGroup>
+              <InputGroupIcon icon="user" />
+              <Input
+                type="text"
+                name="additionalName"
+                id="AdditionalName"
+                placeholder={t("form.profile.additionalName.placeholder")}
+                value={additionalName}
+                required
+                onChange={onChange}
+              />
+            </InputGroup>
             <HelpBlock>{t("form.profile.additionalName.helpBlock")}</HelpBlock>
           </Col>
         </FormGroup>
@@ -83,15 +97,18 @@ class ProfileForm extends Component {
             {t("form.profile.familyName.label")}
           </Label>
           <Col sm={8}>
-            <Input
-              type="text"
-              name="familyName"
-              id="familyName"
-              placeholder={t("form.profile.familyName.placeholder")}
-              value={familyName}
-              required
-              onChange={onChange}
-            />
+            <InputGroup>
+              <InputGroupIcon icon="user" />
+              <Input
+                type="text"
+                name="familyName"
+                id="familyName"
+                placeholder={t("form.profile.familyName.placeholder")}
+                value={familyName}
+                required
+                onChange={onChange}
+              />
+            </InputGroup>
             <HelpBlock>{t("form.profile.familyName.helpBlock")}</HelpBlock>
           </Col>
         </FormGroup>
@@ -100,15 +117,18 @@ class ProfileForm extends Component {
             {t("form.profile.jobTitle.label")}
           </Label>
           <Col sm={8}>
-            <Input
-              type="text"
-              name="jobTitle"
-              id="jobTitle"
-              placeholder={t("form.profile.jobTitle.placeholder")}
-              value={jobTitle}
-              required
-              onChange={onChange}
-            />
+            <InputGroup>
+              <InputGroupIcon icon="user-md" />
+              <Input
+                type="text"
+                name="jobTitle"
+                id="jobTitle"
+                placeholder={t("form.profile.jobTitle.placeholder")}
+                value={jobTitle}
+                required
+                onChange={onChange}
+              />
+            </InputGroup>
             <HelpBlock>{t("form.profile.jobTitle.helpBlock")}</HelpBlock>
           </Col>
         </FormGroup>
