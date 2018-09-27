@@ -8,9 +8,9 @@ import { profileAddressUpdate } from "../../actions/profileActions";
 import { translate } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { faGlobe } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faSpinner);
+library.add(faGlobe);
 
 class AddressForm extends Component {
   constructor(props, context) {
@@ -77,8 +77,8 @@ class AddressForm extends Component {
               <Col sm={9}>
                 <InputGroup>
                   <InputGroupAddon addonType="prepend">
-                    <span className="input-group-text input-group-fa">
-                      <FontAwesomeIcon icon="spinner"/>
+                    <span className="input-group-text">
+                      <FontAwesomeIcon icon="globe"/>
                     </span>
                   </InputGroupAddon>
                   <Input
@@ -98,7 +98,11 @@ class AddressForm extends Component {
               </Label>
               <Col sm={9}>
                 <InputGroup>
-                  <InputGroupAddon addonType="prepend">@</InputGroupAddon>
+                  <InputGroupAddon addonType="prepend">
+                    <span className="input-group-text">
+                      <FontAwesomeIcon icon="globe"/>
+                    </span>
+                  </InputGroupAddon>
                   <Input
                     type="text"
                     name="latitude"
