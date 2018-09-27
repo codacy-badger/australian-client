@@ -1,13 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 import HelpBlockErrors from "../common/help/HelpBlockErrors";
-import {Col, FormGroup, Input, Label} from "reactstrap";
-import {createForm} from "rc-form";
+import InputGroupIcon from "../common/input/InputGroupIcon";
+import { Col, FormGroup, Input, InputGroup, Label } from "reactstrap";
+import { createForm } from "rc-form";
+import { faKey } from "@fortawesome/free-solid-svg-icons";
+import { library } from "@fortawesome/fontawesome-svg-core";
 import { translate } from "react-i18next";
 
+library.add(faKey);
 
-const PasswordFormGroup = ({children, form, onChange, t, value}) => {
-
+const PasswordFormGroup = ({ children, form, onChange, t, value }) => {
   const { getFieldProps, getFieldError } = form;
   const passwordErrors = getFieldError("password");
 
@@ -17,18 +20,21 @@ const PasswordFormGroup = ({children, form, onChange, t, value}) => {
         {t("form.general.password.label")}
       </Label>
       <Col sm={8}>
-        <Input
-          type="password"
-          name="password"
-          id="password"
-          className={passwordErrors ? "is-invalid" : ""}
-          {...getFieldProps("password", {
-            initialValue: value,
-            onChange,
-            rules: [{ required: true }]
-          })}
-          placeholder={t("form.general.password.placeholder")}
-        />
+        <InputGroup>
+          <InputGroupIcon icon="key" />
+          <Input
+            type="password"
+            name="password"
+            id="password"
+            className={passwordErrors ? "is-invalid" : ""}
+            {...getFieldProps("password", {
+              initialValue: value,
+              onChange,
+              rules: [{ required: true }]
+            })}
+            placeholder={t("form.general.password.placeholder")}
+          />
+        </InputGroup>
         <HelpBlockErrors errors={passwordErrors} />
         {children}
       </Col>
@@ -38,7 +44,7 @@ const PasswordFormGroup = ({children, form, onChange, t, value}) => {
 
 PasswordFormGroup.propTypes = {
   onChange: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired
 };
 
 export default translate("translations")(createForm()(PasswordFormGroup));
