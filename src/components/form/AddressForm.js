@@ -87,6 +87,7 @@ class AddressForm extends Component {
                     id="longitude"
                     value={this.state.marker.lng}
                     required
+                    disabled
                     onChange={this.onChange}
                   />
                 </InputGroup>
@@ -109,6 +110,7 @@ class AddressForm extends Component {
                     id="latitude"
                     value={this.state.marker.lat}
                     required
+                    disabled
                     onChange={this.onChange}
                   />
                 </InputGroup>
