@@ -32,7 +32,7 @@ class AnonymousDropdown extends React.Component {
     this.setState({
       registerModal: !this.state.registerModal
     })
-  }
+  };
 
   render() {
     const { t } = this.props;
