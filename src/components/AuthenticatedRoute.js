@@ -8,7 +8,7 @@ export const AuthenticatedRoute = ({ component: ComposedComponent, ...rest }) =>
     /* LoginPage displayed if not authenticated; otherwise, return the component imputted into <AuthenticatedRoute /> */
     handleRender = (props) => {
       if (!this.props.isAuthenticated) {
-        return <LoginPage onRef={(ref) => (this.loginModal = ref)} />;
+        return <LoginPage />;
       } else {
         return <ComposedComponent {...props} />;
       }
