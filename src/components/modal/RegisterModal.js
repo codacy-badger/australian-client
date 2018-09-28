@@ -7,6 +7,7 @@ import Submit from "../common/button/Submit";
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { connect } from "react-redux";
+import { createForm, formShape } from "rc-form";
 import { faSignInAlt } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { register } from "../../actions/registerActions";
@@ -28,7 +29,6 @@ class RegisterModal extends Component {
     this.accept = this.accept.bind(this);
     this.decline = this.decline.bind(this);
     this.onChange = this.onChange.bind(this);
-    this.onClick = this.onClick.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.toggleCgu = this.toggleCgu.bind(this);
   }
@@ -53,18 +53,17 @@ class RegisterModal extends Component {
     });
   }
 
-  onClick(e) {
-    e.preventDefault();
-    this.registerForm.internalSubmit(e);
-  }
-
   onSubmit(e) {
     e.preventDefault();
 
-    const { register } = this.props;
-    const { email, password } = this.state;
+    this.props.form.validateFields((error) => {
+      if (!error) {
+        const { register } = this.props;
+        const { email, password } = this.state;
 
-    register(email, password);
+        register(email, password);
+      }
+    });
   }
 
   toggleCgu() {
@@ -75,7 +74,7 @@ class RegisterModal extends Component {
 
   render() {
     const { confirmation, email, modalCgu, read, password } = this.state;
-    const { error, isOpen, isRegisterPending, isRegisterSuccess, isRegisterError, nextStep, t, toggle } = this.props;
+    const { error, form, isOpen, isPending, isSuccess, isError, nextStep, t, toggle } = this.props;
 
     return (
       <div>
@@ -84,34 +83,28 @@ class RegisterModal extends Component {
             <FontAwesomeIcon fixedWidth icon="sign-in-alt" rotation={270} /> {t("navbar.user-register")}
           </ModalHeader>
           <ModalBody>
-            <ResultAlert
-              code="register"
-              isError={isRegisterError}
-              isSuccess={isRegisterSuccess}
-              error={error}
-              success={nextStep}
-            />
+            <ResultAlert code="register" isError={isError} isSuccess={isSuccess} error={error} success={nextStep} />
             <RegisterForm
               confirmation={confirmation}
               email={email}
-              password={password}
-              read={read}
-              isError={isRegisterError}
-              isPending={isRegisterPending}
-              isSuccess={isRegisterSuccess}
+              form={form}
+              isError={isError}
+              isPending={isPending}
+              isSuccess={isSuccess}
               onChange={this.onChange}
               onClickCgu={this.toggleCgu}
-              onRef={(ref) => (this.registerForm = ref)}
               onSubmit={this.onSubmit}
+              password={password}
+              read={read}
             />
           </ModalBody>
           <ModalFooter>
             <Submit
               icon="sign-in-alt"
               name="register"
-              isPending={isRegisterPending}
-              isSuccess={isRegisterSuccess}
-              onClick={this.onClick}
+              isPending={isPending}
+              isSuccess={isSuccess}
+              onClick={this.onSubmit}
               rotation={270}
             />{" "}
             <Button color="secondary" onClick={toggle}>
@@ -127,10 +120,11 @@ class RegisterModal extends Component {
 
 RegisterModal.propTypes = {
   error: PropTypes.object.isRequired,
-  isRegisterPending: PropTypes.bool.isRequired,
+  form: formShape,
+  isPending: PropTypes.bool.isRequired,
   isOpen: PropTypes.bool.isRequired,
-  isRegisterSuccess: PropTypes.bool.isRequired,
-  isRegisterError: PropTypes.bool.isRequired,
+  isSuccess: PropTypes.bool.isRequired,
+  isError: PropTypes.bool.isRequired,
   nextStep: PropTypes.object.isRequired,
   t: PropTypes.func.isRequired,
   toggle: PropTypes.func.isRequired
@@ -140,9 +134,9 @@ RegisterModal.propTypes = {
 function mapStateToProps(state) {
   return {
     error: state.registerReducer.error,
-    isRegisterPending: state.registerReducer.isRegisterPending,
-    isRegisterSuccess: state.registerReducer.isRegisterSuccess,
-    isRegisterError: state.registerReducer.isRegisterError,
+    isPending: state.registerReducer.isRegisterPending,
+    isSuccess: state.registerReducer.isRegisterSuccess,
+    isError: state.registerReducer.isRegisterError,
     nextStep: state.registerReducer.nextStep
   };
 }
@@ -157,5 +151,5 @@ export default translate("translations")(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(RegisterModal)
+  )(createForm()(RegisterModal))
 );

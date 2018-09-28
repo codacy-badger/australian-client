@@ -1,153 +1,79 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import HelpBlock from "../common/help/HelpBlock";
-import HelpBlockErrors from "../common/help/HelpBlockErrors";
+import PasswordFormGroup from "../formgroup/PasswordFormGroup";
 import Submit from "../common/button/Submit";
 import { Button, Col, Form, FormGroup, Input, Label } from "reactstrap";
-import { createForm, formShape } from "rc-form";
+import { formShape } from "rc-form";
 import { translate } from "react-i18next";
-import PasswordFormGroup from "../formgroup/PasswordFormGroup";
+import EmailFormGroup from "../formgroup/EmailFormGroup";
+import ConfirmationFormGroup from "../formgroup/ConfirmationFormGroup";
 
-class registerForm extends Component {
-  constructor(props) {
-    super(props);
+const RegisterForm = (props) => {
+  const {
+    confirmation,
+    email,
+    form,
+    isPending,
+    isSuccess,
+    onChange,
+    onClickCgu,
+    onSubmit,
+    password,
+    read,
+    submitRender,
+    t
+  } = props;
 
-    this.internalSubmit = this.internalSubmit.bind(this);
-  }
+  const { getFieldProps, getFieldError, getFieldValue } = form;
+  const cguErrors = getFieldError("read");
 
-  componentDidMount() {
-    this.props.onRef(this);
-  }
-
-  componentWillUnmount() {
-    this.props.onRef();
-  }
-
-  internalSubmit(e) {
-    e.preventDefault();
-
-    this.props.form.validateFields((error) => {
-      if (!error) {
-        this.props.onSubmit(e);
-      }
-    });
-  }
-
-  render() {
-    const {
-      confirmation,
-      email,
-      isPending,
-      isSuccess,
-      onChange,
-      onClickCgu,
-      password,
-      read,
-      submitRender,
-      t
-    } = this.props;
-    const { getFieldProps, getFieldError, getFieldValue } = this.props.form;
-    const confirmationErrors = getFieldError("confirmation") || [];
-    const cguErrors = getFieldError("read");
-    const emailErrors = getFieldError("email");
-
-    return (
-      <Form onSubmit={this.internalSubmit}>
-        <FormGroup row>
-          <Label for="registerEmail" sm={4}>
-            {t("form.register.email")}
-          </Label>
-          <Col sm={8}>
+  return (
+    <Form onSubmit={onSubmit}>
+      <EmailFormGroup form={form} onChange={onChange} value={email} />
+      <PasswordFormGroup form={form} onChange={onChange} value={password} />
+      <ConfirmationFormGroup form={form} onChange={onChange} value={confirmation} password={password} />
+      <FormGroup check>
+        <Col sm={{ size: 8, offset: 4 }}>
+          <Label check>
             <Input
-              type="email"
-              name="email"
-              id="registerEmail"
-              className={emailErrors ? "is-invalid" : ""}
-              placeholder={t("form.register.email-placeholder")}
-              {...getFieldProps("email", {
-                initialValue: email,
+              type="checkbox"
+              name="read"
+              id="read"
+              className={cguErrors ? "is-invalid" : ""}
+              {...getFieldProps("read", {
+                initialValue: read,
                 onChange,
-                rules: [
-                  {
-                    type: "email",
-                    required: true
-                  }
-                ]
+                valuePropName: "checked"
               })}
             />
-            <HelpBlockErrors errors={emailErrors} />
-          </Col>
-        </FormGroup>
-        <PasswordFormGroup onChange={onChange} value={password} />
-        <FormGroup row>
-          <Label for="registerPasswordConfirmation" sm={4}>
-            {t("form.register.password-confirmation")}
+            <Button onClick={onClickCgu} color={"link"} className="m-0 p-0 ">
+              {t("form.register.read.label")}
+            </Button>
           </Label>
-          <Col sm={8}>
-            <Input
-              type="password"
-              name="confirmation"
-              id="registerPasswordConfirmation"
-              placeholder={t("form.register.password-confirmation-placeholder")}
-              className={confirmationErrors.length ? "is-invalid" : ""}
-              {...getFieldProps("confirmation", {
-                initialValue: confirmation,
-                onChange,
-                rules: [
-                  {
-                    type: "enum",
-                    enum: [password],
-                    required: true,
-                    message: "confirmation is different from password"
-                  }
-                ]
-              })}
-            />
-            <HelpBlockErrors errors={confirmationErrors} />
-          </Col>
-        </FormGroup>
-        <FormGroup check>
-          <Col sm={{ size: 8, offset: 4 }}>
-            <Label check>
-              <Input
-                type="checkbox"
-                name="read"
-                id="read"
-                className={cguErrors ? "is-invalid" : ""}
-                {...getFieldProps("read", {
-                  initialValue: read,
-                  onChange,
-                  valuePropName: "checked"
-                })}
-              />
-              <Button onClick={onClickCgu} color={"link"} className="m-0 p-0 ">
-                {t("form.register.read.label")}
-              </Button>
-            </Label>
-            {getFieldValue("read") || <HelpBlock color={"danger"}>{t("validators:accept cgu")}</HelpBlock>}
-          </Col>
-        </FormGroup>
-        {submitRender && (
-          <Submit
-            icon="sign-in-alt"
-            rotate={270}
-            name="register"
-            isPending={isPending}
-            isSuccess={isSuccess}
-            onClick={this.internalSubmit}
-          />
-        )}
-      </Form>
-    );
-  }
-}
+          {getFieldValue("read") || <HelpBlock color={"danger"}>{t("validators:accept cgu")}</HelpBlock>}
+        </Col>
+      </FormGroup>
+      {submitRender && (
+        <Submit
+          icon="sign-in-alt"
+          rotate={270}
+          name="register"
+          isPending={isPending}
+          isSuccess={isSuccess}
+          onClick={onSubmit}
+        />
+      )}
+    </Form>
+  );
+};
 
-registerForm.defaultProps = {
+RegisterForm.defaultProps = {
   submitRender: false
 };
 
 // The propTypes.
-registerForm.propTypes = {
+RegisterForm.propTypes = {
   confirmation: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   form: formShape,
@@ -162,4 +88,4 @@ registerForm.propTypes = {
   t: PropTypes.func.isRequired
 };
 
-export default translate(["translations"])(createForm()(registerForm));
+export default translate(["translations"])(RegisterForm);
