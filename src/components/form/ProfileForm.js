@@ -4,145 +4,128 @@ import StatusAlert from "../common/alert/StatusAlert";
 import HelpBlock from "../common/help/HelpBlock";
 import InputGroupIcon from "../common/input/InputGroupIcon";
 import Submit from "../common/button/Submit";
+import UsernameFormGroup from "../formgroup/UsernameFormGroup";
 import { Col, Form, FormGroup, Input, InputGroup, Label } from "reactstrap";
 import { faUser, faUserMd } from "@fortawesome/free-solid-svg-icons";
+import { formShape } from "rc-form";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { translate } from "react-i18next";
 
 library.add(faUser, faUserMd);
 
-class ProfileForm extends Component {
-  render() {
-    const {
-      additionalName,
-      familyName,
-      givenName,
-      jobTitle,
-      name,
-      error,
-      isPending,
-      isSuccess,
-      isError,
-      success,
-      onSubmit,
-      onChange,
-      t
-    } = this.props;
+const ProfileForm = (props) => {
+  const {
+    additionalName,
+    familyName,
+    form,
+    givenName,
+    jobTitle,
+    name,
+    error,
+    isPending,
+    isSuccess,
+    isError,
+    success,
+    onSubmit,
+    onChange,
+    t
+  } = props;
 
-    return (
-      <Form onSubmit={onSubmit}>
-        <StatusAlert code="profile" error={error} isError={isError} isSuccess={isSuccess} success={success} />
-        <FormGroup row>
-          <Label for="name" sm={4}>
-            {t("form.profile.name.label")}
-          </Label>
-          <Col sm={8}>
-            <InputGroup>
-              <InputGroupIcon icon="user" />
-              <Input
-                type="text"
-                name="name"
-                id="Name"
-                placeholder={t("form.profile.name.placeholder")}
-                value={name}
-                required
-                onChange={onChange}
-              />
-            </InputGroup>
-            <HelpBlock>{t("form.profile.name.helpBlock")}</HelpBlock>
-          </Col>
-        </FormGroup>
-        <FormGroup row>
-          <Label for="givenName" sm={4}>
-            {t("form.profile.givenName.label")}
-          </Label>
-          <Col sm={8}>
-            <InputGroup>
-              <InputGroupIcon icon="user" />
-              <Input
-                type="text"
-                name="givenName"
-                id="givenName"
-                placeholder={t("form.profile.givenName.placeholder")}
-                value={givenName}
-                required
-                onChange={onChange}
-              />
-            </InputGroup>
-            <HelpBlock>{t("form.profile.givenName.helpBlock")}</HelpBlock>
-          </Col>
-        </FormGroup>
-        <FormGroup row>
-          <Label for="additionalName" sm={4}>
-            {t("form.profile.additionalName.label")}
-          </Label>
-          <Col sm={8}>
-            <InputGroup>
-              <InputGroupIcon icon="user" />
-              <Input
-                type="text"
-                name="additionalName"
-                id="AdditionalName"
-                placeholder={t("form.profile.additionalName.placeholder")}
-                value={additionalName}
-                required
-                onChange={onChange}
-              />
-            </InputGroup>
-            <HelpBlock>{t("form.profile.additionalName.helpBlock")}</HelpBlock>
-          </Col>
-        </FormGroup>
-        <FormGroup row>
-          <Label for="familyName" sm={4}>
-            {t("form.profile.familyName.label")}
-          </Label>
-          <Col sm={8}>
-            <InputGroup>
-              <InputGroupIcon icon="user" />
-              <Input
-                type="text"
-                name="familyName"
-                id="familyName"
-                placeholder={t("form.profile.familyName.placeholder")}
-                value={familyName}
-                required
-                onChange={onChange}
-              />
-            </InputGroup>
-            <HelpBlock>{t("form.profile.familyName.helpBlock")}</HelpBlock>
-          </Col>
-        </FormGroup>
-        <FormGroup row>
-          <Label for="jobTitle" sm={4}>
-            {t("form.profile.jobTitle.label")}
-          </Label>
-          <Col sm={8}>
-            <InputGroup>
-              <InputGroupIcon icon="user-md" />
-              <Input
-                type="text"
-                name="jobTitle"
-                id="jobTitle"
-                placeholder={t("form.profile.jobTitle.placeholder")}
-                value={jobTitle}
-                required
-                onChange={onChange}
-              />
-            </InputGroup>
-            <HelpBlock>{t("form.profile.jobTitle.helpBlock")}</HelpBlock>
-          </Col>
-        </FormGroup>
-        <Submit isPending={isPending} name="profile" onClick={onSubmit} />
-      </Form>
-    );
-  }
-}
+  return (
+    <Form onSubmit={onSubmit}>
+      <StatusAlert code="profile" error={error} isError={isError} isSuccess={isSuccess} success={success} />
+      <UsernameFormGroup value={name} onChange={onChange} onSubmit={onSubmit} form={form} />
+      <FormGroup row>
+        <Label for="givenName" sm={4}>
+          {t("form.profile.givenName.label")}
+        </Label>
+        <Col sm={8}>
+          <InputGroup>
+            <InputGroupIcon icon="user" />
+            <Input
+              type="text"
+              name="givenName"
+              id="givenName"
+              placeholder={t("form.profile.givenName.placeholder")}
+              value={givenName}
+              required
+              onChange={onChange}
+            />
+          </InputGroup>
+          <HelpBlock>{t("form.profile.givenName.helpBlock")}</HelpBlock>
+        </Col>
+      </FormGroup>
+      <FormGroup row>
+        <Label for="additionalName" sm={4}>
+          {t("form.profile.additionalName.label")}
+        </Label>
+        <Col sm={8}>
+          <InputGroup>
+            <InputGroupIcon icon="user" />
+            <Input
+              type="text"
+              name="additionalName"
+              id="AdditionalName"
+              placeholder={t("form.profile.additionalName.placeholder")}
+              value={additionalName}
+              required
+              onChange={onChange}
+            />
+          </InputGroup>
+          <HelpBlock>{t("form.profile.additionalName.helpBlock")}</HelpBlock>
+        </Col>
+      </FormGroup>
+      <FormGroup row>
+        <Label for="familyName" sm={4}>
+          {t("form.profile.familyName.label")}
+        </Label>
+        <Col sm={8}>
+          <InputGroup>
+            <InputGroupIcon icon="user" />
+            <Input
+              type="text"
+              name="familyName"
+              id="familyName"
+              placeholder={t("form.profile.familyName.placeholder")}
+              value={familyName}
+              required
+              onChange={onChange}
+            />
+          </InputGroup>
+          <HelpBlock>{t("form.profile.familyName.helpBlock")}</HelpBlock>
+        </Col>
+      </FormGroup>
+      <FormGroup row>
+        <Label for="jobTitle" sm={4}>
+          {t("form.profile.jobTitle.label")}
+        </Label>
+        <Col sm={8}>
+          <InputGroup>
+            <InputGroupIcon icon="user-md" />
+            <Input
+              type="text"
+              name="jobTitle"
+              id="jobTitle"
+              placeholder={t("form.profile.jobTitle.placeholder")}
+              value={jobTitle}
+              required
+              onChange={onChange}
+            />
+          </InputGroup>
+          <HelpBlock>{t("form.profile.jobTitle.helpBlock")}</HelpBlock>
+        </Col>
+      </FormGroup>
+      <Submit isPending={isPending} name="profile" onClick={onSubmit} />
+    </Form>
+  );
+};
 
 // The propTypes.
 ProfileForm.propTypes = {
   additionalName: PropTypes.string.isRequired,
   error: PropTypes.object.isRequired,
   familyName: PropTypes.string.isRequired,
+  form: formShape,
   givenName: PropTypes.string.isRequired,
   isError: PropTypes.bool.isRequired,
   isPending: PropTypes.bool.isRequired,

@@ -1,10 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import ProfileForm from "../../form/ProfileForm";
-import { getProfile, profileUpdate } from "../../../actions/profileActions";
 import LoadingJumbotron from "../../common/jumbotron/LoadingJumbotron";
+import ProfileForm from "../../form/ProfileForm";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import { createForm, formShape } from "rc-form";
+import { getProfile, profileUpdate } from "../../../actions/profileActions";
 
 class ProfileContainer extends React.Component {
   constructor(props, context) {
@@ -39,7 +40,11 @@ class ProfileContainer extends React.Component {
   onSubmit(e) {
     e.preventDefault();
 
-    this.props.actions.profileUpdate(this.state);
+    this.props.form.validateFields((error) => {
+      if (!error) {
+        this.props.actions.profileUpdate(this.state);
+      }
+    });
   }
 
   render() {
@@ -85,4 +90,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ProfileContainer);
+)(createForm()(ProfileContainer));
