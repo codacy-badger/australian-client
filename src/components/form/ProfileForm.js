@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import StatusAlert from "../common/alert/StatusAlert";
 import HelpBlock from "../common/help/HelpBlock";
 import AdditionalNameFormGroup from "../formgroup/AdditionalNameFormGroup";
+import FamilyNameFormGroup from "../formgroup/FamilyNameFormGroup";
 import GivenNameFormGroup from "../formgroup/GivenNameFormGroup";
 import InputGroupIcon from "../common/input/InputGroupIcon";
 import Submit from "../common/button/Submit";
@@ -39,26 +40,7 @@ const ProfileForm = (props) => {
       <UsernameFormGroup value={name} onChange={onChange} onSubmit={onSubmit} form={form} />
       <GivenNameFormGroup value={givenName} onChange={onChange} onSubmit={onSubmit} form={form} />
       <AdditionalNameFormGroup value={additionalName} onChange={onChange} onSubmit={onSubmit} form={form} />
-      <FormGroup row>
-        <Label for="familyName" sm={4}>
-          {t("form.profile.familyName.label")}
-        </Label>
-        <Col sm={8}>
-          <InputGroup>
-            <InputGroupIcon icon="user" />
-            <Input
-              type="text"
-              name="familyName"
-              id="familyName"
-              placeholder={t("form.profile.familyName.placeholder")}
-              value={familyName}
-              required
-              onChange={onChange}
-            />
-          </InputGroup>
-          <HelpBlock>{t("form.profile.familyName.helpBlock")}</HelpBlock>
-        </Col>
-      </FormGroup>
+      <FamilyNameFormGroup value={additionalName} onChange={onChange} onSubmit={onSubmit} form={form} />
       <FormGroup row>
         <Label for="jobTitle" sm={4}>
           {t("form.profile.jobTitle.label")}
