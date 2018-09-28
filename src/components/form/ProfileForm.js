@@ -1,7 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import StatusAlert from "../common/alert/StatusAlert";
 import HelpBlock from "../common/help/HelpBlock";
+import GivenNameFormGroup from "../formgroup/GivenNameFormGroup";
 import InputGroupIcon from "../common/input/InputGroupIcon";
 import Submit from "../common/button/Submit";
 import UsernameFormGroup from "../formgroup/UsernameFormGroup";
@@ -35,26 +36,7 @@ const ProfileForm = (props) => {
     <Form onSubmit={onSubmit}>
       <StatusAlert code="profile" error={error} isError={isError} isSuccess={isSuccess} success={success} />
       <UsernameFormGroup value={name} onChange={onChange} onSubmit={onSubmit} form={form} />
-      <FormGroup row>
-        <Label for="givenName" sm={4}>
-          {t("form.profile.givenName.label")}
-        </Label>
-        <Col sm={8}>
-          <InputGroup>
-            <InputGroupIcon icon="user" />
-            <Input
-              type="text"
-              name="givenName"
-              id="givenName"
-              placeholder={t("form.profile.givenName.placeholder")}
-              value={givenName}
-              required
-              onChange={onChange}
-            />
-          </InputGroup>
-          <HelpBlock>{t("form.profile.givenName.helpBlock")}</HelpBlock>
-        </Col>
-      </FormGroup>
+      <GivenNameFormGroup value={givenName} onChange={onChange} onSubmit={onSubmit} form={form} />
       <FormGroup row>
         <Label for="additionalName" sm={4}>
           {t("form.profile.additionalName.label")}
