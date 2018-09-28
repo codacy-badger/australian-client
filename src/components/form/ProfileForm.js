@@ -1,18 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 import StatusAlert from "../common/alert/StatusAlert";
-import HelpBlock from "../common/help/HelpBlock";
 import AdditionalNameFormGroup from "../formgroup/AdditionalNameFormGroup";
 import FamilyNameFormGroup from "../formgroup/FamilyNameFormGroup";
 import GivenNameFormGroup from "../formgroup/GivenNameFormGroup";
-import InputGroupIcon from "../common/input/InputGroupIcon";
+import JobTitleFormGroup from "../formgroup/JobTitleFormGroup";
 import Submit from "../common/button/Submit";
 import UsernameFormGroup from "../formgroup/UsernameFormGroup";
-import { Col, Form, FormGroup, Input, InputGroup, Label } from "reactstrap";
+import { Form } from "reactstrap";
 import { faUser, faUserMd } from "@fortawesome/free-solid-svg-icons";
 import { formShape } from "rc-form";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { translate } from "react-i18next";
 
 library.add(faUser, faUserMd);
 
@@ -30,8 +28,7 @@ const ProfileForm = (props) => {
     isError,
     success,
     onSubmit,
-    onChange,
-    t
+    onChange
   } = props;
 
   return (
@@ -40,28 +37,11 @@ const ProfileForm = (props) => {
       <UsernameFormGroup value={name} onChange={onChange} onSubmit={onSubmit} form={form} />
       <GivenNameFormGroup value={givenName} onChange={onChange} onSubmit={onSubmit} form={form} />
       <AdditionalNameFormGroup value={additionalName} onChange={onChange} onSubmit={onSubmit} form={form} />
-      <FamilyNameFormGroup value={additionalName} onChange={onChange} onSubmit={onSubmit} form={form} />
-      <FormGroup row>
-        <Label for="jobTitle" sm={4}>
-          {t("form.profile.jobTitle.label")}
-        </Label>
-        <Col sm={8}>
-          <InputGroup>
-            <InputGroupIcon icon="user-md" />
-            <Input
-              type="text"
-              name="jobTitle"
-              id="jobTitle"
-              placeholder={t("form.profile.jobTitle.placeholder")}
-              value={jobTitle}
-              required
-              onChange={onChange}
-            />
-          </InputGroup>
-          <HelpBlock>{t("form.profile.jobTitle.helpBlock")}</HelpBlock>
-        </Col>
-      </FormGroup>
-      <Submit isPending={isPending} name="profile" onClick={onSubmit} />
+      <FamilyNameFormGroup value={familyName} onChange={onChange} onSubmit={onSubmit} form={form} />
+      <JobTitleFormGroup value={jobTitle} onChange={onChange} onSubmit={onSubmit} form={form} />
+      <div className="text-right">
+        <Submit isPending={isPending} name="profile" onClick={onSubmit} />
+      </div>
     </Form>
   );
 };
@@ -80,8 +60,9 @@ ProfileForm.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
+  success: PropTypes.object.isRequired,
   t: PropTypes.func.isRequired
 };
 
 // Redux connect begin here
-export default translate("translations")(ProfileForm);
+export default ProfileForm;
