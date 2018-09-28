@@ -30,6 +30,10 @@
       "submitting": "Envoi en cours…"
     },
     "general": {
+      "email": {
+        "label": "Email",
+        "placeholder": "Entrez votre adresse email"
+      },
       "latitude": "Latitude",
       "longitude": "Longitude",
       "password": {
@@ -38,8 +42,6 @@
       }
     },
     "login": {
-      "email": "Email",
-      "email-placeholder": "Entrez votre adresse email",
       "rememberMe": "Se souvenir de moi",
       "submit": "S’identifier",
       "submitting": "Identification en cours…"

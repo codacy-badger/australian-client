@@ -30,6 +30,10 @@
       "submitting": "Sending…"
     },
     "general": {
+      "email": {
+        "label": "Email",
+        "placeholder": "Enter your email"
+      },
       "latitude": "Latitude",
       "longitude": "Longitude",
       "password": {
@@ -38,8 +42,6 @@
       }
     },
     "login": {
-      "email": "Email",
-      "email-placeholder": "Enter your email",
       "password": "Password",
       "password-placeholder": "Enter your password",
       "rememberMe": "Remember me",

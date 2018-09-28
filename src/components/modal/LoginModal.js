@@ -1,18 +1,20 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { translate } from "react-i18next";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Alert, Button, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { faInfoCircle, faSignInAlt } from "@fortawesome/free-solid-svg-icons";
-import { connect } from "react-redux";
-import { login } from "../../actions/authActions";
-import { Link } from "react-router-dom";
 import LoginForm from "../form/LoginForm";
 import Submit from "../common/button/Submit";
+import { Alert, Button, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { createForm, formShape } from "rc-form";
+import { connect } from "react-redux";
+import { faInfoCircle, faSignInAlt } from "@fortawesome/free-solid-svg-icons";
+import { login } from "../../actions/authActions";
+import { translate } from "react-i18next";
 
 library.add(faInfoCircle, faSignInAlt);
 
+//TODO Create a LoginContainer
 class LoginModal extends Component {
   constructor(props) {
     super(props);
@@ -23,7 +25,6 @@ class LoginModal extends Component {
     };
 
     this.onChange = this.onChange.bind(this);
-    this.onClick = this.onClick.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
 
@@ -39,24 +40,23 @@ class LoginModal extends Component {
     const { login } = this.props;
     const { email, password, rememberMe } = this.state;
 
-    login(email, password, rememberMe);
-
-    this.setState({
-      password: ""
+    this.props.form.validateFields((error) => {
+      if (!error) {
+        login(email, password, rememberMe);
+      }
     });
-  }
 
-  onClick(e) {
-    e.preventDefault();
-    this.loginForm.internalSubmit(e);
+    // this.setState({
+    //   password: ""
+    // });
   }
 
   render() {
     const { email, password, rememberMe } = this.state;
-    const { error, isLoginPending, isLoginSuccess, isLoginError, isOpen, t, toggle, warning } = this.props;
+    const { error, form, isLoginPending, isLoginSuccess, isLoginError, isOpen, t, toggle, warning } = this.props;
 
     return (
-      <Modal isOpen={warning || isOpen} toggle={toggle}>
+      <Modal isOpen={isOpen} toggle={toggle}>
         <ModalHeader toggle={toggle}>
           <FontAwesomeIcon fixedWidth icon="sign-in-alt" /> {t("navbar.user-login")}
         </ModalHeader>
@@ -75,14 +75,14 @@ class LoginModal extends Component {
           <LoginForm
             email={email}
             error={error}
-            password={password}
-            rememberMe={rememberMe}
+            form={form}
             isError={isLoginError}
             isPending={isLoginPending}
             isSuccess={isLoginSuccess}
             onChange={this.onChange}
-            onRef={(ref) => (this.loginForm = ref)}
             onSubmit={this.onSubmit}
+            password={password}
+            rememberMe={rememberMe}
           />
         </ModalBody>
         <ModalFooter>
@@ -91,7 +91,7 @@ class LoginModal extends Component {
             name="login"
             isPending={isLoginPending}
             isSuccess={isLoginSuccess}
-            onClick={this.onClick}
+            onClick={this.onSubmit}
           />
           {warning || (
             <Button color="secondary" onClick={toggle}>
@@ -119,6 +119,7 @@ LoginModal.propTypes = {
   isLoginError: PropTypes.bool.isRequired,
   isOpen: PropTypes.bool.isRequired,
   error: PropTypes.object.isRequired,
+  form: formShape,
   t: PropTypes.func.isRequired,
   toggle: PropTypes.func.isRequired,
   warning: PropTypes.bool.isRequired
@@ -144,5 +145,5 @@ export default translate("translations")(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(LoginModal)
+  )(createForm()(LoginModal))
 );

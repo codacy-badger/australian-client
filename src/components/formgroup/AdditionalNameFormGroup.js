@@ -50,4 +50,5 @@ AdditionalNameFormGroup.propTypes = {
   value: PropTypes.string.isRequired
 };
 
+//TODO verify translate(["translations", "validators"])
 export default translate("translations", "validators")(AdditionalNameFormGroup);
