@@ -4,11 +4,13 @@ import Header from "../common/Header";
 import Meta from "../common/Meta";
 import StatusAlert from "../common/alert/StatusAlert";
 import Submit from "../common/button/Submit";
-import { Card, CardBody, CardFooter, CardHeader, Col, Container, Form, FormGroup, Input, Label } from "reactstrap";
+import { Card, CardBody, CardFooter, CardHeader, Container, Form } from "reactstrap";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { createForm, formShape } from "rc-form";
 import { sendMail } from "../../actions/forgotPasswordActions";
 import { translate } from "react-i18next";
+import EmailFormGroup from "../formgroup/EmailFormGroup";
 
 class ForgotPasswordPage extends Component {
   constructor(props) {
@@ -16,29 +18,29 @@ class ForgotPasswordPage extends Component {
     this.state = {
       email: ""
     };
-
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
 
   onChange(e) {
     this.setState({
-      [e.target.name]: e.target.value
+      email: e.target.value
     });
   }
 
   onSubmit(e) {
     e.preventDefault();
-    const { email } = this.state;
+    this.props.form.validateFields((error) => {
+      if (!error) {
+        const { email } = this.state;
 
-    if ("" !== email) {
-      this.props.sendMail(email);
-    }
-    return false;
+        this.props.sendMail(email);
+      }
+    });
   }
 
   render() {
-    const { error, isMailPending, isMailSuccess, isMailError, nextStep, t } = this.props;
+    const { error, form, isMailPending, isMailSuccess, isMailError, nextStep, t } = this.props;
     const { email } = this.state;
 
     return (
@@ -57,22 +59,7 @@ class ForgotPasswordPage extends Component {
                   isSuccess={isMailSuccess}
                   success={nextStep}
                 />
-                <FormGroup row>
-                  <Label for="forgotPasswordEmail" sm={4}>
-                    {t("form.forgot-password.email")}
-                  </Label>
-                  <Col sm={8}>
-                    <Input
-                      type="email"
-                      name="email"
-                      id="forgotPasswordEmail"
-                      placeholder={t("form.forgot-password.email-placeholder")}
-                      value={email}
-                      required
-                      onChange={this.onChange}
-                    />
-                  </Col>
-                </FormGroup>
+                <EmailFormGroup form={form} onChange={this.onChange} value={email} />
               </CardBody>
               <CardFooter className="text-right">
                 <Submit
@@ -96,9 +83,11 @@ class ForgotPasswordPage extends Component {
 // The propTypes.
 ForgotPasswordPage.propTypes = {
   error: PropTypes.object.isRequired,
+  form: formShape,
   isMailError: PropTypes.bool.isRequired,
   isMailPending: PropTypes.bool.isRequired,
   isMailSuccess: PropTypes.bool.isRequired,
+  nextStep: PropTypes.object.isRequired,
   t: PropTypes.func.isRequired
 };
 
@@ -123,5 +112,5 @@ export default translate("translations")(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(ForgotPasswordPage)
+  )(createForm()(ForgotPasswordPage))
 );

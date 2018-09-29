@@ -8,6 +8,7 @@ import { translate } from "react-i18next";
 
 library.add(faSpinner);
 
+//TODO Delete isSuccess to authorized multiple sending without reloading page.
 class Submit extends Component {
   render() {
     const { icon, name, isPending, isSuccess, onClick, rotation, t } = this.props;
