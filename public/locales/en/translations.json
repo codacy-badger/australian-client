@@ -30,6 +30,10 @@
       "submitting": "Sending…"
     },
     "general": {
+      "confirmation": {
+        "label": "Confirmation",
+        "placeholder": "Confirm your password"
+      },
       "email": {
         "label": "Email",
         "placeholder": "Enter your email"
@@ -85,8 +89,8 @@
       "password-confirmation-placeholder": "Confirm your password",
       "password-confirmation-helpBlock": "Password and confirmation fields should be equals.",
       "read": {
-        "label": "I read and accept usage general conditions.",
-        "helpBlock": "Please read and accept UGC"
+        "label": "I read and accept Terms of Service.",
+        "helpBlock": "Please read and accept TOS"
       },
       "submit": "Register",
       "submitting": "Registering…"
@@ -178,7 +182,7 @@
     "account": "Account deletion",
     "activation": "Account activation",
     "app": "Welcome to react using react-i18next",
-    "cgu": "Usage general conditions",
+    "cgu": "Terms of service",
     "forgot-your-password": "Forgot your password?",
     "profile": "Your profile",
     "profile-address": "Address form",

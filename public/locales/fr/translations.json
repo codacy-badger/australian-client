@@ -30,6 +30,10 @@
       "submitting": "Envoi en cours…"
     },
     "general": {
+      "confirmation": {
+        "label": "Confirmation",
+        "placeholder": "Saisissez à nouveau votre mot de passe"
+      },
       "email": {
         "label": "Email",
         "placeholder": "Entrez votre adresse email"

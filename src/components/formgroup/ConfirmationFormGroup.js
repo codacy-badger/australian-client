@@ -34,7 +34,7 @@ const ConfirmationFormGroup = ({ children, form, onChange, t, password, value })
               rules: [
                 {
                   type: "enum",
-                  enum: [password],
+                  enum: [password, ""],
                   required: true,
                   message: "confirmation is different from password"
                 }

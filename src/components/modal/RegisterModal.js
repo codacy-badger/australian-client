@@ -59,9 +59,11 @@ class RegisterModal extends Component {
     this.props.form.validateFields((error) => {
       if (!error) {
         const { register } = this.props;
-        const { email, password } = this.state;
+        const { confirmation, email, password, read } = this.state;
 
-        register(email, password);
+        if (confirmation === password && read) {
+          register(email, password);
+        }
       }
     });
   }

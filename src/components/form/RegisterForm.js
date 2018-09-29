@@ -26,7 +26,7 @@ const RegisterForm = (props) => {
   } = props;
 
   const { getFieldProps, getFieldError, getFieldValue } = form;
-  const cguErrors = getFieldError("read");
+  const tosErrors = getFieldError("read");
 
   return (
     <Form onSubmit={onSubmit}>
@@ -40,9 +40,15 @@ const RegisterForm = (props) => {
               type="checkbox"
               name="read"
               id="read"
-              className={cguErrors ? "is-invalid" : ""}
+              className={tosErrors ? "is-invalid" : ""}
               {...getFieldProps("read", {
                 initialValue: read,
+                rules: [
+                  {
+                    type: "boolean",
+                    required: true
+                  }
+                ],
                 onChange,
                 valuePropName: "checked"
               })}
