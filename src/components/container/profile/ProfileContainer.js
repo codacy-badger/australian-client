@@ -4,7 +4,7 @@ import LoadingJumbotron from "../../common/jumbotron/LoadingJumbotron";
 import ProfileForm from "../../form/ProfileForm";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { createForm, formShape } from "rc-form";
+import { createForm } from "rc-form";
 import { getProfile, profileUpdate } from "../../../actions/profileActions";
 
 class ProfileContainer extends React.Component {
