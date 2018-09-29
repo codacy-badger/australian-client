@@ -37,7 +37,7 @@ class PasswordContainer extends React.Component {
           oldPassword: "",
           newPassword: "",
           confirmation: ""
-        })
+        });
       }
     });
   }
