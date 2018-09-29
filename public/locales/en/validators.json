@@ -1,5 +1,6 @@
 {
   "accept cgu": "To register, please accept usage general conditions.",
+  "activationCode is required": "Please enter activation code provided in our email",
   "confirmation is different from password": "Confirmation is different from password",
   "confirmation is required": "Please confirm your password to avoid typo.",
   "email is not a valid email": "Please enter a valid email.",

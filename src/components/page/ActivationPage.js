@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import ActivationCodeFormGroup from "../formgroup/ActivationCodeFormGroup";
 import Header from "../common/Header";
 import Meta from "../common/Meta";
 import StatusAlert from "../common/alert/StatusAlert";
 import Submit from "../common/button/Submit";
-import { Card, CardBody, CardFooter, CardHeader, Col, Container, Form, FormGroup, Input, Label } from "reactstrap";
+import { Card, CardBody, CardFooter, CardHeader, Container, Form } from "reactstrap";
 import { Link } from "react-router-dom";
 import { activate } from "../../actions/activationActions";
 import { connect } from "react-redux";
+import { createForm, formShape } from "rc-form";
 import { translate } from "react-i18next";
 
 class ActivationPage extends Component {
@@ -16,29 +18,30 @@ class ActivationPage extends Component {
     this.state = {
       activationCode: this.props.match.params.activationCode
     };
-
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
 
   onChange(e) {
     this.setState({
-      [e.target.name]: e.target.value
+      activationCode: e.target.value
     });
   }
 
   onSubmit(e) {
     e.preventDefault();
-    const { activationCode } = this.state;
 
-    if ("" !== activationCode) {
-      this.props.activate(activationCode);
-    }
-    return false;
+    this.props.form.validateFields((error) => {
+      if (!error) {
+        const { activationCode } = this.state;
+
+        this.props.activate(activationCode);
+      }
+    });
   }
 
   render() {
-    const { error, isActivationPending, isActivationSuccess, isActivationError, nextStep, t } = this.props;
+    const { error, form, isActivationPending, isActivationSuccess, isActivationError, nextStep, t } = this.props;
     const { activationCode } = this.state;
 
     return (
@@ -57,22 +60,7 @@ class ActivationPage extends Component {
                   isSuccess={isActivationSuccess}
                   success={nextStep}
                 />
-                <FormGroup row>
-                  <Label for="activationCode" sm={4}>
-                    {t("form.activation.activationCode")}
-                  </Label>
-                  <Col sm={8}>
-                    <Input
-                      type="text"
-                      name="activationCode"
-                      id="activationCode"
-                      placeholder={t("form.activation.activationCode-placeholder")}
-                      value={activationCode}
-                      required
-                      onChange={this.onChange}
-                    />
-                  </Col>
-                </FormGroup>
+                <ActivationCodeFormGroup form={form} onChange={this.onChange} value={activationCode} />
               </CardBody>
               <CardFooter className="text-right">
                 <Submit
@@ -95,6 +83,7 @@ class ActivationPage extends Component {
 
 ActivationPage.propTypes = {
   activate: PropTypes.func.isRequired,
+  form: formShape,
   isActivationError: PropTypes.bool.isRequired,
   isActivationPending: PropTypes.bool.isRequired,
   isActivationSuccess: PropTypes.bool.isRequired
@@ -120,5 +109,5 @@ export default translate("translations")(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(ActivationPage)
+  )(createForm()(ActivationPage))
 );
