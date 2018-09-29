@@ -20,7 +20,6 @@ const errorResponse = {
 
 class PasswordApi {
   static callPasswordApi(data, callback) {
-    console.dir(data);
     return new Promise(() => {
       setTimeout(() => {
         const { oldPassword } = data;
