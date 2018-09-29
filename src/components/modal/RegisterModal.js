@@ -90,8 +90,6 @@ class RegisterModal extends Component {
               confirmation={confirmation}
               email={email}
               form={form}
-              isError={isError}
-              isPending={isPending}
               onChange={this.onChange}
               onClickCgu={this.toggleCgu}
               onSubmit={this.onSubmit}

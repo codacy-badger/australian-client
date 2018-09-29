@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import HelpBlock from "../common/help/HelpBlock";
 import PasswordFormGroup from "../formgroup/PasswordFormGroup";
-import Submit from "../common/button/Submit";
 import { Button, Col, Form, FormGroup, Input, Label } from "reactstrap";
 import { formShape } from "rc-form";
 import { translate } from "react-i18next";
@@ -14,13 +13,11 @@ const RegisterForm = (props) => {
     confirmation,
     email,
     form,
-    isPending,
     onChange,
     onClickCgu,
     onSubmit,
     password,
     read,
-    submitRender,
     t
   } = props;
 
@@ -59,15 +56,8 @@ const RegisterForm = (props) => {
           {getFieldValue("read") || <HelpBlock color={"danger"}>{t("validators:accept cgu")}</HelpBlock>}
         </Col>
       </FormGroup>
-      {submitRender && (
-        <Submit icon="sign-in-alt" rotate={270} name="register" isPending={isPending} onClick={onSubmit} />
-      )}
     </Form>
   );
-};
-
-RegisterForm.defaultProps = {
-  submitRender: false
 };
 
 // The propTypes.
@@ -75,14 +65,11 @@ RegisterForm.propTypes = {
   confirmation: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   form: formShape,
-  isPending: PropTypes.bool.isRequired,
-  isSuccess: PropTypes.bool.isRequired,
   onChange: PropTypes.func.isRequired,
   onClickCgu: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   password: PropTypes.string.isRequired,
   read: PropTypes.bool.isRequired,
-  submitRender: PropTypes.bool,
   t: PropTypes.func.isRequired
 };
 

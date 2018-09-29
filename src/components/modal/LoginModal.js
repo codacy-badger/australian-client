@@ -78,7 +78,6 @@ class LoginModal extends Component {
             error={error}
             form={form}
             isError={isLoginError}
-            isPending={isLoginPending}
             onChange={this.onChange}
             onSubmit={this.onSubmit}
             password={password}

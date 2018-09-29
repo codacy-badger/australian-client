@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import EmailFormGroup from "../formgroup/EmailFormGroup";
 import PasswordFormGroup from "../formgroup/PasswordFormGroup";
-import Submit from "../common/button/Submit";
 import { Col, Form, FormGroup, FormText, Input, Label } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
@@ -10,7 +9,7 @@ import { formShape } from "rc-form";
 import { translate } from "react-i18next";
 
 const LoginForm = (props) => {
-  const { email, form, isPending, onChange, onSubmit, password, rememberMe, submitRender, t } = props;
+  const { email, form, onChange, onSubmit, password, rememberMe, t } = props;
 
   return (
     <Form onSubmit={onSubmit}>
@@ -31,20 +30,14 @@ const LoginForm = (props) => {
           </Label>
         </Col>
       </FormGroup>
-      {submitRender && <Submit icon="sign-in-alt" name="login" isPending={isPending} onClick={onSubmit} />}
     </Form>
   );
 };
 
 // The propTypes.
-LoginForm.defaultProps = {
-  submitRender: false
-};
-
 LoginForm.propTypes = {
   email: PropTypes.string.isRequired,
   form: formShape,
-  isPending: PropTypes.bool.isRequired,
   isSuccess: PropTypes.bool.isRequired,
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
