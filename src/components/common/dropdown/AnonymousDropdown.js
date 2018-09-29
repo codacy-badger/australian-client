@@ -22,17 +22,17 @@ class AnonymousDropdown extends React.Component {
     this.toggleRegisterModal = this.toggleRegisterModal.bind(this);
   }
 
-  toggleLoginModal = () => {
+  toggleLoginModal() {
     this.setState({
       loginModal: !this.state.loginModal
-    })
-  };
+    });
+  }
 
   toggleRegisterModal() {
     this.setState({
       registerModal: !this.state.registerModal
-    })
-  };
+    });
+  }
 
   render() {
     const { t } = this.props;
@@ -52,7 +52,7 @@ class AnonymousDropdown extends React.Component {
             </DropdownItem>
           </DropdownMenu>
         </UncontrolledDropdown>
-        <LoginModal toggle={this.toggleLoginModal} isOpen={this.state.loginModal}/>
+        <LoginModal toggle={this.toggleLoginModal} isOpen={this.state.loginModal} />
         <RegisterModal toggle={this.toggleRegisterModal} isOpen={this.state.registerModal} />
       </div>
     );
@@ -63,4 +63,4 @@ AnonymousDropdown.propTypes = {
   t: PropTypes.func.isRequired
 };
 
-export default translate("translations",{ withRef: true })(AnonymousDropdown);
+export default translate("translations", { withRef: true })(AnonymousDropdown);
