@@ -8,6 +8,12 @@ export default {
     isActivationError: false,
     nextStep: {}
   },
+  deleteAccount: {
+    error: {},
+    isDeleteAccountPending: false,
+    isDeleteAccountSuccess: false,
+    isDeleteAccountError: false
+  },
   forgotPassword: {
     error: {},
     isForgotPasswordPending: false,
@@ -39,7 +45,7 @@ export default {
       name: "",
       familyName: "",
       givenName: "",
-      jobTitle: "",
+      jobTitle: ""
     }
   },
   register: {

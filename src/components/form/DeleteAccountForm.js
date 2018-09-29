@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import ErrorAlert from "../common/alert/ErrorAlert";
 import PasswordFormGroup from "../formgroup/PasswordFormGroup";
+import Submit from "../common/button/Submit";
 import { Button, Form, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
@@ -22,11 +24,13 @@ class DeleteAccountForm extends Component {
   }
 
   onSubmit(e) {
+    e.preventDefault();
     this.toggle();
     this.props.onSubmit(e);
   }
 
-  open() {
+  open(e) {
+    e.preventDefault();
     this.props.form.validateFields((error) => {
       if (!error) {
         this.toggle();
@@ -41,20 +45,25 @@ class DeleteAccountForm extends Component {
   }
 
   render() {
-    const { children, form, onChange, onSubmit, password, t } = this.props;
+    const { children, error, form, isError, isPending, isSuccess, onChange, password, t } = this.props;
     const { modal } = this.state;
 
     return (
-      <Form onSubmit={onSubmit} className="text-danger">
+      <Form onSubmit={this.open} className="text-danger">
         <h2>{t("title.account")}</h2>
         <p>{t("form.account.description")}</p>
+        {isError && <ErrorAlert>{t(error.message)}</ErrorAlert>}
         {children}
         <PasswordFormGroup onChange={onChange} form={form} value={password} />
         <div className="text-right">
-          <Button color="danger" onClick={this.open}>
-            <FontAwesomeIcon icon="trash-alt" className={"mr-1"} />
-            {t("form.account.submit")}
-          </Button>
+          <Submit
+            className="btn-danger"
+            name="account"
+            icon="trash-alt"
+            onClick={this.open}
+            isPending={isPending}
+            isSuccess={isSuccess}
+          />
           <Modal isOpen={modal} toggle={this.toggle}>
             <ModalHeader>{t("help.are-you-sure.delete-account.title")}</ModalHeader>
             <ModalBody>{t("help.are-you-sure.delete-account.message")}</ModalBody>
@@ -77,7 +86,11 @@ class DeleteAccountForm extends Component {
 
 DeleteAccountForm.propTypes = {
   children: PropTypes.element,
+  error: PropTypes.object.isRequired,
   form: formShape,
+  isError: PropTypes.bool.isRequired,
+  isPending: PropTypes.bool.isRequired,
+  isSuccess: PropTypes.bool.isRequired,
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   password: PropTypes.string.isRequired,

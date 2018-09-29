@@ -46,7 +46,7 @@ function setLogoutMessagePrinted(sendMessage) {
   };
 }
 
-function setLogoutSuccess(isLogoutSuccess, auth = {}) {
+export function setLogoutSuccess(isLogoutSuccess, auth = {}) {
   return {
     type: types.SET_LOGOUT_SUCCESS,
     isLogoutSuccess,

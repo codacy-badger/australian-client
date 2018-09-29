@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import DeleteAccountForm from "../../form/DeleteAccountForm";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 import { createForm, formShape } from "rc-form";
-import { library } from "@fortawesome/fontawesome-svg-core";
+import { deleteAccount } from "../../../actions/deleteAccountActions";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
-import { translate } from "react-i18next";
+import { library } from "@fortawesome/fontawesome-svg-core";
 
 library.add(faTrashAlt);
 
@@ -30,24 +32,45 @@ class AccountContainer extends Component {
 
     this.props.form.validateFields((error) => {
       if (!error) {
-        //FIXME redux calls
-        console.log("do the job");
+        this.props.actions.deleteAccount(this.state.password);
       }
     });
   }
 
   render() {
     const { password } = this.state;
-    const { form } = this.props;
 
-    return <DeleteAccountForm form={form} password={password} onChange={this.onChange} onSubmit={this.onSubmit} />;
+    return <DeleteAccountForm {...this.props} password={password} onChange={this.onChange} onSubmit={this.onSubmit} />;
   }
 }
 
 // The propTypes.
 AccountContainer.propTypes = {
+  error: PropTypes.object.isRequired,
   form: formShape,
-  t: PropTypes.func.isRequired
+  isError: PropTypes.bool.isRequired,
+  isPending: PropTypes.bool.isRequired,
+  isSuccess: PropTypes.bool.isRequired
 };
 
-export default translate("translations")(createForm()(AccountContainer));
+// Redux connect begin here
+function mapStateToProps(state) {
+  return {
+    error: state.deleteAccountReducer.error,
+    isError: state.deleteAccountReducer.isDeleteAccountError,
+    isPending: state.deleteAccountReducer.isDeleteAccountPending,
+    isSuccess: state.deleteAccountReducer.isDeleteAccountSuccess
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators({ deleteAccount }, dispatch)
+  };
+}
+
+//connect is returning a function, that explains the )(
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(createForm()(AccountContainer));

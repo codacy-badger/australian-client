@@ -15,7 +15,8 @@
   "form": {
     "account": {
       "description": "Ici, vous pouvez supprimer votre compte. Entrez votre mot de passe et cliquez sur le bouton de suppression. Attention, cette suppression sera définitive. Après avoir pressé le bouton, le compte sera définitivement supprimé et vous serez déconnecté.",
-      "submit": "Supprimer le compte"
+      "submit": "Supprimer le compte",
+      "submitting": "Suppression en cours…"
     },
     "activation": {
       "activationCode": "Code d’activation",
@@ -98,8 +99,8 @@
     "activation" : "Pour activer votre compte, veuillez entrer le code d’activation qui vous a été envoyé par mail.",
     "are-you-sure": {
       "delete-account": {
-        "title": "Are you sure to delete your account?",
-        "message": "Be careful, your account will be DELETED, this cannot be undone. After you accpet, your account will be deleted and you will be logout."
+        "title": "Êtes vous sûr de vouloir supprimer votre compte ?",
+        "message": "Attention, votre compte sera intégralement SUPPRIMÉ, cette action ne pourra pas être annulée. Après votre validation, votre compte et son contenu seront supprimés de nos serveurs et vous serez déconnecté."
       }
     },
     "forgot-your-password" : "Vous avez perdu votre mot de passe ? Entrez votre adresse email et vous recevrez un mail qui vous guidera étape par étape pour que vous puissiez créer un nouveau mot de passe et vous reconnecter au site.",
