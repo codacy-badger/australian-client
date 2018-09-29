@@ -47,6 +47,7 @@ class LoginModal extends Component {
       }
     });
 
+    //TODO In each container and modal, reinitialized password after submit.
     // this.setState({
     //   password: ""
     // });
