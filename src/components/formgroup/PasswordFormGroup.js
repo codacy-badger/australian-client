@@ -10,29 +10,32 @@ import { translate } from "react-i18next";
 
 library.add(faKey);
 
-const PasswordFormGroup = ({ children, form, onChange, t, value }) => {
+const PasswordFormGroup = (props) => {
+  const { children, form, newPassword, oldPassword, onChange, t, value } = props;
   const { getFieldProps, getFieldError } = form;
-  const passwordErrors = getFieldError("password");
+  const inputName = oldPassword ? "oldPassword" : newPassword ? "newPassword" : "password";
+  const label = "form.general.password." + (oldPassword ? "old-" : newPassword ? "new-" : "") +"label";
+  const passwordErrors = getFieldError(inputName);
+  const placeholder = "form.general.password." + (oldPassword ? "old-" : newPassword ? "new-" : "") + "placeholder";
 
   return (
     <FormGroup row>
-      <Label for="password" sm={4}>
-        {t("form.general.password.label")}
+      <Label for={inputName} sm={4}>
+        {t(label)}
       </Label>
       <Col sm={8}>
         <InputGroup>
           <InputGroupIcon icon="key" />
           <Input
             type="password"
-            name="password"
-            id="password"
+            name={inputName}
             className={passwordErrors ? "is-invalid" : ""}
-            {...getFieldProps("password", {
+            {...getFieldProps(inputName, {
               initialValue: value,
               onChange,
               rules: [{ required: true }]
             })}
-            placeholder={t("form.general.password.placeholder")}
+            placeholder={t(placeholder)}
           />
         </InputGroup>
         <HelpBlockErrors errors={passwordErrors} />
@@ -42,9 +45,16 @@ const PasswordFormGroup = ({ children, form, onChange, t, value }) => {
   );
 };
 
+PasswordFormGroup.defaultProps = {
+  newPassword: false,
+  oldPassword: false
+};
+
 PasswordFormGroup.propTypes = {
   children: PropTypes.element,
   form: formShape,
+  newPassword: PropTypes.bool,
+  oldPassword: PropTypes.bool,
   onChange: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired

@@ -43,13 +43,21 @@
       "longitude": "Longitude",
       "password": {
         "label": "Password",
-        "placeholder": "Enter your password"
+        "placeholder": "Enter your password",
+        "new-label": "New password",
+        "new-placeholder": "Enter your new password",
+        "old-label": "Current password",
+        "old-placeholder": "Enter your current password"
       }
     },
     "login": {
       "rememberMe": "Remember me",
       "submit": "Send",
       "submitting": "Sending…"
+    },
+    "password": {
+      "submit": "Update password",
+      "submitting": "Updating…"
     },
     "profile": {
       "additionalName": {
@@ -104,6 +112,7 @@
       }
     },
     "forgot-your-password" : "You have forgotten your password? Please send us your email, you will receive a mail which will help you step by step to recover your accesses.",
+    "password": "Complete this form to replace your password by a new one.",
     "profile": "This form allow you to update your profile. Update data, then click on \"Save\" button."
   },
   "link": {
@@ -124,14 +133,18 @@
     "login-successful": "Login successful.",
     "logout-successful": "Logout successful",
     "logout-successful-explanations": "Your disconnection has been logged. Hope to see you soon!",
+    "password": {
+      "110": "Password updated.",
+      "120": "Please verify your password"
+    },
+    "password-confirmed": "Your password and its confirmation match.",
+    "password-not-confirmed": "Password and confirmation doesn't match.",
+    "please-login": "To unlock access to this page, please login.",
     "register": {
       "10": "You can login to the website.",
       "20": "An administrator will activate your account. You will be alert by a mail when it will be done.",
       "30": "To verify your mail address, we have sent a mail with a link. Click it to finalize your registration."
     },
-    "password-confirmed": "Your password and its confirmation match.",
-    "password-not-confirmed": "Password and confirmation doesn't match.",
-    "please-login": "To unlock access to this page, please login.",
     "welcome-back": "Welcome back!"
   },
   "meta": {
@@ -189,6 +202,7 @@
     "app": "Welcome to react using react-i18next",
     "cgu": "Terms of service",
     "forgot-your-password": "Forgot your password?",
+    "password": "Change your password",
     "profile": "Your profile",
     "profile-address": "Address form",
     "ooops": "Oooops!"

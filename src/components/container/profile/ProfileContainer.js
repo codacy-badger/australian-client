@@ -21,6 +21,7 @@ class ProfileContainer extends React.Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
+  //TODO Verify the utility.
   componentWillReceiveProps(nextProps) {
     this.setState({
       additionalName: nextProps.user.additionalName,
@@ -61,6 +62,7 @@ class ProfileContainer extends React.Component {
 
 // The propTypes.
 ProfileContainer.propTypes = {
+  //TODO A lot properties are missing.
   isLoading: PropTypes.bool.isRequired,
   user: PropTypes.object
 };

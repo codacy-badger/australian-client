@@ -6,11 +6,13 @@ import CookieContainer from "../container/profile/CookieContainer";
 import Header from "../common/Header";
 import Meta from "../common/Meta";
 import NotFoundJumbotron from "../common/jumbotron/NotFoundJumbotron";
+import PasswordContainer from "../container/profile/PasswordContainer";
 import ProfileContainer from "../container/profile/ProfileContainer";
 import { Col, Container, ListGroup, ListGroupItem, Row } from "reactstrap";
 import { NavLink, Route, Switch } from "react-router-dom";
 import { translate } from "react-i18next";
 
+//TODO Convert to stateless react component.
 class ProfilePage extends Component {
   render() {
     const { t } = this.props;
@@ -47,9 +49,10 @@ class ProfilePage extends Component {
             <Col>
               <Switch>
                 <Route exact path="/profile/general" component={ProfileContainer} />
+                <Route exact path="/profile/account" component={AccountContainer} />
                 <Route exact path="/profile/address" component={AddressForm} />
                 <Route exact path="/profile/cookies" component={CookieContainer} />
-                <Route exact path="/profile/account" component={AccountContainer} />
+                <Route exact path="/profile/password" component={PasswordContainer} />
                 {/* TODO replace by a component non displaying header */}
                 <Route path="/profile/*" component={NotFoundJumbotron} />
               </Switch>

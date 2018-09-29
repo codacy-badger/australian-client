@@ -33,6 +33,13 @@ export default {
     sendLoginMessage: false,
     sendLogoutMessage: false
   },
+  password: {
+    error: {},
+    isPasswordError: false,
+    isPasswordPending: false,
+    isPasswordSuccess: false,
+    success: {},
+  },
   profile: {
     error: {},
     isProfileError: false,

@@ -43,13 +43,21 @@
       "longitude": "Longitude",
       "password": {
         "label": "Mot de passe",
-        "placeholder": "Entrez votre mot de passe"
+        "placeholder": "Entrez votre mot de passe",
+        "new-label": "Nouveau mot de passe",
+        "new-placeholder": "Entrez votre nouveau mot de passe",
+        "old-label": "Mot de passe actuel",
+        "old-placeholder": "Entrez votre mot de passe actuel"
       }
     },
     "login": {
       "rememberMe": "Se souvenir de moi",
       "submit": "S’identifier",
       "submitting": "Identification en cours…"
+    },
+    "password": {
+      "submit": "Modifier le mot de passe",
+      "submitting": "Modification en cours…"
     },
     "profile": {
       "additionalName": {
@@ -104,6 +112,7 @@
       }
     },
     "forgot-your-password" : "Vous avez perdu votre mot de passe ? Entrez votre adresse email et vous recevrez un mail qui vous guidera étape par étape pour que vous puissiez créer un nouveau mot de passe et vous reconnecter au site.",
+    "password": "Ce formulaire vous permet de modifier votre mot de passe.",
     "profile": "Ce formulaire vous permet de modifier votre profil. Remplissez les différents champs et cliquez sur le bouton « Enregistrer »."
   },
   "link": {
@@ -128,6 +137,10 @@
       "10": "Vous pouvez vous connecter au site.",
       "20": "Un administrateur du site va activer votre compte rapidement. Vous en serez averti par mail.",
       "30": "Pour vérifier votre adresse email, nous vous avons envoyé un mail. Il contient un lien, cliquez dessus pour finaliser votre inscription."
+    },
+    "password": {
+      "110": "Votre mot de passe a bien été changé.",
+      "120": "Votre mot de passe n’a pas été changé, veuillez vérifier votre ancien mot de passe."
     },
     "password-confirmed": "Le mot de passe et sa confirmation correspondent bien.",
     "password-not-confirmed": "Le mot de passe et sa confirmation doivent être identiques",
