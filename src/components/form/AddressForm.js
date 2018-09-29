@@ -61,7 +61,7 @@ class AddressForm extends Component {
   }
 
   render() {
-    const { isPending, isSuccess, t } = this.props;
+    const { isPending, t } = this.props;
     const position = [this.state.center.lat, this.state.center.lng];
     const markerPosition = [this.state.marker.lat, this.state.marker.lng];
 
@@ -108,7 +108,7 @@ class AddressForm extends Component {
                 </InputGroup>
               </Col>
             </FormGroup>
-            <Submit isPending={isPending} isError={isSuccess} name="profile" onClick={this.onSubmit} />
+            <Submit isPending={isPending} name="profile" onClick={this.onSubmit} />
           </Col>
           <Col sm={6}>
             <div id="mapid" className="border border-secondary img-thumbnail">

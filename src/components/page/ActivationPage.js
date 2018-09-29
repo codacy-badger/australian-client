@@ -63,12 +63,7 @@ class ActivationPage extends Component {
                 <ActivationCodeFormGroup form={form} onChange={this.onChange} value={activationCode} />
               </CardBody>
               <CardFooter className="text-right">
-                <Submit
-                  isPending={isActivationPending}
-                  isSuccess={isActivationSuccess}
-                  name="activation"
-                  onClick={this.onSubmit}
-                />
+                <Submit isPending={isActivationPending} name="activation" onClick={this.onSubmit} />
                 <Link to="/" title={t("link.home-page-title")} className="ml-2 btn btn-secondary">
                   {t("link.home-page")}
                 </Link>

@@ -15,6 +15,7 @@ import { translate } from "react-i18next";
 library.add(faInfoCircle, faSignInAlt);
 
 //TODO Create a LoginContainer
+//TODO isSuccess is probably nether useful and should be removed from login redux files.
 class LoginModal extends Component {
   constructor(props) {
     super(props);
@@ -53,7 +54,7 @@ class LoginModal extends Component {
 
   render() {
     const { email, password, rememberMe } = this.state;
-    const { error, form, isLoginPending, isLoginSuccess, isLoginError, isOpen, t, toggle, warning } = this.props;
+    const { error, form, isLoginPending, isLoginError, isOpen, t, toggle, warning } = this.props;
 
     return (
       <Modal isOpen={isOpen} toggle={toggle}>
@@ -78,7 +79,6 @@ class LoginModal extends Component {
             form={form}
             isError={isLoginError}
             isPending={isLoginPending}
-            isSuccess={isLoginSuccess}
             onChange={this.onChange}
             onSubmit={this.onSubmit}
             password={password}
@@ -86,13 +86,7 @@ class LoginModal extends Component {
           />
         </ModalBody>
         <ModalFooter>
-          <Submit
-            icon="sign-in-alt"
-            name="login"
-            isPending={isLoginPending}
-            isSuccess={isLoginSuccess}
-            onClick={this.onSubmit}
-          />
+          <Submit icon="sign-in-alt" name="login" isPending={isLoginPending} onClick={this.onSubmit} />
           {warning || (
             <Button color="secondary" onClick={toggle}>
               {t("button.cancel")}

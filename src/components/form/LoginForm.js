@@ -9,9 +9,10 @@ import { Link } from "react-router-dom";
 import { formShape } from "rc-form";
 import { translate } from "react-i18next";
 
+//TODO Convert into stateless react component.
 class LoginForm extends Component {
   render() {
-    const { email, form, isPending, isSuccess, onChange, onSubmit, password, rememberMe, submitRender, t } = this.props;
+    const { email, form, isPending, onChange, onSubmit, password, rememberMe, submitRender, t } = this.props;
 
     return (
       <Form onSubmit={onSubmit}>
@@ -32,9 +33,7 @@ class LoginForm extends Component {
             </Label>
           </Col>
         </FormGroup>
-        {submitRender && (
-          <Submit icon="sign-in-alt" name="login" isPending={isPending} isSuccess={isSuccess} onClick={onSubmit} />
-        )}
+        {submitRender && <Submit icon="sign-in-alt" name="login" isPending={isPending} onClick={onSubmit} />}
       </Form>
     );
   }

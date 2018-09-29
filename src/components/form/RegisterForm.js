@@ -15,7 +15,6 @@ const RegisterForm = (props) => {
     email,
     form,
     isPending,
-    isSuccess,
     onChange,
     onClickCgu,
     onSubmit,
@@ -61,14 +60,7 @@ const RegisterForm = (props) => {
         </Col>
       </FormGroup>
       {submitRender && (
-        <Submit
-          icon="sign-in-alt"
-          rotate={270}
-          name="register"
-          isPending={isPending}
-          isSuccess={isSuccess}
-          onClick={onSubmit}
-        />
+        <Submit icon="sign-in-alt" rotate={270} name="register" isPending={isPending} onClick={onSubmit} />
       )}
     </Form>
   );

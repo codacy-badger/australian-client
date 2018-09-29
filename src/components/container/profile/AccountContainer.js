@@ -10,6 +10,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 
 library.add(faTrashAlt);
 
+//TODO IsSuccess is certainly unused and could be deleted in all DeleteAccount redux files.
 class AccountContainer extends Component {
   constructor(props) {
     super(props);

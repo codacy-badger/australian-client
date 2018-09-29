@@ -45,7 +45,7 @@ class DeleteAccountForm extends Component {
   }
 
   render() {
-    const { children, error, form, isError, isPending, isSuccess, onChange, password, t } = this.props;
+    const { children, error, form, isError, isPending, onChange, password, t } = this.props;
     const { modal } = this.state;
 
     return (
@@ -56,14 +56,7 @@ class DeleteAccountForm extends Component {
         {children}
         <PasswordFormGroup onChange={onChange} form={form} value={password} />
         <div className="text-right">
-          <Submit
-            className="btn-danger"
-            name="account"
-            icon="trash-alt"
-            onClick={this.open}
-            isPending={isPending}
-            isSuccess={isSuccess}
-          />
+          <Submit className="btn-danger" name="account" icon="trash-alt" onClick={this.open} isPending={isPending} />
           <Modal isOpen={modal} toggle={this.toggle}>
             <ModalHeader>{t("help.are-you-sure.delete-account.title")}</ModalHeader>
             <ModalBody>{t("help.are-you-sure.delete-account.message")}</ModalBody>
@@ -90,7 +83,6 @@ DeleteAccountForm.propTypes = {
   form: formShape,
   isError: PropTypes.bool.isRequired,
   isPending: PropTypes.bool.isRequired,
-  isSuccess: PropTypes.bool.isRequired,
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   password: PropTypes.string.isRequired,

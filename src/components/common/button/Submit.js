@@ -8,19 +8,18 @@ import { translate } from "react-i18next";
 
 library.add(faSpinner);
 
-//TODO Delete isSuccess to authorized multiple sending without reloading page.
 class Submit extends Component {
   render() {
-    const { icon, name, isPending, isSuccess, onClick, rotation, t } = this.props;
+    const { icon, name, isPending, onClick, rotation, t } = this.props;
     return (
-      <Button type="submit" color="primary" onClick={onClick} disabled={isPending || isSuccess}>
+      <Button type="submit" color="primary" onClick={onClick} disabled={isPending}>
         {isPending && (
           <span>
             {"" !== icon && <FontAwesomeIcon icon="spinner" spin className="mr-1" />}
             {t("form." + name + ".submitting")}
           </span>
         )}
-        {!isPending && (
+        {isPending || (
           <span>
             {"" !== icon && 0 === rotation && <FontAwesomeIcon icon={icon} className="mr-1" />}
             {"" !== icon && 0 !== rotation && <FontAwesomeIcon icon={icon} rotation={rotation} className="mr-1" />}
@@ -34,18 +33,17 @@ class Submit extends Component {
 
 Submit.defaultProps = {
   icon: "",
-  rotation: 0,
-  isSuccess: false
+  rotation: 0
 };
 
 // The propTypes.
 Submit.propTypes = {
   icon: PropTypes.string,
-  name: PropTypes.string.isRequired,
   isPending: PropTypes.bool.isRequired,
-  isSuccess: PropTypes.bool,
+  name: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
   rotation: PropTypes.oneOf([0, 90, 180, 270]),
-  onClick: PropTypes.func.isRequired
+  t: PropTypes.func.isRequired
 };
 
 export default translate("translations")(Submit);
