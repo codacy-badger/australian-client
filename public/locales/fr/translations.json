@@ -96,6 +96,12 @@
   },
   "help": {
     "activation" : "Pour activer votre compte, veuillez entrer le code d’activation qui vous a été envoyé par mail.",
+    "are-you-sure": {
+      "delete-account": {
+        "title": "Are you sure to delete your account?",
+        "message": "Be careful, your account will be DELETED, this cannot be undone. After you accpet, your account will be deleted and you will be logout."
+      }
+    },
     "forgot-your-password" : "Vous avez perdu votre mot de passe ? Entrez votre adresse email et vous recevrez un mail qui vous guidera étape par étape pour que vous puissiez créer un nouveau mot de passe et vous reconnecter au site.",
     "profile": "Ce formulaire vous permet de modifier votre profil. Remplissez les différents champs et cliquez sur le bouton « Enregistrer »."
   },

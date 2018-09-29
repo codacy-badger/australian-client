@@ -40,7 +40,7 @@ class AccountContainer extends Component {
     const { password } = this.state;
     const { form } = this.props;
 
-    return <DeleteAccountForm form={form} password={password} onSubmit={this.onSubmit} />;
+    return <DeleteAccountForm form={form} password={password} onChange={this.onChange} onSubmit={this.onSubmit} />;
   }
 }
 

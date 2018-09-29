@@ -46,8 +46,6 @@
       }
     },
     "login": {
-      "password": "Password",
-      "password-placeholder": "Enter your password",
       "rememberMe": "Remember me",
       "submit": "Send",
       "submitting": "Sending…"
@@ -98,8 +96,14 @@
   },
   "help": {
     "activation": "To activate your account, please enter the activation code provided in our mail.",
+    "are-you-sure": {
+      "delete-account": {
+        "title": "Are you sure to delete your account?",
+        "message": "Be careful, your account will be DELETED, this cannot be undone. After you accpet, your account will be deleted and you will be logout."
+      }
+    },
     "forgot-your-password" : "You have forgotten your password? Please send us your email, you will receive a mail which will help you step by step to recover your accesses.",
-    "profile": "Ce formulaire vous permet de modifier votre profil. Remplissez les différents champs et cliquez sur le bouton « Enregistrer »."
+    "profile": "This form allow you to update your profile. Update data, then click on \"Save\" button."
   },
   "link": {
     "forgot-your-password": "Forgot your password?",
