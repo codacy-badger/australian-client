@@ -21,7 +21,7 @@ class ProfileContainer extends React.Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  //TODO Verify the utility.
+  //Used after data loading through api client.
   componentWillReceiveProps(nextProps) {
     this.setState({
       additionalName: nextProps.user.additionalName,
