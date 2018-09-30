@@ -15,7 +15,6 @@ import { translate } from "react-i18next";
 library.add(faInfoCircle, faSignInAlt);
 
 //TODO Create a LoginContainer
-//TODO isSuccess is probably nether useful and should be removed from login redux files.
 class LoginModal extends Component {
   constructor(props) {
     super(props);
@@ -109,7 +108,6 @@ LoginModal.defaultProps = {
 
 LoginModal.propTypes = {
   isLoginPending: PropTypes.bool.isRequired,
-  isLoginSuccess: PropTypes.bool.isRequired,
   isLoginError: PropTypes.bool.isRequired,
   isOpen: PropTypes.bool.isRequired,
   error: PropTypes.object.isRequired,
@@ -123,7 +121,6 @@ LoginModal.propTypes = {
 function mapStateToProps(state) {
   return {
     isLoginPending: state.authReducer.isLoginPending,
-    isLoginSuccess: state.authReducer.isLoginSuccess,
     isLoginError: state.authReducer.isLoginError,
     error: state.authReducer.error
   };
