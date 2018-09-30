@@ -37,8 +37,7 @@ export default {
     error: {},
     isPasswordError: false,
     isPasswordPending: false,
-    isPasswordSuccess: false,
-    success: {},
+    success: {}
   },
   profile: {
     error: {},

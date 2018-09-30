@@ -10,7 +10,6 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 
 library.add(faTrashAlt);
 
-//TODO IsSuccess is certainly unused and could be deleted in all DeleteAccount redux files.
 class AccountContainer extends Component {
   constructor(props) {
     super(props);
@@ -50,8 +49,7 @@ AccountContainer.propTypes = {
   error: PropTypes.object.isRequired,
   form: formShape,
   isError: PropTypes.bool.isRequired,
-  isPending: PropTypes.bool.isRequired,
-  isSuccess: PropTypes.bool.isRequired
+  isPending: PropTypes.bool.isRequired
 };
 
 // Redux connect begin here
@@ -59,8 +57,7 @@ function mapStateToProps(state) {
   return {
     error: state.deleteAccountReducer.error,
     isError: state.deleteAccountReducer.isDeleteAccountError,
-    isPending: state.deleteAccountReducer.isDeleteAccountPending,
-    isSuccess: state.deleteAccountReducer.isDeleteAccountSuccess
+    isPending: state.deleteAccountReducer.isDeleteAccountPending
   };
 }
 

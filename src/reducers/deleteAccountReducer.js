@@ -8,12 +8,6 @@ export default function deleteAccountReducer(state = initialState.deleteAccount,
         isDeleteAccountPending: action.isDeleteAccountPending
       });
 
-    case types.SET_DELETE_ACCOUNT_SUCCESS:
-      return Object.assign({}, state, {
-        isDeleteAccountSuccess: action.isDeleteAccountSuccess,
-        nextStep: action.nextStep
-      });
-
     case types.SET_DELETE_ACCOUNT_ERROR:
       return Object.assign({}, state, {
         isDeleteAccountError: action.isDeleteAccountError,
