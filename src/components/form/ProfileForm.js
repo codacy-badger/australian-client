@@ -30,15 +30,17 @@ const ProfileForm = (props) => {
     onSubmit,
     onChange
   } = props;
-  //TODO disable all field during pending...
+
+  const fieldProps = { disabled: isPending, onChange, onSubmit, form };
+
   return (
     <Form onSubmit={onSubmit}>
       <StatusAlert code="profile" error={error} isError={isError} isSuccess={isSuccess} success={success} />
-      <UsernameFormGroup value={name} onChange={onChange} onSubmit={onSubmit} form={form} />
-      <GivenNameFormGroup value={givenName} onChange={onChange} onSubmit={onSubmit} form={form} />
-      <AdditionalNameFormGroup value={additionalName} onChange={onChange} onSubmit={onSubmit} form={form} />
-      <FamilyNameFormGroup value={familyName} onChange={onChange} onSubmit={onSubmit} form={form} />
-      <JobTitleFormGroup value={jobTitle} onChange={onChange} onSubmit={onSubmit} form={form} />
+      <UsernameFormGroup value={name} {...fieldProps} />
+      <GivenNameFormGroup value={givenName} {...fieldProps} />
+      <AdditionalNameFormGroup value={additionalName} {...fieldProps} />
+      <FamilyNameFormGroup value={familyName} {...fieldProps} />
+      <JobTitleFormGroup value={jobTitle} {...fieldProps} />
       <div className="text-right">
         <Submit isPending={isPending} name="profile" onClick={onSubmit} />
       </div>

@@ -11,7 +11,7 @@ import { translate } from "react-i18next";
 
 library.add(faUser);
 
-const UsernameFormGroup = ({ form, onChange, t, value }) => {
+const UsernameFormGroup = ({ disabled, form, onChange, t, value }) => {
   const { getFieldProps, getFieldError } = form;
   const nameErrors = getFieldError("name");
   const hasError = nameErrors ? nameErrors.length > 0 : false;
@@ -23,7 +23,7 @@ const UsernameFormGroup = ({ form, onChange, t, value }) => {
       </Label>
       <Col sm={8}>
         <InputGroup>
-          <InputGroupIcon icon="user" />
+          <InputGroupIcon icon="user" isLoading={disabled} />
           <Input
             type="text"
             name="name"
@@ -34,6 +34,7 @@ const UsernameFormGroup = ({ form, onChange, t, value }) => {
               onChange,
               rules: [{ required: true }]
             })}
+            disabled={disabled}
             placeholder={t("form.profile.name.placeholder")}
           />
         </InputGroup>
@@ -44,7 +45,12 @@ const UsernameFormGroup = ({ form, onChange, t, value }) => {
   );
 };
 
+UsernameFormGroup.defaultProps = {
+  disabled: false
+};
+
 UsernameFormGroup.propTypes = {
+  disabled: PropTypes.bool,
   form: formShape,
   onChange: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired,

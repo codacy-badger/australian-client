@@ -11,7 +11,7 @@ import { translate } from "react-i18next";
 
 library.add(faUserMd);
 
-const JobTitleFormGroup = ({ form, onChange, t, value }) => {
+const JobTitleFormGroup = ({ disabled, form, onChange, t, value }) => {
   const { getFieldProps, getFieldError } = form;
   const jobTitleErrors = getFieldError("jobTitle");
   const hasError = jobTitleErrors ? jobTitleErrors.length > 0 : false;
@@ -23,7 +23,7 @@ const JobTitleFormGroup = ({ form, onChange, t, value }) => {
       </Label>
       <Col sm={8}>
         <InputGroup>
-          <InputGroupIcon icon="user-md" />
+          <InputGroupIcon icon="user-md" isLoading={disabled} />
           <Input
             type="text"
             name="jobTitle"
@@ -33,6 +33,7 @@ const JobTitleFormGroup = ({ form, onChange, t, value }) => {
               initialValue: value,
               onChange
             })}
+            disabled={disabled}
             placeholder={t("form.profile.jobTitle.placeholder")}
           />
         </InputGroup>
@@ -43,7 +44,12 @@ const JobTitleFormGroup = ({ form, onChange, t, value }) => {
   );
 };
 
+JobTitleFormGroup.defaultProps = {
+  disabled: false
+};
+
 JobTitleFormGroup.propTypes = {
+  disabled: PropTypes.bool,
   form: formShape,
   onChange: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired,
