@@ -8,6 +8,7 @@ import { translate } from "react-i18next";
 import EmailFormGroup from "../formgroup/EmailFormGroup";
 import ConfirmationFormGroup from "../formgroup/ConfirmationFormGroup";
 
+//TODO add loading props
 const RegisterForm = (props) => {
   const {
     confirmation,

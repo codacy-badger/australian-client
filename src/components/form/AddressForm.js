@@ -12,6 +12,7 @@ import { translate } from "react-i18next";
 
 library.add(faGlobe);
 
+//TODO add loading props
 class AddressForm extends Component {
   constructor(props, context) {
     super(props, context);

@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { formShape } from "rc-form";
 import { translate } from "react-i18next";
 
+//TODO add loading props
 const LoginForm = (props) => {
   const { email, form, onChange, onSubmit, password, rememberMe, t } = props;
 

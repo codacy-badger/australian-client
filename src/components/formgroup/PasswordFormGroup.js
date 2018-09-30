@@ -10,6 +10,7 @@ import { translate } from "react-i18next";
 
 library.add(faKey);
 
+//TODO add disabled props
 const PasswordFormGroup = (props) => {
   const { children, form, newPassword, oldPassword, onChange, t, value } = props;
   const { getFieldProps, getFieldError } = form;

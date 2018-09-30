@@ -10,6 +10,7 @@ import { translate } from "react-i18next";
 
 library.add(faKey);
 
+//TODO add disabled props
 const ConfirmationFormGroup = ({ children, form, onChange, t, password, value }) => {
   const { getFieldProps, getFieldError } = form;
   const confirmationErrors = getFieldError("confirmation");

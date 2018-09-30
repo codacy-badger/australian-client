@@ -12,6 +12,7 @@ import { translate } from "react-i18next";
 
 library.add(faTrashAlt);
 
+//TODO add loading props
 class DeleteAccountForm extends Component {
   constructor(props) {
     super(props);

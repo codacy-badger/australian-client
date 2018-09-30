@@ -10,6 +10,7 @@ import { formShape } from "rc-form";
 
 library.add(faTrashAlt);
 
+//TODO add loading props
 const PasswordForm = (props) => {
   const { confirmation, form, isPending, onChange, onSubmit, oldPassword, newPassword} = props;
 

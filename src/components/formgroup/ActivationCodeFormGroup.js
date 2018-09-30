@@ -10,6 +10,7 @@ import { translate } from "react-i18next";
 
 library.add(faKey);
 
+//TODO add disabled props
 const ActivationCodeFormGroup = ({ form, onChange, t, value }) => {
   const { getFieldProps, getFieldError } = form;
   const errors = getFieldError("activationCode");
