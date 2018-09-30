@@ -5,6 +5,7 @@ import { translate } from "react-i18next";
 
 it("renders without crashing", () => {
   const div = document.createElement("div");
-  ReactDOM.render(translate("translations")(App), div);
+  const MyApp = translate("translations")(App);
+  ReactDOM.render(MyApp, div);
   ReactDOM.unmountComponentAtNode(div);
 });

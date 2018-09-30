@@ -1,35 +1,32 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { Button } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { faUpload, faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { translate } from "react-i18next";
 
-library.add(faSpinner);
+library.add(faUpload, faSpinner);
 
-class Submit extends Component {
-  render() {
-    const { icon, name, isPending, onClick, rotation, t } = this.props;
-    return (
-      <Button type="submit" color="primary" onClick={onClick} disabled={isPending}>
-        {isPending && (
-          <span>
-            {"" !== icon && <FontAwesomeIcon icon="spinner" spin className="mr-1" />}
-            {t("form." + name + ".submitting")}
-          </span>
-        )}
-        {isPending || (
-          <span>
-            {"" !== icon && 0 === rotation && <FontAwesomeIcon icon={icon} className="mr-1" />}
-            {"" !== icon && 0 !== rotation && <FontAwesomeIcon icon={icon} rotation={rotation} className="mr-1" />}
-            {t("form." + name + ".submit")}
-          </span>
-        )}
-      </Button>
-    );
+const Submit = (props) => {
+  const { icon, name, isPending, onClick, rotation, t } = props;
+  const label = isPending ? "form." + name + ".submitting" : "form." + name + ".submit";
+  const finalProps = {
+    icon: isPending ? "spinner" : icon ? icon : "upload",
+    className: "mr-1"
+  };
+
+  if (0 !== rotation) {
+    finalProps.rotation = rotation;
   }
-}
+
+  return (
+    <Button type="submit" color="primary" onClick={onClick} disabled={isPending}>
+      <FontAwesomeIcon spin={isPending} {...finalProps} />
+      {t(label)}
+    </Button>
+  );
+};
 
 Submit.defaultProps = {
   icon: "",

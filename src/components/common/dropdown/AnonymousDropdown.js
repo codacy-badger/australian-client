@@ -63,4 +63,4 @@ AnonymousDropdown.propTypes = {
   t: PropTypes.func.isRequired
 };
 
-export default translate("translations", { withRef: true })(AnonymousDropdown);
+export default translate("translations")(AnonymousDropdown);

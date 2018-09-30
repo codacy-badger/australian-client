@@ -23,7 +23,7 @@ ErrorAlert.defaultTypes = {
 };
 
 ErrorAlert.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.any.isRequired,
   controlled: PropTypes.bool
 };
 
