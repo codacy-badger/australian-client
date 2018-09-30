@@ -30,7 +30,7 @@ const ProfileForm = (props) => {
     onSubmit,
     onChange
   } = props;
-
+  //TODO disable all field during pending...
   return (
     <Form onSubmit={onSubmit}>
       <StatusAlert code="profile" error={error} isError={isError} isSuccess={isSuccess} success={success} />
@@ -60,8 +60,7 @@ ProfileForm.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
-  success: PropTypes.object.isRequired,
-  t: PropTypes.func.isRequired
+  success: PropTypes.object.isRequired
 };
 
 // Redux connect begin here

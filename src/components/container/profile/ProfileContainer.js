@@ -11,6 +11,7 @@ class ProfileContainer extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
+      isLoaded: false,
       additionalName: "",
       familyName: "",
       givenName: "",
@@ -23,13 +24,18 @@ class ProfileContainer extends React.Component {
 
   //Used after data loading through api client.
   componentWillReceiveProps(nextProps) {
-    this.setState({
-      additionalName: nextProps.user.additionalName,
-      familyName: nextProps.user.familyName,
-      givenName: nextProps.user.givenName,
-      jobTitle: nextProps.user.jobTitle,
-      name: nextProps.user.name
-    });
+    const { isLoading } = this.props;
+    const { isLoaded } = this.state;
+    if (!isLoading && !isLoaded) {
+      this.setState({
+        isLoaded: true,
+        additionalName: nextProps.user.additionalName,
+        familyName: nextProps.user.familyName,
+        givenName: nextProps.user.givenName,
+        jobTitle: nextProps.user.jobTitle,
+        name: nextProps.user.name
+      });
+    }
   }
 
   onChange(e) {
@@ -62,21 +68,25 @@ class ProfileContainer extends React.Component {
 
 // The propTypes.
 ProfileContainer.propTypes = {
-  //TODO A lot properties are missing.
+  error: PropTypes.object.isRequired,
+  isError: PropTypes.bool.isRequired,
   isLoading: PropTypes.bool.isRequired,
+  isPending: PropTypes.bool.isRequired,
+  isSuccess: PropTypes.bool.isRequired,
+  success: PropTypes.object.isRequired,
   user: PropTypes.object
 };
 
 // Redux connect begin here
 function mapStateToProps(state) {
   return {
-    user: state.profileReducer.user,
     error: state.profileReducer.error,
     isError: state.profileReducer.isProfileError,
     isLoading: state.profileReducer.isProfileLoading,
     isPending: state.profileReducer.isProfilePending,
     isSuccess: state.profileReducer.isProfileSuccess,
-    success: state.profileReducer.success
+    success: state.profileReducer.success,
+    user: state.profileReducer.user
   };
 }
 
