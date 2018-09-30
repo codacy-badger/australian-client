@@ -38,7 +38,6 @@ const LoginForm = (props) => {
 LoginForm.propTypes = {
   email: PropTypes.string.isRequired,
   form: formShape,
-  isSuccess: PropTypes.bool.isRequired,
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   password: PropTypes.string.isRequired,

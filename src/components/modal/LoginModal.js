@@ -115,7 +115,7 @@ LoginModal.propTypes = {
   error: PropTypes.object.isRequired,
   form: formShape,
   t: PropTypes.func.isRequired,
-  toggle: PropTypes.func.isRequired,
+  toggle: PropTypes.func,
   warning: PropTypes.bool.isRequired
 };
 
