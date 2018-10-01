@@ -68,6 +68,12 @@ class RegisterModal extends Component {
         }
       }
     });
+
+    //FIXME this only works when modal dialog is reopened.
+    this.setState({
+      password: "",
+      confirmation: ""
+    });
   }
 
   toggleCgu() {
@@ -77,7 +83,7 @@ class RegisterModal extends Component {
   }
 
   render() {
-    const { confirmation, email, modalCgu, read, password } = this.state;
+    const { modalCgu, ...values } = this.state;
     const { error, form, isOpen, isPending, isSuccess, isError, nextStep, t, toggle } = this.props;
 
     return (
@@ -89,15 +95,12 @@ class RegisterModal extends Component {
           <ModalBody>
             <ResultAlert code="register" isError={isError} isSuccess={isSuccess} error={error} success={nextStep} />
             <RegisterForm
-              confirmation={confirmation}
-              email={email}
               form={form}
               isPending={isPending}
               onChange={this.onChange}
               onClickCgu={this.toggleCgu}
               onSubmit={this.onSubmit}
-              password={password}
-              read={read}
+              {...values}
             />
           </ModalBody>
           <ModalFooter>

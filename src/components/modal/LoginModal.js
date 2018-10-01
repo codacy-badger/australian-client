@@ -46,7 +46,7 @@ class LoginModal extends Component {
       }
     });
 
-    //FIXME : this doesn't work.
+    //FIXME this only works when modal dialog is reopened.
     this.setState({
       password: ""
     });
