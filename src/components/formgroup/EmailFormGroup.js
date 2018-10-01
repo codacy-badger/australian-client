@@ -22,7 +22,7 @@ const EmailFormGroup = ({ children, disabled, form, onChange, t, value }) => {
       </Label>
       <Col sm={8}>
         <InputGroup>
-          <InputGroupIcon icon="at" isLoading={disabled}/>
+          <InputGroupIcon icon="at" isLoading={disabled} />
           <Input
             type="email"
             name="email"
@@ -55,6 +55,7 @@ EmailFormGroup.propTypes = {
   disabled: PropTypes.bool,
   form: formShape,
   onChange: PropTypes.func.isRequired,
+  t: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired
 };
 

@@ -29,6 +29,7 @@ RememberMeFormGroup.defaultProps = {
 RememberMeFormGroup.propTypes = {
   disabled: PropTypes.bool,
   onChange: PropTypes.func.isRequired,
+  t: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired
 };
 
