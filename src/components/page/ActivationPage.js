@@ -41,9 +41,8 @@ class ActivationPage extends Component {
     });
   }
 
-  //TODO ; homogenise rename isActivationPending to isPending
   render() {
-    const { error, form, isActivationPending, isActivationSuccess, isActivationError, nextStep, t } = this.props;
+    const { error, form, isPending, isSuccess, isError, nextStep, t } = this.props;
     const { activationCode } = this.state;
 
     return (
@@ -58,19 +57,19 @@ class ActivationPage extends Component {
                 <StatusAlert
                   code="activation"
                   error={error}
-                  isError={isActivationError}
-                  isSuccess={isActivationSuccess}
+                  isError={isError}
+                  isSuccess={isSuccess}
                   success={nextStep}
                 />
                 <ActivationCodeFormGroup
-                  disabled={isActivationPending}
+                  disabled={isPending}
                   form={form}
                   onChange={this.onChange}
                   value={activationCode}
                 />
               </CardBody>
               <CardFooter className="text-right">
-                <Submit isPending={isActivationPending} name="activation" onClick={this.onSubmit} />
+                <Submit isPending={isPending} name="activation" onClick={this.onSubmit} />
                 <Link to="/" title={t("link.home-page-title")} className="ml-2 btn btn-secondary">
                   {t("link.home-page")}
                 </Link>
@@ -87,9 +86,9 @@ ActivationPage.propTypes = {
   activate: PropTypes.func.isRequired,
   error: PropTypes.object.isRequired,
   form: formShape,
-  isActivationError: PropTypes.bool.isRequired,
-  isActivationPending: PropTypes.bool.isRequired,
-  isActivationSuccess: PropTypes.bool.isRequired,
+  isError: PropTypes.bool.isRequired,
+  isPending: PropTypes.bool.isRequired,
+  isSuccess: PropTypes.bool.isRequired,
   nextStep: PropTypes.object.isRequired,
   t: PropTypes.func.isRequired
 };
@@ -97,9 +96,9 @@ ActivationPage.propTypes = {
 function mapStateToProps(state) {
   return {
     error: state.activationReducer.error,
-    isActivationError: state.activationReducer.isActivationError,
-    isActivationPending: state.activationReducer.isActivationPending,
-    isActivationSuccess: state.activationReducer.isActivationSuccess,
+    isError: state.activationReducer.isActivationError,
+    isPending: state.activationReducer.isActivationPending,
+    isSuccess: state.activationReducer.isActivationSuccess,
     nextStep: state.activationReducer.nextStep
   };
 }
