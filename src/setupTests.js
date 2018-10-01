@@ -1,19 +1,8 @@
+import { LocalStorage } from "node-localstorage";
 import { configure } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 
-//TODO use the other pachage which emulate localStorage
-const localStorageMock = {
-  getItem: jest.fn(),
-  setItem: jest.fn(),
-  clear: jest.fn()
-};
-global.localStorage = localStorageMock;
-
-const sessionStorageMock = {
-  getItem: jest.fn(),
-  setItem: jest.fn(),
-  clear: jest.fn()
-};
-global.sessionStorage = sessionStorageMock;
+global.localStorage = new LocalStorage('./scratch/localStorage');
+global.sessionStorage = new LocalStorage('./scratch/sessionStorage');
 
 configure({ adapter: new Adapter() });
