@@ -2,16 +2,16 @@ import React from "react";
 import PropTypes from "prop-types";
 import EmailFormGroup from "../formgroup/EmailFormGroup";
 import PasswordFormGroup from "../formgroup/PasswordFormGroup";
-import { Col, Form, FormGroup, FormText, Input, Label } from "reactstrap";
+import { Form, FormText } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { formShape } from "rc-form";
 import { translate } from "react-i18next";
+import RememberMeFormGroup from "../formgroup/RememberMeFormGroup";
 
 const LoginForm = (props) => {
   const { email, isPending, form, onChange, onSubmit, password, rememberMe, t } = props;
 
-  //TODO Create a formgroup for remember me.
   return (
     <Form onSubmit={onSubmit}>
       <EmailFormGroup form={form} onChange={onChange} value={email} disabled={isPending}/>
@@ -23,14 +23,7 @@ const LoginForm = (props) => {
           </Link>
         </FormText>
       </PasswordFormGroup>
-      <FormGroup check>
-        <Col sm={{ size: 8, offset: 4 }}>
-          <Label check>
-            <Input type="checkbox" name="rememberMe" id="rememberMe" checked={rememberMe} onChange={onChange} />
-            {t("form.login.rememberMe")}
-          </Label>
-        </Col>
-      </FormGroup>
+      <RememberMeFormGroup disabled={isPending} onChange={onChange} value={rememberMe} />
     </Form>
   );
 };
