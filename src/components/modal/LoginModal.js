@@ -46,16 +46,14 @@ class LoginModal extends Component {
       }
     });
 
-    //TODO In each container and modal, reinitialized password after submit.
-    // this.setState({
-    //   password: ""
-    // });
+    //FIXME : this doesn't work.
+    this.setState({
+      password: ""
+    });
   }
 
-  //TODO homogenise : rename isLoginPending into isPending
   render() {
-    const { email, password, rememberMe } = this.state;
-    const { error, form, isLoginPending, isLoginError, isOpen, t, toggle, warning } = this.props;
+    const { error, form, isPending, isError, isOpen, t, toggle, warning } = this.props;
 
     return (
       <Modal isOpen={isOpen} toggle={toggle}>
@@ -64,30 +62,28 @@ class LoginModal extends Component {
         </ModalHeader>
         <ModalBody>
           {warning &&
-            !isLoginError && (
+            !isError && (
               <Alert color="warning" className="text-center">
                 {t("message.please-login")}
               </Alert>
             )}
-          {isLoginError && (
+          {isError && (
             <Alert color="danger" className="text-center">
               {t("error." + error.code)}
             </Alert>
           )}
           <LoginForm
-            email={email}
             error={error}
             form={form}
-            isError={isLoginError}
-            isPending={isLoginPending}
+            isError={isError}
+            isPending={isPending}
             onChange={this.onChange}
             onSubmit={this.onSubmit}
-            password={password}
-            rememberMe={rememberMe}
+            {...this.state}
           />
         </ModalBody>
         <ModalFooter>
-          <Submit icon="sign-in-alt" name="login" isPending={isLoginPending} onClick={this.onSubmit} />
+          <Submit icon="sign-in-alt" name="login" isPending={isPending} onClick={this.onSubmit} />
           {warning || (
             <Button color="secondary" onClick={toggle}>
               {t("button.cancel")}
@@ -109,8 +105,8 @@ LoginModal.defaultProps = {
 };
 
 LoginModal.propTypes = {
-  isLoginPending: PropTypes.bool.isRequired,
-  isLoginError: PropTypes.bool.isRequired,
+  isPending: PropTypes.bool.isRequired,
+  isError: PropTypes.bool.isRequired,
   isOpen: PropTypes.bool.isRequired,
   error: PropTypes.object.isRequired,
   form: formShape,
@@ -122,8 +118,8 @@ LoginModal.propTypes = {
 // Redux connect begin here
 function mapStateToProps(state) {
   return {
-    isLoginPending: state.authReducer.isLoginPending,
-    isLoginError: state.authReducer.isLoginError,
+    isPending: state.authReducer.isLoginPending,
+    isError: state.authReducer.isLoginError,
     error: state.authReducer.error
   };
 }
