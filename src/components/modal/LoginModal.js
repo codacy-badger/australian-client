@@ -52,6 +52,7 @@ class LoginModal extends Component {
     // });
   }
 
+  //TODO homogenise : rename isLoginPending into isPending
   render() {
     const { email, password, rememberMe } = this.state;
     const { error, form, isLoginPending, isLoginError, isOpen, t, toggle, warning } = this.props;
@@ -78,6 +79,7 @@ class LoginModal extends Component {
             error={error}
             form={form}
             isError={isLoginError}
+            isPending={isLoginPending}
             onChange={this.onChange}
             onSubmit={this.onSubmit}
             password={password}

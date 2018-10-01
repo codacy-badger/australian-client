@@ -8,14 +8,14 @@ import { Link } from "react-router-dom";
 import { formShape } from "rc-form";
 import { translate } from "react-i18next";
 
-//TODO add loading props
 const LoginForm = (props) => {
-  const { email, form, onChange, onSubmit, password, rememberMe, t } = props;
+  const { email, isPending, form, onChange, onSubmit, password, rememberMe, t } = props;
 
+  //TODO Create a formgroup for remember me.
   return (
     <Form onSubmit={onSubmit}>
-      <EmailFormGroup form={form} onChange={onChange} value={email} />
-      <PasswordFormGroup form={form} onChange={onChange} value={password}>
+      <EmailFormGroup form={form} onChange={onChange} value={email} disabled={isPending}/>
+      <PasswordFormGroup form={form} onChange={onChange} value={password} disabled={isPending}>
         <FormText color="muted">
           <FontAwesomeIcon fixedWidth icon="info-circle" className="mr-1 text-info" />
           <Link to="/forgot-your-password" title={t("link.forgot-your-password-title")}>
@@ -36,8 +36,13 @@ const LoginForm = (props) => {
 };
 
 // The propTypes.
+LoginForm.defaultProps = {
+  isPending: false
+};
+
 LoginForm.propTypes = {
   email: PropTypes.string.isRequired,
+  isPending: PropTypes.bool,
   form: formShape,
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,

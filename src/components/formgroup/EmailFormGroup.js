@@ -11,7 +11,7 @@ import { translate } from "react-i18next";
 library.add(faAt);
 
 //TODO add disabled props
-const EmailFormGroup = ({ children, form, onChange, t, value }) => {
+const EmailFormGroup = ({ children, disabled, form, onChange, t, value }) => {
   const { getFieldProps, getFieldError } = form;
   const emailErrors = getFieldError("email");
 
@@ -22,12 +22,12 @@ const EmailFormGroup = ({ children, form, onChange, t, value }) => {
       </Label>
       <Col sm={8}>
         <InputGroup>
-          <InputGroupIcon icon="at" />
+          <InputGroupIcon icon="at" isLoading={disabled}/>
           <Input
             type="email"
             name="email"
-            id="email"
             className={emailErrors ? "is-invalid" : ""}
+            disabled={disabled}
             placeholder={t("form.general.email.placeholder")}
             {...getFieldProps("email", {
               initialValue: value,
@@ -47,7 +47,12 @@ const EmailFormGroup = ({ children, form, onChange, t, value }) => {
   );
 };
 
+EmailFormGroup.defaultProps = {
+  disabled: false
+};
+
 EmailFormGroup.propTypes = {
+  disabled: PropTypes.bool,
   form: formShape,
   onChange: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired
