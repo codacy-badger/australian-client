@@ -29,7 +29,7 @@ const Submit = (props) => {
 };
 
 Submit.defaultProps = {
-  icon: "",
+  icon: "upload",
   rotation: 0
 };
 

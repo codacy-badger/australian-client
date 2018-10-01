@@ -24,6 +24,10 @@
       "submit": "Activation",
       "submitting": "Activating…"
     },
+    "email": {
+      "submit": "Save",
+      "submitting": "Saving…"
+    },
     "forgot-password": {
       "email": "Email",
       "email-placeholder": "Enter your email",
@@ -37,7 +41,11 @@
       },
       "email": {
         "label": "Email",
-        "placeholder": "Enter your email"
+        "placeholder": "Enter your email",
+        "new-label": "New email",
+        "new-placeholder": "Enter your new email",
+        "old-label": "Current email",
+        "old-placeholder": "Enter email used to login"
       },
       "latitude": "Latitude",
       "longitude": "Longitude",
@@ -111,6 +119,7 @@
         "message": "Be careful, your account will be DELETED, this cannot be undone. After you accpet, your account will be deleted and you will be logout."
       }
     },
+    "email": "Complete this form to change your email. An email with an activation code will be set to the new email to confirm it. A mail to your old address will be sent to cancel update.",
     "forgot-your-password" : "You have forgotten your password? Please send us your email, you will receive a mail which will help you step by step to recover your accesses.",
     "password": "Complete this form to replace your password by a new one.",
     "profile": "This form allow you to update your profile. Update data, then click on \"Save\" button."

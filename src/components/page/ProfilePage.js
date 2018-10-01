@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import AccountContainer from "../container/profile/AccountContainer";
 import AddressForm from "../form/AddressForm";
 import CookieContainer from "../container/profile/CookieContainer";
+import EmailContainer from "../container/profile/EmailContainer";
 import Header from "../common/Header";
 import Meta from "../common/Meta";
 import NotFoundJumbotron from "../common/jumbotron/NotFoundJumbotron";
@@ -28,7 +29,7 @@ const ProfilePage = ({ t }) => {
               <ListGroupItem tag={NavLink} to="/profile/address">
                 {t("profile.tab.address")}
               </ListGroupItem>
-              <ListGroupItem tag={NavLink} to="/profile/mail">
+              <ListGroupItem tag={NavLink} to="/profile/email">
                 {t("profile.tab.mail")}
               </ListGroupItem>
               <ListGroupItem tag={NavLink} to="/profile/password">
@@ -44,10 +45,11 @@ const ProfilePage = ({ t }) => {
           </Col>
           <Col>
             <Switch>
-              <Route exact path="/profile/general" component={ProfileContainer} />
               <Route exact path="/profile/account" component={AccountContainer} />
               <Route exact path="/profile/address" component={AddressForm} />
               <Route exact path="/profile/cookies" component={CookieContainer} />
+              <Route exact path="/profile/email" component={EmailContainer} />
+              <Route exact path="/profile/general" component={ProfileContainer} />
               <Route exact path="/profile/password" component={PasswordContainer} />
               <Route path="/profile/*" component={NotFoundJumbotron} />
             </Switch>

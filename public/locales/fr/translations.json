@@ -24,6 +24,10 @@
       "submit": "Activer",
       "submitting": "Activation en cours…"
     },
+    "email": {
+      "submit": "Enregistrer",
+      "submitting": "Enregistrement en cours…"
+    },
     "forgot-password": {
       "email": "Email",
       "email-placeholder": "Entrez votre adresse email",
@@ -37,7 +41,11 @@
       },
       "email": {
         "label": "Email",
-        "placeholder": "Entrez votre adresse email"
+        "placeholder": "Entrez votre adresse email",
+        "new-label": "Nouvelle adresse",
+        "new-placeholder": "Entrez votre nouvelle adresse email",
+        "old-label": "Adresse",
+        "old-placeholder": "Entrez votre l'adresse email à remplacer"
       },
       "latitude": "Latitude",
       "longitude": "Longitude",
@@ -111,6 +119,7 @@
         "message": "Attention, votre compte sera intégralement SUPPRIMÉ, cette action ne pourra pas être annulée. Après votre validation, votre compte et son contenu seront supprimés de nos serveurs et vous serez déconnecté."
       }
     },
+    "email": "Compléter ce formulaire pour changer d’adresse email. Un email avec un code de confirmation sera envoyé à la nouvelle adresse. Un email avec un code de d’annulation sera envoyé à l’ancienne adresse.",
     "forgot-your-password" : "Vous avez perdu votre mot de passe ? Entrez votre adresse email et vous recevrez un mail qui vous guidera étape par étape pour que vous puissiez créer un nouveau mot de passe et vous reconnecter au site.",
     "password": "Ce formulaire vous permet de modifier votre mot de passe.",
     "profile": "Ce formulaire vous permet de modifier votre profil. Remplissez les différents champs et cliquez sur le bouton « Enregistrer »."

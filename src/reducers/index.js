@@ -2,6 +2,7 @@ import { combineReducers } from "redux";
 import activationReducer from "./activationReducer";
 import authReducer from "./authReducer";
 import deleteAccountReducer from "./deleteAccountReducer";
+import emailReducer from "./emailReducer";
 import forgotPasswordReducer from "./forgotPasswordReducer";
 import passwordReducer from "./passwordReducer";
 import profileReducer from "./profileReducer";
@@ -10,8 +11,9 @@ import { reducer as toastrReducer } from "react-redux-toastr";
 
 const rootReducer = combineReducers({
   activationReducer,
-  deleteAccountReducer,
   authReducer,
+  deleteAccountReducer,
+  emailReducer,
   forgotPasswordReducer,
   passwordReducer,
   profileReducer,

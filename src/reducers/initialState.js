@@ -14,6 +14,12 @@ export default {
     isDeleteAccountSuccess: false,
     isDeleteAccountError: false
   },
+  email: {
+    error: {},
+    isEmailError: false,
+    isEmailPending: false,
+    success: {}
+  },
   forgotPassword: {
     error: {},
     isForgotPasswordPending: false,

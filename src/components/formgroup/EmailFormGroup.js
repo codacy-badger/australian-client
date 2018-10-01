@@ -10,25 +10,29 @@ import { translate } from "react-i18next";
 
 library.add(faAt);
 
-const EmailFormGroup = ({ disabled, form, onChange, t, value }) => {
+const EmailFormGroup = (props) => {
+  const { disabled, form, newEmail, oldEmail, onChange, t, value } = props;
   const { getFieldProps, getFieldError } = form;
-  const emailErrors = getFieldError("email");
+  const inputName = newEmail ? "newEmail" : oldEmail ? "oldEmail" : "email";
+  const label = "form.general.email." + (newEmail ? "new-" : oldEmail ? "old-" : "") + "label";
+  const placeholder = "form.general.email." + (newEmail ? "new-" : oldEmail ? "old-" : "") + "placeholder";
+  const emailErrors = getFieldError(inputName);
 
   return (
     <FormGroup row>
-      <Label for="email" sm={4}>
-        {t("form.general.email.label")}
+      <Label for={inputName} sm={4}>
+        {t(label)}
       </Label>
       <Col sm={8}>
         <InputGroup>
           <InputGroupIcon icon="at" isLoading={disabled} />
           <Input
             type="email"
-            name="email"
+            name={inputName}
             className={emailErrors ? "is-invalid" : ""}
             disabled={disabled}
-            placeholder={t("form.general.email.placeholder")}
-            {...getFieldProps("email", {
+            placeholder={t(placeholder)}
+            {...getFieldProps(inputName, {
               initialValue: value,
               onChange,
               rules: [
@@ -47,12 +51,16 @@ const EmailFormGroup = ({ disabled, form, onChange, t, value }) => {
 };
 
 EmailFormGroup.defaultProps = {
-  disabled: false
+  disabled: false,
+  newEmail: false,
+  oldEmail: false
 };
 
 EmailFormGroup.propTypes = {
   disabled: PropTypes.bool,
   form: formShape,
+  newEmail: PropTypes.bool,
+  oldEmail: PropTypes.bool,
   onChange: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired
