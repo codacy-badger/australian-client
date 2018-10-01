@@ -10,8 +10,7 @@ import { translate } from "react-i18next";
 
 library.add(faKey);
 
-//TODO add disabled props
-const ActivationCodeFormGroup = ({ form, onChange, t, value }) => {
+const ActivationCodeFormGroup = ({ disabled, form, onChange, t, value }) => {
   const { getFieldProps, getFieldError } = form;
   const errors = getFieldError("activationCode");
 
@@ -23,11 +22,11 @@ const ActivationCodeFormGroup = ({ form, onChange, t, value }) => {
       </Label>
       <Col sm={8}>
         <InputGroup>
-          <InputGroupIcon icon="key" />
+          <InputGroupIcon icon="key" isLoading={disabled} />
           <Input
             className={errors ? "is-invalid" : ""}
             name="activationCode"
-            id="activationCode"
+            disabled={disabled}
             placeholder={t("form.activation.activationCode-placeholder")}
             {...getFieldProps("activationCode", {
               initialValue: value,
@@ -42,8 +41,12 @@ const ActivationCodeFormGroup = ({ form, onChange, t, value }) => {
     </FormGroup>
   );
 };
+ActivationCodeFormGroup.defaultProps = {
+  disabled: false
+};
 
 ActivationCodeFormGroup.propTypes = {
+  disabled: PropTypes.bool,
   form: formShape,
   onChange: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired,

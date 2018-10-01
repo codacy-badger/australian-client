@@ -12,6 +12,7 @@ import { connect } from "react-redux";
 import { createForm, formShape } from "rc-form";
 import { translate } from "react-i18next";
 
+//TODO create a container
 class ActivationPage extends Component {
   constructor(props, context) {
     super(props, context);
@@ -40,6 +41,7 @@ class ActivationPage extends Component {
     });
   }
 
+  //TODO ; homogenise rename isActivationPending to isPending
   render() {
     const { error, form, isActivationPending, isActivationSuccess, isActivationError, nextStep, t } = this.props;
     const { activationCode } = this.state;
@@ -60,7 +62,12 @@ class ActivationPage extends Component {
                   isSuccess={isActivationSuccess}
                   success={nextStep}
                 />
-                <ActivationCodeFormGroup form={form} onChange={this.onChange} value={activationCode} />
+                <ActivationCodeFormGroup
+                  disabled={isActivationPending}
+                  form={form}
+                  onChange={this.onChange}
+                  value={activationCode}
+                />
               </CardBody>
               <CardFooter className="text-right">
                 <Submit isPending={isActivationPending} name="activation" onClick={this.onSubmit} />
@@ -78,10 +85,13 @@ class ActivationPage extends Component {
 
 ActivationPage.propTypes = {
   activate: PropTypes.func.isRequired,
+  error: PropTypes.object.isRequired,
   form: formShape,
   isActivationError: PropTypes.bool.isRequired,
   isActivationPending: PropTypes.bool.isRequired,
-  isActivationSuccess: PropTypes.bool.isRequired
+  isActivationSuccess: PropTypes.bool.isRequired,
+  nextStep: PropTypes.object.isRequired,
+  t: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
