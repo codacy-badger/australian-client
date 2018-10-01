@@ -10,8 +10,7 @@ import { translate } from "react-i18next";
 
 library.add(faAt);
 
-//TODO add disabled props
-const EmailFormGroup = ({ children, disabled, form, onChange, t, value }) => {
+const EmailFormGroup = ({ disabled, form, onChange, t, value }) => {
   const { getFieldProps, getFieldError } = form;
   const emailErrors = getFieldError("email");
 
