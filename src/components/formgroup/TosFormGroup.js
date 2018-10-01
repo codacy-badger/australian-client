@@ -56,7 +56,7 @@ TosFormGroup.propTypes = {
   onChange: PropTypes.func.isRequired,
   onClickCgu: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired
+  value: PropTypes.bool.isRequired
 };
 
 export default translate(["translations", "validators"])(TosFormGroup);

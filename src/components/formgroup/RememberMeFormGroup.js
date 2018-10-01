@@ -30,7 +30,7 @@ RememberMeFormGroup.propTypes = {
   disabled: PropTypes.bool,
   onChange: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired
+  value: PropTypes.bool.isRequired
 };
 
 export default translate(["translations", "validators"])(RememberMeFormGroup);
