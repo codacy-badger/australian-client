@@ -8,36 +8,27 @@ import { translate } from "react-i18next";
 import EmailFormGroup from "../formgroup/EmailFormGroup";
 import ConfirmationFormGroup from "../formgroup/ConfirmationFormGroup";
 
-//TODO add loading props
 const RegisterForm = (props) => {
-  const {
-    confirmation,
-    email,
-    form,
-    onChange,
-    onClickCgu,
-    onSubmit,
-    password,
-    read,
-    t
-  } = props;
+  const { confirmation, email, form, isPending, onChange, onClickCgu, onSubmit, password, read, t } = props;
 
   const { getFieldProps, getFieldError, getFieldValue } = form;
+  const fieldProps = { disabled: isPending, form, onChange };
   const tosErrors = getFieldError("read");
 
+  //TODO create a tos form group
   return (
     <Form onSubmit={onSubmit}>
-      <EmailFormGroup form={form} onChange={onChange} value={email} />
-      <PasswordFormGroup form={form} onChange={onChange} value={password} />
-      <ConfirmationFormGroup form={form} onChange={onChange} value={confirmation} password={password} />
+      <EmailFormGroup value={email} {...fieldProps} />
+      <PasswordFormGroup value={password} {...fieldProps} />
+      <ConfirmationFormGroup value={confirmation} password={password} {...fieldProps} />
       <FormGroup check>
         <Col sm={{ size: 8, offset: 4 }}>
           <Label check>
             <Input
               type="checkbox"
               name="read"
-              id="read"
               className={tosErrors ? "is-invalid" : ""}
+              disabled={isPending}
               {...getFieldProps("read", {
                 initialValue: read,
                 rules: [
@@ -50,7 +41,7 @@ const RegisterForm = (props) => {
                 valuePropName: "checked"
               })}
             />
-            <Button onClick={onClickCgu} color={"link"} className="m-0 p-0 ">
+            <Button onClick={onClickCgu} color={"link"} className="m-0 p-0" disabled={isPending}>
               {t("form.register.read.label")}
             </Button>
           </Label>
@@ -61,11 +52,16 @@ const RegisterForm = (props) => {
   );
 };
 
+RegisterForm.defaultProps = {
+  isPending: false
+};
+
 // The propTypes.
 RegisterForm.propTypes = {
   confirmation: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   form: formShape,
+  isPending: PropTypes.bool,
   onChange: PropTypes.func.isRequired,
   onClickCgu: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,

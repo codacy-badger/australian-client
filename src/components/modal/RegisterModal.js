@@ -15,6 +15,8 @@ import { translate } from "react-i18next";
 
 library.add(faSignInAlt);
 
+//TODO Create a container
+//TODO Create a register page
 class RegisterModal extends Component {
   constructor(props) {
     super(props);
@@ -90,6 +92,7 @@ class RegisterModal extends Component {
               confirmation={confirmation}
               email={email}
               form={form}
+              isPending={isPending}
               onChange={this.onChange}
               onClickCgu={this.toggleCgu}
               onSubmit={this.onSubmit}

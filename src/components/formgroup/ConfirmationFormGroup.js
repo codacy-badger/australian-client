@@ -10,8 +10,7 @@ import { translate } from "react-i18next";
 
 library.add(faKey);
 
-//TODO add disabled props
-const ConfirmationFormGroup = ({ children, form, onChange, t, password, value }) => {
+const ConfirmationFormGroup = ({ children, disabled, form, onChange, t, password, value }) => {
   const { getFieldProps, getFieldError } = form;
   const confirmationErrors = getFieldError("confirmation");
 
@@ -22,11 +21,11 @@ const ConfirmationFormGroup = ({ children, form, onChange, t, password, value })
       </Label>
       <Col sm={8}>
         <InputGroup>
-          <InputGroupIcon icon="key" />
+          <InputGroupIcon icon="key" isLoading={disabled} />
           <Input
             type="password"
             name="confirmation"
-            id="registerPasswordConfirmation"
+            disabled={disabled}
             placeholder={t("form.register.password-confirmation-placeholder")}
             className={confirmationErrors ? "is-invalid" : ""}
             {...getFieldProps("confirmation", {
@@ -50,8 +49,13 @@ const ConfirmationFormGroup = ({ children, form, onChange, t, password, value })
   );
 };
 
+ConfirmationFormGroup.defaultProps = {
+  disabled: false
+};
+
 ConfirmationFormGroup.propTypes = {
   children: PropTypes.element,
+  disabled: PropTypes.bool,
   form: formShape,
   onChange: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired,
