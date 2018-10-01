@@ -12,7 +12,6 @@ import { translate } from "react-i18next";
 
 library.add(faTrashAlt);
 
-//TODO add loading props
 class DeleteAccountForm extends Component {
   constructor(props) {
     super(props);
@@ -55,7 +54,7 @@ class DeleteAccountForm extends Component {
         <p>{t("form.account.description")}</p>
         {isError && <ErrorAlert>{t(error.message)}</ErrorAlert>}
         {children}
-        <PasswordFormGroup onChange={onChange} form={form} value={password} />
+        <PasswordFormGroup onChange={onChange} form={form} value={password} disabled={isPending}/>
         <div className="text-right">
           <Submit className="btn-danger" name="account" icon="trash-alt" onClick={this.open} isPending={isPending} />
           <Modal isOpen={modal} toggle={this.toggle}>

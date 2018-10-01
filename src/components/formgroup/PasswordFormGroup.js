@@ -10,9 +10,8 @@ import { translate } from "react-i18next";
 
 library.add(faKey);
 
-//TODO add disabled props
 const PasswordFormGroup = (props) => {
-  const { children, form, newPassword, oldPassword, onChange, t, value } = props;
+  const { children, disabled, form, newPassword, oldPassword, onChange, t, value } = props;
   const { getFieldProps, getFieldError } = form;
   const inputName = oldPassword ? "oldPassword" : newPassword ? "newPassword" : "password";
   const label = "form.general.password." + (oldPassword ? "old-" : newPassword ? "new-" : "") +"label";
@@ -26,7 +25,7 @@ const PasswordFormGroup = (props) => {
       </Label>
       <Col sm={8}>
         <InputGroup>
-          <InputGroupIcon icon="key" />
+          <InputGroupIcon icon="key" isLoading={disabled}/>
           <Input
             type="password"
             name={inputName}
@@ -36,6 +35,7 @@ const PasswordFormGroup = (props) => {
               onChange,
               rules: [{ required: true }]
             })}
+            disabled={disabled}
             placeholder={t(placeholder)}
           />
         </InputGroup>
@@ -47,12 +47,14 @@ const PasswordFormGroup = (props) => {
 };
 
 PasswordFormGroup.defaultProps = {
+  disabled: false,
   newPassword: false,
   oldPassword: false
 };
 
 PasswordFormGroup.propTypes = {
   children: PropTypes.element,
+  disabled: PropTypes.bool,
   form: formShape,
   newPassword: PropTypes.bool,
   oldPassword: PropTypes.bool,
