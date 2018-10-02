@@ -8,10 +8,10 @@ import FormPasswordGroup from "./abstract/FormPasswordGroup";
 library.add(faKey);
 
 const PasswordFormGroup = (props) => {
-  const { oldPassword, newPassword } = props;
+  const { children, oldPassword, newPassword } = props;
   const fieldName = oldPassword ? "old-password" : newPassword ? "new-password" : "password";
 
-  return <FormPasswordGroup {...props} fieldName={fieldName} required />;
+  return <FormPasswordGroup {...props} fieldName={fieldName} required>{children}</FormPasswordGroup>;
 };
 
 PasswordFormGroup.defaultProps = {
@@ -24,7 +24,7 @@ PasswordFormGroup.defaultProps = {
 };
 
 PasswordFormGroup.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.any,
   disabled: PropTypes.bool,
   form: formShape,
   icon: PropTypes.string,

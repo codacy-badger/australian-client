@@ -8,7 +8,9 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 library.add(faKey);
 
 const FormPasswordGroup = (props) => {
-  return <FormTextGroup type={"password"} {...props} />;
+  const {children, ...otherProps} = props;
+
+  return <FormTextGroup type={"password"} {...otherProps} >{children}</FormTextGroup>;
 };
 
 FormPasswordGroup.defaultProps = {
@@ -21,6 +23,7 @@ FormPasswordGroup.defaultProps = {
 };
 
 FormPasswordGroup.propTypes = {
+  children: PropTypes.any,
   disabled: PropTypes.bool,
   fieldName: PropTypes.string.isRequired,
   form: formShape,

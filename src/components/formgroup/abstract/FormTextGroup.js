@@ -13,6 +13,7 @@ library.add(faAlignJustify);
 
 const FormTextGroup = (props) => {
   const {
+    children,
     confirmation,
     disabled,
     form,
@@ -67,6 +68,7 @@ const FormTextGroup = (props) => {
         </InputGroup>
         {hasError && <HelpBlockErrors errors={errors} />}
         {helpBlock && help.length > 0 && (hasError || <HelpBlock>{help}</HelpBlock>)}
+        {children}
       </Col>
     </ReactFormGroup>
   );
@@ -83,6 +85,7 @@ FormTextGroup.defaultProps = {
 
 // The propTypes.
 FormTextGroup.propTypes = {
+  children: PropTypes.any,
   disabled: PropTypes.bool,
   fieldName: PropTypes.string.isRequired,
   form: formShape,
