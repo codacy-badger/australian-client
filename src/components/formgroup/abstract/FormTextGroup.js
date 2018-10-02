@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import HelpBlock from "../common/help/HelpBlock";
-import HelpBlockErrors from "../common/help/HelpBlockErrors";
-import InputGroupIcon from "../common/input/InputGroupIcon";
+import HelpBlock from "../../common/help/HelpBlock";
+import HelpBlockErrors from "../../common/help/HelpBlockErrors";
+import InputGroupIcon from "../../common/input/InputGroupIcon";
 import { Col, FormGroup as ReactFormGroup, Input, InputGroup, Label } from "reactstrap";
 import { faAlignJustify } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";

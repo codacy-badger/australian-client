@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import FormTextGroup from "./FormTextGroup";
+import FormTextGroup from "./abstract/FormTextGroup";
 import { faUserMd } from "@fortawesome/free-solid-svg-icons";
 import { formShape } from "rc-form";
 import { library } from "@fortawesome/fontawesome-svg-core";

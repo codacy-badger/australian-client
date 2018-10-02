@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import FormEmailGroup from "./FormEmailGroup";
+import FormEmailGroup from "./abstract/FormEmailGroup";
 import { faAt } from "@fortawesome/free-solid-svg-icons";
 import { formShape } from "rc-form";
 import { library } from "@fortawesome/fontawesome-svg-core";
