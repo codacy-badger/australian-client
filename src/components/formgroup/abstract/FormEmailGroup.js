@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import FormTextGroup from "./FormTextGroup";
+import FormAllGroup from "./FormAllGroup";
 import { faAt } from "@fortawesome/free-solid-svg-icons";
 import { formShape } from "rc-form";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -8,7 +8,14 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 library.add(faAt);
 
 const FormEmailGroup = (props) => {
-  return <FormTextGroup type={"email"} {...props} />;
+  const {required, ...otherProps} = props;
+
+  const rules = {
+    required,
+    type: "string",
+  };
+
+  return <FormAllGroup type="email" rules={rules} {...otherProps} />;
 };
 
 FormEmailGroup.defaultProps = {

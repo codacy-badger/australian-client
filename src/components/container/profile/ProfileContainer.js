@@ -23,6 +23,8 @@ class ProfileContainer extends React.Component {
   }
 
   //Used after data loading through api client.
+  //FIXME test with https://www.davidmeents.com/create-redux-form-validation-initialized-values/
+  //TODO https://redux-form.com/7.4.2/docs/gettingstarted.md/
   componentWillReceiveProps(nextProps) {
     const { isLoading } = this.props;
     const { isLoaded } = this.state;

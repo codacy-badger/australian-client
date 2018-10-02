@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import FormTextGroup from "./FormTextGroup";
+import FormAllGroup from "./FormAllGroup";
 import { faKey } from "@fortawesome/free-solid-svg-icons";
 import { formShape } from "rc-form";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -8,7 +8,16 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 library.add(faKey);
 
 const FormConfirmationGroup = (props) => {
-  return <FormTextGroup type={"confirmation"} {...props} />;
+  const {confirmation, required, ...otherProps} = props;
+
+  const rules = {
+    required,
+    type: "enum",
+    enum: [confirmation, ""],
+    message: "confirmation is different from password"
+  };
+
+  return <FormAllGroup type="password" rules={rules} {...otherProps} />;
 };
 
 FormConfirmationGroup.defaultProps = {

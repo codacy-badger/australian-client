@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import FormTextGroup from "./FormTextGroup";
+import FormAllGroup from "./FormAllGroup";
 import { faKey } from "@fortawesome/free-solid-svg-icons";
 import { formShape } from "rc-form";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -8,9 +8,14 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 library.add(faKey);
 
 const FormPasswordGroup = (props) => {
-  const {children, ...otherProps} = props;
+  const {children, required, ...otherProps} = props;
 
-  return <FormTextGroup type={"password"} {...otherProps} >{children}</FormTextGroup>;
+  const rules = {
+    required,
+    type: "string",
+  };
+
+  return <FormAllGroup type="password" {...otherProps} rules={rules}>{children}</FormAllGroup>;
 };
 
 FormPasswordGroup.defaultProps = {
