@@ -13,14 +13,21 @@ const FormEmailGroup = (props) => {
 
 FormEmailGroup.defaultProps = {
   disabled: false,
-  icon: "at"
+  fieldName: "email",
+  formName: "general",
+  helpBlock: false,
+  icon: "at",
+  required: false
 };
 
 FormEmailGroup.propTypes = {
   disabled: PropTypes.bool,
+  helpBlock: PropTypes.bool,
   icon: PropTypes.string,
+  fieldName: PropTypes.string,
   form: formShape,
   onChange: PropTypes.func.isRequired,
+  required: PropTypes.bool,
   value: PropTypes.string.isRequired
 };
 

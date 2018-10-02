@@ -16,6 +16,9 @@ const PasswordFormGroup = (props) => {
 
 PasswordFormGroup.defaultProps = {
   disabled: false,
+  formName: "general",
+  helpBlock: false,
+  icon: "key",
   newPassword: false,
   oldPassword: false
 };
@@ -24,10 +27,11 @@ PasswordFormGroup.propTypes = {
   children: PropTypes.element,
   disabled: PropTypes.bool,
   form: formShape,
+  icon: PropTypes.string,
   newPassword: PropTypes.bool,
   oldPassword: PropTypes.bool,
   onChange: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired
+  value: PropTypes.string.isRequired,
 };
 
 export default PasswordFormGroup;

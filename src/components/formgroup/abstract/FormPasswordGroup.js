@@ -13,14 +13,22 @@ const FormPasswordGroup = (props) => {
 
 FormPasswordGroup.defaultProps = {
   disabled: false,
-  icon: "key"
+  fieldName: "password",
+  formName: "general",
+  helpBlock: false,
+  icon: "key",
+  required: false
 };
 
 FormPasswordGroup.propTypes = {
   disabled: PropTypes.bool,
-  icon: PropTypes.string,
+  fieldName: PropTypes.string.isRequired,
   form: formShape,
+  formName: PropTypes.string,
+  helpBlock: PropTypes.bool,
+  icon: PropTypes.string,
   onChange: PropTypes.func.isRequired,
+  required: PropTypes.bool,
   value: PropTypes.string.isRequired
 };
 
