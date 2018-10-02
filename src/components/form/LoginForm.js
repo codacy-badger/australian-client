@@ -12,6 +12,7 @@ import RememberMeFormGroup from "../formgroup/RememberMeFormGroup";
 const LoginForm = (props) => {
   const { email, isPending, form, onChange, onSubmit, password, rememberMe, t } = props;
 
+  //FIXME We have lost the link into PasswordFormGroup
   return (
     <Form onSubmit={onSubmit}>
       <EmailFormGroup form={form} onChange={onChange} value={email} disabled={isPending}/>
