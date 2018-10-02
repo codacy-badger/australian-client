@@ -11,20 +11,20 @@ import { formShape } from "rc-form";
 library.add(faTrashAlt);
 
 const PasswordForm = (props) => {
-  const { confirmation, form, isPending, onChange, onSubmit, oldPassword, newPassword} = props;
+  const { confirmation, form, isPending, onChange, onSubmit, oldPassword, newPassword } = props;
+  const propsFields = { onChange, form, formName: "profile" };
 
   return (
     <Form onSubmit={onSubmit}>
-      <PasswordFormGroup onChange={onChange} form={form} value={oldPassword} oldPassword />
-      <PasswordFormGroup onChange={onChange} form={form} value={newPassword} newPassword />
-      <ConfirmationFormGroup onChange={onChange} form={form} value={confirmation} password={newPassword}/>
+      <PasswordFormGroup value={oldPassword} oldPassword {...propsFields} />
+      <PasswordFormGroup value={newPassword} newPassword {...propsFields} />
+      <ConfirmationFormGroup value={confirmation} password={newPassword} {...propsFields} />
       <div className="text-right">
         <Submit name="password" icon="trash-alt" onClick={onSubmit} isPending={isPending} />
       </div>
     </Form>
   );
 };
-
 
 PasswordForm.propTypes = {
   confirmation: PropTypes.string.isRequired,

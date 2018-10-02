@@ -10,7 +10,7 @@ import { formShape } from "rc-form";
 const RegisterForm = (props) => {
   const { confirmation, email, form, isPending, onChange, onClickCgu, onSubmit, password, read } = props;
 
-  const fieldProps = { disabled: isPending, form, onChange };
+  const fieldProps = { disabled: isPending, form, onChange, formName: "register" };
 
   return (
     <Form onSubmit={onSubmit}>

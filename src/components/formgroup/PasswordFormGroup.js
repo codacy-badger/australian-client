@@ -1,49 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
-import HelpBlockErrors from "../common/help/HelpBlockErrors";
-import InputGroupIcon from "../common/input/InputGroupIcon";
-import { Col, FormGroup, Input, InputGroup, Label } from "reactstrap";
 import { faKey } from "@fortawesome/free-solid-svg-icons";
 import { formShape } from "rc-form";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { translate } from "react-i18next";
+import FormPasswordGroup from "./abstract/FormPasswordGroup";
 
 library.add(faKey);
 
 const PasswordFormGroup = (props) => {
-  const { children, disabled, form, newPassword, oldPassword, onChange, t, value } = props;
-  const { getFieldProps, getFieldError } = form;
-  const inputName = oldPassword ? "oldPassword" : newPassword ? "newPassword" : "password";
-  const label = "form.general.password." + (oldPassword ? "old-" : newPassword ? "new-" : "") +"label";
-  const passwordErrors = getFieldError(inputName);
-  const placeholder = "form.general.password." + (oldPassword ? "old-" : newPassword ? "new-" : "") + "placeholder";
+  const { oldPassword, newPassword } = props;
+  const fieldName = oldPassword ? "old-password" : newPassword ? "new-password" : "password";
 
-  return (
-    <FormGroup row>
-      <Label for={inputName} sm={4}>
-        {t(label)}
-      </Label>
-      <Col sm={8}>
-        <InputGroup>
-          <InputGroupIcon icon="key" isLoading={disabled}/>
-          <Input
-            type="password"
-            name={inputName}
-            className={passwordErrors ? "is-invalid" : ""}
-            {...getFieldProps(inputName, {
-              initialValue: value,
-              onChange,
-              rules: [{ required: true }]
-            })}
-            disabled={disabled}
-            placeholder={t(placeholder)}
-          />
-        </InputGroup>
-        <HelpBlockErrors errors={passwordErrors} />
-        {children}
-      </Col>
-    </FormGroup>
-  );
+  return <FormPasswordGroup {...props} fieldName={fieldName} required />;
 };
 
 PasswordFormGroup.defaultProps = {
@@ -59,8 +27,7 @@ PasswordFormGroup.propTypes = {
   newPassword: PropTypes.bool,
   oldPassword: PropTypes.bool,
   onChange: PropTypes.func.isRequired,
-  t: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired
 };
 
-export default translate("translations")(PasswordFormGroup);
+export default PasswordFormGroup;

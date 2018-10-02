@@ -1,22 +1,22 @@
 import React from "react";
 import PropTypes from "prop-types";
 import FormTextGroup from "./FormTextGroup";
-import { faAt } from "@fortawesome/free-solid-svg-icons";
+import { faKey } from "@fortawesome/free-solid-svg-icons";
 import { formShape } from "rc-form";
 import { library } from "@fortawesome/fontawesome-svg-core";
 
-library.add(faAt);
+library.add(faKey);
 
-const FormEmailGroup = (props) => {
-  return <FormTextGroup type={"email"} {...props} />;
+const FormPasswordGroup = (props) => {
+  return <FormTextGroup type={"password"} {...props} />;
 };
 
-FormEmailGroup.defaultProps = {
+FormPasswordGroup.defaultProps = {
   disabled: false,
-  icon: "at"
+  icon: "key"
 };
 
-FormEmailGroup.propTypes = {
+FormPasswordGroup.propTypes = {
   disabled: PropTypes.bool,
   icon: PropTypes.string,
   form: formShape,
@@ -24,4 +24,4 @@ FormEmailGroup.propTypes = {
   value: PropTypes.string.isRequired
 };
 
-export default FormEmailGroup;
+export default FormPasswordGroup;

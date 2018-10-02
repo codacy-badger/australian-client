@@ -49,11 +49,7 @@
       "longitude": "Longitude",
       "password": {
         "label": "Mot de passe",
-        "placeholder": "Entrez votre mot de passe",
-        "new-label": "Nouveau mot de passe",
-        "new-placeholder": "Entrez votre nouveau mot de passe",
-        "old-label": "Mot de passe actuel",
-        "old-placeholder": "Entrez votre mot de passe actuel"
+        "placeholder": "Entrez votre mot de passe"
       }
     },
     "login": {
@@ -95,20 +91,34 @@
         "label": "Nouvelle adresse",
         "placeholder": "Entrez la nouvelle adresse email"
       },
+      "new-password": {
+        "label": "Nouveau mot de passe",
+        "placeholder": "Entrez le nouveau mot de passe"
+      },
       "old-email": {
         "label": "Email",
         "placeholder": "Entrez l’adresse email à remplacer"
       },
+      "old-password": {
+        "label": "Mot de passe actuel",
+        "placeholder": "Entrez votre mot de passe actuel"
+      },
       "submit": "Enregistrer"
     },
     "register": {
-      "email": "Email",
-      "email-placeholder": "Entrez votre adresse email",
-      "password": "Mot de passe",
-      "password-placeholder": "Entrez votre mot de passe",
-      "password-confirmation": "Confirmation",
-      "password-confirmation-placeholder": "Confirmer ce mot de passe",
-      "password-confirmation-helpBlock": "Les deux saisies doivent être identiques",
+      "email": {
+        "label": "Email",
+        "placeholder": "Entrez votre adresse email"
+      },
+      "password": {
+        "label": "Mot de passe",
+        "placeholder": "Entrez un mot de passe"
+      },
+      "password-confirmation": {
+        "label": "Confirmation",
+        "placeholder": "Confirmer ce mot de passe",
+        "helpBlock": "Les deux saisies doivent être identiques"
+      },
       "read": {
         "label": "J’ai lu et accepte les conditions générales d’utilisation",
         "helpBlock": "Veuillez lire et accepter les CGU"

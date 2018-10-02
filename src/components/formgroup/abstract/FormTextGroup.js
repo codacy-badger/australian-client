@@ -11,7 +11,6 @@ import { translate } from "react-i18next";
 
 library.add(faAlignJustify);
 
-//TODO move into subdirectory abstract
 const FormTextGroup = (props) => {
   const { disabled, form, fieldName, formName, helpBlock, icon, onChange, required, t, type, value } = props;
   const { getFieldProps, getFieldError } = form;

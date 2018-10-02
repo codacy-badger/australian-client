@@ -49,11 +49,7 @@
       "longitude": "Longitude",
       "password": {
         "label": "Password",
-        "placeholder": "Enter your password",
-        "new-label": "New password",
-        "new-placeholder": "Enter your new password",
-        "old-label": "Current password",
-        "old-placeholder": "Enter your current password"
+        "placeholder": "Enter your password"
       }
     },
     "login": {
@@ -95,20 +91,34 @@
         "label": "New email",
         "placeholder": "Enter your new email"
       },
+      "new-password": {
+        "label": "New password",
+        "placeholder": "Enter your new password"
+      },
       "old-email": {
         "label": "Current email",
         "placeholder": "Enter email used to login"
       },
+      "old-password": {
+        "label": "Current password",
+        "placeholder": "Enter your current password"
+      },
       "submit": "Save"
     },
     "register": {
-      "email": "Email",
-      "email-placeholder": "Enter your email",
-      "password": "Password",
-      "password-placeholder": "Enter your password",
-      "password-confirmation": "Confirmation",
-      "password-confirmation-placeholder": "Confirm your password",
-      "password-confirmation-helpBlock": "Password and confirmation fields should be equals.",
+      "email": {
+        "label": "Email",
+        "placeholder": "Enter your email"
+      },
+      "password": {
+        "label": "Password",
+        "placeholder": "Enter your password"
+      },
+      "password-confirmation": {
+        "label": "Confirmation",
+        "placeholder": "Confirm your password",
+        "helpBlock": "Password and confirmation fields should be equals."
+      },
       "read": {
         "label": "I read and accept Terms of Service.",
         "helpBlock": "Please read and accept TOS"
