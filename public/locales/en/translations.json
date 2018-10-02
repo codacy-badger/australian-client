@@ -19,8 +19,10 @@
       "submitting": "Deleting account"
     },
     "activation": {
-      "activationCode": "Activation code",
-      "activationCode-placeholder": "You can find activation in the mail sent just after your registration.",
+      "activationCode": {
+        "label": "Activation code",
+        "placeholder": "You can find activation in the mail sent just after your registration."
+      },
       "submit": "Activation",
       "submitting": "Activating…"
     },

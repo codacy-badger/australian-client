@@ -19,8 +19,10 @@
       "submitting": "Suppression en cours…"
     },
     "activation": {
-      "activationCode": "Code d’activation",
-      "activationCode-placeholder": "Le code d’activation se trouve dans le mail que vous avez reçu.",
+      "activationCode": {
+        "label": "Code d’activation",
+        "placeholder": "Le code d’activation se trouve dans le mail que vous avez reçu."
+      },
       "submit": "Activer",
       "submitting": "Activation en cours…"
     },
