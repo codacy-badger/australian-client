@@ -14,8 +14,8 @@ const EmailForm = (props) => {
 
   return (
     <Form onSubmit={onSubmit}>
-      <EmailFormGroup onChange={onChange} form={form} value={oldEmail} oldEmail />
-      <EmailFormGroup onChange={onChange} form={form} value={newEmail} newEmail />
+      <EmailFormGroup onChange={onChange} form={form} value={oldEmail} oldEmail formName="profile" />
+      <EmailFormGroup onChange={onChange} form={form} value={newEmail} newEmail formName="profile" />
       <div className="text-right">
         <Submit name="email" onClick={onSubmit} isPending={isPending} />
       </div>

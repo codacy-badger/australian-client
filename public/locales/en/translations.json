@@ -43,11 +43,7 @@
       },
       "email": {
         "label": "Email",
-        "placeholder": "Enter your email",
-        "new-label": "New email",
-        "new-placeholder": "Enter your new email",
-        "old-label": "Current email",
-        "old-placeholder": "Enter email used to login"
+        "placeholder": "Enter your email"
       },
       "latitude": "Latitude",
       "longitude": "Longitude",
@@ -94,6 +90,14 @@
         "label": "Nickname",
         "placeholder": "",
         "helpBlock": ""
+      },
+      "new-email": {
+        "label": "New email",
+        "placeholder": "Enter your new email"
+      },
+      "old-email": {
+        "label": "Current email",
+        "placeholder": "Enter email used to login"
       },
       "submit": "Save"
     },

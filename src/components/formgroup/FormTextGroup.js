@@ -11,14 +11,16 @@ import { translate } from "react-i18next";
 
 library.add(faAlignJustify);
 
+//TODO move into subdirectory abstract
 const FormTextGroup = (props) => {
-  const { disabled, form, fieldName, formName, helpBlock, icon, onChange, required, t, value } = props;
+  const { disabled, form, fieldName, formName, helpBlock, icon, onChange, required, t, type, value } = props;
   const { getFieldProps, getFieldError } = form;
   const errors = getFieldError(fieldName);
   const hasError = errors ? errors.length > 0 : false;
+  const help = t("form." + formName + "." + fieldName + ".helpBlock");
   const label = t("form." + formName + "." + fieldName + ".label");
   const placeholder = t("form." + formName + "." + fieldName + ".placeholder");
-  const help = t("form." + formName + "." + fieldName + ".helpBlock");
+  const ruleType = "email" === type ? "email" : "string";
 
   return (
     <ReactFormGroup row>
@@ -36,9 +38,14 @@ const FormTextGroup = (props) => {
             {...getFieldProps(fieldName, {
               initialValue: value,
               onChange,
-              rules: [{ required }]
+              rules: [
+                {
+                  required,
+                  type: ruleType
+                }
+              ]
             })}
-            type="text"
+            type={type}
           />
         </InputGroup>
         {hasError && <HelpBlockErrors errors={errors} />}
@@ -53,7 +60,8 @@ FormTextGroup.defaultProps = {
   formName: "general",
   helpBlock: false,
   icon: "align-justify",
-  required: false
+  required: false,
+  type: "text"
 };
 
 // The propTypes.
@@ -67,6 +75,7 @@ FormTextGroup.propTypes = {
   onChange: PropTypes.func.isRequired,
   required: PropTypes.bool,
   t: PropTypes.func.isRequired,
+  type: PropTypes.oneOf(["text", "password", "email"]),
   value: PropTypes.string.isRequired
 };
 

@@ -43,11 +43,7 @@
       },
       "email": {
         "label": "Email",
-        "placeholder": "Entrez votre adresse email",
-        "new-label": "Nouvelle adresse",
-        "new-placeholder": "Entrez votre nouvelle adresse email",
-        "old-label": "Adresse",
-        "old-placeholder": "Entrez votre l'adresse email à remplacer"
+        "placeholder": "Entrez votre adresse email"
       },
       "latitude": "Latitude",
       "longitude": "Longitude",
@@ -94,6 +90,14 @@
         "label": "Nom affiché",
         "placeholder": "",
         "helpBlock": ""
+      },
+      "new-email": {
+        "label": "Nouvelle adresse",
+        "placeholder": "Entrez la nouvelle adresse email"
+      },
+      "old-email": {
+        "label": "Email",
+        "placeholder": "Entrez l’adresse email à remplacer"
       },
       "submit": "Enregistrer"
     },
