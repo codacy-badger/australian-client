@@ -5,10 +5,12 @@
   "confirmation is required": "Veuillez confirmer votre mot de passe en le saisissant à nouveau.",
   "email is not a valid email": "Veuillez entrer une adresse email valide.",
   "email is required": "Veuillez renseigner votre adresse email.",
-  "newEmail is not a valid email": "Veuillez entrer une adresse email valide.",
-  "newEmail is required": "Veuillez renseigner votre nouvelle adresse email.",
-  "oldEmail is not a valid email": "Veuillez entrer une adresse email valide.",
-  "oldEmail is required": "Veuillez renseigner votre ancienne adresse email.",
+  "new-email is not a valid email": "Veuillez entrer une adresse email valide.",
+  "new-email is required": "Veuillez renseigner votre nouvelle adresse email.",
+  "new-password is required": "Votre nouveau mot de passe ne peut pas être vide.",
+  "old-email is not a valid email": "Veuillez entrer une adresse email valide.",
+  "old-email is required": "Veuillez renseigner votre ancienne adresse email.",
+  "old-password is required": "Veuillez entrer votre mot de passe actuel.",
   "name is required": "Veuillez renseigner votre pseudonyme.",
   "password is required": "Veuillez entrer votre mot de passe."
 }

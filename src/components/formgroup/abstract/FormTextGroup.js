@@ -12,14 +12,37 @@ import { translate } from "react-i18next";
 library.add(faAlignJustify);
 
 const FormTextGroup = (props) => {
-  const { disabled, form, fieldName, formName, helpBlock, icon, onChange, required, t, type, value } = props;
+  const {
+    confirmation,
+    disabled,
+    form,
+    fieldName,
+    formName,
+    helpBlock,
+    icon,
+    onChange,
+    required,
+    t,
+    type,
+    value
+  } = props;
   const { getFieldProps, getFieldError } = form;
   const errors = getFieldError(fieldName);
   const hasError = errors ? errors.length > 0 : false;
   const help = t("form." + formName + "." + fieldName + ".helpBlock");
   const label = t("form." + formName + "." + fieldName + ".label");
   const placeholder = t("form." + formName + "." + fieldName + ".placeholder");
-  const ruleType = "email" === type ? "email" : "string";
+  const inputType = "confirmation" === type ? "password" : type;
+  const ruleType = "confirmation" === type ? "enum" : "email" === type ? "email" : "string";
+
+  const rules = {
+    required,
+    type: ruleType
+  };
+  if ("confirmation" === type) {
+    rules.enum = [confirmation, ""];
+    rules.message = "confirmation is different from password";
+  }
 
   return (
     <ReactFormGroup row>
@@ -37,14 +60,9 @@ const FormTextGroup = (props) => {
             {...getFieldProps(fieldName, {
               initialValue: value,
               onChange,
-              rules: [
-                {
-                  required,
-                  type: ruleType
-                }
-              ]
+              rules: [rules]
             })}
-            type={type}
+            type={inputType}
           />
         </InputGroup>
         {hasError && <HelpBlockErrors errors={errors} />}
@@ -74,7 +92,7 @@ FormTextGroup.propTypes = {
   onChange: PropTypes.func.isRequired,
   required: PropTypes.bool,
   t: PropTypes.func.isRequired,
-  type: PropTypes.oneOf(["text", "password", "email"]),
+  type: PropTypes.oneOf(["text", "password", "email", "confirmation"]),
   value: PropTypes.string.isRequired
 };
 

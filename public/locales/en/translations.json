@@ -37,10 +37,6 @@
       "submitting": "Sending…"
     },
     "general": {
-      "confirmation": {
-        "label": "Confirmation",
-        "placeholder": "Confirm your password"
-      },
       "email": {
         "label": "Email",
         "placeholder": "Enter your email"
@@ -66,6 +62,11 @@
         "label": "Additional name",
         "placeholder": "",
         "helpBlock": ""
+      },
+      "confirmation": {
+        "label": "Confirmation",
+        "placeholder": "Confirm your password",
+        "helpBlock": "Password and confirmation fields should be equals."
       },
       "familyName": {
         "label": "Family name",
@@ -106,6 +107,11 @@
       "submit": "Save"
     },
     "register": {
+      "confirmation": {
+        "label": "Confirmation",
+        "placeholder": "Confirm your password",
+        "helpBlock": "Password and confirmation fields should be equals."
+      },
       "email": {
         "label": "Email",
         "placeholder": "Enter your email"
@@ -113,11 +119,6 @@
       "password": {
         "label": "Password",
         "placeholder": "Enter your password"
-      },
-      "password-confirmation": {
-        "label": "Confirmation",
-        "placeholder": "Confirm your password",
-        "helpBlock": "Password and confirmation fields should be equals."
       },
       "read": {
         "label": "I read and accept Terms of Service.",
