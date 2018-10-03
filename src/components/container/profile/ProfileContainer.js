@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import LoadingJumbotron from "../../common/jumbotron/LoadingJumbotron";
 import ProfileForm from "../../form/ProfileForm";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
@@ -23,8 +22,6 @@ class ProfileContainer extends React.Component {
   }
 
   //Used after data loading through api client.
-  //FIXME test with https://www.davidmeents.com/create-redux-form-validation-initialized-values/
-  //TODO https://redux-form.com/7.4.2/docs/gettingstarted.md/
   componentWillReceiveProps(nextProps) {
     const { isLoading } = this.props;
     const { isLoaded } = this.state;
@@ -57,14 +54,10 @@ class ProfileContainer extends React.Component {
   }
 
   render() {
-    const { isLoading, ...status } = this.props;
+    const { ...status } = this.props;
     delete status.user;
 
-    if (isLoading) {
-      return <LoadingJumbotron />;
-    }
-
-    return <ProfileForm {...this.state} {...status} onSubmit={this.onSubmit} onChange={this.onChange} />;
+    return <ProfileForm values={this.state} {...status} onSubmit={this.onSubmit} onChange={this.onChange} />;
   }
 }
 

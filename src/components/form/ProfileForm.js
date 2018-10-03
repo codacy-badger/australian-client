@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import StatusAlert from "../common/alert/StatusAlert";
 import AdditionalNameFormGroup from "../formgroup/AdditionalNameFormGroup";
 import FamilyNameFormGroup from "../formgroup/FamilyNameFormGroup";
 import GivenNameFormGroup from "../formgroup/GivenNameFormGroup";
 import JobTitleFormGroup from "../formgroup/JobTitleFormGroup";
+import StatusAlert from "../common/alert/StatusAlert";
 import Submit from "../common/button/Submit";
 import UsernameFormGroup from "../formgroup/UsernameFormGroup";
 import { Form } from "reactstrap";
@@ -16,22 +16,25 @@ library.add(faUser, faUserMd);
 
 const ProfileForm = (props) => {
   const {
-    additionalName,
-    familyName,
-    form,
-    givenName,
-    jobTitle,
-    name,
+    values: {
+      additionalName,
+      familyName,
+      givenName,
+      jobTitle,
+      name
+    },
     error,
+    form,
+    isError,
+    isLoading,
     isPending,
     isSuccess,
-    isError,
     success,
     onSubmit,
     onChange
   } = props;
 
-  const fieldProps = { disabled: isPending, onChange, onSubmit, form };
+  const fieldProps = { disabled: isPending || isLoading, onChange, onSubmit, form };
 
   return (
     <Form onSubmit={onSubmit}>
@@ -50,19 +53,22 @@ const ProfileForm = (props) => {
 
 // The propTypes.
 ProfileForm.propTypes = {
-  additionalName: PropTypes.string.isRequired,
   error: PropTypes.object.isRequired,
-  familyName: PropTypes.string.isRequired,
   form: formShape,
-  givenName: PropTypes.string.isRequired,
   isError: PropTypes.bool.isRequired,
+  isLoading: PropTypes.bool.isRequired,
   isPending: PropTypes.bool.isRequired,
   isSuccess: PropTypes.bool.isRequired,
-  jobTitle: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
-  success: PropTypes.object.isRequired
+  success: PropTypes.object.isRequired,
+  values: PropTypes.shape({
+    additionalName: PropTypes.string.isRequired,
+    familyName: PropTypes.string.isRequired,
+    givenName: PropTypes.string.isRequired,
+    jobTitle: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired
+  }).isRequired,
 };
 
 // Redux connect begin here

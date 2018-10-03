@@ -28,7 +28,7 @@ FormTextGroup.defaultProps = {
 // The propTypes.
 FormTextGroup.propTypes = {
   children: PropTypes.any,
-  confirmation: PropTypes.string.isRequired,
+  confirmation: PropTypes.string,
   disabled: PropTypes.bool,
   fieldName: PropTypes.string.isRequired,
   form: formShape,
