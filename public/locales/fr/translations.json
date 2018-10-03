@@ -2,7 +2,8 @@
   "button": {
     "cancel": "Annuler",
     "login": "Se connecter",
-    "register": "S’inscrire"
+    "register": "S’inscrire",
+    "reset": "Réinitialiser"
   },
   "error": {
     "10": "Identifiants invalides.",

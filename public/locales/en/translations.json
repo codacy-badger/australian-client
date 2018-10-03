@@ -2,7 +2,8 @@
   "button": {
     "cancel": "Cancel",
     "login": "Login",
-    "register": "Register"
+    "register": "Register",
+    "reset": "Reset"
   },
   "error": {
     "10": "Invalid credentials.",
