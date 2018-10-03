@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import isEmpty from "validator/lib/isEmpty";
 import HelpBlock from "../../common/help/HelpBlock";
 import HelpBlockErrors from "../../common/help/HelpBlockErrors";
 import InputGroupIcon from "../../common/input/InputGroupIcon";
@@ -8,6 +7,7 @@ import { Col, FormGroup as ReactFormGroup, Input, InputGroup, Label } from "reac
 import { faAlignJustify } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { translate } from "react-i18next";
+import { connect } from "react-redux";
 
 library.add(faAlignJustify);
 
@@ -108,14 +108,11 @@ FormAllGroup.defaultProps = {
 FormAllGroup.propTypes = {
   children: PropTypes.any,
   disabled: PropTypes.bool,
-  fieldName: PropTypes.string.isRequired,
-  formName: PropTypes.string,
   helpBlock: PropTypes.bool,
   icon: PropTypes.string,
-  onChange: PropTypes.func.isRequired,
   rules: PropTypes.object.isRequired,
   t: PropTypes.func.isRequired,
   type: PropTypes.oneOf(["text", "password", "email", "confirmation"])
 };
 
-export default translate()(FormAllGroup);
+export default connect()(translate()(FormAllGroup));

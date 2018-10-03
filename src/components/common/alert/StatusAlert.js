@@ -3,15 +3,19 @@ import PropTypes from "prop-types";
 import { Alert } from "reactstrap";
 import { translate, Trans } from "react-i18next";
 
+//TODO convert to stateless component
 class StatusAlert extends Component {
   getColor() {
-    const { isError, isSuccess } = this.props;
+    const { isError, isSuccess } = this.props.status;
 
     return isError ? "danger" : isSuccess ? "success" : "info";
   }
 
   getKey() {
-    const { code, error, isError, isSuccess, success } = this.props;
+    const {
+      code,
+      status: { error, isError, isSuccess, success }
+    } = this.props;
 
     if (isError && error && error.code) {
       return "error." + error.code;
@@ -25,7 +29,11 @@ class StatusAlert extends Component {
   }
 
   getMessage() {
-    const { code, error, isError, isSuccess, success, t } = this.props;
+    const {
+      code,
+      status: { error, isError, isSuccess, success },
+      t
+    } = this.props;
 
     if (isError && error && error.message) {
       return error.message;
@@ -51,10 +59,13 @@ class StatusAlert extends Component {
 
 StatusAlert.propTypes = {
   code: PropTypes.string.isRequired,
-  error: PropTypes.object.isRequired,
-  isError: PropTypes.bool.isRequired,
-  isSuccess: PropTypes.bool.isRequired,
-  success: PropTypes.object.isRequired,
+  //TODO create a status shape
+  status: PropTypes.shape({
+    error: PropTypes.object.isRequired,
+    isError: PropTypes.bool.isRequired,
+    isSuccess: PropTypes.bool.isRequired,
+    success: PropTypes.object.isRequired
+  }).isRequired,
   t: PropTypes.func.isRequired
 };
 

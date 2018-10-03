@@ -29,9 +29,7 @@ FormTextGroup.propTypes = {
   disabled: PropTypes.bool,
   helpBlock: PropTypes.bool,
   icon: PropTypes.string,
-  onChange: PropTypes.func.isRequired,
-  required: PropTypes.bool,
-  value: PropTypes.string.isRequired
+  required: PropTypes.bool
 };
 
 export default FormTextGroup;

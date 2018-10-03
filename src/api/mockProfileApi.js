@@ -35,7 +35,7 @@ const successfulResponse = {
 const erroredResponse = {
   error: {
     code: 30,
-    message: "Unable to retrieve profile information."
+    message: "Username already taken"
   }
 };
 
@@ -55,11 +55,11 @@ class ProfileApi {
   static callUpdateApi(data, callback) {
     return new Promise(() => {
       setTimeout(() => {
-        const { additionalName } = data;
-        if ("42" === additionalName) {
-          return callback(successfulResponse);
-        } else {
+        const { name } = data;
+        if (["John", "paul", "george", "ringo"].includes(name)) {
           return callback(erroredResponse);
+        } else {
+          return callback(successfulResponse);
         }
       }, delay);
     });
