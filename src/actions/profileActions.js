@@ -59,7 +59,11 @@ function setProfileError(isProfileError, error = initialState.profile.error) {
   };
 }
 
-export function profileUpdate(data) {
+export function isUsernameUnique(data) {
+  return profileActionApi.isUsernameUnique(data);
+}
+
+export function updateProfile(data) {
   return (dispatch) => {
     dispatch(setProfilePending(true));
     dispatch(setProfileSuccess(false, data));

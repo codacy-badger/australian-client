@@ -3,25 +3,18 @@ import PropTypes from "prop-types";
 import ProfileForm from "../../form/ProfileForm";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { getProfile, profileUpdate } from "../../../actions/profileActions";
-
-const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
-//TODO move async into profileForm page.
-const asyncValidate = (values, dispatch) => {
-  dispatch(profileUpdate(values));
-};
+import { getProfile, updateProfile } from "../../../actions/profileActions";
 
 class ProfileContainer extends React.Component {
   constructor(props, context) {
     super(props, context);
 
-    this.props.actions.load();
+    this.props.actions.getProfile();
   }
 
   render() {
 
-    return <ProfileForm {...this.props} onSubmit={asyncValidate} />;
+    return <ProfileForm {...this.props} onSubmit={this.props.actions.updateProfile} />;
   }
 }
 
@@ -54,7 +47,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators({ load: getProfile, profileUpdate }, dispatch)
+    actions: bindActionCreators({ getProfile, updateProfile }, dispatch)
   };
 }
 

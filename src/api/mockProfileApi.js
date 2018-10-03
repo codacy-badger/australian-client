@@ -52,6 +52,25 @@ class ProfileApi {
     });
   }
 
+  static isUsernameUnique(data) {
+    const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+    return sleep(delay) // simulate server latency
+      .then(() => {
+        if (["John", "paul", "george", "ringo"].includes(data.name)) {
+          throw { name: "That username is taken" };
+        }
+      });
+    // return new Promise(() => {
+    //   setTimeout(() => {
+    //     const { name } = data;
+    //     if (["John", "john", "george", "ringo"].includes(name)) {
+    //       throw { name: 'That username is already taken'};
+    //       }
+    //   }, delay);
+    // });
+  }
+
   static callUpdateApi(data, callback) {
     return new Promise(() => {
       setTimeout(() => {
