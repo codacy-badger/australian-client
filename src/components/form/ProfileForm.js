@@ -1,19 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 import isEmpty from "validator/lib/isEmpty";
+import Reset from "../common/button/Reset";
 import StatusAlert from "../common/alert/StatusAlert";
 import Submit from "../common/button/Submit";
-import UserNameFormGroup from "../formgroup/UsernameFormGroup";
-import FormAllGroup from "../formgroup/abstract/FormAllGroup";
-import { Col, Form, FormGroup, Input, InputGroup, Label } from "reactstrap";
+import FormTextGroup from "../formgroup/abstract/FormTextGroup";
+import { Form } from "reactstrap";
+import { Field, reduxForm } from "redux-form";
 import { faUser, faUserMd } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { Field, reduxForm } from "redux-form";
 import { isUsernameUnique } from "../../actions/profileActions";
 import { translate } from "react-i18next";
-import InputGroupIcon from "../common/input/InputGroupIcon";
-import HelpBlockErrors from "../common/help/HelpBlockErrors";
-import HelpBlock from "../common/help/HelpBlock";
 
 library.add(faUser, faUserMd);
 
@@ -27,59 +24,22 @@ const validate = (values) => {
   return errors;
 };
 
-// const renderField = (props) => {
-//   const {
-//     input,
-//     icon,
-//     type,
-//     meta: { asyncValidating, error, form, submitting, touched, warning },
-//     ...other
-//   } = props;
-//
-//   const label = "form." + form + "." + input.name + ".label";
-//   const help = "form." + form + "." + input.name + ".helpBlock" + "42";
-//   const placeholder = "form." + form + "." + input.name + ".placeholder";
-//
-//   return (
-//     <FormGroup row>
-//       <Label for={input.name} sm={4}>
-//         {label}
-//       </Label>
-//       <Col sm={8}>
-//         <InputGroup>
-//           <InputGroupIcon icon={icon} isLoading={other.isLoading || submitting || asyncValidating} />
-//           <Input {...input} placeholder={placeholder} type={type} />
-//         </InputGroup>
-//         {touched && error && <HelpBlockErrors errors={[error]} />}
-//         {help.length > 0 && (!!error || <HelpBlock>{help}</HelpBlock>)}
-//       </Col>
-//     </FormGroup>
-//   );
-// };
-
 const ProfileForm = (props) => {
-  const { status, handleSubmit } = props;
+  const { handleSubmit, pristine, reset, status, submitting } = props;
+  const fieldProps = {
+    isLoading: status.isPending || status.isLoading
+  };
 
   return (
     <Form onSubmit={handleSubmit}>
       <StatusAlert code="profile" status={status} />
-      <Field
-        name="name"
-        type="text"
-        icon="user"
-        component={FormAllGroup}
-        isLoading={status.isPending || status.isLoading}
-      />
-      <Field
-        name="givenName"
-        type="text"
-        icon="user"
-        component={FormAllGroup}
-        isLoading={status.isPending || status.isLoading}
-        label="givenName"
-      />
+      <Field icon="user" component={FormTextGroup} {...fieldProps} name="name" required />
+      <Field icon="user" component={FormTextGroup} {...fieldProps} name="givenName" />
+      <Field icon="user" component={FormTextGroup} {...fieldProps} name="familyName" />
+      <Field icon="user-md" component={FormTextGroup} {...fieldProps} name="jobTitle" />
 
       <div className="text-right">
+        <Reset disabled={pristine || submitting} onClick={reset} className="mr-1" />
         <Submit isPending={status.isPending} name="profile" onClick={handleSubmit} />
       </div>
     </Form>
@@ -89,6 +49,8 @@ const ProfileForm = (props) => {
 // The propTypes.
 ProfileForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
+  reset: PropTypes.func.isRequired,
+  pristine: PropTypes.bool.isRequired,
   status: PropTypes.shape({
     error: PropTypes.object.isRequired,
     isError: PropTypes.bool.isRequired,
@@ -96,6 +58,7 @@ ProfileForm.propTypes = {
     isSuccess: PropTypes.bool.isRequired,
     success: PropTypes.object.isRequired
   }).isRequired,
+  submitting: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired
 };
 

@@ -7,13 +7,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 library.add(faAlignJustify);
 
 const FormTextGroup = (props) => {
-  const { required, ...otherProps } = props;
-  const rules = {
-    required,
-    type: "string"
-  };
-
-  return <FormAllGroup type="text" rules={rules} {...otherProps} />;
+  return <FormAllGroup type="text" {...props} />;
 };
 
 FormTextGroup.defaultProps = {
@@ -27,9 +21,10 @@ FormTextGroup.defaultProps = {
 FormTextGroup.propTypes = {
   children: PropTypes.any,
   disabled: PropTypes.bool,
-  helpBlock: PropTypes.bool,
+  input: PropTypes.object.isRequired,
   icon: PropTypes.string,
-  required: PropTypes.bool
+  helpBlock: PropTypes.bool,
+  meta: PropTypes.object.isRequired //redux-form
 };
 
 export default FormTextGroup;

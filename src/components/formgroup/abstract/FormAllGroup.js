@@ -11,33 +11,22 @@ import { translate } from "react-i18next";
 library.add(faAlignJustify);
 
 const FormAllGroup = (props) => {
-  if (props.input.name === "name") {
-    console.dir(props.meta);
-    console.dir(
-      props.input.validate,
-      "-",
-      props.input.value,
-      "-",
-      props.meta.touched,
-      props.meta.error,
-      props.meta.warning
-    );
-  } else {
-    return <div>NOT THIS ONE</div>;
-  }
-
+  //TODO purge other.
   const {
+    children,
+    disabled,
     input,
     icon,
+    meta: { asyncValidating, error, form, submitting, touched },
     type,
-    meta: { asyncValidating, error, form, submitting, touched, warning },
     t,
     ...other
   } = props;
 
   const label = t("form." + form + "." + input.name + ".label");
-  const help = t("form." + form + "." + input.name + ".helpBlock") + "42";
+  const help = t("form." + form + "." + input.name + ".helpBlock");
   const placeholder = t("form." + form + "." + input.name + ".placeholder");
+  const className = error ? "is-invalid" : "";
 
   return (
     <FormGroup row>
@@ -47,86 +36,18 @@ const FormAllGroup = (props) => {
       <Col sm={8}>
         <InputGroup>
           <InputGroupIcon icon={icon} isLoading={other.isLoading || submitting || asyncValidating} />
-          <Input {...input} placeholder={placeholder} type={type} />
+          <Input {...input} placeholder={placeholder} type={type} className={className} disabled={disabled} />
         </InputGroup>
         {touched && error && <HelpBlockErrors errors={[error]} />}
         {help.length > 0 && (!!error || <HelpBlock>{help}</HelpBlock>)}
+        {children}
       </Col>
     </FormGroup>
   );
-
-  // const {
-  //   children,
-  //   helpBlock,
-  //   icon,
-  //   isLoading,
-  //   input: { name },
-  //   meta: { submitting, error, touched, form },
-  //   required,
-  //   t
-  // } = props;
-  // const { input } = props;
-  // const label = t("form." + form + "." + name + ".label");
-  // const help = t("form." + form + "." + name + ".helpBlock") + "42";
-  //
-  // return (
-  //   <ReactFormGroup row>
-  //     <Label for={name} sm={4}>
-  //       {label}
-  //     </Label>
-  //     <Col sm={8}>
-  //       <InputGroup>
-  //         <InputGroupIcon icon={icon} isLoading={isLoading || submitting} />
-  //         <Input {...input} disabled={isLoading || submitting} className={error ? "is-invalid" : ""} />
-  //       </InputGroup>
-  //       {touched && error && <HelpBlockErrors errors={[error]} />}
-  //       {helpBlock && help.length > 0 && (!!error || <HelpBlock>{help}</HelpBlock>)}
-  //       {children}
-  //     </Col>
-  //   </ReactFormGroup>
-  // );
-
-  //const { children, disabled, fieldName, formName, helpBlock, icon, onChange, rules, t, type } = props;
-
-  //const { getFieldProps, getFieldError } = form;
-
-  // const errors = ["TODO"]; //getFieldError(fieldName);
-  // const hasError = errors ? errors.length > 0 : false;
-  // const help = t("form." + formName + "." + fieldName + ".helpBlock");
-  //
-  // const placeholder = t("form." + formName + "." + fieldName + ".placeholder");
-  //
-  // //TODO https://github.com/reactstrap/reactstrap/issues/707#issuecomment-351593584
-  // //TODO test a local onChange to display errors.
-  // return (
-  //   <ReactFormGroup row>
-  //     <Label for={fieldName} sm={4}>
-  //       {label}
-  //     </Label>
-  //     <Col sm={8}>
-  //       <InputGroup>
-  //         <InputGroupIcon icon={icon} isLoading={disabled} />
-  //         <Field
-  //           className={errors ? "is-invalid form-control" : "form-control"}
-  //           component="input"
-  //           name={fieldName}
-  //           disabled={disabled}
-  //           placeholder={placeholder}
-  //           type={type}
-  //         />
-  //       </InputGroup>
-  //       {touched && error && <span>{error}</span>}
-  //       {/*{touched && hasError && <HelpBlockErrors errors={errors} />}*/}
-  //       {helpBlock && help.length > 0 && (hasError || <HelpBlock>{help}</HelpBlock>)}
-  //       {children}
-  //     </Col>
-  //   </ReactFormGroup>
-  // );
 };
 
 FormAllGroup.defaultProps = {
   disabled: false,
-  formName: "general",
   helpBlock: false,
   icon: "align-justify",
   type: "text"
@@ -136,11 +57,14 @@ FormAllGroup.defaultProps = {
 FormAllGroup.propTypes = {
   children: PropTypes.any,
   disabled: PropTypes.bool,
+  input: PropTypes.object.isRequired, //redux-form
+  icon: PropTypes.string, //The XXXFormGroup
   helpBlock: PropTypes.bool,
-  icon: PropTypes.string,
-  rules: PropTypes.object.isRequired,
-  t: PropTypes.func.isRequired,
-  type: PropTypes.oneOf(["text", "password", "email", "confirmation"])
+  meta: PropTypes.object.isRequired, //redux-form
+  //TODO create rules to launch individual field validations
+  //rules: PropTypes.object.isRequired,
+  t: PropTypes.func.isRequired, //translate
+  type: PropTypes.oneOf(["text", "password", "email", "confirmation"]) //The XXXFormGroup
 };
 
-export default (translate(["translations","validators"])(FormAllGroup));
+export default translate(["translations", "validators"])(FormAllGroup);
