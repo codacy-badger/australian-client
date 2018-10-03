@@ -3,61 +3,26 @@ import PropTypes from "prop-types";
 import ProfileForm from "../../form/ProfileForm";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { createForm } from "rc-form";
 import { getProfile, profileUpdate } from "../../../actions/profileActions";
 
 class ProfileContainer extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.state = {
-      isLoaded: false,
-      additionalName: "",
-      familyName: "",
-      givenName: "",
-      jobTitle: "",
-      name: ""
-    };
-    this.onChange = this.onChange.bind(this);
+
+    this.props.actions.load();
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  //Used after data loading through api client.
-  componentWillReceiveProps(nextProps) {
-    const { isLoading } = this.props;
-    const { isLoaded } = this.state;
-    if (!isLoading && !isLoaded) {
-      this.setState({
-        isLoaded: true,
-        additionalName: nextProps.user.additionalName,
-        familyName: nextProps.user.familyName,
-        givenName: nextProps.user.givenName,
-        jobTitle: nextProps.user.jobTitle,
-        name: nextProps.user.name
-      });
-    }
-  }
-
-  onChange(e) {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-  }
-
-  onSubmit(e) {
-    e.preventDefault();
-
-    this.props.form.validateFields((error) => {
-      if (!error) {
-        this.props.actions.profileUpdate(this.state);
-      }
-    });
+  onSubmit(values) {
+    console.dir(values, "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+    this.props.actions.profileUpdate(values);
   }
 
   render() {
+    //status : error, is*4, success
     const { ...status } = this.props;
-    delete status.user;
 
-    return <ProfileForm values={this.state} {...status} onSubmit={this.onSubmit} onChange={this.onChange} />;
+    return <ProfileForm {...status} onSubmit={this.onSubmit} />;
   }
 }
 
@@ -68,8 +33,7 @@ ProfileContainer.propTypes = {
   isLoading: PropTypes.bool.isRequired,
   isPending: PropTypes.bool.isRequired,
   isSuccess: PropTypes.bool.isRequired,
-  success: PropTypes.object.isRequired,
-  user: PropTypes.object
+  success: PropTypes.object.isRequired
 };
 
 // Redux connect begin here
@@ -81,15 +45,13 @@ function mapStateToProps(state) {
     isPending: state.profileReducer.isProfilePending,
     isSuccess: state.profileReducer.isProfileSuccess,
     success: state.profileReducer.success,
-    user: state.profileReducer.user
+    initialValues: state.profileReducer.user
   };
 }
 
 function mapDispatchToProps(dispatch) {
-  dispatch(getProfile());
-
   return {
-    actions: bindActionCreators({ getProfile, profileUpdate }, dispatch)
+    actions: bindActionCreators({ load: getProfile, profileUpdate }, dispatch)
   };
 }
 
@@ -97,4 +59,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(createForm()(ProfileContainer));
+)(ProfileContainer);

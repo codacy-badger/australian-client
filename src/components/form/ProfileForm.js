@@ -1,51 +1,38 @@
 import React from "react";
 import PropTypes from "prop-types";
-import AdditionalNameFormGroup from "../formgroup/AdditionalNameFormGroup";
-import FamilyNameFormGroup from "../formgroup/FamilyNameFormGroup";
-import GivenNameFormGroup from "../formgroup/GivenNameFormGroup";
-import JobTitleFormGroup from "../formgroup/JobTitleFormGroup";
 import StatusAlert from "../common/alert/StatusAlert";
 import Submit from "../common/button/Submit";
-import UsernameFormGroup from "../formgroup/UsernameFormGroup";
+import UserNameFormGroup from "../formgroup/UsernameFormGroup";
 import { Form } from "reactstrap";
 import { faUser, faUserMd } from "@fortawesome/free-solid-svg-icons";
-import { formShape } from "rc-form";
 import { library } from "@fortawesome/fontawesome-svg-core";
+import { Field, reduxForm } from "redux-form";
+import isEmpty from "validator/lib/isEmpty";
 
 library.add(faUser, faUserMd);
 
-const ProfileForm = (props) => {
-  const {
-    values: {
-      additionalName,
-      familyName,
-      givenName,
-      jobTitle,
-      name
-    },
-    error,
-    form,
-    isError,
-    isLoading,
-    isPending,
-    isSuccess,
-    success,
-    onSubmit,
-    onChange
-  } = props;
+const validate = (values) => {
+  const errors = {};
 
-  const fieldProps = { disabled: isPending || isLoading, onChange, onSubmit, form };
+  if (isEmpty(values.name)) {
+    errors.names = "name is required";
+  }
+
+  return errors;
+};
+
+const ProfileForm = (props) => {
+  const { error, isLoading, isPending, isSuccess, isError, handleSubmit, success } = props;
+  // const required = value => (value || typeof value === 'number' ? undefined : 'Required');
+  // const fieldProps = { disabled: isPending || isLoading };
 
   return (
-    <Form onSubmit={onSubmit}>
+    <Form onSubmit={handleSubmit}>
       <StatusAlert code="profile" error={error} isError={isError} isSuccess={isSuccess} success={success} />
-      <UsernameFormGroup value={name} {...fieldProps} />
-      <GivenNameFormGroup value={givenName} {...fieldProps} />
-      <AdditionalNameFormGroup value={additionalName} {...fieldProps} />
-      <FamilyNameFormGroup value={familyName} {...fieldProps} />
-      <JobTitleFormGroup value={jobTitle} {...fieldProps} />
+      <Field name="name" type="text" component={UserNameFormGroup} />
+
       <div className="text-right">
-        <Submit isPending={isPending} name="profile" onClick={onSubmit} />
+        <Submit isPending={isPending} name="profile" onClick={handleSubmit} />
       </div>
     </Form>
   );
@@ -54,22 +41,19 @@ const ProfileForm = (props) => {
 // The propTypes.
 ProfileForm.propTypes = {
   error: PropTypes.object.isRequired,
-  form: formShape,
+  handleSubmit: PropTypes.func.isRequired,
   isError: PropTypes.bool.isRequired,
-  isLoading: PropTypes.bool.isRequired,
   isPending: PropTypes.bool.isRequired,
   isSuccess: PropTypes.bool.isRequired,
-  onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
-  success: PropTypes.object.isRequired,
-  values: PropTypes.shape({
-    additionalName: PropTypes.string.isRequired,
-    familyName: PropTypes.string.isRequired,
-    givenName: PropTypes.string.isRequired,
-    jobTitle: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired
-  }).isRequired,
+  success: PropTypes.object.isRequired
 };
 
-// Redux connect begin here
-export default ProfileForm;
+// Redux form begin here
+export default reduxForm({
+  form: "profile",
+  validate: validate,
+  onSubmit: () => {
+    alert("SUB");
+  }
+})(ProfileForm);

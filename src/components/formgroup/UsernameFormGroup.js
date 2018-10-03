@@ -2,13 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import FormTextGroup from "./abstract/FormTextGroup";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
-import { formShape } from "rc-form";
 import { library } from "@fortawesome/fontawesome-svg-core";
 
 library.add(faUser);
 
 const UserNameFormGroup = (props) => {
-  return <FormTextGroup helpBlock icon="user" fieldName="name" formName="profile" {...props} required />;
+  return <FormTextGroup helpBlock icon="user" {...props} required />;
 };
 
 UserNameFormGroup.defaultProps = {
@@ -16,10 +15,7 @@ UserNameFormGroup.defaultProps = {
 };
 
 UserNameFormGroup.propTypes = {
-  disabled: PropTypes.bool,
-  form: formShape,
-  onChange: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired
+  disabled: PropTypes.bool
 };
 
 export default UserNameFormGroup;

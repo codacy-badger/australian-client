@@ -26,8 +26,10 @@
     "react-scripts": "1.1.4",
     "reactstrap": "^6.4.0",
     "redux": "^4.0.0",
+    "redux-form": "^7.4.2",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "validator": "^10.8.0"
   },
   "devDependencies": {
     "enzyme": "^3.6.0",

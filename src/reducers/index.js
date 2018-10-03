@@ -7,6 +7,7 @@ import forgotPasswordReducer from "./forgotPasswordReducer";
 import passwordReducer from "./passwordReducer";
 import profileReducer from "./profileReducer";
 import registerReducer from "./registerReducer";
+import { reducer as formReducer } from "redux-form";
 import { reducer as toastrReducer } from "react-redux-toastr";
 
 const rootReducer = combineReducers({
@@ -18,8 +19,10 @@ const rootReducer = combineReducers({
   passwordReducer,
   profileReducer,
   registerReducer,
-  //TODO rename toastr to toastrReducer
-  toastr: toastrReducer // <- Mounted at toastr.
+  toastr: toastrReducer, // <- Mounted at toastr.
+  // you have to pass formReducer under 'form' key,
+  // for custom keys look up the docs for 'getFormState'
+  form: formReducer
 });
 
 export default rootReducer;
