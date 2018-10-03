@@ -4,6 +4,7 @@ import isEmpty from "validator/lib/isEmpty";
 import StatusAlert from "../common/alert/StatusAlert";
 import Submit from "../common/button/Submit";
 import UserNameFormGroup from "../formgroup/UsernameFormGroup";
+import FormAllGroup from "../formgroup/abstract/FormAllGroup";
 import { Col, Form, FormGroup, Input, InputGroup, Label } from "reactstrap";
 import { faUser, faUserMd } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -26,38 +27,38 @@ const validate = (values) => {
   return errors;
 };
 
-const renderField = (props) => {
-  const {
-    input,
-    icon,
-    type,
-    meta: { asyncValidating, error, form, submitting, touched, warning },
-    ...other
-  } = props;
-
-  const label = "form." + form + "." + input.name + ".label";
-  const help = "form." + form + "." + input.name + ".helpBlock" + "42";
-  const placeholder = "form." + form + "." + input.name + ".placeholder";
-
-  return (
-    <FormGroup row>
-      <Label for={input.name} sm={4}>
-        {label}
-      </Label>
-      <Col sm={8}>
-        <InputGroup>
-          <InputGroupIcon icon={icon} isLoading={other.isLoading || submitting || asyncValidating} />
-          <Input {...input} placeholder={placeholder} type={type} />
-        </InputGroup>
-        {touched && error && <HelpBlockErrors errors={[error]} />}
-        {help.length > 0 && (!!error || <HelpBlock>{help}</HelpBlock>)}
-      </Col>
-    </FormGroup>
-  );
-};
+// const renderField = (props) => {
+//   const {
+//     input,
+//     icon,
+//     type,
+//     meta: { asyncValidating, error, form, submitting, touched, warning },
+//     ...other
+//   } = props;
+//
+//   const label = "form." + form + "." + input.name + ".label";
+//   const help = "form." + form + "." + input.name + ".helpBlock" + "42";
+//   const placeholder = "form." + form + "." + input.name + ".placeholder";
+//
+//   return (
+//     <FormGroup row>
+//       <Label for={input.name} sm={4}>
+//         {label}
+//       </Label>
+//       <Col sm={8}>
+//         <InputGroup>
+//           <InputGroupIcon icon={icon} isLoading={other.isLoading || submitting || asyncValidating} />
+//           <Input {...input} placeholder={placeholder} type={type} />
+//         </InputGroup>
+//         {touched && error && <HelpBlockErrors errors={[error]} />}
+//         {help.length > 0 && (!!error || <HelpBlock>{help}</HelpBlock>)}
+//       </Col>
+//     </FormGroup>
+//   );
+// };
 
 const ProfileForm = (props) => {
-  const { status, handleSubmit, t } = props;
+  const { status, handleSubmit } = props;
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -66,15 +67,14 @@ const ProfileForm = (props) => {
         name="name"
         type="text"
         icon="user"
-        component={renderField}
+        component={FormAllGroup}
         isLoading={status.isPending || status.isLoading}
-        t={t}
       />
       <Field
         name="givenName"
         type="text"
         icon="user"
-        component={renderField}
+        component={FormAllGroup}
         isLoading={status.isPending || status.isLoading}
         label="givenName"
       />
