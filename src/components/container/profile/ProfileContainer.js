@@ -37,7 +37,8 @@ ProfileContainer.propTypes = {
     isPending: PropTypes.bool.isRequired,
     isSuccess: PropTypes.bool.isRequired,
     success: PropTypes.object.isRequired
-  }).isRequired
+  }).isRequired,
+  initialValues: PropTypes.object.isRequired
 };
 
 // Redux connect begin here

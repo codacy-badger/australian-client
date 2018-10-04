@@ -39,7 +39,7 @@ const ProfileForm = (props) => {
       <Field icon="user-md" component={FormTextGroup} {...fieldProps} name="jobTitle" />
 
       <div className="text-right">
-        <Reset disabled={pristine || submitting} onClick={reset} className="mr-1" />
+        <Reset disabled={pristine || submitting} onClick={reset} />
         <Submit isPending={isPending} name="profile" onClick={handleSubmit} />
       </div>
     </Form>
@@ -53,7 +53,7 @@ ProfileForm.propTypes = {
   pristine: PropTypes.bool.isRequired,
   isLoading: PropTypes.bool.isRequired,
   isPending: PropTypes.bool.isRequired,
-  submitting: PropTypes.func.isRequired,
+  submitting: PropTypes.bool.isRequired,
   t: PropTypes.func.isRequired
 };
 

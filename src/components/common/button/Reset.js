@@ -9,10 +9,10 @@ import { translate } from "react-i18next";
 library.add(faUndo);
 
 const Reset = (props) => {
-  const { onClick, t, ...others } = props;
+  const { onClick, t, className } = props;
 
   return (
-    <Button color="secondary" onClick={onClick} {...others}>
+    <Button color="secondary" onClick={onClick} className={className}>
       <FontAwesomeIcon icon="undo" className="mr-1" />
       {t("button.reset")}
     </Button>
@@ -20,12 +20,14 @@ const Reset = (props) => {
 };
 
 Reset.defaultProps = {
+  className: "mr-1",
   icon: "upload",
   rotation: 0
 };
 
 // The propTypes.
 Reset.propTypes = {
+  className: PropTypes.string,
   onClick: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired
 };
