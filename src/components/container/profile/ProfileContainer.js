@@ -1,9 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import ProfileForm from "../../form/ProfileForm";
+import StatusAlert from "../../common/alert/StatusAlert";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { getProfile, updateProfile } from "../../../actions/profileActions";
+import { translate } from "react-i18next";
 
 class ProfileContainer extends React.Component {
   constructor(props, context) {
@@ -13,8 +15,16 @@ class ProfileContainer extends React.Component {
   }
 
   render() {
+    const { actions, status, t, ...formProps } = this.props;
+    const { isLoading, isPending } = status;
 
-    return <ProfileForm {...this.props} onSubmit={this.props.actions.updateProfile} />;
+    return (
+      <div>
+        <h2>{t("title.profile.general")}</h2>
+        <StatusAlert code="profile" status={status} />
+        <ProfileForm {...formProps} isLoading={isLoading} isPending={isPending} onSubmit={actions.updateProfile} />
+      </div>
+    );
   }
 }
 
@@ -52,7 +62,9 @@ function mapDispatchToProps(dispatch) {
 }
 
 //connect is returning a function, that explains the )(
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ProfileContainer);
+export default translate()(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(ProfileContainer)
+);

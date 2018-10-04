@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import isEmpty from "validator/lib/isEmpty";
 import Reset from "../common/button/Reset";
-import StatusAlert from "../common/alert/StatusAlert";
 import Submit from "../common/button/Submit";
 import FormTextGroup from "../formgroup/abstract/FormTextGroup";
 import { Form } from "reactstrap";
@@ -25,14 +24,15 @@ const validate = (values) => {
 };
 
 const ProfileForm = (props) => {
-  const { handleSubmit, pristine, reset, status, submitting } = props;
+  const { handleSubmit, isPending, isLoading, pristine, reset, submitting } = props;
+
   const fieldProps = {
-    isLoading: status.isPending || status.isLoading
+    disabled: isPending || isLoading || submitting,
+    isLoading: isPending || isLoading || submitting
   };
 
   return (
     <Form onSubmit={handleSubmit}>
-      <StatusAlert code="profile" status={status} />
       <Field icon="user" component={FormTextGroup} {...fieldProps} name="name" required />
       <Field icon="user" component={FormTextGroup} {...fieldProps} name="givenName" />
       <Field icon="user" component={FormTextGroup} {...fieldProps} name="familyName" />
@@ -40,7 +40,7 @@ const ProfileForm = (props) => {
 
       <div className="text-right">
         <Reset disabled={pristine || submitting} onClick={reset} className="mr-1" />
-        <Submit isPending={status.isPending} name="profile" onClick={handleSubmit} />
+        <Submit isPending={isPending} name="profile" onClick={handleSubmit} />
       </div>
     </Form>
   );
@@ -51,13 +51,8 @@ ProfileForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   reset: PropTypes.func.isRequired,
   pristine: PropTypes.bool.isRequired,
-  status: PropTypes.shape({
-    error: PropTypes.object.isRequired,
-    isError: PropTypes.bool.isRequired,
-    isPending: PropTypes.bool.isRequired,
-    isSuccess: PropTypes.bool.isRequired,
-    success: PropTypes.object.isRequired
-  }).isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  isPending: PropTypes.bool.isRequired,
   submitting: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired
 };
