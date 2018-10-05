@@ -14,11 +14,6 @@
     "60": "Any account exists with this mail. Please, register!"
   },
   "form": {
-    "account": {
-      "description": "Here you can delete your account. To do it, enter your password and press the submit button. Be careful, this deletion will be definitive. After you press the button, your account will be deleted and you will be definitively disconnected.",
-      "submit": "Delete account",
-      "submitting": "Deleting account"
-    },
     "activation": {
       "activationCode": {
         "label": "Activation code",
@@ -43,11 +38,7 @@
         "placeholder": "Enter your email"
       },
       "latitude": "Latitude",
-      "longitude": "Longitude",
-      "password": {
-        "label": "Password",
-        "placeholder": "Enter your password"
-      }
+      "longitude": "Longitude"
     },
     "login": {
       "rememberMe": {
@@ -88,6 +79,16 @@
         "helpBlock": ""
       },
       "submit": "Save"
+    },
+    "profile-account": {
+      "description": "Here you can delete your account. To do it, enter your password and press the submit button. Be careful, this deletion will be definitive. After you press the button, your account will be deleted and you will be definitively disconnected.",
+      "password": {
+        "label": "Password",
+        "placeholder": "",
+        "helpBlock": "Enter your password"
+      },
+      "submit": "Delete account",
+      "submitting": "Deleting account"
     },
     "profile-email": {
       "new-email": {
@@ -238,12 +239,12 @@
     }
   },
   "title": {
-    "account": "Account deletion",
     "activation": "Account activation",
     "app": "Welcome to react using react-i18next",
     "cgu": "Terms of service",
     "forgot-your-password": "Forgot your password?",
     "profile": "Your profile",
+    "profile-account": "Account deletion",
     "profile-address": "Address form",
     "profile-email": "Change your email",
     "profile-general": "Generalities",

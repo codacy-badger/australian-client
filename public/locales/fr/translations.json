@@ -14,11 +14,6 @@
     "60": "Il n’existe pas de compte avec cette adresse email. N’hésitez pas à vous inscrire !"
   },
   "form": {
-    "account": {
-      "description": "Ici, vous pouvez supprimer votre compte. Entrez votre mot de passe et cliquez sur le bouton de suppression. Attention, cette suppression sera définitive. Après avoir pressé le bouton, le compte sera définitivement supprimé et vous serez déconnecté.",
-      "submit": "Supprimer le compte",
-      "submitting": "Suppression en cours…"
-    },
     "activation": {
       "activationCode": {
         "label": "Code d’activation",
@@ -88,6 +83,11 @@
         "helpBlock": ""
       },
       "submit": "Enregistrer"
+    },
+    "profile-account": {
+      "description": "Ici, vous pouvez supprimer votre compte. Entrez votre mot de passe et cliquez sur le bouton de suppression. Attention, cette suppression sera définitive. Après avoir pressé le bouton, le compte sera définitivement supprimé et vous serez déconnecté.",
+      "submit": "Supprimer le compte",
+      "submitting": "Suppression en cours…"
     },
     "profile-email": {
       "new-email": {
@@ -238,13 +238,13 @@
     }
   },
   "title": {
-    "account": "Suppression de votre compte",
     "activation": "Activation de votre compte",
     "app": "Bienvenue à react utilisant i18n",
     "cgu": "Conditions générales d’utilisation",
     "forgot-your-password": "Mot de passe perdu ?",
     "ooops": "Oups !",
     "profile": "Gestion de votre compte",
+    "profile-account": "Suppression de votre compte",
     "profile-address": "Votre adresse",
     "profile-email": "Changement d’adresse email",
     "profile-general": "Généralité",

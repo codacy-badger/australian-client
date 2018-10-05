@@ -1,31 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Button } from "reactstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Button from "./Button";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faUpload, faSpinner } from "@fortawesome/free-solid-svg-icons";
-import { translate } from "react-i18next";
+import { faUpload } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faUpload, faSpinner);
+library.add(faUpload);
 
 const Submit = (props) => {
-  const { icon, name, isPending, onClick, rotation, t } = props;
-  const label = isPending ? "form." + name + ".submitting" : "form." + name + ".submit";
-  const finalProps = {
-    icon: isPending ? "spinner" : icon ? icon : "upload",
-    className: "mr-1"
-  };
-
-  if (0 !== rotation) {
-    finalProps.rotation = rotation;
-  }
-
-  return (
-    <Button type="submit" color="primary" onClick={onClick} disabled={isPending}>
-      <FontAwesomeIcon spin={isPending} {...finalProps} />
-      {t(label)}
-    </Button>
-  );
+  return <Button type="submit" {...props} />;
 };
 
 Submit.defaultProps = {
@@ -43,4 +25,4 @@ Submit.propTypes = {
   t: PropTypes.func.isRequired
 };
 
-export default translate("translations")(Submit);
+export default Submit;

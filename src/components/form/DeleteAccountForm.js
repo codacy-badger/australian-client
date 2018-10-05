@@ -1,16 +1,29 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import ErrorAlert from "../common/alert/ErrorAlert";
-import PasswordFormGroup from "../formgroup/PasswordFormGroup";
-import Submit from "../common/button/Submit";
+import FormPasswordGroup from "../formgroup/abstract/FormPasswordGroup";
+import Reset from "../common/button/Reset";
+import ButtonIcon from "../common/button/Button";
+import isEmpty from "validator/lib/isEmpty";
 import { Button, Form, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
+import { Field, reduxForm, formValueSelector } from "redux-form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { formShape } from "rc-form";
 import { translate } from "react-i18next";
+import { connect } from "react-redux";
 
 library.add(faTrashAlt);
+
+const validate = (values) => {
+  const errors = {};
+
+  if (typeof values["password"] !== "string" || isEmpty(values["password"])) {
+    errors["password"] = "password is required";
+  }
+
+  console.dir(errors, values);
+  return errors;
+};
 
 class DeleteAccountForm extends Component {
   constructor(props) {
@@ -18,24 +31,22 @@ class DeleteAccountForm extends Component {
     this.state = {
       modal: false
     };
-    this.onSubmit = this.onSubmit.bind(this);
+
     this.open = this.open.bind(this);
+    this.submit = this.submit.bind(this);
     this.toggle = this.toggle.bind(this);
+
+    this.props.touch("password", true);
+    this.props.touch(["password"], true);
   }
 
-  onSubmit(e) {
-    e.preventDefault();
+  open() {
     this.toggle();
-    this.props.onSubmit(e);
   }
 
-  open(e) {
-    e.preventDefault();
-    this.props.form.validateFields((error) => {
-      if (!error) {
-        this.toggle();
-      }
-    });
+  submit() {
+    this.toggle();
+    this.props.handleSubmit();
   }
 
   toggle() {
@@ -45,48 +56,76 @@ class DeleteAccountForm extends Component {
   }
 
   render() {
-    const { children, error, form, isError, isPending, onChange, password, t } = this.props;
+    const { handleSubmit, password, isPending, pristine, reset, submitting, t } = this.props;
+
+    const disabled = typeof password === "undefined" || isEmpty(password);
+
+    const fieldProps = {
+      disabled: isPending || submitting,
+      isLoading: isPending || submitting
+    };
+
     const { modal } = this.state;
 
     return (
-      <Form onSubmit={this.open} className="text-danger">
-        <h2>{t("title.account")}</h2>
-        <p>{t("form.account.description")}</p>
-        {isError && <ErrorAlert>{t(error.message)}</ErrorAlert>}
-        {children}
-        <PasswordFormGroup onChange={onChange} form={form} value={password} disabled={isPending}/>
+      <Form onSubmit={handleSubmit} className="text-danger">
+        <Field component={FormPasswordGroup} {...fieldProps} name="password" required />
+
         <div className="text-right">
-          <Submit className="btn-danger" name="account" icon="trash-alt" onClick={this.open} isPending={isPending} />
-          <Modal isOpen={modal} toggle={this.toggle}>
-            <ModalHeader>{t("help.are-you-sure.delete-account.title")}</ModalHeader>
-            <ModalBody>{t("help.are-you-sure.delete-account.message")}</ModalBody>
-            <ModalFooter>
-              <Button color="danger" onClick={this.onSubmit}>
-                <FontAwesomeIcon icon="trash-alt" className={"mr-1"} />
-                {t("form.account.submit")}
-              </Button>
-              <Button color="secondary" onClick={this.toggle}>
-                <FontAwesomeIcon icon="trash-alt" className={"mr-1"} />
-                {t("button.cancel")}
-              </Button>
-            </ModalFooter>
-          </Modal>
+          <Reset disabled={pristine || submitting} onClick={reset} />
+          <ButtonIcon
+            className="btn-danger"
+            name="profile-account"
+            icon="trash-alt"
+            onClick={this.open}
+            isPending={isPending}
+            disabled={disabled}
+            color="danger"
+          />
         </div>
+
+        <Modal isOpen={modal} toggle={this.toggle}>
+          <ModalHeader>{t("help.are-you-sure.delete-account.title")}</ModalHeader>
+          <ModalBody>{t("help.are-you-sure.delete-account.message")}</ModalBody>
+          <ModalFooter>
+            <Button color="danger" onClick={this.submit}>
+              <FontAwesomeIcon icon="trash-alt" className={"mr-1"} />
+              {t("form.profile-account.submit")}
+            </Button>
+            <Button color="secondary" onClick={this.toggle}>
+              {t("button.cancel")}
+            </Button>
+          </ModalFooter>
+        </Modal>
       </Form>
     );
   }
 }
 
 DeleteAccountForm.propTypes = {
-  children: PropTypes.element,
-  error: PropTypes.object.isRequired,
-  form: formShape,
-  isError: PropTypes.bool.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  reset: PropTypes.func.isRequired,
+  pristine: PropTypes.bool.isRequired,
   isPending: PropTypes.bool.isRequired,
-  onChange: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-  password: PropTypes.string.isRequired,
+  submitting: PropTypes.bool.isRequired,
   t: PropTypes.func.isRequired
 };
 
-export default translate("translations")(DeleteAccountForm);
+//This is a selector which is used into mapStateProps to get password field value!
+const selector = formValueSelector("profile-account");
+
+// Redux form begin here
+function mapStateToProps(state) {
+  const password = selector(state, "password");
+
+  return {
+    password
+  };
+}
+
+export default connect(mapStateToProps)(
+  reduxForm({
+    form: "profile-account",
+    validate
+  })(translate(["translations", "validators"])(DeleteAccountForm))
+);

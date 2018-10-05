@@ -1,55 +1,41 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import DeleteAccountForm from "../../form/DeleteAccountForm";
-import { connect } from "react-redux";
+import ErrorAlert from "../../common/alert/ErrorAlert";
 import { bindActionCreators } from "redux";
-import { createForm, formShape } from "rc-form";
+import { connect } from "react-redux";
 import { deleteAccount } from "../../../actions/deleteAccountActions";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
+import { translate } from "react-i18next";
 
 library.add(faTrashAlt);
 
-class AccountContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      password: ""
-    };
+const AccountContainer = (props) => {
+  const {
+    actions,
+    error: { message },
+    isError,
+    isPending,
+    t
+  } = props;
 
-    this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-  }
-
-  onChange(e) {
-    this.setState({
-      password: e.target.value
-    });
-  }
-
-  onSubmit(e) {
-    e.preventDefault();
-
-    this.props.form.validateFields((error) => {
-      if (!error) {
-        this.props.actions.deleteAccount(this.state.password);
-      }
-    });
-  }
-
-  render() {
-    const { password } = this.state;
-
-    return <DeleteAccountForm {...this.props} password={password} onChange={this.onChange} onSubmit={this.onSubmit} />;
-  }
-}
+  return (
+    <div className="text-danger">
+      <h2>{t("title.profile-account")}</h2>
+      <p>{t("form.profile-account.description")}</p>
+      {isError && <ErrorAlert>{t(message)}</ErrorAlert>}
+      <DeleteAccountForm isPending={isPending} onSubmit={actions.deleteAccount} />
+    </div>
+  );
+};
 
 // The propTypes.
 AccountContainer.propTypes = {
   error: PropTypes.object.isRequired,
-  form: formShape,
   isError: PropTypes.bool.isRequired,
-  isPending: PropTypes.bool.isRequired
+  isPending: PropTypes.bool.isRequired,
+  t: PropTypes.func.isRequired
 };
 
 // Redux connect begin here
@@ -71,4 +57,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(createForm()(AccountContainer));
+)(translate()(AccountContainer));
