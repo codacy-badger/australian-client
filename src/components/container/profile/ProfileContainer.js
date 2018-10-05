@@ -38,7 +38,6 @@ ProfileContainer.propTypes = {
     isSuccess: PropTypes.bool.isRequired,
     success: PropTypes.object.isRequired
   }).isRequired,
-  initialValues: PropTypes.object.isRequired
 };
 
 // Redux connect begin here
@@ -52,7 +51,7 @@ function mapStateToProps(state) {
       isSuccess: state.profileReducer.isProfileSuccess,
       success: state.profileReducer.success
     },
-    initialValues: state.profileReducer.user
+    // initialValues: state.profileReducer.user
   };
 }
 
