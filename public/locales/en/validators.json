@@ -5,12 +5,12 @@
   "confirmation is required": "Please confirm your password to avoid typo.",
   "email is not a valid email": "Please enter a valid email.",
   "email is required": "Your email is required.",
-  "old-email is not a valid email": "Please enter a valid email.",
-  "old-email is required": "Your current email is required.",
-  "old-password is required": "Please enter you current password.",
+  "name is required": "Your username is required.",
   "new-email is not a valid email": "Please enter a valid email.",
   "new-email is required": "Your new email is required.",
   "new-password is required": "Your new password cannot be empty.",
-  "name is required": "Your username is required.",
+  "old-email is not a valid email": "Please enter a valid email.",
+  "old-email is required": "Your current email is required.",
+  "old-password is required": "Please enter you current password.",
   "password is required": "Please, enter your password."
 }

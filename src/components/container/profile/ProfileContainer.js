@@ -20,7 +20,7 @@ class ProfileContainer extends React.Component {
 
     return (
       <div>
-        <h2>{t("title.profile.general")}</h2>
+        <h2>{t("title.profile-general")}</h2>
         <StatusAlert code="profile" status={status} />
         <ProfileForm {...formProps} isLoading={isLoading} isPending={isPending} onSubmit={actions.updateProfile} />
       </div>
@@ -37,7 +37,7 @@ ProfileContainer.propTypes = {
     isPending: PropTypes.bool.isRequired,
     isSuccess: PropTypes.bool.isRequired,
     success: PropTypes.object.isRequired
-  }).isRequired,
+  }).isRequired
 };
 
 // Redux connect begin here
@@ -50,7 +50,7 @@ function mapStateToProps(state) {
       isPending: state.profileReducer.isProfilePending,
       isSuccess: state.profileReducer.isProfileSuccess,
       success: state.profileReducer.success
-    },
+    }
     // initialValues: state.profileReducer.user
   };
 }

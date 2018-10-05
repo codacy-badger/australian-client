@@ -67,11 +67,6 @@
         "placeholder": "",
         "helpBlock": ""
       },
-      "confirmation": {
-        "label": "Confirmation",
-        "placeholder": "Confirmer ce mot de passe",
-        "helpBlock": "Les deux saisies doivent être identiques"
-      },
       "familyName": {
         "label": "Nom de famille",
         "placeholder": "",
@@ -92,23 +87,38 @@
         "placeholder": "",
         "helpBlock": ""
       },
+      "submit": "Enregistrer"
+    },
+    "profile-email": {
       "new-email": {
         "label": "Nouvelle adresse",
-        "placeholder": "Entrez la nouvelle adresse email"
+        "placeholder": "nouvel-email@example.org",
+        "helpBlock": "Entrez votre nouvelle adresse email."
+      },
+      "old-email": {
+        "label": "Adresse actuelle",
+        "placeholder": "email-à-remplacer@example.org",
+        "helpBlock": "Entrez votre adresse actuelle, celle utilisée pour vous connecter."
+      },
+      "submit": "Modifier"
+    },
+    "profile-password": {
+      "confirmation": {
+        "label": "Confirmation",
+        "placeholder": "",
+        "helpBlock": "Confirmer votre nouveau mot de passe, les deux saisies doivent être identiques"
       },
       "new-password": {
         "label": "Nouveau mot de passe",
-        "placeholder": "Entrez le nouveau mot de passe"
-      },
-      "old-email": {
-        "label": "Email",
-        "placeholder": "Entrez l’adresse email à remplacer"
+        "placeholder": "",
+        "helpBlock": "Entrez votre nouveau mot de passe"
       },
       "old-password": {
         "label": "Mot de passe actuel",
-        "placeholder": "Entrez votre mot de passe actuel"
+        "placeholder": "",
+        "helpBlock": "Pour des raisons de sécurité, entrez votre mot de passe actuel"
       },
-      "submit": "Enregistrer"
+      "submit": "Modifier"
     },
     "register": {
       "confirmation": {
@@ -141,7 +151,7 @@
         "message": "Attention, votre compte sera intégralement SUPPRIMÉ, cette action ne pourra pas être annulée. Après votre validation, votre compte et son contenu seront supprimés de nos serveurs et vous serez déconnecté."
       }
     },
-    "email": "Compléter ce formulaire pour changer d’adresse email. Un email avec un code de confirmation sera envoyé à la nouvelle adresse. Un email avec un code de d’annulation sera envoyé à l’ancienne adresse.",
+    "profile-email": "Compléter ce formulaire pour changer d’adresse email. Un email avec un code de confirmation sera envoyé à la nouvelle adresse. Un email avec un code de d’annulation sera envoyé à l’ancienne adresse.",
     "forgot-your-password" : "Vous avez perdu votre mot de passe ? Entrez votre adresse email et vous recevrez un mail qui vous guidera étape par étape pour que vous puissiez créer un nouveau mot de passe et vous reconnecter au site.",
     "password": "Ce formulaire vous permet de modifier votre mot de passe.",
     "profile": "Ce formulaire vous permet de modifier votre profil. Remplissez les différents champs et cliquez sur le bouton « Enregistrer »."
@@ -235,7 +245,10 @@
     "forgot-your-password": "Mot de passe perdu ?",
     "ooops": "Oups !",
     "profile": "Gestion de votre compte",
-    "profile-address": "Votre adresse"
+    "profile-address": "Votre adresse",
+    "profile-email": "Changement d’adresse email",
+    "profile-general": "Généralité",
+    "profile-password": "Changement de mot de passe"
   },
   "description": {
     "part1": "Pour débuter, éditer <1>src/App.js</1> et sauvegarder pour lancer le rechargement automatique.",

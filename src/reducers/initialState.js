@@ -18,6 +18,7 @@ export default {
     error: {},
     isEmailError: false,
     isEmailPending: false,
+    isEmailSuccess: false,
     success: {}
   },
   forgotPassword: {

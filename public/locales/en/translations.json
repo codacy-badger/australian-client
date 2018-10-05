@@ -67,11 +67,6 @@
         "placeholder": "",
         "helpBlock": ""
       },
-      "confirmation": {
-        "label": "Confirmation",
-        "placeholder": "Confirm your password",
-        "helpBlock": "Password and confirmation fields should be equals."
-      },
       "familyName": {
         "label": "Family name",
         "placeholder": "",
@@ -92,21 +87,36 @@
         "placeholder": "",
         "helpBlock": ""
       },
+      "submit": "Save"
+    },
+    "profile-email": {
       "new-email": {
         "label": "New email",
-        "placeholder": "Enter your new email"
-      },
-      "new-password": {
-        "label": "New password",
-        "placeholder": "Enter your new password"
+        "placeholder": "new-email@example.org",
+        "helpBlock": "Enter your new email"
       },
       "old-email": {
         "label": "Current email",
-        "placeholder": "Enter email used to login"
+        "placeholder": "old-email@example.org",
+        "helpBlock": "Enter current email, the email used to login"
+      },
+      "submit": "Save"
+    },
+    "profile-password": {
+      "confirmation": {
+        "label": "Confirmation",
+        "placeholder": "Confirm your password",
+        "helpBlock": "Password and confirmation fields should be equals."
+      },
+      "new-password": {
+        "label": "New password",
+        "placeholder": "",
+        "helpBlock": "Enter your new password"
       },
       "old-password": {
         "label": "Current password",
-        "placeholder": "Enter your current password"
+        "placeholder": "",
+        "helpBlock": "Enter your current password"
       },
       "submit": "Save"
     },
@@ -141,7 +151,7 @@
         "message": "Be careful, your account will be DELETED, this cannot be undone. After you accpet, your account will be deleted and you will be logout."
       }
     },
-    "email": "Complete this form to change your email. An email with an activation code will be set to the new email to confirm it. A mail to your old address will be sent to cancel update.",
+    "profile-email": "Complete this form to change your email. An email with an activation code will be set to the new email to confirm it. A mail to your old address will be sent to cancel update.",
     "forgot-your-password" : "You have forgotten your password? Please send us your email, you will receive a mail which will help you step by step to recover your accesses.",
     "password": "Complete this form to replace your password by a new one.",
     "profile": "This form allow you to update your profile. Update data, then click on \"Save\" button."
@@ -233,9 +243,11 @@
     "app": "Welcome to react using react-i18next",
     "cgu": "Terms of service",
     "forgot-your-password": "Forgot your password?",
-    "password": "Change your password",
     "profile": "Your profile",
     "profile-address": "Address form",
+    "profile-email": "Change your email",
+    "profile-general": "Generalities",
+    "profile-password": "Change your password",
     "ooops": "Oooops!"
   },
   "description": {
