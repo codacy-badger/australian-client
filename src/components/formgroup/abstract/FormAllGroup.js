@@ -39,7 +39,7 @@ const FormAllGroup = (props) => {
           <Input {...input} placeholder={placeholder} type={type} className={className} disabled={disabled} />
         </InputGroup>
         {touched && error && <HelpBlockErrors errors={[error]} />}
-        {help.length > 0 && (!!error || <HelpBlock>{help}</HelpBlock>)}
+        {help.length > 0 && ((touched && !!error) || <HelpBlock>{help}</HelpBlock>)}
         {children}
       </Col>
     </FormGroup>

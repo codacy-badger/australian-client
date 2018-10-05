@@ -39,8 +39,8 @@ const EmailForm = (props) => {
   //TODO https://redux-form.com/7.4.2/docs/api/form.md/#-code-form-code-
   return (
     <Form onSubmit={handleSubmit}>
-      <Field icon="at" component={FormEmailGroup} {...fieldProps} name="old-email" required />
-      <Field icon="at" component={FormEmailGroup} {...fieldProps} name="new-email" required />
+      <Field component={FormEmailGroup} {...fieldProps} name="old-email" required />
+      <Field component={FormEmailGroup} {...fieldProps} name="new-email" required />
 
       <div className="text-right">
         <Reset disabled={pristine || submitting} onClick={reset} />
