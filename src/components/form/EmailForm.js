@@ -21,7 +21,7 @@ const validate = (values) => {
   if (typeof values["new-email"] !== "string" || isEmpty(values["new-email"])) {
     errors["new-email"] = "new-email is required";
   }
-  if (typeof values["new-email"] !== "string" || isEmpty(values["old-email"])) {
+  if (typeof values["old-email"] !== "string" || isEmpty(values["old-email"])) {
     errors["old-email"] = "old-email is required";
   }
 
