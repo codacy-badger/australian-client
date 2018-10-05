@@ -6,8 +6,19 @@ import HelpBlock from "../../common/help/HelpBlock";
 import HelpBlockErrors from "../../common/help/HelpBlockErrors";
 
 const FormCheckBoxGroup = (props) => {
+  const getLabel = () => {
+    const {
+      meta: { form },
+      input,
+      t
+    } = props;
+
+    return t("form." + form + "." + input.name + ".label");
+  };
+
   const getButton = () => {
     const { disabled, onClick } = props;
+
     return (
       <Button onClick={onClick} color="link" className="m-0 p-0" disabled={disabled}>
         {getLabel()}
@@ -15,33 +26,31 @@ const FormCheckBoxGroup = (props) => {
     );
   };
 
-  const getLabel = () => {
-    const { formName, fieldName, t } = props;
-    return t("form." + formName + "." + fieldName + ".label");
-  };
+  const {
+    children,
+    disabled,
+    input,
+    meta: { error, form },
+    onClick,
+    required,
+    t
+  } = props;
 
-  const { disabled, fieldName, formName, onClick, required, t, value, ...otherProps } = props;
-  const className = disabled ? "text-muted" : "";
   const label = onClick ? getButton() : getLabel();
-  const helpBlock = t("form." + formName + "." + fieldName + ".helpBlock");
-  const messages = [t("form." + formName + "." + fieldName + ".unchecked")];
+  const className = disabled ? "text-muted" : "";
+  const helpBlock = t("form." + form + "." + input.name + ".helpBlock");
+  const messages = [t("form." + form + "." + input.name + ".unchecked")];
 
   return (
     <FormGroup check>
       <Col sm={{ size: 8, offset: 4 }}>
         <Label check className={className}>
-          <Input
-            type="checkbox"
-            name={fieldName}
-            checked={value}
-            disabled={disabled}
-            required={required}
-            {...otherProps}
-          />
+          <Input {...input} type="checkbox" disabled={disabled} required={required} />
           {label}
         </Label>
         {!required && helpBlock && <HelpBlock>{helpBlock}</HelpBlock>}
-        {!required || value || <HelpBlockErrors errors={messages} />}
+        {error && <HelpBlockErrors errors={messages} />}
+        {children}
       </Col>
     </FormGroup>
   );
@@ -55,13 +64,13 @@ FormCheckBoxGroup.defaultProps = {
 };
 
 FormCheckBoxGroup.propTypes = {
+  children: PropTypes.any,
   disabled: PropTypes.bool,
-  fieldName: PropTypes.string.isRequired,
-  formName: PropTypes.string,
-  onChange: PropTypes.func.isRequired,
+  input: PropTypes.object.isRequired, //redux-form
+  meta: PropTypes.object.isRequired, //redux-form
   onClick: PropTypes.func,
   required: PropTypes.bool,
-  value: PropTypes.string.isRequired
+  t: PropTypes.func.isRequired
 };
 
 export default translate()(FormCheckBoxGroup);

@@ -33,10 +33,6 @@
       "submitting": "Envoi en cours…"
     },
     "general": {
-      "email": {
-        "label": "Email",
-        "placeholder": "Entrez votre adresse email"
-      },
       "latitude": "Latitude",
       "longitude": "Longitude",
       "password": {
@@ -45,7 +41,17 @@
       }
     },
     "login": {
-      "rememberMe": {
+      "email": {
+        "label": "Email",
+        "placeholder": "votre-email@example.org",
+        "helpBlock": "Enter your email"
+      },
+      "password": {
+        "label": "Mot de passe",
+        "placeholder": "",
+        "helpBlock": ""
+      },
+      "remember": {
         "label": "Se souvenir de moi",
         "helpBlock": ""
       },

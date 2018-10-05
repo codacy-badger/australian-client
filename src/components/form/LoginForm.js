@@ -1,30 +1,56 @@
 import React from "react";
 import PropTypes from "prop-types";
-import EmailFormGroup from "../formgroup/EmailFormGroup";
-import PasswordFormGroup from "../formgroup/PasswordFormGroup";
-import { Form, FormText } from "reactstrap";
+import FormCheckBoxGroup from "../formgroup/abstract/FormCheckBoxGroup";
+import FormEmailGroup from "../formgroup/abstract/FormEmailGroup";
+import FormPasswordGroup from "../formgroup/abstract/FormPasswordGroup";
+import isEmail from "validator/lib/isEmail";
+import isEmpty from "validator/lib/isEmpty";
+import { FormText } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
-import { formShape } from "rc-form";
+import { Field, reduxForm } from "redux-form";
+import { login } from "../../actions/authActions";
 import { translate } from "react-i18next";
-import RememberMeFormGroup from "../formgroup/RememberMeFormGroup";
+
+const validate = (values) => {
+  const errors = {};
+
+  if (typeof values["email"] === "string" && !isEmail(values["email"])) {
+    errors["email"] = "email is not a valid email";
+  }
+  if (typeof values["email"] !== "string" || isEmpty(values["email"])) {
+    errors["email"] = "email is required";
+  }
+  //FIXME !values.password
+  if (typeof values["password"] !== "string" || isEmpty(values["password"])) {
+    errors["password"] = "password is required";
+  }
+
+  return errors;
+};
 
 const LoginForm = (props) => {
-  const { email, isPending, form, onChange, onSubmit, password, rememberMe, t } = props;
+  const { handleSubmit, submitting, isPending, t } = props;
 
+  const fieldProps = {
+    disabled: isPending || submitting,
+    isLoading: isPending || submitting
+  };
+
+  //FIXME replace all Form by form or by a reduc-form component instead of reactstrap component
   return (
-    <Form onSubmit={onSubmit}>
-      <EmailFormGroup form={form} onChange={onChange} value={email} disabled={isPending}/>
-      <PasswordFormGroup form={form} onChange={onChange} value={password} disabled={isPending}>
+    <form onSubmit={handleSubmit}>
+      <Field name="email" component={FormEmailGroup} {...fieldProps} required />
+      <Field name="password" component={FormPasswordGroup} {...fieldProps} required>
         <FormText color="muted">
           <FontAwesomeIcon fixedWidth icon="info-circle" className="mr-1 text-info" />
           <Link to="/forgot-your-password" title={t("link.forgot-your-password-title")}>
             {t("link.forgot-your-password")}
           </Link>
         </FormText>
-      </PasswordFormGroup>
-      <RememberMeFormGroup disabled={isPending} onChange={onChange} value={rememberMe} />
-    </Form>
+      </Field>
+      <Field name="remember" component={FormCheckBoxGroup} {...fieldProps} />
+    </form>
   );
 };
 
@@ -34,15 +60,12 @@ LoginForm.defaultProps = {
 };
 
 LoginForm.propTypes = {
-  email: PropTypes.string.isRequired,
   isPending: PropTypes.bool,
-  form: formShape,
-  onChange: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-  password: PropTypes.string.isRequired,
-  rememberMe: PropTypes.bool.isRequired,
-  submitRender: PropTypes.bool,
   t: PropTypes.func.isRequired
 };
 
-export default translate(["translations"])(LoginForm);
+export default reduxForm({
+  form: "login",
+  validate
+})(translate(["translations", "validators"])(LoginForm));
+//Be careful, do not remove validators, because if it is not preloaded, form is destroy and rebuild.

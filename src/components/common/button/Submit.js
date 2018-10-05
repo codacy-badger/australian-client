@@ -21,8 +21,7 @@ Submit.propTypes = {
   isPending: PropTypes.bool.isRequired,
   name: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
-  rotation: PropTypes.oneOf([0, 90, 180, 270]),
-  t: PropTypes.func.isRequired
+  rotation: PropTypes.oneOf([0, 90, 180, 270])
 };
 
 export default Submit;

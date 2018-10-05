@@ -46,7 +46,7 @@ ButtonIcon.propTypes = {
   onClick: PropTypes.func.isRequired,
   rotation: PropTypes.oneOf([0, 90, 180, 270]),
   t: PropTypes.func.isRequired,
-  type: PropTypes.oneOf(["button", "type"])
+  type: PropTypes.oneOf(["button", "submit"])
 };
 
 export default translate("translations")(ButtonIcon);

@@ -15,10 +15,10 @@ const error = {
 };
 
 class AuthApi {
-  static callLoginApi(email, password, remember, callback) {
+  static callLoginApi(email, password, remember = false, callback) {
     return new Promise(() => {
       setTimeout(() => {
-        if (email === "admin@example.org" && password === "admin") {
+        if (email && password === "42") {
           if (remember) {
             localStorage.setItem("username", auth.username);
             localStorage.setItem("accessToken", auth.token);

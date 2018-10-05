@@ -5,11 +5,12 @@ import Submit from "../common/button/Submit";
 import { Alert, Button, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { createForm, formShape } from "rc-form";
+import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { faInfoCircle, faSignInAlt } from "@fortawesome/free-solid-svg-icons";
+import { library } from "@fortawesome/fontawesome-svg-core";
 import { login } from "../../actions/authActions";
+import { submit } from "redux-form";
 import { translate } from "react-i18next";
 
 library.add(faInfoCircle, faSignInAlt);
@@ -18,42 +19,11 @@ library.add(faInfoCircle, faSignInAlt);
 class LoginModal extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      email: "",
-      password: "",
-      rememberMe: false
-    };
-
-    this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-  }
-
-  onChange(e) {
-    this.setState({
-      [e.target.name]: "checkbox" === e.target.type ? e.target.checked : e.target.value
-    });
-  }
-
-  onSubmit(e) {
-    e.preventDefault();
-
-    const { login } = this.props;
-    const { email, password, rememberMe } = this.state;
-
-    this.props.form.validateFields((error) => {
-      if (!error) {
-        login(email, password, rememberMe);
-      }
-    });
-
-    //FIXME this only works when modal dialog is reopened.
-    this.setState({
-      password: ""
-    });
   }
 
   render() {
-    const { error, form, isPending, isError, isOpen, t, toggle, warning } = this.props;
+    const { actions, dispatch, status, isOpen, t, toggle, warning } = this.props;
+    const { error, isError, isPending } = status;
 
     return (
       <Modal isOpen={isOpen} toggle={toggle}>
@@ -72,18 +42,10 @@ class LoginModal extends Component {
               {t("error." + error.code)}
             </Alert>
           )}
-          <LoginForm
-            error={error}
-            form={form}
-            isError={isError}
-            isPending={isPending}
-            onChange={this.onChange}
-            onSubmit={this.onSubmit}
-            {...this.state}
-          />
+          <LoginForm isPending={isPending} onSubmit={actions.login} />
         </ModalBody>
         <ModalFooter>
-          <Submit icon="sign-in-alt" name="login" isPending={isPending} onClick={this.onSubmit} />
+          <Submit icon="sign-in-alt" name="login" isPending={isPending} onClick={() => dispatch(submit("login"))} />
           {warning || (
             <Button color="secondary" onClick={toggle}>
               {t("button.cancel")}
@@ -105,11 +67,12 @@ LoginModal.defaultProps = {
 };
 
 LoginModal.propTypes = {
-  isPending: PropTypes.bool.isRequired,
-  isError: PropTypes.bool.isRequired,
+  status: PropTypes.shape({
+    error: PropTypes.object.isRequired,
+    isError: PropTypes.bool.isRequired,
+    isPending: PropTypes.bool.isRequired
+  }).isRequired,
   isOpen: PropTypes.bool.isRequired,
-  error: PropTypes.object.isRequired,
-  form: formShape,
   t: PropTypes.func.isRequired,
   toggle: PropTypes.func,
   warning: PropTypes.bool.isRequired
@@ -118,15 +81,18 @@ LoginModal.propTypes = {
 // Redux connect begin here
 function mapStateToProps(state) {
   return {
-    isPending: state.authReducer.isLoginPending,
-    isError: state.authReducer.isLoginError,
-    error: state.authReducer.error
+    status: {
+      error: state.authReducer.error,
+      isPending: state.authReducer.isLoginPending,
+      isError: state.authReducer.isLoginError
+    }
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    login: (email, password, remember) => dispatch(login(email, password, remember))
+    dispatch,
+    actions: bindActionCreators({ login }, dispatch)
   };
 }
 
@@ -134,5 +100,5 @@ export default translate("translations")(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(createForm()(LoginModal))
+  )(LoginModal)
 );

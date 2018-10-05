@@ -33,15 +33,21 @@
       "submitting": "Sending…"
     },
     "general": {
-      "email": {
-        "label": "Email",
-        "placeholder": "Enter your email"
-      },
       "latitude": "Latitude",
       "longitude": "Longitude"
     },
     "login": {
-      "rememberMe": {
+      "email": {
+        "label": "Email",
+        "placeholder": "your-email@example.org",
+        "helpBlock": "Enter your email"
+      },
+      "password": {
+        "label": "Password",
+        "placeholder": "",
+        "helpBlock": ""
+      },
+      "remember": {
         "label": "Remember me",
         "helpBlock": ""
       },

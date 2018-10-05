@@ -58,6 +58,7 @@ class DeleteAccountForm extends Component {
   render() {
     const { handleSubmit, password, isPending, pristine, reset, submitting, t } = this.props;
 
+    //FIXME temove this #@?! an replaced it by pristine
     const disabled = typeof password === "undefined" || isEmpty(password);
 
     const fieldProps = {
@@ -79,7 +80,7 @@ class DeleteAccountForm extends Component {
             icon="trash-alt"
             onClick={this.open}
             isPending={isPending}
-            disabled={disabled}
+            disabled={pristine}
             color="danger"
           />
         </div>
