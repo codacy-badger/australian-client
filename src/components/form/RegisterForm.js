@@ -53,7 +53,7 @@ const RegisterForm = (props) => {
       <Field name="email" component={FormEmailGroup} {...fieldProps} required />
       <Field name="password" component={FormPasswordGroup} {...fieldProps} required />
       <Field name="confirmation" component={FormPasswordGroup} {...fieldProps} required />
-      <Field name="read" component={FormCheckBoxGroup} {...fieldProps} onClick={onClickTos} required />
+      <Field name="read" type="checkbox" component={FormCheckBoxGroup} {...fieldProps} onClick={onClickTos} required />
     </Form>
   );
 };

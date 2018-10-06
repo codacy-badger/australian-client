@@ -30,15 +30,12 @@ class RegisterModal extends Component {
   }
 
   accept() {
-    //FIXME it does not do the job
     this.props.actions.change("register", "read", true);
     this.toggleTos();
   }
   decline() {
-    //FIXME it does not do the job
     this.props.actions.change("register", "read", false);
     // this.props.actions.change("register", "email", "email-decline");
-    //TODO rename Tos into Tos
     this.toggleTos();
   }
 
