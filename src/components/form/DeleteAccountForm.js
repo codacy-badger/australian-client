@@ -20,7 +20,6 @@ const validate = (values) => {
     errors["password"] = "password is required";
   }
 
-  console.dir(errors, values);
   return errors;
 };
 
@@ -34,9 +33,6 @@ class DeleteAccountForm extends Component {
     this.open = this.open.bind(this);
     this.submit = this.submit.bind(this);
     this.toggle = this.toggle.bind(this);
-
-    this.props.touch("password", true);
-    this.props.touch(["password"], true);
   }
 
   open() {
