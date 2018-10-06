@@ -5,12 +5,11 @@ import Reset from "../common/button/Reset";
 import ButtonIcon from "../common/button/Button";
 import isEmpty from "validator/lib/isEmpty";
 import { Button, Form, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
-import { Field, reduxForm, formValueSelector } from "redux-form";
+import { Field, reduxForm } from "redux-form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { translate } from "react-i18next";
-import { connect } from "react-redux";
 
 library.add(faTrashAlt);
 
@@ -56,10 +55,7 @@ class DeleteAccountForm extends Component {
   }
 
   render() {
-    const { handleSubmit, password, isPending, pristine, reset, submitting, t } = this.props;
-
-    //FIXME temove this #@?! an replaced it by pristine
-    const disabled = typeof password === "undefined" || isEmpty(password);
+    const { handleSubmit, isPending, pristine, reset, submitting, t } = this.props;
 
     const fieldProps = {
       disabled: isPending || submitting,
@@ -112,21 +108,7 @@ DeleteAccountForm.propTypes = {
   t: PropTypes.func.isRequired
 };
 
-//This is a selector which is used into mapStateProps to get password field value!
-const selector = formValueSelector("profile-account");
-
-// Redux form begin here
-function mapStateToProps(state) {
-  const password = selector(state, "password");
-
-  return {
-    password
-  };
-}
-
-export default connect(mapStateToProps)(
-  reduxForm({
-    form: "profile-account",
-    validate
-  })(translate(["translations", "validators"])(DeleteAccountForm))
-);
+export default reduxForm({
+  form: "profile-account",
+  validate
+})(translate(["translations", "validators"])(DeleteAccountForm));
