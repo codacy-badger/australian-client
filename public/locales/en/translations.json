@@ -27,8 +27,11 @@
       "submitting": "Saving…"
     },
     "forgot-password": {
-      "email": "Email",
-      "email-placeholder": "Enter your email",
+      "email": {
+        "label": "Email",
+        "placeholder": "your-email@example.org",
+        "helpBlock": "Enter email used to register"
+      },
       "submit": "Send",
       "submitting": "Sending…"
     },

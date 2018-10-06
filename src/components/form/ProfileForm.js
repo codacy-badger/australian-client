@@ -17,6 +17,7 @@ library.add(faUser, faUserMd);
 const validate = (values) => {
   const errors = {};
 
+  //FIXME values could be undefined
   if (isEmpty(values.name)) {
     errors.name = "name is required";
   }
@@ -29,9 +30,8 @@ const validate = (values) => {
 //HAVE A LOOK ON : https://github.com/supasate/connected-react-router
 //FIRST HAVE A LOOK ON : https://github.com/erikras/redux-form/issues/3435#issuecomment-357231919
 class ProfileForm extends React.Component {
-
   render() {
-    const {handleSubmit, isPending, isLoading, pristine, reset} = this.props;
+    const { handleSubmit, isPending, isLoading, pristine, reset } = this.props;
 
     const fieldProps = {
       disabled: isPending || isLoading,
@@ -73,11 +73,13 @@ function mapStateToProps(state) {
 }
 
 // Redux form begin here
-export default connect(mapStateToProps)(reduxForm({
-  asyncBlurFields: ["name"],
-  asyncValidate: isUsernameUnique,
-  enableReinitialize: true,
-  form: "profile",
-  validate
-})(translate("validators")(ProfileForm)));
+export default connect(mapStateToProps)(
+  reduxForm({
+    asyncBlurFields: ["name"],
+    asyncValidate: isUsernameUnique,
+    enableReinitialize: true,
+    form: "profile",
+    validate
+  })(translate("validators")(ProfileForm))
+);
 //Be careful, do not remove validators, because if it is not preloaded, form is destroy and rebuild.

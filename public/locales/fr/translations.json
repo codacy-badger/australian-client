@@ -27,8 +27,11 @@
       "submitting": "Enregistrement en cours…"
     },
     "forgot-password": {
-      "email": "Email",
-      "email-placeholder": "Entrez votre adresse email",
+      "email": {
+        "label": "Email",
+        "placeholder": "votre-adresse-email@example.org",
+        "helpBlock": "Veuillez indiquer l’adresse email utilisée pour votre inscription"
+      },
       "submit": "Envoyer",
       "submitting": "Envoi en cours…"
     },

@@ -25,11 +25,13 @@ function setForgotPasswordError(isForgotPasswordError, error = {}) {
   };
 }
 
-export function sendMail(email) {
+export function sendMail(data) {
   return (dispatch) => {
     dispatch(setForgotPasswordPending(true));
     dispatch(setForgotPasswordSuccess(false));
     dispatch(setForgotPasswordError(false));
+
+    const { email } = data;
 
     forgotPasswordActionApi.callForgotPasswordApi(email, (result) => {
       dispatch(setForgotPasswordPending(false));

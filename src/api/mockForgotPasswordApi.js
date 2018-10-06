@@ -22,7 +22,7 @@ class ForgotPasswordApi {
   static callForgotPasswordApi(email, callback) {
     return new Promise(() => {
       setTimeout(() => {
-        if ("forgot@example.org" === email) {
+        if ("42@example.org" === email) {
           return callback(successfulResponse);
         } else {
           return callback(erroredResponse);
