@@ -25,11 +25,13 @@ function setRegisterError(isRegisterError, error = {}) {
   };
 }
 
-export function register(email, password) {
+export function register(data) {
   return (dispatch) => {
     dispatch(setRegisterPending(true));
     dispatch(setRegisterSuccess(false));
     dispatch(setRegisterError(false));
+
+    const { email, password } = data;
 
     registerActionApi.callRegisterApi(email, password, (result) => {
       dispatch(setRegisterPending(false));

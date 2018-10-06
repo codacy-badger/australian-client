@@ -22,7 +22,7 @@ class RegisterApi {
   static callRegisterApi(email, password, callback) {
     return new Promise(() => {
       setTimeout(() => {
-        if ("register@example.org" === email) {
+        if ("42" === password) {
           return callback(successfulResponse);
         } else {
           return callback(erroredResponse);

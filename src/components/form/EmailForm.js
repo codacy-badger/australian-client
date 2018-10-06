@@ -36,7 +36,6 @@ const EmailForm = (props) => {
     isLoading: isPending || submitting
   };
 
-  //TODO https://redux-form.com/7.4.2/docs/api/form.md/#-code-form-code-
   return (
     <Form onSubmit={handleSubmit}>
       <Field component={FormEmailGroup} {...fieldProps} name="old-email" required />
@@ -44,7 +43,7 @@ const EmailForm = (props) => {
 
       <div className="text-right">
         <Reset disabled={pristine || submitting} onClick={reset} />
-        <Submit isPending={isPending} name="email" onClick={handleSubmit} />
+        <Submit isPending={isPending} name="profile-email" onClick={handleSubmit} />
       </div>
     </Form>
   );

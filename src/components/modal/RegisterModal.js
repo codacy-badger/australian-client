@@ -1,90 +1,57 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import CguModal from "./CguModal";
-import ResultAlert from "../common/alert/ResultAlert";
 import RegisterForm from "../form/RegisterForm";
+import StatusAlert from "../common/alert/StatusAlert";
 import Submit from "../common/button/Submit";
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { createForm, formShape } from "rc-form";
 import { faSignInAlt } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { register } from "../../actions/registerActions";
+import { change, formValueSelector, submit } from "redux-form";
 import { translate } from "react-i18next";
 
 library.add(faSignInAlt);
 
-//TODO Create a container
 //TODO Create a register page
 class RegisterModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      confirmation: "",
-      email: "",
-      modalCgu: false,
-      password: "",
-      read: false
+      modalTos: false
     };
 
     this.accept = this.accept.bind(this);
     this.decline = this.decline.bind(this);
-    this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-    this.toggleCgu = this.toggleCgu.bind(this);
+    this.toggleTos = this.toggleTos.bind(this);
   }
 
   accept() {
-    this.setState({
-      read: true
-    });
-    this.toggleCgu();
+    //FIXME it does not do the job
+    this.props.actions.change("register", "read", true);
+    this.toggleTos();
   }
-
   decline() {
-    this.setState({
-      read: false
-    });
-    this.toggleCgu();
+    //FIXME it does not do the job
+    this.props.actions.change("register", "read", false);
+    // this.props.actions.change("register", "email", "email-decline");
+    //TODO rename Cgu into Tos
+    this.toggleTos();
   }
 
-  onChange(e) {
+  toggleTos() {
     this.setState({
-      [e.target.name]: "checkbox" === e.target.type ? e.target.checked : e.target.value
-    });
-  }
-
-  onSubmit(e) {
-    e.preventDefault();
-
-    this.props.form.validateFields((error) => {
-      if (!error) {
-        const { register } = this.props;
-        const { confirmation, email, password, read } = this.state;
-
-        if (confirmation === password && read) {
-          register(email, password);
-        }
-      }
-    });
-
-    //FIXME this only works when modal dialog is reopened.
-    this.setState({
-      password: "",
-      confirmation: ""
-    });
-  }
-
-  toggleCgu() {
-    this.setState({
-      modalCgu: !this.state.modalCgu
+      modalTos: !this.state.modalTos
     });
   }
 
   render() {
-    const { modalCgu, ...values } = this.state;
-    const { error, form, isOpen, isPending, isSuccess, isError, nextStep, t, toggle } = this.props;
+    const { actions, dispatch, status, isOpen, t, toggle } = this.props;
+    const { modalTos } = this.state;
+    const { isPending } = status;
 
     return (
       <div>
@@ -93,55 +60,59 @@ class RegisterModal extends Component {
             <FontAwesomeIcon fixedWidth icon="sign-in-alt" rotation={270} /> {t("navbar.user-register")}
           </ModalHeader>
           <ModalBody>
-            <ResultAlert code="register" isError={isError} isSuccess={isSuccess} error={error} success={nextStep} />
-            <RegisterForm
-              form={form}
-              isPending={isPending}
-              onChange={this.onChange}
-              onClickCgu={this.toggleCgu}
-              onSubmit={this.onSubmit}
-              {...values}
-            />
+            <StatusAlert code="register" status={status} />
+            <RegisterForm isPending={isPending} onClickCgu={this.toggleTos} onSubmit={actions.register} />
           </ModalBody>
           <ModalFooter>
-            <Submit icon="sign-in-alt" name="register" isPending={isPending} onClick={this.onSubmit} rotation={270} />{" "}
+            <Submit
+              icon="sign-in-alt"
+              name="register"
+              isPending={isPending}
+              onClick={() => dispatch(submit("register"))}
+              rotation={270}
+            />{" "}
             <Button color="secondary" onClick={toggle}>
               {t("button.cancel")}
             </Button>
           </ModalFooter>
         </Modal>
-        <CguModal accept={this.accept} decline={this.decline} isOpen={modalCgu} toggle={this.toggleCgu} />
+        <CguModal accept={this.accept} decline={this.decline} isOpen={modalTos} toggle={this.toggleTos} />
       </div>
     );
   }
 }
 
 RegisterModal.propTypes = {
-  error: PropTypes.object.isRequired,
-  form: formShape,
-  isPending: PropTypes.bool.isRequired,
-  isOpen: PropTypes.bool.isRequired,
-  isSuccess: PropTypes.bool.isRequired,
-  isError: PropTypes.bool.isRequired,
-  nextStep: PropTypes.object.isRequired,
-  t: PropTypes.func.isRequired,
-  toggle: PropTypes.func.isRequired
+  status: PropTypes.shape({
+    error: PropTypes.object.isRequired,
+    isError: PropTypes.bool.isRequired,
+    isPending: PropTypes.bool.isRequired,
+    isSuccess: PropTypes.bool.isRequired,
+    success: PropTypes.object.isRequired
+  }).isRequired,
+  t: PropTypes.func.isRequired
 };
 
 // Redux connect begin here
+const selector = formValueSelector("register"); // Decorate with connect to read form values
+
 function mapStateToProps(state) {
   return {
-    error: state.registerReducer.error,
-    isPending: state.registerReducer.isRegisterPending,
-    isSuccess: state.registerReducer.isRegisterSuccess,
-    isError: state.registerReducer.isRegisterError,
-    nextStep: state.registerReducer.nextStep
+    read: selector(state, "read"),
+    status: {
+      error: state.registerReducer.error,
+      isPending: state.registerReducer.isRegisterPending,
+      isSuccess: state.registerReducer.isRegisterSuccess,
+      isError: state.registerReducer.isRegisterError,
+      success: state.registerReducer.nextStep
+    }
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    register: (email, password) => dispatch(register(email, password))
+    dispatch,
+    actions: bindActionCreators({ change, register }, dispatch)
   };
 }
 
@@ -149,5 +120,5 @@ export default translate("translations")(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(createForm()(RegisterModal))
+  )(RegisterModal)
 );

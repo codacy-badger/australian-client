@@ -1,42 +1,74 @@
 import React from "react";
 import PropTypes from "prop-types";
-import ConfirmationFormGroup from "../formgroup/ConfirmationFormGroup";
-import EmailFormGroup from "../formgroup/EmailFormGroup";
-import PasswordFormGroup from "../formgroup/PasswordFormGroup";
-import TosFormGroup from "../formgroup/TosFormGroup";
 import { Form } from "reactstrap";
-import { formShape } from "rc-form";
+import isEmpty from "validator/lib/isEmpty";
+import isEmail from "validator/lib/isEmail";
+import FormEmailGroup from "../formgroup/abstract/FormEmailGroup";
+import FormPasswordGroup from "../formgroup/abstract/FormPasswordGroup";
+import { Field, reduxForm } from "redux-form";
+import FormCheckBoxGroup from "../formgroup/abstract/FormCheckBoxGroup";
+import { translate } from "react-i18next";
+
+const validate = (values) => {
+  const errors = {};
+  const { confirmation, email, password, read } = values;
+
+  if (email && !isEmail(values["email"])) {
+    errors["email"] = "email is not a valid email";
+  }
+
+  if (!email || isEmpty(email)) {
+    errors["email"] = "email is required";
+  }
+
+  if (!password || isEmpty(password)) {
+    errors["password"] = "password is required";
+  }
+
+  if (!confirmation || isEmpty(confirmation)) {
+    errors["confirmation"] = "confirmation is required";
+  }
+
+  if (confirmation && password && password !== confirmation) {
+    errors["confirmation"] = "confirmation is required";
+  }
+
+  //FIXME Test TOS is checked
+  if (!read) {
+    errors["read"] = "read is required";
+  }
+
+  return errors;
+};
 
 const RegisterForm = (props) => {
-  const { confirmation, email, form, isPending, onChange, onClickCgu, onSubmit, password, read } = props;
+  const { handleSubmit, onClickCgu, submitting, isPending } = props;
 
-  const fieldProps = { disabled: isPending, form, onChange, formName: "register" };
+  const fieldProps = {
+    disabled: isPending || submitting,
+    isLoading: isPending || submitting
+  };
 
   return (
-    <Form onSubmit={onSubmit}>
-      <EmailFormGroup value={email} {...fieldProps} />
-      <PasswordFormGroup value={password} {...fieldProps} />
-      <ConfirmationFormGroup value={confirmation} password={password} {...fieldProps} />
-      <TosFormGroup {...fieldProps} onClickCgu={onClickCgu} value={read} />
+    <Form onSubmit={handleSubmit}>
+      <Field name="email" component={FormEmailGroup} {...fieldProps} required />
+      <Field name="password" component={FormPasswordGroup} {...fieldProps} required />
+      <Field name="confirmation" component={FormPasswordGroup} {...fieldProps} required />
+      <Field name="read" component={FormCheckBoxGroup} {...fieldProps} onClick={onClickCgu} required />
     </Form>
   );
 };
 
-RegisterForm.defaultProps = {
-  isPending: false
-};
-
 // The propTypes.
 RegisterForm.propTypes = {
-  confirmation: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
-  form: formShape,
-  isPending: PropTypes.bool,
-  onChange: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  isPending: PropTypes.bool.isRequired,
   onClickCgu: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-  password: PropTypes.string.isRequired,
-  read: PropTypes.bool.isRequired
+  submitting: PropTypes.bool.isRequired
 };
 
-export default RegisterForm;
+export default reduxForm({
+  form: "register",
+  validate
+})(translate(["translations", "validators"])(RegisterForm));
+//Be careful, do not remove validators, because if it is not preloaded, form is destroy and rebuild.

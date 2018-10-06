@@ -131,16 +131,18 @@
     "register": {
       "confirmation": {
         "label": "Confirmation",
-        "placeholder": "Confirm your password",
-        "helpBlock": "Password and confirmation fields should be equals."
+        "placeholder": "",
+        "helpBlock": "Confirm your password, password and confirmation fields should be equals."
       },
       "email": {
         "label": "Email",
-        "placeholder": "Enter your email"
+        "placeholder": "your-email@example.org",
+        "helpBlock": "Enter your email"
       },
       "password": {
         "label": "Password",
-        "placeholder": "Enter your password"
+        "placeholder": "",
+        "helpBlock": "Enter your password"
       },
       "read": {
         "label": "I read and accept Terms of Service.",
@@ -161,6 +163,7 @@
     },
     "profile-email": "Complete this form to change your email. An email with an activation code will be set to the new email to confirm it. A mail to your old address will be sent to cancel update.",
     "forgot-your-password" : "You have forgotten your password? Please send us your email, you will receive a mail which will help you step by step to recover your accesses.",
+    "register": "Please, complete this form and read Terms of services to register.",
     "profile-password": "Complete this form to replace your password by a new one.",
     "profile": "This form allow you to update your profile. Update data, then click on \"Save\" button."
   },

@@ -18,12 +18,14 @@ function setDeleteAccountError(isDeleteAccountError, error = {}) {
   };
 }
 
-export function deleteAccount(deleteAccountCode) {
+export function deleteAccount(data) {
   return (dispatch) => {
     dispatch(setDeleteAccountPending(true));
     dispatch(setDeleteAccountError(false));
 
-    deleteAccountActionApi.callDeleteAccountApi(deleteAccountCode, (result) => {
+    const {password} = data;
+
+    deleteAccountActionApi.callDeleteAccountApi(password, (result) => {
       dispatch(setDeleteAccountPending(false));
       if (result.error) {
         dispatch(setDeleteAccountError(true, result.error));

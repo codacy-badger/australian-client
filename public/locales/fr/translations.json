@@ -130,16 +130,18 @@
     "register": {
       "confirmation": {
         "label": "Confirmation",
-        "placeholder": "Confirmer ce mot de passe",
-        "helpBlock": "Les deux saisies doivent être identiques"
+        "placeholder": "",
+        "helpBlock": "Confirmez ce mot de passe, les deux saisies doivent être identiques"
       },
       "email": {
         "label": "Email",
-        "placeholder": "Entrez votre adresse email"
+        "placeholder": "votre-email@example.org",
+        "helpBlock": "Entrez votre adresse email"
       },
       "password": {
         "label": "Mot de passe",
-        "placeholder": "Entrez un mot de passe"
+        "placeholder": "",
+        "helpBlock": "Entrez un mot de passe"
       },
       "read": {
         "label": "J’ai lu et accepte les conditions générales d’utilisation",
@@ -161,7 +163,8 @@
     "profile-email": "Compléter ce formulaire pour changer d’adresse email. Un email avec un code de confirmation sera envoyé à la nouvelle adresse. Un email avec un code de d’annulation sera envoyé à l’ancienne adresse.",
     "forgot-your-password" : "Vous avez perdu votre mot de passe ? Entrez votre adresse email et vous recevrez un mail qui vous guidera étape par étape pour que vous puissiez créer un nouveau mot de passe et vous reconnecter au site.",
     "profile-password": "Ce formulaire vous permet de modifier votre mot de passe.",
-    "profile": "Ce formulaire vous permet de modifier votre profil. Remplissez les différents champs et cliquez sur le bouton « Enregistrer »."
+    "profile": "Ce formulaire vous permet de modifier votre profil. Remplissez les différents champs et cliquez sur le bouton « Enregistrer ».",
+    "register": "Veuillez remplir ce formulaire et lire les conditions d’utilisation pour vous inscrire."
   },
   "link": {
     "forgot-your-password": "Mot de passe perdu…",

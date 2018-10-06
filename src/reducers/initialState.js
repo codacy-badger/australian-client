@@ -44,6 +44,7 @@ export default {
     error: {},
     isPasswordError: false,
     isPasswordPending: false,
+    isPasswordSuccess: true,
     success: {}
   },
   profile: {
