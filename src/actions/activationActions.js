@@ -25,13 +25,15 @@ function setActivationError(isActivationError, error = {}) {
   };
 }
 
-export function activate(activationCode) {
+export function activate(data) {
   return (dispatch) => {
     dispatch(setActivationPending(true));
     dispatch(setActivationSuccess(false));
     dispatch(setActivationError(false));
 
-    activationActionApi.callActivationApi(activationCode, (result) => {
+    const { activation } = data;
+
+    activationActionApi.callActivationApi(activation, (result) => {
       dispatch(setActivationPending(false));
       if (result.nextStep) {
         dispatch(setActivationSuccess(true, result.nextStep));

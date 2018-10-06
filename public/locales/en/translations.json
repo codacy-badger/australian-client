@@ -15,16 +15,13 @@
   },
   "form": {
     "activation": {
-      "activationCode": {
+      "activation": {
         "label": "Activation code",
-        "placeholder": "You can find activation in the mail sent just after your registration."
+        "placeholder": "",
+        "helpBlock": "You can find activation in the mail sent just after your registration."
       },
       "submit": "Activation",
       "submitting": "Activating…"
-    },
-    "email": {
-      "submit": "Save",
-      "submitting": "Saving…"
     },
     "forgot-password": {
       "email": {

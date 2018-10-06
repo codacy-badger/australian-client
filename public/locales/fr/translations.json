@@ -15,16 +15,13 @@
   },
   "form": {
     "activation": {
-      "activationCode": {
+      "activation": {
         "label": "Code d’activation",
-        "placeholder": "Le code d’activation se trouve dans le mail que vous avez reçu."
+        "placeholder": "",
+        "helpBlock": "Le code d’activation se trouve dans le mail que vous avez reçu."
       },
       "submit": "Activer",
       "submitting": "Activation en cours…"
-    },
-    "email": {
-      "submit": "Enregistrer",
-      "submitting": "Enregistrement en cours…"
     },
     "forgot-password": {
       "email": {
