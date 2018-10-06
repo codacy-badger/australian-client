@@ -11,7 +11,7 @@
     "30": "L’adresse entrée appartient à un fournisseur banni parce que trop de robots s'inscrivaient.",
     "40": "Le mot de passe choisi n’est pas suffisamment fort. Pour le complexifier, ajoutez des caractères, des nombres et symboles.",
     "50": "L’adresse email fournie n’est pas valide.",
-    "60": "Il n’existe pas de compte avec cette adresse email. N’hésitez pas à vous inscrire !"
+    "60": "Il n’existe pas de compte avec cette adresse email. N’hésitez pas à vous inscrire !"
   },
   "form": {
     "activation": {
@@ -34,11 +34,7 @@
     },
     "general": {
       "latitude": "Latitude",
-      "longitude": "Longitude",
-      "password": {
-        "label": "Mot de passe",
-        "placeholder": "Entrez votre mot de passe"
-      }
+      "longitude": "Longitude"
     },
     "login": {
       "email": {
@@ -93,6 +89,11 @@
     },
     "profile-account": {
       "description": "Ici, vous pouvez supprimer votre compte. Entrez votre mot de passe et cliquez sur le bouton de suppression. Attention, cette suppression sera définitive. Après avoir pressé le bouton, le compte sera définitivement supprimé et vous serez déconnecté.",
+      "password": {
+        "label": "Mot de passe",
+        "placeholder": "",
+        "helpBlock": "Entrer votre mot de passe"
+      },
       "submit": "Supprimer le compte",
       "submitting": "Suppression en cours…"
     },
@@ -156,14 +157,14 @@
     "activation" : "Pour activer votre compte, veuillez entrer le code d’activation qui vous a été envoyé par mail.",
     "are-you-sure": {
       "delete-account": {
-        "title": "Êtes vous sûr de vouloir supprimer votre compte ?",
+        "title": "Êtes vous sûr de vouloir supprimer votre compte ?",
         "message": "Attention, votre compte sera intégralement SUPPRIMÉ, cette action ne pourra pas être annulée. Après votre validation, votre compte et son contenu seront supprimés de nos serveurs et vous serez déconnecté."
       }
     },
     "profile-email": "Compléter ce formulaire pour changer d’adresse email. Un email avec un code de confirmation sera envoyé à la nouvelle adresse. Un email avec un code de d’annulation sera envoyé à l’ancienne adresse.",
-    "forgot-your-password" : "Vous avez perdu votre mot de passe ? Entrez votre adresse email et vous recevrez un mail qui vous guidera étape par étape pour que vous puissiez créer un nouveau mot de passe et vous reconnecter au site.",
+    "forgot-your-password" : "Vous avez perdu votre mot de passe ? Entrez votre adresse email et vous recevrez un mail qui vous guidera étape par étape pour que vous puissiez créer un nouveau mot de passe et vous reconnecter au site.",
     "profile-password": "Ce formulaire vous permet de modifier votre mot de passe.",
-    "profile": "Ce formulaire vous permet de modifier votre profil. Remplissez les différents champs et cliquez sur le bouton « Enregistrer ».",
+    "profile": "Ce formulaire vous permet de modifier votre profil. Remplissez les différents champs et cliquez sur le bouton « Enregistrer ».",
     "register": "Veuillez remplir ce formulaire et lire les conditions d’utilisation pour vous inscrire."
   },
   "link": {
@@ -183,7 +184,7 @@
     "loading": "Chargement en cours…",
     "login-successful": "Identification réussie.",
     "logout-successful": "Déconnexion confirmée.",
-    "logout-successful-explanations": "Votre déconnexion a été correctement enregistrée. À bientôt !",
+    "logout-successful-explanations": "Votre déconnexion a été correctement enregistrée. À bientôt !",
     "register": {
       "10": "Vous pouvez vous connecter au site.",
       "20": "Un administrateur du site va activer votre compte rapidement. Vous en serez averti par mail.",
@@ -196,7 +197,7 @@
     "password-confirmed": "Le mot de passe et sa confirmation correspondent bien.",
     "password-not-confirmed": "Le mot de passe et sa confirmation doivent être identiques",
     "please-login": "Pour accéder à cette page, vous devez vous connecter.",
-    "welcome-back": "Bon retour parmi nous !"
+    "welcome-back": "Bon retour parmi nous !"
   },
   "meta": {
     "description": {
@@ -251,8 +252,8 @@
     "activation": "Activation de votre compte",
     "app": "Bienvenue à react utilisant i18n",
     "cgu": "Conditions générales d’utilisation",
-    "forgot-your-password": "Mot de passe perdu ?",
-    "ooops": "Oups !",
+    "forgot-your-password": "Mot de passe perdu ?",
+    "ooops": "Oups !",
     "profile": "Gestion de votre compte",
     "profile-account": "Suppression de votre compte",
     "profile-address": "Votre adresse",
