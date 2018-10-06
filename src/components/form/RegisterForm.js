@@ -41,7 +41,7 @@ const validate = (values) => {
 };
 
 const RegisterForm = (props) => {
-  const { handleSubmit, onClickCgu, submitting, isPending } = props;
+  const { handleSubmit, onClickTos, submitting, isPending } = props;
 
   const fieldProps = {
     disabled: isPending || submitting,
@@ -53,7 +53,7 @@ const RegisterForm = (props) => {
       <Field name="email" component={FormEmailGroup} {...fieldProps} required />
       <Field name="password" component={FormPasswordGroup} {...fieldProps} required />
       <Field name="confirmation" component={FormPasswordGroup} {...fieldProps} required />
-      <Field name="read" component={FormCheckBoxGroup} {...fieldProps} onClick={onClickCgu} required />
+      <Field name="read" component={FormCheckBoxGroup} {...fieldProps} onClick={onClickTos} required />
     </Form>
   );
 };
@@ -62,7 +62,7 @@ const RegisterForm = (props) => {
 RegisterForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   isPending: PropTypes.bool.isRequired,
-  onClickCgu: PropTypes.func.isRequired,
+  onClickTos: PropTypes.func.isRequired,
   submitting: PropTypes.bool.isRequired
 };
 

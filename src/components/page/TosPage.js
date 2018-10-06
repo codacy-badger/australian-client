@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import CguContent from "../common/CguContent";
+import CguContent from "../common/TosContent";
 import Header from "../common/Header";
 import Meta from "../common/Meta";
 import { Container } from "reactstrap";
@@ -11,15 +11,15 @@ import { translate } from "react-i18next";
 
 library.add(faFileSignature);
 
-const CguPage = ({ t }) => {
+const TosPage = ({ t }) => {
   return (
     <div>
-      <Meta code="cgu" />
+      <Meta code="tos" />
       <Header />
       <Container className="text-justify mt-2">
         <h1>
           <FontAwesomeIcon icon={faFileSignature} className="mr-1" />
-          {t("title.cgu")}
+          {t("title.tos")}
         </h1>
         <CguContent />
       </Container>
@@ -27,8 +27,8 @@ const CguPage = ({ t }) => {
   );
 };
 
-CguPage.propTypes = {
+TosPage.propTypes = {
   t: PropTypes.func.isRequired
 };
 
-export default translate(["cgu", "translations"])(CguPage);
+export default translate(["translations", "tos"])(TosPage);

@@ -207,7 +207,8 @@
       "homepage": "Recensement des bergers australiens.",
       "login": "Formulaire de connexion au site référençant les bergers australiens.",
       "profile": "Formulaires de gestion de votre profil.",
-      "register": "Formulaire d’inscription"
+      "register": "Formulaire d’inscription",
+      "tos": "Détail complet des conditions générales d’utilisation du site."
     },
     "keywords": {
       "404": "404,berger,australien,base de données,chien,aussie",
@@ -216,7 +217,8 @@
       "homepage": "berger,australien,base de données,chien,aussie",
       "login": "login,berger,australien,base de données,chien,aussie",
       "profile": "profil,gestion,berger,australien,base de données,chien,aussie",
-      "register": "register,berger,australien,base de données,chien,aussie"
+      "register": "register,berger,australien,base de données,chien,aussie",
+      "tos": "Détail,conditions générales d’utilisation, cgu, cgv."
     },
     "title": {
       "404": "Berger australien",
@@ -225,7 +227,8 @@
       "homepage": "Berger australien",
       "login": "Berger australien - Page de connexion",
       "profile": "Gestion du profil utilisateur",
-      "register": "Inscription"
+      "register": "Inscription",
+      "tos": "Conditions générales d’utilisation"
     }
   },
   "navbar": {
@@ -251,7 +254,7 @@
   "title": {
     "activation": "Activation de votre compte",
     "app": "Bienvenue à react utilisant i18n",
-    "cgu": "Conditions générales d’utilisation",
+    "tos": "Conditions générales d’utilisation",
     "forgot-your-password": "Mot de passe perdu ?",
     "ooops": "Oups !",
     "profile": "Gestion de votre compte",

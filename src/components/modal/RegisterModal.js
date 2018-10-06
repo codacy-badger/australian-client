@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import CguModal from "./CguModal";
+import TosModal from "./TosModal";
 import RegisterForm from "../form/RegisterForm";
 import StatusAlert from "../common/alert/StatusAlert";
 import Submit from "../common/button/Submit";
@@ -38,7 +38,7 @@ class RegisterModal extends Component {
     //FIXME it does not do the job
     this.props.actions.change("register", "read", false);
     // this.props.actions.change("register", "email", "email-decline");
-    //TODO rename Cgu into Tos
+    //TODO rename Tos into Tos
     this.toggleTos();
   }
 
@@ -61,7 +61,7 @@ class RegisterModal extends Component {
           </ModalHeader>
           <ModalBody>
             <StatusAlert code="register" status={status} />
-            <RegisterForm isPending={isPending} onClickCgu={this.toggleTos} onSubmit={actions.register} />
+            <RegisterForm isPending={isPending} onClickTos={this.toggleTos} onSubmit={actions.register} />
           </ModalBody>
           <ModalFooter>
             <Submit
@@ -76,7 +76,7 @@ class RegisterModal extends Component {
             </Button>
           </ModalFooter>
         </Modal>
-        <CguModal accept={this.accept} decline={this.decline} isOpen={modalTos} toggle={this.toggleTos} />
+        <TosModal accept={this.accept} decline={this.decline} isOpen={modalTos} toggle={this.toggleTos} />
       </div>
     );
   }

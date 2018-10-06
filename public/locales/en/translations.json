@@ -207,7 +207,8 @@
       "homepage": "Australian shepherd census.",
       "login": "Login form",
       "profile": "Profile forms.",
-      "register": "Inscription"
+      "register": "Inscription",
+      "tos": "Integral content of usage general conditions."
     },
     "keywords": {
       "404": "404,berger,shepherd,australian,database,dog,aussie",
@@ -216,7 +217,8 @@
       "homepage": "shepherd,australian,database,dog,aussie",
       "login": "login,shepherd,australian,database,dog,aussie",
       "profile": "profile,management,shepherd,australian,database,dog,aussie",
-      "register": "register,shepherd,australian,database,dog,aussie"
+      "register": "register,shepherd,australian,database,dog,aussie",
+      "tos": "Usage general conditions, ugc, sgc."
     },
     "title": {
       "404": "Page not found",
@@ -225,7 +227,8 @@
       "homepage": "Australian shepherd",
       "login": "Australian shepherd - Login",
       "profile": "User profile",
-      "register": "Registration"
+      "register": "Registration",
+      "tos": "Usage general conditions"
     }
   },
   "navbar": {
@@ -251,7 +254,7 @@
   "title": {
     "activation": "Account activation",
     "app": "Welcome to react using react-i18next",
-    "cgu": "Terms of service",
+    "tos": "Terms of service",
     "forgot-your-password": "Forgot your password?",
     "profile": "Your profile",
     "profile-account": "Account deletion",

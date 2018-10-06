@@ -4,20 +4,9 @@
     "decline": "Décline"
   },
   "title": {
-    "cgu": "Usage general conditions"
+    "tos": "Usage general conditions"
   },
-  "meta": {
-    "description": {
-      "cgu": "Integral content of usage general conditions."
-    },
-    "keyword": {
-      "cgu": "Usage general conditions, ugc, sgc."
-    },
-    "title": {
-      "cgu": "Usage general conditions"
-    }
-  },
-  "cgu": {
+  "tos": {
     "article1": {
       "paragraph": "The website which can be accessed by {url} allow each visitor to :",
       "title": "Service presentation",

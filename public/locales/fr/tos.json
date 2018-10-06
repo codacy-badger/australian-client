@@ -4,20 +4,9 @@
     "decline": "Décliner"
   },
   "title": {
-    "cgu": "Conditions générales d’utilisation"
+    "tos": "Conditions générales d’utilisation"
   },
-  "meta": {
-    "description": {
-      "cgu": "Détail complet des conditions générales d’utilisation du site."
-    },
-    "keyword": {
-      "cgu": "Détail,conditions générales d’utilisation, cgu, cgv."
-    },
-    "title": {
-      "cgu": "Conditions générales d’utilisation"
-    }
-  },
-  "cgu": {
+  "tos": {
     "article1": {
       "paragraph": "Le site accessible à l’adresse {url} permet à tout visiteur de :",
       "title": "Présentation du service",

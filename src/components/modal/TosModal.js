@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import CguContent from "../common/CguContent";
+import CguContent from "../common/TosContent";
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -9,7 +9,7 @@ import { translate } from "react-i18next";
 
 library.add(faFileSignature, faTimes);
 
-class CguModal extends Component {
+class TosModal extends Component {
   render() {
     const { accept, decline, isOpen, t, toggle } = this.props;
 
@@ -17,7 +17,7 @@ class CguModal extends Component {
       <Modal isOpen={isOpen} toggle={toggle}>
         <ModalHeader>
           <FontAwesomeIcon icon={faFileSignature} className="mr-1" />
-          {t("title.cgu")}
+          {t("title.tos")}
         </ModalHeader>
         <ModalBody>
           <CguContent />
@@ -37,7 +37,7 @@ class CguModal extends Component {
   }
 }
 
-CguModal.propTypes = {
+TosModal.propTypes = {
   accept: PropTypes.func.isRequired,
   decline: PropTypes.func.isRequired,
   isOpen: PropTypes.bool.isRequired,
@@ -45,4 +45,4 @@ CguModal.propTypes = {
   toggle: PropTypes.func.isRequired
 };
 
-export default translate(["cgu", "translations"])(CguModal);
+export default translate(["tos", "translations"])(TosModal);
