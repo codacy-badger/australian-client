@@ -5,7 +5,7 @@ import FormEmailGroup from "../formgroup/abstract/FormEmailGroup";
 import FormPasswordGroup from "../formgroup/abstract/FormPasswordGroup";
 import isEmail from "validator/lib/isEmail";
 import isEmpty from "validator/lib/isEmpty";
-import { FormText } from "reactstrap";
+import { Form, FormText } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { Field, reduxForm } from "redux-form";
@@ -36,9 +36,8 @@ const LoginForm = (props) => {
     isLoading: isPending || submitting
   };
 
-  //FIXME replace all Form by form or by a reduc-form component instead of reactstrap component
   return (
-    <form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit}>
       <Field name="email" component={FormEmailGroup} {...fieldProps} required />
       <Field name="password" component={FormPasswordGroup} {...fieldProps} required>
         <FormText color="muted">
@@ -49,7 +48,7 @@ const LoginForm = (props) => {
         </FormText>
       </Field>
       <Field name="remember" component={FormCheckBoxGroup} {...fieldProps} />
-    </form>
+    </Form>
   );
 };
 

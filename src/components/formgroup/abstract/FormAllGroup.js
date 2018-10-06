@@ -11,16 +11,15 @@ import { translate } from "react-i18next";
 library.add(faAlignJustify);
 
 const FormAllGroup = (props) => {
-  //TODO purge other.
   const {
     children,
     disabled,
     input,
     icon,
+    isLoading,
     meta: { asyncValidating, error, form, submitting, touched },
     type,
     t,
-    ...other
   } = props;
 
   const label = t("form." + form + "." + input.name + ".label");
@@ -35,7 +34,7 @@ const FormAllGroup = (props) => {
       </Label>
       <Col sm={8}>
         <InputGroup>
-          <InputGroupIcon icon={icon} isLoading={other.isLoading || submitting || asyncValidating} />
+          <InputGroupIcon icon={icon} isLoading={isLoading || submitting || asyncValidating} />
           <Input {...input} placeholder={placeholder} type={type} className={className} disabled={disabled} />
         </InputGroup>
         {touched && error && <HelpBlockErrors errors={[error]} />}
@@ -61,8 +60,6 @@ FormAllGroup.propTypes = {
   icon: PropTypes.string, //The XXXFormGroup
   helpBlock: PropTypes.bool,
   meta: PropTypes.object.isRequired, //redux-form
-  //TODO create rules to launch individual field validations
-  //rules: PropTypes.object.isRequired,
   t: PropTypes.func.isRequired, //translate
   type: PropTypes.oneOf(["text", "password", "email", "confirmation"]) //The XXXFormGroup
 };

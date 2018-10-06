@@ -33,7 +33,6 @@ const validate = (values) => {
     errors["confirmation"] = "confirmation is required";
   }
 
-  //FIXME Test TOS is checked
   if (!read) {
     errors["read"] = "read is required";
   }

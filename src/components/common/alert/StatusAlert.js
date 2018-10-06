@@ -59,7 +59,6 @@ class StatusAlert extends Component {
 
 StatusAlert.propTypes = {
   code: PropTypes.string.isRequired,
-  //TODO create a status shape
   status: PropTypes.shape({
     error: PropTypes.object.isRequired,
     isError: PropTypes.bool.isRequired,

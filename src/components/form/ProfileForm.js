@@ -17,8 +17,7 @@ library.add(faUser, faUserMd);
 const validate = (values) => {
   const errors = {};
 
-  //FIXME values could be undefined
-  if (isEmpty(values.name)) {
+  if (!values.name || isEmpty(values.name)) {
     errors.name = "name is required";
   }
 
@@ -26,7 +25,6 @@ const validate = (values) => {
 };
 
 //FIXME when I click two times on General tabs, I loose data in form. (reducer is OK)
-//FIXME when I load Email tabs, I never handle data in general form. (reducer is OK)
 //HAVE A LOOK ON : https://github.com/supasate/connected-react-router
 //FIRST HAVE A LOOK ON : https://github.com/erikras/redux-form/issues/3435#issuecomment-357231919
 class ProfileForm extends React.Component {
