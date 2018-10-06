@@ -28,7 +28,6 @@ const validate = (values) => {
     errors["confirmation"] = "confirmation is different from password";
   }
 
-  console.dir(errors, values);
   return errors;
 };
 
