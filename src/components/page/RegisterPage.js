@@ -6,14 +6,14 @@ import RegisterForm from "../form/RegisterForm";
 import StatusAlert from "../common/alert/StatusAlert";
 import Submit from "../common/button/Submit";
 import TosModal from "../modal/TosModal";
-import { Button, Card, CardBody, CardFooter, CardHeader, Container } from "reactstrap";
+import { Card, CardBody, CardFooter, CardHeader, Container } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { faSignInAlt } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { register } from "../../actions/registerActions";
-import { change, formValueSelector, submit } from "redux-form";
+import { change, submit } from "redux-form";
 import { translate } from "react-i18next";
 
 library.add(faSignInAlt);
@@ -36,7 +36,6 @@ class RegisterPage extends Component {
   }
   decline() {
     this.props.actions.change("register", "read", false);
-    // this.props.actions.change("register", "email", "email-decline");
     this.toggleTos();
   }
 
@@ -47,7 +46,7 @@ class RegisterPage extends Component {
   }
 
   render() {
-    const { actions, dispatch, status, t, toggle } = this.props;
+    const { actions, dispatch, status, t } = this.props;
     const { modalTos } = this.state;
     const { isPending } = status;
 
@@ -94,11 +93,8 @@ RegisterPage.propTypes = {
 };
 
 // Redux connect begin here
-const selector = formValueSelector("register"); // Decorate with connect to read form values
-
 function mapStateToProps(state) {
   return {
-    read: selector(state, "read"),
     status: {
       error: state.registerReducer.error,
       isPending: state.registerReducer.isRegisterPending,
