@@ -49,7 +49,8 @@
       },
       "remember": {
         "label": "Remember me",
-        "helpBlock": ""
+        "helpBlock": "",
+        "unchecked": ""
       },
       "submit": "Send",
       "submitting": "Sending…"

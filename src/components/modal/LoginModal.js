@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import LoginForm from "../form/LoginForm";
 import Submit from "../common/button/Submit";
@@ -15,52 +15,45 @@ import { translate } from "react-i18next";
 
 library.add(faInfoCircle, faSignInAlt);
 
-//TODO Create a LoginContainer
-class LoginModal extends Component {
-  constructor(props) {
-    super(props);
-  }
+const LoginModal = (props) => {
+  const { actions, dispatch, status, isOpen, t, toggle, warning } = props;
+  const { error, isError, isPending } = status;
 
-  render() {
-    const { actions, dispatch, status, isOpen, t, toggle, warning } = this.props;
-    const { error, isError, isPending } = status;
-
-    return (
-      <Modal isOpen={isOpen} toggle={toggle}>
-        <ModalHeader toggle={toggle}>
-          <FontAwesomeIcon fixedWidth icon="sign-in-alt" /> {t("navbar.user-login")}
-        </ModalHeader>
-        <ModalBody>
-          {warning &&
-            !isError && (
-              <Alert color="warning" className="text-center">
-                {t("message.please-login")}
-              </Alert>
-            )}
-          {isError && (
-            <Alert color="danger" className="text-center">
-              {t("error." + error.code)}
+  return (
+    <Modal isOpen={isOpen} toggle={toggle}>
+      <ModalHeader toggle={toggle}>
+        <FontAwesomeIcon fixedWidth icon="sign-in-alt" /> {t("navbar.user-login")}
+      </ModalHeader>
+      <ModalBody>
+        {warning &&
+          !isError && (
+            <Alert color="warning" className="text-center">
+              {t("message.please-login")}
             </Alert>
           )}
-          <LoginForm isPending={isPending} onSubmit={actions.login} />
-        </ModalBody>
-        <ModalFooter>
-          <Submit icon="sign-in-alt" name="login" isPending={isPending} onClick={() => dispatch(submit("login"))} />
-          {warning || (
-            <Button color="secondary" onClick={toggle}>
-              {t("button.cancel")}
-            </Button>
-          )}
-          {!warning || (
-            <Link to="/" className="btn btn-secondary">
-              {t("button.cancel")}
-            </Link>
-          )}
-        </ModalFooter>
-      </Modal>
-    );
-  }
-}
+        {isError && (
+          <Alert color="danger" className="text-center">
+            {t("error." + error.code)}
+          </Alert>
+        )}
+        <LoginForm isPending={isPending} onSubmit={actions.login} />
+      </ModalBody>
+      <ModalFooter>
+        <Submit icon="sign-in-alt" name="login" isPending={isPending} onClick={() => dispatch(submit("login"))} />
+        {warning || (
+          <Button color="secondary" onClick={toggle}>
+            {t("button.cancel")}
+          </Button>
+        )}
+        {!warning || (
+          <Link to="/" className="btn btn-secondary">
+            {t("button.cancel")}
+          </Link>
+        )}
+      </ModalFooter>
+    </Modal>
+  );
+};
 
 LoginModal.defaultProps = {
   warning: false

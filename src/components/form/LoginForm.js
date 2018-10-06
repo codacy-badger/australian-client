@@ -9,7 +9,6 @@ import { FormText } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { Field, reduxForm } from "redux-form";
-import { login } from "../../actions/authActions";
 import { translate } from "react-i18next";
 
 const validate = (values) => {

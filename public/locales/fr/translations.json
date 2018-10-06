@@ -53,7 +53,8 @@
       },
       "remember": {
         "label": "Se souvenir de moi",
-        "helpBlock": ""
+        "helpBlock": "",
+        "unchecked": ""
       },
       "submit": "S’identifier",
       "submitting": "Identification en cours…"
