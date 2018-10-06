@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import TosModal from "./TosModal";
+import Header from "../common/Header";
+import Meta from "../common/Meta";
 import RegisterForm from "../form/RegisterForm";
 import StatusAlert from "../common/alert/StatusAlert";
 import Submit from "../common/button/Submit";
-import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
+import TosModal from "../modal/TosModal";
+import { Button, Card, CardBody, CardFooter, CardHeader, Container } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
@@ -16,7 +18,7 @@ import { translate } from "react-i18next";
 
 library.add(faSignInAlt);
 
-class RegisterModal extends Component {
+class RegisterPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -45,40 +47,42 @@ class RegisterModal extends Component {
   }
 
   render() {
-    const { actions, dispatch, status, isOpen, t, toggle } = this.props;
+    const { actions, dispatch, status, t, toggle } = this.props;
     const { modalTos } = this.state;
     const { isPending } = status;
 
     return (
       <div>
-        <Modal isOpen={isOpen} toggle={toggle} size="lg">
-          <ModalHeader toggle={toggle}>
-            <FontAwesomeIcon fixedWidth icon="sign-in-alt" rotation={270} /> {t("navbar.user-register")}
-          </ModalHeader>
-          <ModalBody>
-            <StatusAlert code="register" status={status} />
-            <RegisterForm isPending={isPending} onClickTos={this.toggleTos} onSubmit={actions.register} />
-          </ModalBody>
-          <ModalFooter>
-            <Submit
-              icon="sign-in-alt"
-              name="register"
-              isPending={isPending}
-              onClick={() => dispatch(submit("register"))}
-              rotation={270}
-            />{" "}
-            <Button color="secondary" onClick={toggle}>
-              {t("button.cancel")}
-            </Button>
-          </ModalFooter>
-        </Modal>
+        <Meta code="register" />
+        <Header register={false} />
+        <Container className="mt-3 text-justify">
+          <Card>
+            <CardHeader>
+              <FontAwesomeIcon fixedWidth icon="sign-in-alt" rotation={270} />
+              {t("title.register")}
+            </CardHeader>
+            <CardBody>
+              <StatusAlert code="register" status={status} />
+              <RegisterForm isPending={isPending} onClickTos={this.toggleTos} onSubmit={actions.register} />
+            </CardBody>
+            <CardFooter className="text-right">
+              <Submit
+                icon="sign-in-alt"
+                name="register"
+                isPending={isPending}
+                onClick={() => dispatch(submit("register"))}
+                rotation={270}
+              />
+            </CardFooter>
+          </Card>
+        </Container>
         <TosModal accept={this.accept} decline={this.decline} isOpen={modalTos} toggle={this.toggleTos} />
       </div>
     );
   }
 }
 
-RegisterModal.propTypes = {
+RegisterPage.propTypes = {
   status: PropTypes.shape({
     error: PropTypes.object.isRequired,
     isError: PropTypes.bool.isRequired,
@@ -116,5 +120,5 @@ export default translate("translations")(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(RegisterModal)
+  )(RegisterPage)
 );

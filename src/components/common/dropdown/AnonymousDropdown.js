@@ -35,7 +35,7 @@ class AnonymousDropdown extends React.Component {
   }
 
   render() {
-    const { t } = this.props;
+    const { register, t } = this.props;
 
     return (
       <div>
@@ -47,19 +47,26 @@ class AnonymousDropdown extends React.Component {
             <DropdownItem onClick={this.toggleLoginModal}>
               <FontAwesomeIcon fixedWidth icon="sign-in-alt" /> {t("navbar.user-login")}
             </DropdownItem>
-            <DropdownItem onClick={this.toggleRegisterModal}>
-              <FontAwesomeIcon fixedWidth icon="sign-in-alt" rotation={270} /> {t("navbar.user-register")}
-            </DropdownItem>
+            {register && (
+              <DropdownItem onClick={this.toggleRegisterModal}>
+                <FontAwesomeIcon fixedWidth icon="sign-in-alt" rotation={270} /> {t("navbar.user-register")}
+              </DropdownItem>
+            )}
           </DropdownMenu>
         </UncontrolledDropdown>
         <LoginModal toggle={this.toggleLoginModal} isOpen={this.state.loginModal} />
-        <RegisterModal toggle={this.toggleRegisterModal} isOpen={this.state.registerModal} />
+        {register && <RegisterModal toggle={this.toggleRegisterModal} isOpen={this.state.registerModal} />}
       </div>
     );
   }
 }
 
+AnonymousDropdown.defaultProps = {
+  register: true
+};
+
 AnonymousDropdown.propTypes = {
+  register: PropTypes.bool,
   t: PropTypes.func.isRequired
 };
 

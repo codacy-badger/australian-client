@@ -262,7 +262,8 @@
     "profile-address": "Votre adresse",
     "profile-email": "Changement d’adresse email",
     "profile-general": "Généralité",
-    "profile-password": "Changement de mot de passe"
+    "profile-password": "Changement de mot de passe",
+    "register": "Inscription"
   },
   "description": {
     "part1": "Pour débuter, éditer <1>src/App.js</1> et sauvegarder pour lancer le rechargement automatique.",

@@ -24,7 +24,7 @@ class Header extends React.Component {
   }
 
   render() {
-    const { isAuthenticated } = this.props;
+    const { isAuthenticated, register } = this.props;
 
     return (
       <Navbar color="light" light expand="md">
@@ -35,7 +35,7 @@ class Header extends React.Component {
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <LanguageDropdown />
-            {!isAuthenticated && <AnonymousDropdown />}
+            {!isAuthenticated && <AnonymousDropdown register={register} />}
             {isAuthenticated && <UserDropdown />}
           </Nav>
         </Collapse>
@@ -44,7 +44,12 @@ class Header extends React.Component {
   }
 }
 
+Header.defaultProps = {
+  register: true
+};
+
 Header.propTypes = {
+  register: PropTypes.bool,
   t: PropTypes.func.isRequired,
   //  user: PropTypes.object.isRequired,
   isAuthenticated: PropTypes.bool.isRequired

@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { Alert } from "reactstrap";
 import { translate, Trans } from "react-i18next";
 
-//TODO convert to stateless component
 class StatusAlert extends Component {
   getColor() {
     const { isError, isSuccess } = this.props.status;

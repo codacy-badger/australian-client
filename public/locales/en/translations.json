@@ -256,13 +256,14 @@
     "app": "Welcome to react using react-i18next",
     "tos": "Terms of service",
     "forgot-your-password": "Forgot your password?",
+    "ooops": "Oooops!",
     "profile": "Your profile",
     "profile-account": "Account deletion",
     "profile-address": "Address form",
     "profile-email": "Change your email",
     "profile-general": "Generalities",
     "profile-password": "Change your password",
-    "ooops": "Oooops!"
+    "register": "Register form"
   },
   "description": {
     "part1": "To get started, edit <1>src/App.js</1> and save to reload.",
