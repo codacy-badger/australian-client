@@ -9,32 +9,32 @@ import { Field, reduxForm } from "redux-form";
 import FormCheckBoxGroup from "../formgroup/abstract/FormCheckBoxGroup";
 import { translate } from "react-i18next";
 
-const validate = (values) => {
+export const validate = (values) => {
   const errors = {};
   const { confirmation, email, password, read } = values;
 
-  if (email && !isEmail(values["email"])) {
-    errors["email"] = "email is not a valid email";
+  if (email && !isEmail(email)) {
+    errors.email = "email is not a valid email";
   }
 
   if (!email || isEmpty(email)) {
-    errors["email"] = "email is required";
+    errors.email = "email is required";
   }
 
   if (!password || isEmpty(password)) {
-    errors["password"] = "password is required";
+    errors.password = "password is required";
   }
 
   if (!confirmation || isEmpty(confirmation)) {
-    errors["confirmation"] = "confirmation is required";
+    errors.confirmation = "confirmation is required";
   }
 
   if (confirmation && password && password !== confirmation) {
-    errors["confirmation"] = "confirmation is required";
+    errors.confirmation = "confirmation is different from password";
   }
 
   if (!read) {
-    errors["read"] = "read is required";
+    errors.read = "read is required";
   }
 
   return errors;

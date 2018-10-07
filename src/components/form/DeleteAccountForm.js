@@ -13,11 +13,11 @@ import { translate } from "react-i18next";
 
 library.add(faTrashAlt);
 
-const validate = (values) => {
+export const validate = (values) => {
   const errors = {};
 
-  if (typeof values["password"] !== "string" || isEmpty(values["password"])) {
-    errors["password"] = "password is required";
+  if (!values.password || isEmpty(values.password)) {
+    errors.password = "password is required";
   }
 
   return errors;

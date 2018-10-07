@@ -9,19 +9,19 @@ import { Field, reduxForm } from "redux-form";
 import { Form } from "reactstrap";
 import { translate } from "react-i18next";
 
-const validate = (values) => {
+export const validate = (values) => {
   const errors = {};
 
-  if (typeof values["old-email"] === "string" && !isEmail(values["old-email"])) {
+  if (values["old-email"] && !isEmail(values["old-email"])) {
     errors["old-email"] = "old-email is not a valid email";
   }
-  if (typeof values["new-email"] === "string" && !isEmail(values["new-email"])) {
+  if (values["new-email"] && !isEmail(values["new-email"])) {
     errors["new-email"] = "new-email is not a valid email";
   }
-  if (typeof values["new-email"] !== "string" || isEmpty(values["new-email"])) {
+  if (!values["new-email"] || isEmpty(values["new-email"])) {
     errors["new-email"] = "new-email is required";
   }
-  if (typeof values["old-email"] !== "string" || isEmpty(values["old-email"])) {
+  if (!values["old-email"] || isEmpty(values["old-email"])) {
     errors["old-email"] = "old-email is required";
   }
 

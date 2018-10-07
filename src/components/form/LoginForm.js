@@ -11,18 +11,18 @@ import { Link } from "react-router-dom";
 import { Field, reduxForm } from "redux-form";
 import { translate } from "react-i18next";
 
-const validate = (values) => {
+export const validate = (values) => {
   const errors = {};
+  const { email, password } = values;
 
-  if (typeof values["email"] === "string" && !isEmail(values["email"])) {
-    errors["email"] = "email is not a valid email";
+  if (email && !isEmail(email)) {
+    errors.email = "email is not a valid email";
   }
-  if (typeof values["email"] !== "string" || isEmpty(values["email"])) {
-    errors["email"] = "email is required";
+  if (!email || isEmpty(email)) {
+    errors.email = "email is required";
   }
-  //FIXME !values.password
-  if (typeof values["password"] !== "string" || isEmpty(values["password"])) {
-    errors["password"] = "password is required";
+  if (!password || isEmpty(password)) {
+    errors.password = "password is required";
   }
 
   return errors;

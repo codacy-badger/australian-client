@@ -13,11 +13,11 @@ import { translate } from "react-i18next";
 
 library.add(faCheckDouble);
 
-const validate = (values) => {
+export const validate = (values) => {
   const errors = {};
 
   if (!values.activation || isEmpty(values.activation)) {
-    errors["activation"] = "activation is required";
+    errors.activation = "activation is required";
   }
 
   return errors;

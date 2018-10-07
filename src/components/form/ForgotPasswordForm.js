@@ -10,15 +10,16 @@ import { Card, CardBody, CardFooter, CardHeader, Form } from "reactstrap";
 import { Link } from "react-router-dom";
 import { translate } from "react-i18next";
 
-const validate = (values) => {
+export const validate = (values) => {
   const errors = {};
+  const { email } = values;
 
-  if (!values.email || isEmpty(values.email)) {
-    errors["email"] = "email is required";
+  if (!email || isEmpty(email)) {
+    errors.email = "email is required";
   }
 
-  if (values.email && !isEmail(values.email)) {
-    errors["email"] = "email is not a valid email";
+  if (email && !isEmail(email)) {
+    errors.email = "email is not a valid email";
   }
 
   return errors;

@@ -3,29 +3,25 @@ import PropTypes from "prop-types";
 import FormPasswordGroup from "../formgroup/abstract/FormPasswordGroup";
 import Reset from "../common/button/Reset";
 import Submit from "../common/button/Submit";
-import isEmpty from "validator/lib/isEmpty";
 import { Field, reduxForm } from "redux-form";
 import { Form } from "reactstrap";
 import { translate } from "react-i18next";
+import isEmpty from "validator/lib/isEmpty";
 
-const validate = (values) => {
+export const validate = (values) => {
   const errors = {};
 
-  if (typeof values["new-password"] !== "string" || isEmpty(values["new-password"])) {
+  if (!values["new-password"] || isEmpty(values["new-password"])) {
     errors["new-password"] = "new-password is required";
   }
-  if (typeof values["old-password"] !== "string" || isEmpty(values["old-password"])) {
+  if (!values["old-password"] || isEmpty(values["old-password"])) {
     errors["old-password"] = "old-password is required";
   }
-  if (typeof values["confirmation"] !== "string" || isEmpty(values["confirmation"])) {
-    errors["confirmation"] = "confirmation is required";
+  if (!values.confirmation || isEmpty(values.confirmation)) {
+    errors.confirmation = "confirmation is required";
   }
-  if (
-    typeof values["confirmation"] === "string" &&
-    typeof values["new-password"] === "string" &&
-    values["new-password"] !== values["confirmation"]
-  ) {
-    errors["confirmation"] = "confirmation is different from password";
+  if (!!values.confirmation && !!values["new-password"] && values["new-password"] !== values.confirmation) {
+    errors.confirmation = "confirmation is different from password";
   }
 
   return errors;
@@ -53,6 +49,7 @@ const PasswordForm = (props) => {
   );
 };
 
+//PropTypes
 PasswordForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   reset: PropTypes.func.isRequired,

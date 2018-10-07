@@ -14,7 +14,7 @@ import { translate } from "react-i18next";
 
 library.add(faUser, faUserMd);
 
-const validate = (values) => {
+export const validate = (values) => {
   const errors = {};
 
   if (!values.name || isEmpty(values.name)) {
