@@ -15,6 +15,7 @@ class ProfileContainer extends React.Component {
   }
 
   render() {
+    //FIXME What have in formProps?
     const { actions, status, t, ...formProps } = this.props;
     const { isLoading, isPending } = status;
 
@@ -51,7 +52,6 @@ function mapStateToProps(state) {
       isSuccess: state.profileReducer.isProfileSuccess,
       success: state.profileReducer.success
     }
-    // initialValues: state.profileReducer.user
   };
 }
 

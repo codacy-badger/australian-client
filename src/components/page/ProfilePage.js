@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import AccountContainer from "../container/profile/AccountContainer";
-import AddressForm from "../form/AddressForm";
+import AddressContainer from "../container/profile/AddressContainer";
 import CookieContainer from "../container/profile/CookieContainer";
 import EmailContainer from "../container/profile/EmailContainer";
 import Header from "../common/Header";
@@ -46,7 +46,7 @@ const ProfilePage = ({ t }) => {
           <Col>
             <Switch>
               <Route exact path="/profile/account" component={AccountContainer} />
-              <Route exact path="/profile/address" component={AddressForm} />
+              <Route exact path="/profile/address" component={AddressContainer} />
               <Route exact path="/profile/cookies" component={CookieContainer} />
               <Route exact path="/profile/email" component={EmailContainer} />
               <Route exact path="/profile/general" component={ProfileContainer} />

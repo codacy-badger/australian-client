@@ -7,8 +7,11 @@ import { Map as LeafletMap, Marker, Popup, TileLayer } from "react-leaflet";
 import { connect } from "react-redux";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faGlobe } from "@fortawesome/free-solid-svg-icons";
-import { profileAddressUpdate } from "../../actions/profileActions";
+import { updateAddress } from "../../actions/addressActions";
 import { translate } from "react-i18next";
+import { bindActionCreators } from "redux";
+import { Field } from "redux-form";
+import FormNumberGroup from "../formgroup/abstract/FormNumberGroup";
 
 library.add(faGlobe);
 
@@ -18,21 +21,18 @@ class AddressForm extends Component {
     super(props, context);
     this.state = {
       center: {
-        lat: 45,
-        lng: -1
+        lat: props.initialValues.latitude,
+        lng: props.initialValues.longitude
       },
       marker: {
-        lat: 45,
-        lng: -1
+        lat: props.initialValues.latitude,
+        lng: props.initialValues.longitude
       },
       zoom: 13,
       draggable: true
     };
 
     this.refMarker = React.createRef();
-
-    this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
   }
 
   toggleDraggable = () => {
@@ -41,74 +41,28 @@ class AddressForm extends Component {
 
   updatePosition = () => {
     const { lat, lng } = this.refMarker.current.leafletElement.getLatLng();
+    //TODO Do no update state but use change action creator from redux-form
     this.setState({
       marker: { lat, lng }
     });
   };
 
-  onChange(e) {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-  }
-
-  onSubmit(e) {
-    e.preventDefault();
-
-    const { lat, lng } = this.marker;
-    const data = { lat, lng };
-
-    profileAddressUpdate(data);
-  }
-
   render() {
-    const { isPending, t } = this.props;
     const position = [this.state.center.lat, this.state.center.lng];
     const markerPosition = [this.state.marker.lat, this.state.marker.lng];
+    const { handleSubmit, isPending, isLoading, pristine, reset, t } = this.props;
+
+    const fieldProps = {
+      disabled: isPending || isLoading,
+      isLoading: isPending || isLoading
+    };
 
     return (
-      <Form onSubmit={this.onSubmit}>
-        <h2>{t("title.profile-address")}</h2>
+      <Form onSubmit={handleSubmit}>
         <Row>
           <Col sm={6}>
-            <FormGroup row>
-              <Label for="longitude" sm={3}>
-                {t("form.general.longitude")}
-              </Label>
-              <Col sm={9}>
-                <InputGroup>
-                  <InputGroupIcon icon="globe" />
-                  <Input
-                    type="text"
-                    name="longitude"
-                    id="longitude"
-                    value={this.state.marker.lng}
-                    required
-                    disabled
-                    onChange={this.onChange}
-                  />
-                </InputGroup>
-              </Col>
-            </FormGroup>
-            <FormGroup row>
-              <Label for="latitude" sm={3}>
-                {t("form.general.latitude")}
-              </Label>
-              <Col sm={9}>
-                <InputGroup>
-                  <InputGroupIcon icon="globe" />
-                  <Input
-                    type="text"
-                    name="latitude"
-                    id="latitude"
-                    value={this.state.marker.lat}
-                    required
-                    disabled
-                    onChange={this.onChange}
-                  />
-                </InputGroup>
-              </Col>
-            </FormGroup>
+            <Field type="number" name="longitude" {...fieldProps} component={FormNumberGroup} icon="globe" />
+            <Field type="number" name="latitude" {...fieldProps} component={FormNumberGroup} icon="globe" />
             <Submit isPending={isPending} name="profile" onClick={this.onSubmit} />
           </Col>
           <Col sm={6}>
@@ -145,15 +99,13 @@ AddressForm.propTypes = {
 // Redux connect begin here
 function mapStateToProps(state) {
   return {
-    isPending: false,
-    isError: false,
-    isSuccess: false
+    initialValues: state.addressReducer.address
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    profileAddressUpdate: (data) => dispatch(profileAddressUpdate(data))
+    actions: bindActionCreators({ updateAddress }, dispatch)
   };
 }
 

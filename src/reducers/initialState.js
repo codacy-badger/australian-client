@@ -8,6 +8,20 @@ export default {
     isActivationError: false,
     nextStep: {}
   },
+  address: {
+    error: {},
+    isProfileError: false,
+    isProfileLoading: true,
+    isProfilePending: false,
+    isProfileSuccess: false,
+    success: {},
+    address: {
+      latitude: 0,
+      longitude: 45,
+      city: "Paris",
+      country: "France"
+    }
+  },
   deleteAccount: {
     error: {},
     isDeleteAccountPending: false,
