@@ -168,6 +168,7 @@ export default connect(
 )(
   reduxForm({
     form: "profile-address",
+    enableReinitialize: true,
     validate
   })(AddressForm)
 );
