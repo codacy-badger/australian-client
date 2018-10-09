@@ -4,7 +4,7 @@ import ProfileForm from "../../form/ProfileForm";
 import StatusAlert from "../../common/alert/StatusAlert";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { getProfile, updateProfile } from "../../../actions/profileActions";
+import { getProfile } from "../../../actions/profileActions";
 import { translate } from "react-i18next";
 
 class ProfileContainer extends React.Component {
@@ -15,14 +15,14 @@ class ProfileContainer extends React.Component {
   }
 
   render() {
-    const { actions, status, t } = this.props;
+    const { status, t } = this.props;
     const { isLoading, isPending } = status;
 
     return (
       <div>
         <h2>{t("title.profile-general")}</h2>
         <StatusAlert code="profile" status={status} />
-        <ProfileForm isLoading={isLoading} isPending={isPending} onSubmit={actions.updateProfile} />
+        <ProfileForm isLoading={isLoading} isPending={isPending} />
       </div>
     );
   }
@@ -56,7 +56,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators({ getProfile, updateProfile }, dispatch)
+    actions: bindActionCreators({ getProfile }, dispatch)
   };
 }
 

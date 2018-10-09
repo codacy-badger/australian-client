@@ -7,8 +7,9 @@ import FormTextGroup from "../formgroup/abstract/FormTextGroup";
 import { Form } from "reactstrap";
 import { Field, reduxForm } from "redux-form";
 import { faUser, faUserMd } from "@fortawesome/free-solid-svg-icons";
+import {bindActionCreators} from "redux";
 import { connect } from "react-redux";
-import { isUsernameUnique } from "../../actions/profileActions";
+import { isUsernameUnique, updateProfile } from "../../actions/profileActions";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { translate } from "react-i18next";
 
@@ -29,15 +30,16 @@ export const validate = (values) => {
 //FIRST HAVE A LOOK ON : https://github.com/erikras/redux-form/issues/3435#issuecomment-357231919
 class ProfileForm extends React.Component {
   render() {
-    const { handleSubmit, isPending, isLoading, pristine, reset } = this.props;
+    //TODO TRY to use submitting instead of isPending.
+    const { actions, handleSubmit, isPending, isLoading, pristine, reset, submitting } = this.props;
 
     const fieldProps = {
-      disabled: isPending || isLoading,
+      disabled: submitting || isLoading,
       isLoading: isPending || isLoading
     };
 
     return (
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit(actions.updateProfile)}>
         <Field icon="user" component={FormTextGroup} {...fieldProps} name="name" required />
         <Field icon="user" component={FormTextGroup} {...fieldProps} name="givenName" />
         <Field icon="user" component={FormTextGroup} {...fieldProps} name="familyName" />
@@ -45,7 +47,7 @@ class ProfileForm extends React.Component {
 
         <div className="text-right">
           <Reset disabled={pristine} onClick={reset} />
-          <Submit isPending={isPending} name="profile" onClick={handleSubmit} />
+          <Submit isPending={isPending} name="profile" onClick={handleSubmit(actions.updateProfile)} />
         </div>
       </Form>
     );
@@ -70,8 +72,14 @@ function mapStateToProps(state) {
   };
 }
 
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators({ updateProfile }, dispatch)
+  };
+}
+
 // Redux form begin here
-export default connect(mapStateToProps)(
+export default connect(mapStateToProps, mapDispatchToProps)(
   reduxForm({
     asyncBlurFields: ["name"],
     asyncValidate: isUsernameUnique,
