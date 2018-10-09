@@ -15,15 +15,14 @@ class ProfileContainer extends React.Component {
   }
 
   render() {
-    //FIXME What have in formProps?
-    const { actions, status, t, ...formProps } = this.props;
+    const { actions, status, t } = this.props;
     const { isLoading, isPending } = status;
 
     return (
       <div>
         <h2>{t("title.profile-general")}</h2>
         <StatusAlert code="profile" status={status} />
-        <ProfileForm {...formProps} isLoading={isLoading} isPending={isPending} onSubmit={actions.updateProfile} />
+        <ProfileForm isLoading={isLoading} isPending={isPending} onSubmit={actions.updateProfile} />
       </div>
     );
   }
