@@ -11,12 +11,12 @@ export default function addressReducer(state = initialState.address, action) {
     case types.SET_ADDRESS_LOADED:
       return Object.assign({}, state, {
         isAddressLoading: !action.isAddressLoaded,
-        user: action.user
+        address: action.address
       });
 
     case types.SET_ADDRESS_UNLOADABLE:
       return Object.assign({}, state, {
-        user: action.user
+        address: action.address
       });
 
     case types.SET_ADDRESS_PENDING:
@@ -27,7 +27,7 @@ export default function addressReducer(state = initialState.address, action) {
     case types.SET_ADDRESS_SUCCESS:
       return Object.assign({}, state, {
         isAddressSuccess: action.isAddressSuccess,
-        user: action.user,
+        address: action.address,
         success: action.success
       });
 

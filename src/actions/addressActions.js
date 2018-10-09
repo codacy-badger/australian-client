@@ -11,11 +11,11 @@ function setAddressLoading(isAddressLoading) {
   };
 }
 
-function setAddressLoaded(isAddressLoaded, user = initialState.address.user) {
+function setAddressLoaded(isAddressLoaded, address = initialState.address.address) {
   return {
     type: types.SET_ADDRESS_LOADED,
     isAddressLoaded,
-    user
+    address
   };
 }
 
@@ -42,11 +42,15 @@ function setAddressMessagePrinted(sendMessage) {
   };
 }
 
-function setAddressSuccess(isAddressSuccess, user = initialState.address.user, success = initialState.address.success) {
+function setAddressSuccess(
+  isAddressSuccess,
+  address = initialState.address.address,
+  success = initialState.address.success
+) {
   return {
     type: types.SET_ADDRESS_SUCCESS,
     isAddressSuccess,
-    user,
+    address,
     success
   };
 }
@@ -68,7 +72,7 @@ export function updateAddress(data) {
     addressActionApi.callUpdateAddressApi(data, (result) => {
       dispatch(setAddressPending(false));
       if (result.success) {
-        dispatch(setAddressSuccess(true, result.user, result.success));
+        dispatch(setAddressSuccess(true, result.address, result.success));
         setTimeout(() => {
           dispatch(setAddressMessagePrinted(false));
         }, 1000);
@@ -85,8 +89,8 @@ export function getAddress() {
     addressActionApi.callGetAddressApi((result) => {
       dispatch(setAddressLoading(false));
       if (result.success) {
-        dispatch(setAddressLoaded(true, result.user));
-        // dispatch(setAddressSuccess(true, result.user, result.success));
+        dispatch(setAddressLoaded(true, result.address));
+        // dispatch(setAddressSuccess(true, result.address, result.success));
       } else {
         dispatch(setAddressUnloadable(true, result.message));
       }

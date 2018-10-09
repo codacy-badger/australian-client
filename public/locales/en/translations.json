@@ -97,6 +97,28 @@
       "submit": "Delete account",
       "submitting": "Deleting account"
     },
+    "profile-address": {
+      "city": {
+        "label": "City",
+        "placeholder": "City name",
+        "helpBlock": "Enter your city."
+      },
+      "country": {
+        "label": "Country",
+        "placeholder": "",
+        "helpBlock": "Enter your country."
+      },
+      "latitude": {
+        "label": "Latitude",
+        "placeholder": "45",
+        "helpBlock": "Drag and drop the marker to change location."
+      },
+      "longitude": {
+        "label": "Longitude",
+        "placeholder": "0",
+        "helpBlock": "Drag and drop the marker to change location."
+      }
+    },
     "profile-email": {
       "new-email": {
         "label": "New email",
@@ -161,6 +183,7 @@
         "message": "Be careful, your account will be DELETED, this cannot be undone. After you accpet, your account will be deleted and you will be logout."
       }
     },
+    "profile-address": "This form helps you to enter location data, like city, country. You could drag and drop marker to alter your position.",
     "profile-email": "Complete this form to change your email. An email with an activation code will be set to the new email to confirm it. A mail to your old address will be sent to cancel update.",
     "forgot-your-password" : "You have forgotten your password? Please send us your email, you will receive a mail which will help you step by step to recover your accesses.",
     "register": "Please, complete this form and read Terms of services to register.",

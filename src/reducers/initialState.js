@@ -10,16 +10,16 @@ export default {
   },
   address: {
     error: {},
-    isProfileError: false,
-    isProfileLoading: true,
-    isProfilePending: false,
-    isProfileSuccess: false,
+    isAddressError: false,
+    isAddressLoading: true,
+    isAddressPending: false,
+    isAddressSuccess: false,
     success: {},
     address: {
       latitude: 0,
       longitude: 45,
-      city: "Paris",
-      country: "France"
+      city: "",
+      country: ""
     }
   },
   deleteAccount: {

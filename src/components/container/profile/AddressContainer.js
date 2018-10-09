@@ -21,7 +21,6 @@ class AddressContainer extends Component {
     return (
       <div>
         <h2>{t("title.profile-address")}</h2>
-        <p>{t("form.profile-address.description")}</p>
         <StatusAlert status={status} code="profile-address" />
         <AddressForm isLoading={isLoading} isPending={isPending} onSubmit={actions.updateAddress} />
       </div>
