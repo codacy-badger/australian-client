@@ -11,12 +11,14 @@ const Submit = (props) => {
 };
 
 Submit.defaultProps = {
+  disabled: false,
   icon: "upload",
   rotation: 0
 };
 
 // The propTypes.
 Submit.propTypes = {
+  disabled: PropTypes.bool,
   icon: PropTypes.string,
   isPending: PropTypes.bool.isRequired,
   name: PropTypes.string.isRequired,

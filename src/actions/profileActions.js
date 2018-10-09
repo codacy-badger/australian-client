@@ -69,7 +69,7 @@ export function updateProfile(data) {
     dispatch(setProfileSuccess(false, data));
     dispatch(setProfileError(false));
 
-    profileActionApi.callUpdateApi(data, (result) => {
+    return profileActionApi.callUpdateApi(data, (result) => {
       dispatch(setProfilePending(false));
       if (result.success) {
         dispatch(setProfileSuccess(true, result.user, result.success));

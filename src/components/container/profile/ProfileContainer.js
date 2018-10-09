@@ -16,13 +16,13 @@ class ProfileContainer extends React.Component {
 
   render() {
     const { status, t } = this.props;
-    const { isLoading, isPending } = status;
+    const { isLoading } = status;
 
     return (
       <div>
         <h2>{t("title.profile-general")}</h2>
         <StatusAlert code="profile" status={status} />
-        <ProfileForm isLoading={isLoading} isPending={isPending} />
+        <ProfileForm isLoading={isLoading} />
       </div>
     );
   }
@@ -34,7 +34,6 @@ ProfileContainer.propTypes = {
     error: PropTypes.object.isRequired,
     isError: PropTypes.bool.isRequired,
     isLoading: PropTypes.bool.isRequired,
-    isPending: PropTypes.bool.isRequired,
     isSuccess: PropTypes.bool.isRequired,
     success: PropTypes.object.isRequired
   }).isRequired
@@ -47,7 +46,6 @@ function mapStateToProps(state) {
       error: state.profileReducer.error,
       isError: state.profileReducer.isProfileError,
       isLoading: state.profileReducer.isProfileLoading,
-      isPending: state.profileReducer.isProfilePending,
       isSuccess: state.profileReducer.isProfileSuccess,
       success: state.profileReducer.success
     }

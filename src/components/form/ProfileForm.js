@@ -7,7 +7,7 @@ import FormTextGroup from "../formgroup/abstract/FormTextGroup";
 import { Form } from "reactstrap";
 import { Field, reduxForm } from "redux-form";
 import { faUser, faUserMd } from "@fortawesome/free-solid-svg-icons";
-import {bindActionCreators} from "redux";
+import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { isUsernameUnique, updateProfile } from "../../actions/profileActions";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -30,24 +30,37 @@ export const validate = (values) => {
 //FIRST HAVE A LOOK ON : https://github.com/erikras/redux-form/issues/3435#issuecomment-357231919
 class ProfileForm extends React.Component {
   render() {
-    //TODO TRY to use submitting instead of isPending.
-    const { actions, handleSubmit, isPending, isLoading, pristine, reset, submitting } = this.props;
+    const { actions, asyncValidating, handleSubmit, isLoading, pristine, reset, submitting } = this.props;
+
+    const asyncNameValidating = false !== asyncValidating;
 
     const fieldProps = {
       disabled: submitting || isLoading,
-      isLoading: isPending || isLoading
+      isLoading: submitting || isLoading
     };
 
     return (
       <Form onSubmit={handleSubmit(actions.updateProfile)}>
-        <Field icon="user" component={FormTextGroup} {...fieldProps} name="name" required />
+        <Field
+          icon="user"
+          component={FormTextGroup}
+          disabled={submitting || isLoading}
+          isLoading={submitting || isLoading || asyncNameValidating}
+          name="name"
+          required
+        />
         <Field icon="user" component={FormTextGroup} {...fieldProps} name="givenName" />
         <Field icon="user" component={FormTextGroup} {...fieldProps} name="familyName" />
         <Field icon="user-md" component={FormTextGroup} {...fieldProps} name="jobTitle" />
 
         <div className="text-right">
-          <Reset disabled={pristine} onClick={reset} />
-          <Submit isPending={isPending} name="profile" onClick={handleSubmit(actions.updateProfile)} />
+          <Reset disabled={pristine || submitting} onClick={reset} />
+          <Submit
+            disabled={pristine || asyncNameValidating}
+            isPending={submitting}
+            name="profile"
+            onClick={handleSubmit(actions.updateProfile)}
+          />
         </div>
       </Form>
     );
@@ -61,7 +74,6 @@ ProfileForm.propTypes = {
   pristine: PropTypes.bool.isRequired,
   initialValues: PropTypes.object.isRequired,
   isLoading: PropTypes.bool.isRequired,
-  isPending: PropTypes.bool.isRequired,
   t: PropTypes.func.isRequired
 };
 
@@ -79,9 +91,12 @@ function mapDispatchToProps(dispatch) {
 }
 
 // Redux form begin here
-export default connect(mapStateToProps, mapDispatchToProps)(
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(
   reduxForm({
-    asyncBlurFields: ["name"],
+    asyncChangeFields: ["name"],
     asyncValidate: isUsernameUnique,
     enableReinitialize: true,
     form: "profile",

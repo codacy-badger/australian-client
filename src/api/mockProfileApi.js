@@ -9,7 +9,7 @@ const getProfileSuccess = {
   user: {
     additionalName: "",
     givenName: "Johann",
-    familyName: "Doe",
+    familyName: "Doe" + Math.round(Math.random() * 100).toString(),
     name: "John",
     jobTitle: "Administrator"
   },
@@ -27,7 +27,7 @@ const successfulResponse = {
   user: {
     additionalName: "42",
     givenName: "Johann",
-    familyName: "Doe",
+    familyName: "Doe" + Math.round(Math.random() * 100).toString(),
     name: "John",
     jobTitle: "Administrator"
   }
@@ -79,19 +79,6 @@ class ProfileApi {
           return callback(erroredResponse);
         } else {
           return callback(successfulResponse);
-        }
-      }, delay);
-    });
-  }
-
-  static callAddressUpdateApi(data, callback) {
-    return new Promise(() => {
-      setTimeout(() => {
-        const { locality } = data;
-        if ("Lacanau" === locality) {
-          return callback(successfulResponse);
-        } else {
-          return callback(erroredResponse);
         }
       }, delay);
     });
