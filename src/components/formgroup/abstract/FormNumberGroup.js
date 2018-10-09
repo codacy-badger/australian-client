@@ -4,7 +4,6 @@ import FormAllGroup from "./FormAllGroup";
 import { faAlignJustify } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 
-//TODO change icon
 library.add(faAlignJustify);
 
 const FormNumberGroup = (props) => {
