@@ -15,6 +15,7 @@
     "activation-failed": "L’activation a échoué !",
     "delete-account-password-invalid": "Votre compte n’a pas été supprimé en raison d’une erreur de mot de passe.",
     "update-email-server-error": "Votre adresse email n’a pas été modifiée en raison d’un souci de communication avec notre serveur.",
+    "profile-password-invalid-password": "Le mot de passe que vous avez entré est incorrect. Votre mot de passe n’a pas été modifié.",
     "profile-server-error": "Votre profil n’a pas été mis à jour en raison d’un souci de communication avec notre serveur.",
     "update-address-failed": "Votre position n’a pas été mise à jour en raison d’un souci de communication avec notre serveur."
   },
@@ -236,6 +237,9 @@
     },
     "profile-email": {
       "success": "Un mail a été envoyé à votre nouvelle adresse. Veuillez suivre les instructions mentionnées pour confirmer ce changement !"
+    },
+    "profile-password": {
+      "success": "Votre mot de passe a été modifié."
     },
     "welcome-back": "Bon retour parmi nous !"
   },

@@ -27,18 +27,18 @@ function setPasswordError(isPasswordError, error = initialState.password.error) 
   };
 }
 
-export function passwordUpdate(data) {
-  return (dispatch) => {
+export function passwordUpdate(data, dispatch) {
+  return () => {
     dispatch(setPasswordPending(true));
     dispatch(setPasswordSuccess(false));
     dispatch(setPasswordError(false));
 
-    passwordActionApi.callPasswordApi(data, (result) => {
+    return passwordActionApi.callPasswordApi(data, (result) => {
       dispatch(setPasswordPending(false));
       if (result.success) {
         dispatch(setPasswordSuccess(true, result.success));
       } else {
-        dispatch(setPasswordError(true, result.error));
+        dispatch(setPasswordError(true, result));
       }
     });
   };

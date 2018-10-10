@@ -2,6 +2,7 @@
   "accept tos": "Pour vous inscrire, veuillez accepter les conditions générales d’utilisations.",
   "activation is non-valid": "Ce code d’activation n’est pas valide.",
   "activation is required": "Veuillez entrez le code d’activation fourni dans notre email.",
+  "bad password": "Mot de passe incorrect, veuillez corriger votre saisie.",
   "confirmation is different from password": "Le mot de passe et la confirmation ne correspondent pas",
   "confirmation is required": "Veuillez confirmer votre mot de passe en le saisissant à nouveau.",
   "email is not a valid email": "Veuillez entrer une adresse email valide.",

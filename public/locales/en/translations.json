@@ -15,6 +15,7 @@
     "activation-failed": "Activation failed!",
     "delete-account-password-invalid": "Account was not deleted, because of non-valid password",
     "update-email-server-error": "Email update failed, because of a communication error with our server.",
+    "profile-password-invalid-password": "Password submitted invalid! Your password had not been updated.",
     "profile-server-error": "Your profile was not updated because of a communication error with our server.",
     "update-address-failed": "Geolocation data has not been updated."
   },
@@ -228,6 +229,9 @@
     },
     "profile-address": {
       "success": "Your address has been successfully updated."
+    },
+    "profile-password": {
+      "success": "Your password has been successfully updated."
     },
     "register": {
       "10": "You can login to the website.",

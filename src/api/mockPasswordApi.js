@@ -1,4 +1,5 @@
-import delay from "./mockDelay";
+import delay, { sleep } from "./mockDelay";
+import { SubmissionError } from "redux-form";
 //import * as codes from './errorCode';
 
 // This file mocks a web API by working with the hard-coded data below.
@@ -6,29 +7,26 @@ import delay from "./mockDelay";
 // All calls return promises.
 const successfulResponse = {
   success: {
-    code: 110,
+    code: "success",
     message: "Password updated."
   }
 };
 
 const errorResponse = {
-  error: {
-    code: 120,
-    message: "Please verify your password."
-  }
+  code: "profile-password-invalid-password",
+  message: "Please verify your password.",
+  "old-password": "bad password"
 };
 
 class PasswordApi {
   static callPasswordApi(data, callback) {
-    return new Promise(() => {
-      setTimeout(() => {
-        const { oldPassword } = data;
-        if ("42" === oldPassword) {
-          return callback(successfulResponse);
-        } else {
-          return callback(errorResponse);
-        }
-      }, delay);
+    return sleep(delay).then(() => {
+      if ("42" === data["old-password"]) {
+        return callback(successfulResponse);
+      } else {
+        callback(errorResponse);
+        throw new SubmissionError(errorResponse);
+      }
     });
   }
 }
