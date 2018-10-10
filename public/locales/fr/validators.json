@@ -13,5 +13,6 @@
   "old-email is not a valid email": "Veuillez entrer une adresse email valide.",
   "old-email is required": "Veuillez renseigner votre ancienne adresse email.",
   "old-password is required": "Veuillez entrer votre mot de passe actuel.",
-  "password is required": "Veuillez entrer votre mot de passe."
+  "password is required": "Veuillez entrer votre mot de passe.",
+  "username is already taken": "Ce nom d’utilisateur est déjà utilisé. Veuillez en choisir un autre"
 }

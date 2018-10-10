@@ -12,7 +12,8 @@
     "40": "Le mot de passe choisi n’est pas suffisamment fort. Pour le complexifier, ajoutez des caractères, des nombres et symboles.",
     "50": "L’adresse email fournie n’est pas valide.",
     "60": "Il n’existe pas de compte avec cette adresse email. N’hésitez pas à vous inscrire !",
-    "activation-failed": "L’activation a échoué !"
+    "activation-failed": "L’activation a échoué !",
+    "profile-server-error": "Votre profil n’a pas été mis à jour en raison d’un souci de communication avec notre serveur."
   },
   "form": {
     "activation": {
@@ -224,6 +225,9 @@
     "password-confirmed": "Le mot de passe et sa confirmation correspondent bien.",
     "password-not-confirmed": "Le mot de passe et sa confirmation doivent être identiques",
     "please-login": "Pour accéder à cette page, vous devez vous connecter.",
+    "profile": {
+      "profile-updated": "Votre profil a correctement été mis à jour."
+    },
     "welcome-back": "Bon retour parmi nous !"
   },
   "meta": {

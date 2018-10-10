@@ -12,7 +12,8 @@
     "40": "Your password isn't enough strong. Add some alpha, numeric and special chars.",
     "50": "The sent mail address is not valid.",
     "60": "Any account exists with this mail. Please, register!",
-    "activation-failed": "Activation failed!"
+    "activation-failed": "Activation failed!",
+    "profile-server-error": "Your profile was not updated because of a communication error with our server."
   },
   "form": {
     "activation": {
@@ -219,6 +220,9 @@
     "password-confirmed": "Your password and its confirmation match.",
     "password-not-confirmed": "Password and confirmation doesn't match.",
     "please-login": "To unlock access to this page, please login.",
+    "profile": {
+      "profile-updated": "Your profile has been successfully updated."
+    },
     "register": {
       "10": "You can login to the website.",
       "20": "An administrator will activate your account. You will be alert by a mail when it will be done.",

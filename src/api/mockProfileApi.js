@@ -1,5 +1,6 @@
 import delay, { sleep } from "./mockDelay";
 import AppStorage from "../tools/AppStorage";
+import {SubmissionError} from "redux-form";
 //import * as codes from './errorCode';
 
 // This file mocks a web API by working with the hard-coded data below.
@@ -7,7 +8,6 @@ import AppStorage from "../tools/AppStorage";
 // All calls return promises
 const getProfileSuccess = {
   user: {
-    additionalName: "",
     givenName: "Johann",
     familyName: "Doe" + Math.round(Math.random() * 100).toString(),
     name: "John",
@@ -21,11 +21,10 @@ const getProfileError = {
 };
 const successfulResponse = {
   success: {
-    code: 10,
-    message: "Profile updated"
+    code: "profile-updated",
+    message: "Your profile has been successfully updated"
   },
   user: {
-    additionalName: "42",
     givenName: "Johann",
     familyName: "Doe" + Math.round(Math.random() * 100).toString(),
     name: "John",
@@ -34,8 +33,8 @@ const successfulResponse = {
 };
 const erroredResponse = {
   error: {
-    code: 30,
-    message: "Username already taken"
+    code: "profile-server-error",
+    message: "Server unavailable. Your profile has not been updated."
   }
 };
 
@@ -56,8 +55,7 @@ class ProfileApi {
     return sleep(delay) // simulate server latency
       .then(() => {
         if (["John", "paul", "george", "ringo"].includes(data.name)) {
-          //FIXME Try to throw Submission Error.
-          throw { name: "That username is taken" };
+          throw { name: "username is already taken" };
         }
       });
     // return new Promise(() => {
@@ -71,16 +69,16 @@ class ProfileApi {
   }
 
   static callUpdateApi(data, callback) {
-    return new Promise(() => {
-      setTimeout(() => {
-        const { name } = data;
-        if (["John", "paul", "george", "ringo"].includes(name)) {
-          return callback(erroredResponse);
-        } else {
+    return sleep(delay)
+      .then(() => {
+        const { jobTitle } = data;
+        if ("42" === jobTitle) {
           return callback(successfulResponse);
+        } else {
+          callback(erroredResponse);
+          throw new SubmissionError(erroredResponse);
         }
       }, delay);
-    });
   }
 }
 

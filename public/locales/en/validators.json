@@ -13,5 +13,6 @@
   "old-email is not a valid email": "Please enter a valid email.",
   "old-email is required": "Your current email is required.",
   "old-password is required": "Please enter you current password.",
-  "password is required": "Please, enter your password."
+  "password is required": "Please, enter your password.",
+  "username is already taken": "This username is already taken. Choose another one."
 }
