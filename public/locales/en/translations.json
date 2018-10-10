@@ -14,6 +14,7 @@
     "60": "Any account exists with this mail. Please, register!",
     "activation-failed": "Activation failed!",
     "delete-account-password-invalid": "Account was not deleted, because of non-valid password",
+    "update-email-server-error": "Email update failed, because of a communication error with our server.",
     "profile-server-error": "Your profile was not updated because of a communication error with our server.",
     "update-address-failed": "Geolocation data has not been updated."
   },
@@ -232,6 +233,9 @@
       "10": "You can login to the website.",
       "20": "An administrator will activate your account. You will be alert by a mail when it will be done.",
       "30": "To verify your mail address, we have sent a mail with a link. Click it to finalize your registration."
+    },
+    "update-email": {
+      "success": "An email has been sent to new address, please follow instructions to finish this update."
     },
     "welcome-back": "Welcome back!"
   },

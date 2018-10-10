@@ -27,18 +27,18 @@ function setEmailError(isEmailError, error = initialState.email.error) {
   };
 }
 
-export function emailUpdate(data) {
-  return (dispatch) => {
+export function emailUpdate(data, dispatch) {
+  return () => {
     dispatch(setEmailPending(true));
     dispatch(setEmailSuccess(false));
     dispatch(setEmailError(false));
 
-    emailActionApi.callEmailApi(data, (result) => {
+    return emailActionApi.callEmailApi(data, (result) => {
       dispatch(setEmailPending(false));
       if (result.success) {
         dispatch(setEmailSuccess(true, result.success));
       } else {
-        dispatch(setEmailError(true, result.error));
+        dispatch(setEmailError(true, result));
       }
     });
   };

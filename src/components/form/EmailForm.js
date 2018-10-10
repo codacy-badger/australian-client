@@ -8,6 +8,9 @@ import isEmail from "validator/lib/isEmail";
 import { Field, reduxForm } from "redux-form";
 import { Form } from "reactstrap";
 import { translate } from "react-i18next";
+import {bindActionCreators} from "redux";
+import {emailUpdate} from "../../actions/emailActions";
+import {connect} from "react-redux";
 
 export const validate = (values) => {
   const errors = {};
@@ -28,22 +31,18 @@ export const validate = (values) => {
   return errors;
 };
 
+//FIXME update form with only two field : email and confirmation.
 const EmailForm = (props) => {
-  const { handleSubmit, isPending, pristine, reset, submitting } = props;
-
-  const fieldProps = {
-    disabled: isPending || submitting,
-    isLoading: isPending || submitting
-  };
+  const { actions, handleSubmit, pristine, reset, submitting } = props;
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Field component={FormEmailGroup} {...fieldProps} name="old-email" required />
-      <Field component={FormEmailGroup} {...fieldProps} name="new-email" required />
+    <Form onSubmit={handleSubmit(actions.emailUpdate)}>
+      <Field component={FormEmailGroup} disabled={submitting} isLoading={submitting} name="old-email" required />
+      <Field component={FormEmailGroup} disabled={submitting} isLoading={submitting} name="new-email" required />
 
       <div className="text-right">
         <Reset disabled={pristine || submitting} onClick={reset} />
-        <Submit isPending={isPending} name="profile-email" onClick={handleSubmit} />
+        <Submit disabled={pristine || submitting} isPending={submitting} name="profile-email" onClick={handleSubmit(actions.emailUpdate)} />
       </div>
     </Form>
   );
@@ -58,9 +57,16 @@ EmailForm.propTypes = {
   t: PropTypes.func.isRequired
 };
 
+//Redux connect
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators({ emailUpdate }, dispatch)
+  };
+}
+
 // Redux form begin here
-export default reduxForm({
+export default connect(null, mapDispatchToProps)(reduxForm({
   form: "profile-email",
   validate
-})(translate("validators")(EmailForm));
+})(translate("validators")(EmailForm)));
 //Be careful, do not remove validators, because if it is not preloaded, form is destroy and rebuild.
