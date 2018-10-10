@@ -51,11 +51,11 @@ class DeleteAccountForm extends Component {
   }
 
   render() {
-    const { handleSubmit, isPending, pristine, reset, submitting, t } = this.props;
+    const { handleSubmit, pristine, reset, submitting, t } = this.props;
 
     const fieldProps = {
-      disabled: isPending || submitting,
-      isLoading: isPending || submitting
+      disabled: submitting,
+      isLoading: submitting
     };
 
     const { modal } = this.state;
@@ -71,7 +71,7 @@ class DeleteAccountForm extends Component {
             name="profile-account"
             icon="trash-alt"
             onClick={this.open}
-            isPending={isPending}
+            isPending={submitting}
             disabled={pristine}
             color="danger"
           />
@@ -99,7 +99,6 @@ DeleteAccountForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   reset: PropTypes.func.isRequired,
   pristine: PropTypes.bool.isRequired,
-  isPending: PropTypes.bool.isRequired,
   submitting: PropTypes.bool.isRequired,
   t: PropTypes.func.isRequired
 };

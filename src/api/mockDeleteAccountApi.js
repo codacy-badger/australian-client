@@ -1,28 +1,29 @@
-import delay from "./mockDelay";
+import delay, { sleep } from "./mockDelay";
+import { SubmissionError } from "redux-form";
 
 // This file mocks a web API by working with the hard-coded data below.
-// It uses setTimeout to simulate the delay of an AJAX call.
+// It uses sleep to simulate the delay of an AJAX call.
 // All calls return promises.
 const erroredResponse = {
-  error: {
-    code: 80,
-    message: "Your password is not valid"
-  }
+  password: "password is non-valid",
+  code: "delete-account-password-invalid",
+  message: "Your password is not valid",
+  error: true
 };
 
 class DeleteAccountApi {
   static callDeleteAccountApi(deleteAccountCode, callback) {
-    return new Promise(() => {
-      setTimeout(() => {
+    return sleep(delay)
+      .then(() => {
         if ("42" === deleteAccountCode) {
           localStorage.clear();
           sessionStorage.clear();
-          return callback({});
+          return callback({error: false});
         } else {
-          return callback(erroredResponse);
+          callback(erroredResponse);
+          return new SubmissionError(erroredResponse);
         }
-      }, delay);
-    });
+      });
   }
 }
 

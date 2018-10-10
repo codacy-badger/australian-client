@@ -13,6 +13,7 @@
     "50": "L’adresse email fournie n’est pas valide.",
     "60": "Il n’existe pas de compte avec cette adresse email. N’hésitez pas à vous inscrire !",
     "activation-failed": "L’activation a échoué !",
+    "delete-account-password-invalid": "Votre compte n’a pas été supprimé en raison d’une erreur de mot de passe.",
     "profile-server-error": "Votre profil n’a pas été mis à jour en raison d’un souci de communication avec notre serveur.",
     "update-address-failed": "Votre position n’a pas été mise à jour en raison d’un souci de communication avec notre serveur."
   },

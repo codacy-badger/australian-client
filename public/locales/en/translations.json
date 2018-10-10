@@ -13,6 +13,7 @@
     "50": "The sent mail address is not valid.",
     "60": "Any account exists with this mail. Please, register!",
     "activation-failed": "Activation failed!",
+    "delete-account-password-invalid": "Account was not deleted, because of non-valid password",
     "profile-server-error": "Your profile was not updated because of a communication error with our server.",
     "update-address-failed": "Geolocation data has not been updated."
   },
