@@ -13,7 +13,8 @@
     "50": "L’adresse email fournie n’est pas valide.",
     "60": "Il n’existe pas de compte avec cette adresse email. N’hésitez pas à vous inscrire !",
     "activation-failed": "L’activation a échoué !",
-    "profile-server-error": "Votre profil n’a pas été mis à jour en raison d’un souci de communication avec notre serveur."
+    "profile-server-error": "Votre profil n’a pas été mis à jour en raison d’un souci de communication avec notre serveur.",
+    "update-address-failed": "Votre position n’a pas été mise à jour en raison d’un souci de communication avec notre serveur."
   },
   "form": {
     "activation": {
@@ -227,6 +228,9 @@
     "please-login": "Pour accéder à cette page, vous devez vous connecter.",
     "profile": {
       "profile-updated": "Votre profil a correctement été mis à jour."
+    },
+    "profile-address": {
+      "success": "Votre position a correctement été mise à jour."
     },
     "welcome-back": "Bon retour parmi nous !"
   },

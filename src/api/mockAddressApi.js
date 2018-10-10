@@ -1,5 +1,6 @@
-import delay from "./mockDelay";
+import delay, { sleep } from "./mockDelay";
 import AppStorage from "../tools/AppStorage";
+import { SubmissionError } from "redux-form";
 //import * as codes from './errorCode';
 
 // This file mocks a web API by working with the hard-coded data below.
@@ -19,16 +20,20 @@ const getAddressError = {
   message: "Address unavailable"
 };
 const successfulResponse = {
+  address: {
+    latitude: 45,
+    longitude: -1,
+    city: "Lacanau-Ville",
+    country: "France"
+  },
   success: {
-    code: 10,
+    code: "success",
     message: "Address updated"
   }
 };
 const erroredResponse = {
-  error: {
-    code: 30,
-    message: "Username already taken"
-  }
+  code: "update-address-failed",
+  message: "Geolocation data has not been updated"
 };
 
 class AddressApi {
@@ -45,15 +50,14 @@ class AddressApi {
   }
 
   static callUpdateAddressApi(data, callback) {
-    return new Promise(() => {
-      setTimeout(() => {
-        const { city } = data;
-        if ("42" === city) {
-          return callback(successfulResponse);
-        } else {
-          return callback(erroredResponse);
-        }
-      }, delay);
+    return sleep(delay).then(() => {
+      const { city } = data;
+      if ("42" === city) {
+        return callback(successfulResponse);
+      } else {
+        callback(erroredResponse);
+        throw new SubmissionError(erroredResponse);
+      }
     });
   }
 }

@@ -63,21 +63,21 @@ function setAddressError(isAddressError, error = initialState.address.error) {
   };
 }
 
-export function updateAddress(data) {
-  return (dispatch) => {
+export function updateAddress(data, dispatch) {
+  return () => {
     dispatch(setAddressPending(true));
     dispatch(setAddressSuccess(false, data));
     dispatch(setAddressError(false));
 
-    addressActionApi.callUpdateAddressApi(data, (result) => {
+    return addressActionApi.callUpdateAddressApi(data, (result) => {
       dispatch(setAddressPending(false));
       if (result.success) {
         dispatch(setAddressSuccess(true, result.address, result.success));
-        setTimeout(() => {
-          dispatch(setAddressMessagePrinted(false));
-        }, 1000);
+        // setTimeout(() => {
+        //   dispatch(setAddressMessagePrinted(false));
+        // }, 1000);
       } else {
-        dispatch(setAddressError(true, result.error));
+        dispatch(setAddressError(true, result));
       }
     });
   };
@@ -90,7 +90,6 @@ export function getAddress() {
       dispatch(setAddressLoading(false));
       if (result.success) {
         dispatch(setAddressLoaded(true, result.address));
-        // dispatch(setAddressSuccess(true, result.address, result.success));
       } else {
         dispatch(setAddressUnloadable(true, result.message));
       }

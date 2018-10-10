@@ -4,7 +4,7 @@ import AddressForm from "../../form/AddressForm";
 import StatusAlert from "../../common/alert/StatusAlert";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { getAddress, updateAddress } from "../../../actions/addressActions";
+import { getAddress } from "../../../actions/addressActions";
 import { translate } from "react-i18next";
 
 class AddressContainer extends Component {
@@ -15,14 +15,13 @@ class AddressContainer extends Component {
   }
 
   render() {
-    const { actions, status, t } = this.props;
-    const { isPending, isLoading } = status;
+    const { status, t } = this.props;
 
     return (
       <div>
         <h2>{t("title.profile-address")}</h2>
         <StatusAlert status={status} code="profile-address" />
-        <AddressForm isLoading={isLoading} isPending={isPending} onSubmit={actions.updateAddress} />
+        <AddressForm />
       </div>
     );
   }
@@ -38,7 +37,6 @@ function mapStateToProps(state) {
       error: state.addressReducer.error,
       isError: state.addressReducer.isAddressError,
       isLoading: state.addressReducer.isAddressLoading,
-      isPending: state.addressReducer.isAddressPending,
       isSuccess: state.addressReducer.isAddressSuccess,
       success: state.addressReducer.success
     }
@@ -47,7 +45,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators({ getAddress, updateAddress }, dispatch)
+    actions: bindActionCreators({ getAddress }, dispatch)
   };
 }
 

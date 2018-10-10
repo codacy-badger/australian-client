@@ -5,19 +5,19 @@ import Reset from "../common/button/Reset";
 import Submit from "../common/button/Submit";
 import isFloat from "validator/lib/isFloat";
 import { Col, Form, Row } from "reactstrap";
-import {change, Field, reduxForm, touch} from "redux-form";
+import { change, Field, reduxForm, touch } from "redux-form";
 import { Map as LeafletMap, Marker, Popup, TileLayer } from "react-leaflet";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faCity, faGlobe, faGlobeAfrica } from '@fortawesome/free-solid-svg-icons';
+import { faCity, faGlobe, faGlobeAfrica } from "@fortawesome/free-solid-svg-icons";
 import { updateAddress } from "../../actions/addressActions";
 
 library.add(faCity, faGlobe, faGlobeAfrica);
 
 export const validate = (values) => {
   const errors = {};
-  const {latitude, longitude} = values;
+  const { latitude, longitude } = values;
   const options = {
     min: "-90",
     max: "90"
@@ -30,7 +30,7 @@ export const validate = (values) => {
   if (longitude && !isFloat(longitude.toString(), options)) {
     errors.longitude = "longitude must be a Float between -90 and +90";
   }
-  
+
   return errors;
 };
 
@@ -78,9 +78,10 @@ class AddressForm extends Component {
     this.props.actions.change("profile-address", "latitude", lat);
     this.props.actions.change("profile-address", "longitude", lng);
     //This is to activate error message.
-    this.props.actions.touch("profile-address","latitude");
-    this.props.actions.touch("profile-address","longitude");
+    this.props.actions.touch("profile-address", "latitude");
+    this.props.actions.touch("profile-address", "longitude");
     this.setState({
+      center: { lat, lng },
       marker: { lat, lng }
     });
   };
@@ -88,8 +89,8 @@ class AddressForm extends Component {
   render() {
     const position = [this.state.center.lat, this.state.center.lng];
     const markerPosition = [this.state.marker.lat, this.state.marker.lng];
-    const { handleSubmit, isPending, isLoading, pristine, reset, submitting } = this.props;
-    const isSpinning = isPending || isLoading;
+    const { actions, handleSubmit, isLoading, pristine, reset, submitting } = this.props;
+    const isSpinning = submitting || isLoading;
 
     const fieldProps = {
       disabled: isSpinning,
@@ -97,7 +98,7 @@ class AddressForm extends Component {
     };
 
     return (
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit(actions.updateAddress)}>
         <Row>
           <Col sm={6}>
             <Field
@@ -112,8 +113,13 @@ class AddressForm extends Component {
             <Field type="text" name="city" {...fieldProps} component={FormTextGroup} icon="city" />
             <Field type="text" name="country" {...fieldProps} component={FormTextGroup} icon="globe-africa" />
             <div className="text-right">
-              <Reset onClick={reset} disabled={pristine || submitting}/>
-              <Submit isPending={isPending} name="profile" onClick={handleSubmit} />
+              <Reset onClick={reset} disabled={pristine || submitting} />
+              <Submit
+                disabled={pristine || isLoading}
+                isPending={submitting}
+                name="profile"
+                onClick={handleSubmit(actions.updateAddress)}
+              />
             </div>
           </Col>
           <Col sm={6}>
@@ -145,13 +151,13 @@ class AddressForm extends Component {
 // The propTypes.
 AddressForm.propTypes = {
   isLoading: PropTypes.bool.isRequired,
-  isPending: PropTypes.bool.isRequired,
   onSubmit: PropTypes.func.isRequired
 };
 
 // Redux connect begin here
 function mapStateToProps(state) {
   return {
+    isLoading: state.addressReducer.isAddressLoading,
     initialValues: state.addressReducer.address
   };
 }
@@ -167,8 +173,9 @@ export default connect(
   mapDispatchToProps
 )(
   reduxForm({
+    // When activated, submitting is always false.
+    // enableReinitialize: true,
     form: "profile-address",
-    enableReinitialize: true,
     validate
   })(AddressForm)
 );
