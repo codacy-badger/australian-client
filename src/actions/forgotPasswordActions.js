@@ -25,20 +25,20 @@ function setForgotPasswordError(isForgotPasswordError, error = {}) {
   };
 }
 
-export function sendMail(data) {
-  return (dispatch) => {
+export function sendMail(data, dispatch) {
+  return () => {
     dispatch(setForgotPasswordPending(true));
     dispatch(setForgotPasswordSuccess(false));
     dispatch(setForgotPasswordError(false));
 
     const { email } = data;
 
-    forgotPasswordActionApi.callForgotPasswordApi(email, (result) => {
+    return forgotPasswordActionApi.callForgotPasswordApi(email, (result) => {
       dispatch(setForgotPasswordPending(false));
       if (result.nextStep) {
         dispatch(setForgotPasswordSuccess(true, result.nextStep));
       } else {
-        dispatch(setForgotPasswordError(true, result.error));
+        dispatch(setForgotPasswordError(true, result));
       }
     });
   };

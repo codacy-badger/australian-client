@@ -206,7 +206,7 @@
     "activation": {
       "10": "Your account is activated, you can now login."
     },
-    "forgot-your-password-nextStep": {
+    "forgot-your-password": {
       "10": "A mail to update your password have been sent. Please, check your mailbox.",
       "20": "A temporary password has been sent by mail. Please, check your mailbox.",
       "30": "Administrators have been informed, they will contact you by mail as soon as possible."

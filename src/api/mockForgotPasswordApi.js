@@ -1,4 +1,4 @@
-import delay from "./mockDelay";
+import delay, { sleep } from "./mockDelay";
 //import * as codes from './errorCode';
 
 // This file mocks a web API by working with the hard-coded data below.
@@ -12,23 +12,20 @@ const successfulResponse = {
 };
 
 const erroredResponse = {
-  error: {
-    code: 60,
-    message: "Any account is registered with this email."
-  }
+  code: 60,
+  message: "Any account is registered with this email."
 };
 
 class ForgotPasswordApi {
   static callForgotPasswordApi(email, callback) {
-    return new Promise(() => {
-      setTimeout(() => {
+    return sleep(delay)
+      .then(() => {
         if ("42@example.org" === email) {
           return callback(successfulResponse);
         } else {
           return callback(erroredResponse);
         }
-      }, delay);
-    });
+      });
   }
 }
 
