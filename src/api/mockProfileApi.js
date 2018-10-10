@@ -1,9 +1,9 @@
-import delay from "./mockDelay";
+import delay, { sleep } from "./mockDelay";
 import AppStorage from "../tools/AppStorage";
 //import * as codes from './errorCode';
 
 // This file mocks a web API by working with the hard-coded data below.
-// It uses setTimeout to simulate the delay of an AJAX call.
+// It uses sleep to simulate the delay of an AJAX call.
 // All calls return promises
 const getProfileSuccess = {
   user: {
@@ -53,12 +53,10 @@ class ProfileApi {
   }
 
   static isUsernameUnique(data) {
-    const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
     return sleep(delay) // simulate server latency
       .then(() => {
         if (["John", "paul", "george", "ringo"].includes(data.name)) {
-          //FIX ME Try to throw Submission Error.
+          //FIXME Try to throw Submission Error.
           throw { name: "That username is taken" };
         }
       });

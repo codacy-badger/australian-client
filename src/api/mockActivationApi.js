@@ -1,9 +1,9 @@
-import delay from "./mockDelay";
+import delay, { sleep } from "./mockDelay";
 import { SubmissionError } from "redux-form";
 //import * as codes from './errorCode';
 
 // This file mocks a web API by working with the hard-coded data below.
-// It uses setTimeout to simulate the delay of an AJAX call.
+// It uses sleep to simulate the delay of an AJAX call.
 // All calls return promises.
 const successfulResponse = {
   nextStep: {
@@ -20,9 +20,6 @@ const erroredResponse = {
 
 class ActivationApi {
   static callActivationApi(activationCode, callback) {
-    //TODO move sleep function into delay.js ;)
-    const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
     return sleep(delay) // simulate server latency
       .then(() => {
         if ("42" === activationCode) {
