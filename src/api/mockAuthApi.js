@@ -1,4 +1,5 @@
-import delay from "./mockDelay";
+import delay, { sleep } from "./mockDelay";
+import { SubmissionError } from "redux-form";
 //import * as codes from './errorCode';
 
 // This file mocks a web API by working with the hard-coded data below.
@@ -11,36 +12,35 @@ const auth = {
 
 const error = {
   code: 10,
-  message: "toto"
+  message: "toto",
+  email: "email is not a valid email"
 };
 
 class AuthApi {
   static callLoginApi(email, password, remember = false, callback) {
-    return new Promise(() => {
-      setTimeout(() => {
-        if (email && password === "42") {
-          if (remember) {
-            localStorage.setItem("username", auth.username);
-            localStorage.setItem("accessToken", auth.token);
-          } else {
-            sessionStorage.setItem("username", auth.username);
-            sessionStorage.setItem("accessToken", auth.token);
-          }
-          return callback(auth);
+    return sleep(delay).then(() => {
+      if (email && password === "42") {
+        if (remember) {
+          localStorage.setItem("username", auth.username);
+          localStorage.setItem("accessToken", auth.token);
         } else {
-          return callback(error);
+          sessionStorage.setItem("username", auth.username);
+          sessionStorage.setItem("accessToken", auth.token);
         }
-      }, delay);
+        return callback(auth);
+      } else {
+        callback(error);
+        //FIXME add this line in other mock api like forgotPassword
+        throw new SubmissionError(error);
+      }
     });
   }
 
   static callLogoutApi(callback) {
-    return new Promise(() => {
-      setTimeout(() => {
-        localStorage.clear();
-        sessionStorage.clear();
-        return callback({});
-      }, delay);
+    return sleep(delay).then(() => {
+      localStorage.clear();
+      sessionStorage.clear();
+      return callback({});
     });
   }
 }

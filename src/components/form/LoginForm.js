@@ -29,17 +29,12 @@ export const validate = (values) => {
 };
 
 const LoginForm = (props) => {
-  const { handleSubmit, submitting, isPending, t } = props;
-
-  const fieldProps = {
-    disabled: isPending || submitting,
-    isLoading: isPending || submitting
-  };
+  const { handleSubmit, submitting, t } = props;
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Field name="email" component={FormEmailGroup} {...fieldProps} required />
-      <Field name="password" component={FormPasswordGroup} {...fieldProps} required>
+      <Field name="email" component={FormEmailGroup} disabled={submitting} isLoading={submitting} required />
+      <Field name="password" component={FormPasswordGroup} disabled={submitting} isLoading={submitting} required>
         <FormText color="muted">
           <FontAwesomeIcon fixedWidth icon="info-circle" className="mr-1 text-info" />
           <Link to="/forgot-your-password" title={t("link.forgot-your-password-title")}>
@@ -47,18 +42,13 @@ const LoginForm = (props) => {
           </Link>
         </FormText>
       </Field>
-      <Field name="remember" component={FormCheckBoxGroup} {...fieldProps} />
+      <Field name="remember" component={FormCheckBoxGroup} disabled={submitting} />
     </Form>
   );
 };
 
 // The propTypes.
-LoginForm.defaultProps = {
-  isPending: false
-};
-
 LoginForm.propTypes = {
-  isPending: PropTypes.bool,
   t: PropTypes.func.isRequired
 };
 
