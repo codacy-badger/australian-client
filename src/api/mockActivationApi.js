@@ -1,4 +1,5 @@
 import delay from "./mockDelay";
+import { SubmissionError } from "redux-form";
 //import * as codes from './errorCode';
 
 // This file mocks a web API by working with the hard-coded data below.
@@ -12,23 +13,25 @@ const successfulResponse = {
 };
 
 const erroredResponse = {
-  error: {
-    code: 70,
-    message: "Activation code is not valid"
-  }
+  activation: "activation is non-valid",
+  code: "activation-failed",
+  message: "Activation failed."
 };
 
 class ActivationApi {
   static callActivationApi(activationCode, callback) {
-    return new Promise(() => {
-      setTimeout(() => {
+    //TODO move sleep function into delay.js ;)
+    const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+    return sleep(delay) // simulate server latency
+      .then(() => {
         if ("42" === activationCode) {
           return callback(successfulResponse);
         } else {
-          return callback(erroredResponse);
+          callback(erroredResponse);
+          throw new SubmissionError(erroredResponse);
         }
-      }, delay);
-    });
+      });
   }
 }
 

@@ -25,20 +25,20 @@ function setActivationError(isActivationError, error = {}) {
   };
 }
 
-export function activate(data) {
-  return (dispatch) => {
+export function activate(data, dispatch) {
+  return () => {
     dispatch(setActivationPending(true));
     dispatch(setActivationSuccess(false));
     dispatch(setActivationError(false));
 
     const { activation } = data;
 
-    activationActionApi.callActivationApi(activation, (result) => {
+    return activationActionApi.callActivationApi(activation, (result) => {
       dispatch(setActivationPending(false));
       if (result.nextStep) {
         dispatch(setActivationSuccess(true, result.nextStep));
       } else {
-        dispatch(setActivationError(true, result.error));
+        dispatch(setActivationError(true, result));
       }
     });
   };

@@ -11,7 +11,8 @@
     "30": "L’adresse entrée appartient à un fournisseur banni parce que trop de robots s'inscrivaient.",
     "40": "Le mot de passe choisi n’est pas suffisamment fort. Pour le complexifier, ajoutez des caractères, des nombres et symboles.",
     "50": "L’adresse email fournie n’est pas valide.",
-    "60": "Il n’existe pas de compte avec cette adresse email. N’hésitez pas à vous inscrire !"
+    "60": "Il n’existe pas de compte avec cette adresse email. N’hésitez pas à vous inscrire !",
+    "activation-failed": "L’activation a échoué !"
   },
   "form": {
     "activation": {
@@ -198,6 +199,9 @@
   },
   "message": {
     "404-explanation": "La page que vous demandez n’existe pas, ou n’existe plus.",
+    "activation": {
+      "10": "Votre compte a bien été activé, vous pouvez désormais vous connecter."
+    },
     "forgot-your-password-nextStep": {
       "10": "Un mail pour modifier votre mot de passe vient de vous être envoyé.",
       "20": "Un mot de passe temporaire vient de vous être envoyé.",

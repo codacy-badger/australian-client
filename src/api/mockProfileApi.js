@@ -58,6 +58,7 @@ class ProfileApi {
     return sleep(delay) // simulate server latency
       .then(() => {
         if (["John", "paul", "george", "ringo"].includes(data.name)) {
+          //FIX ME Try to throw Submission Error.
           throw { name: "That username is taken" };
         }
       });

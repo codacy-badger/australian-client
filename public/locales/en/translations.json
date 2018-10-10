@@ -11,7 +11,8 @@
     "30": "The mail provider was ban because to many robots are doning automatic registers.",
     "40": "Your password isn't enough strong. Add some alpha, numeric and special chars.",
     "50": "The sent mail address is not valid.",
-    "60": "Any account exists with this mail. Please, register!"
+    "60": "Any account exists with this mail. Please, register!",
+    "activation-failed": "Activation failed!"
   },
   "form": {
     "activation": {
@@ -198,6 +199,9 @@
   },
   "message": {
     "404-explanation": "The requested page doesn't more exists.",
+    "activation": {
+      "10": "Your account is activated, you can now login."
+    },
     "forgot-your-password-nextStep": {
       "10": "A mail to update your password have been sent. Please, check your mailbox.",
       "20": "A temporary password has been sent by mail. Please, check your mailbox.",
