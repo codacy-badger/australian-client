@@ -35,12 +35,13 @@ function setAddressPending(isAddressPending) {
   };
 }
 
-function setAddressMessagePrinted(sendMessage) {
-  return {
-    type: types.SET_ADDRESS_MESSAGE_PRINTED,
-    sendMessage
-  };
-}
+// Not used!
+// function setAddressMessagePrinted(sendMessage) {
+//   return {
+//     type: types.SET_ADDRESS_MESSAGE_PRINTED,
+//     sendMessage
+//   };
+// }
 
 function setAddressSuccess(
   isAddressSuccess,
