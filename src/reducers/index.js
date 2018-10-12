@@ -1,8 +1,9 @@
 import { combineReducers } from "redux";
-import activationReducer from "./activationReducer";
+import accountActivationReducer from "./accountActivationReducer";
 import addressReducer from "./addressReducer";
 import authReducer from "./authReducer";
 import deleteAccountReducer from "./deleteAccountReducer";
+import emailActivationReducer from "./emailActivationReducer";
 import emailReducer from "./emailReducer";
 import forgotPasswordReducer from "./forgotPasswordReducer";
 import passwordReducer from "./passwordReducer";
@@ -12,11 +13,12 @@ import { reducer as formReducer } from "redux-form";
 import { reducer as toastrReducer } from "react-redux-toastr";
 
 const rootReducer = combineReducers({
-  activationReducer,
+  accountActivationReducer,
   addressReducer,
   authReducer,
   deleteAccountReducer,
   emailReducer,
+  emailActivationReducer,
   forgotPasswordReducer,
   passwordReducer,
   profileReducer,

@@ -8,6 +8,8 @@
   "email already exists": "An account already exists with this email.",
   "email is not a valid email": "Please enter a valid email.",
   "email is required": "Your email is required.",
+  "email-activation is non-valid": "This email activation code isn't valid",
+  "email-activation is required": "Please enter email activation code provided in our email",
   "name is required": "Your username is required.",
   "new-email is not a valid email": "Please enter a valid email.",
   "new-email is required": "Your new email is required.",

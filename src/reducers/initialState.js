@@ -1,7 +1,7 @@
 import AppStorage from "../tools/AppStorage";
 
 export default {
-  activation: {
+  accountActivation: {
     error: {},
     isActivationPending: false,
     isActivationSuccess: false,
@@ -34,6 +34,13 @@ export default {
     isEmailPending: false,
     isEmailSuccess: false,
     success: {}
+  },
+  emailActivation: {
+    error: {},
+    isActivationPending: false,
+    isActivationSuccess: false,
+    isActivationError: false,
+    nextStep: {}
   },
   forgotPassword: {
     error: {},

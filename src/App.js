@@ -18,6 +18,7 @@ import { translate } from "react-i18next";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "react-redux-toastr/lib/css/react-redux-toastr.min.css";
+import EmailActivationPage from "./components/page/EmailActivationPage";
 
 class App extends Component {
   componentDidUpdate() {
@@ -38,12 +39,14 @@ class App extends Component {
       <div className="App">
         <Switch>
           <Route exact path="/" component={HomePage} />
-          <Route exact path="/activate" component={AccountActivationPage} />
-          <Route exact path="/activate/:activationCode" component={AccountActivationPage} />
+          <Route exact path="/activate/account" component={AccountActivationPage} />
+          <Route exact path="/activate/account/:activationCode" component={AccountActivationPage} />
+          <Route exact path="/activate/email" component={EmailActivationPage} />
+          <Route exact path="/activate/email/:activationCode" component={EmailActivationPage} />
           <Route exact path="/forgot-your-password" component={ForgotPasswordPage} />
+          <Route exact path="/tos" component={CguPage} />
           <NonAuthenticatedRoute exact path="/register" component={RegisterPage} />
           <NonAuthenticatedRoute exact path="/login" component={LoginPage} />
-          <Route exact path="/tos" component={CguPage} />
           <AuthenticatedRoute exact path="/profile/*" component={ProfilePage} />
           <Route path="*" component={Error404Page} />
         </Switch>

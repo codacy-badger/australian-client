@@ -7,34 +7,34 @@ import isEmpty from "validator/lib/isEmpty";
 import { Field, reduxForm } from "redux-form";
 import { Card, CardBody, CardFooter, CardHeader, Form } from "reactstrap";
 import { Link } from "react-router-dom";
-import { accountActivate } from "../../actions/activationActions";
+import { emailActivate } from "../../actions/activationActions";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { faCheckDouble } from "@fortawesome/free-solid-svg-icons";
+import { faAt } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { translate } from "react-i18next";
 
-library.add(faCheckDouble);
+library.add(faAt);
 
 export const validate = (values) => {
   const errors = {};
 
   if (!values.activation || isEmpty(values.activation)) {
-    errors.activation = "account-activation is required";
+    errors.activation = "email-activation is required";
   }
 
   return errors;
 };
 
-const AccountActivationForm = (props) => {
+const EmailActivationForm = (props) => {
   const { actions, handleSubmit, status, submitting, t } = props;
 
   return (
-    <Form onSubmit={handleSubmit(actions.accountActivate)}>
+    <Form onSubmit={handleSubmit(actions.emailActivate)}>
       <Card>
-        <CardHeader>{t("title.account-activation")}</CardHeader>
+        <CardHeader>{t("title.email-activation")}</CardHeader>
         <CardBody>
-          <StatusAlert code="account-activation" status={status} />
+          <StatusAlert code="email-activation" status={status} />
           <Field
             type="text"
             component={FormTextGroup}
@@ -46,11 +46,11 @@ const AccountActivationForm = (props) => {
         </CardBody>
         <CardFooter className="text-right">
           <Submit
-            icon="check-double"
+            icon="at"
             disabled={submitting}
             isPending={submitting}
-            name="account-activation"
-            onClick={handleSubmit(actions.accountActivate)}
+            name="email-activation"
+            onClick={handleSubmit(actions.emailActivate)}
           />
           <Link to="/" title={t("link.home-page-title")} className="ml-2 btn btn-secondary">
             {t("link.home-page")}
@@ -61,7 +61,7 @@ const AccountActivationForm = (props) => {
   );
 };
 
-AccountActivationForm.propTypes = {
+EmailActivationForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   status: PropTypes.shape({
     error: PropTypes.object.isRequired,
@@ -77,17 +77,17 @@ AccountActivationForm.propTypes = {
 function mapStateToProps(state) {
   return {
     status: {
-      error: state.accountActivationReducer.error,
-      isError: state.accountActivationReducer.isActivationError,
-      isSuccess: state.accountActivationReducer.isActivationSuccess,
-      success: state.accountActivationReducer.nextStep
+      error: state.emailActivationReducer.error,
+      isError: state.emailActivationReducer.isActivationError,
+      isSuccess: state.emailActivationReducer.isActivationSuccess,
+      success: state.emailActivationReducer.nextStep
     }
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators({ accountActivate: accountActivate }, dispatch)
+    actions: bindActionCreators({ emailActivate: emailActivate }, dispatch)
   };
 }
 
@@ -97,8 +97,8 @@ export default connect(
 )(
   // Redux form begin here
   reduxForm({
-    form: "account-activation",
+    form: "email-activation",
     validate
-  })(translate(["translations", "validators"])(AccountActivationForm))
+  })(translate(["translations", "validators"])(EmailActivationForm))
 );
 //Be careful, do not remove validators, because if it is not preloaded, form is destroy and rebuild.

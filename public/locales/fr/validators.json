@@ -8,6 +8,8 @@
   "email already exists": "Un compte a déjà été créé avec cette adresse email.",
   "email is not a valid email": "Veuillez entrer une adresse email valide.",
   "email is required": "Veuillez renseigner votre adresse email.",
+  "email-activation is non-valid": "Code invalide : ce code ne permet pas d’activer d’email.",
+  "email-activation is required": "Veuillez entre le code d’activation de votre email.",
   "name is required": "Veuillez renseigner votre pseudonyme.",
   "new-email is not a valid email": "Veuillez entrer une adresse email valide.",
   "new-email is required": "Veuillez renseigner votre nouvelle adresse email.",
