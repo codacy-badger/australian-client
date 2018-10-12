@@ -1,4 +1,4 @@
-import { validate } from "./ActivationForm";
+import { validate } from "./AccountActivationForm";
 
 describe("Activation validator", () => {
   it("return errors when values is undefined", () => {

@@ -26,7 +26,7 @@ export const validate = (values) => {
   return errors;
 };
 
-const ActivationForm = (props) => {
+const AccountActivationForm = (props) => {
   const { actions, handleSubmit, status, submitting, t } = props;
 
   return (
@@ -61,7 +61,7 @@ const ActivationForm = (props) => {
   );
 };
 
-ActivationForm.propTypes = {
+AccountActivationForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   status: PropTypes.shape({
     error: PropTypes.object.isRequired,
@@ -99,6 +99,6 @@ export default connect(
   reduxForm({
     form: "activation",
     validate
-  })(translate(["translations", "validators"])(ActivationForm))
+  })(translate(["translations", "validators"])(AccountActivationForm))
 );
 //Be careful, do not remove validators, because if it is not preloaded, form is destroy and rebuild.

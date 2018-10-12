@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import ActivationPage from "./components/page/ActivationPage";
+import AccountActivationPage from "./components/page/AccountActivationPage";
 import CguPage from "./components/page/TosPage";
 import Error404Page from "./components/page/Error404Page";
 import ForgotPasswordPage from "./components/page/ForgotPasswordPage";
@@ -38,8 +38,8 @@ class App extends Component {
       <div className="App">
         <Switch>
           <Route exact path="/" component={HomePage} />
-          <Route exact path="/activate" component={ActivationPage} />
-          <Route exact path="/activate/:activationCode" component={ActivationPage} />
+          <Route exact path="/activate" component={AccountActivationPage} />
+          <Route exact path="/activate/:activationCode" component={AccountActivationPage} />
           <Route exact path="/forgot-your-password" component={ForgotPasswordPage} />
           <NonAuthenticatedRoute exact path="/register" component={RegisterPage} />
           <NonAuthenticatedRoute exact path="/login" component={LoginPage} />

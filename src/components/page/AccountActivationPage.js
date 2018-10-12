@@ -1,10 +1,10 @@
 import React from "react";
-import ActivationForm from "../form/ActivationForm";
+import ActivationForm from "../form/AccountActivationForm";
 import Header from "../common/Header";
 import Meta from "../common/Meta";
 import { Container } from "reactstrap";
 
-const ActivationPage = (props) => {
+const AccountActivationPage = (props) => {
   const values = {
     activation: props.match.params.activationCode
   };
@@ -20,4 +20,4 @@ const ActivationPage = (props) => {
   );
 };
 
-export default ActivationPage;
+export default AccountActivationPage;
