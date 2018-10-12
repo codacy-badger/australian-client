@@ -56,6 +56,9 @@ class ProfileApi {
       .then(() => {
         if (["John", "paul", "george", "ringo"].includes(data.name)) {
           throw { name: "username is already taken" };
+          //The codes below do not work
+          //throw new SubmissionError({ name: "username is already taken" });
+          //throw new Error({ name: "username is already taken" });
         }
       });
     // return new Promise(() => {
