@@ -5,7 +5,7 @@ import Reset from "../common/button/Reset";
 import Submit from "../common/button/Submit";
 import isFloat from "validator/lib/isFloat";
 import { Col, Form, Row } from "reactstrap";
-import { change, Field, reduxForm, touch } from "redux-form";
+import { change, Field, reduxForm, propTypes, touch } from "redux-form";
 import { Map as LeafletMap, Marker, Popup, TileLayer } from "react-leaflet";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
@@ -15,6 +15,7 @@ import { updateAddress } from "../../actions/addressActions";
 
 library.add(faCity, faGlobe, faGlobeAfrica);
 
+//TODO Test this function.
 export const validate = (values) => {
   const errors = {};
   const { latitude, longitude } = values;
@@ -150,8 +151,9 @@ class AddressForm extends Component {
 
 // The propTypes.
 AddressForm.propTypes = {
+  actions: PropTypes.object.isRequired,
   isLoading: PropTypes.bool.isRequired,
-  onSubmit: PropTypes.func.isRequired
+  ...propTypes
 };
 
 // Redux connect begin here

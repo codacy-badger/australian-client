@@ -4,7 +4,7 @@ import FormTextGroup from "../formgroup/abstract/FormTextGroup";
 import StatusAlert from "../common/alert/StatusAlert";
 import Submit from "../common/button/Submit";
 import isEmpty from "validator/lib/isEmpty";
-import { Field, reduxForm } from "redux-form";
+import { Field, reduxForm, propTypes } from "redux-form";
 import { Card, CardBody, CardFooter, CardHeader, Form } from "reactstrap";
 import { Link } from "react-router-dom";
 import { emailActivate } from "../../actions/activationActions";
@@ -62,15 +62,15 @@ const EmailActivationForm = (props) => {
 };
 
 EmailActivationForm.propTypes = {
-  handleSubmit: PropTypes.func.isRequired,
+  actions: PropTypes.object.isRequired,
   status: PropTypes.shape({
     error: PropTypes.object.isRequired,
     isError: PropTypes.bool.isRequired,
     isSuccess: PropTypes.bool.isRequired,
     success: PropTypes.object.isRequired
   }).isRequired,
-  submitting: PropTypes.bool.isRequired,
-  t: PropTypes.func.isRequired
+  t: PropTypes.func.isRequired,
+  ...propTypes
 };
 
 // Redux connect

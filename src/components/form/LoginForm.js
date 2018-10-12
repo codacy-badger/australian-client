@@ -8,7 +8,7 @@ import isEmpty from "validator/lib/isEmpty";
 import { Form, FormText } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
-import { Field, reduxForm } from "redux-form";
+import { Field, reduxForm, propTypes } from "redux-form";
 import { translate } from "react-i18next";
 
 export const validate = (values) => {
@@ -49,7 +49,8 @@ const LoginForm = (props) => {
 
 // The propTypes.
 LoginForm.propTypes = {
-  t: PropTypes.func.isRequired
+  t: PropTypes.func.isRequired,
+  ...propTypes
 };
 
 export default reduxForm({

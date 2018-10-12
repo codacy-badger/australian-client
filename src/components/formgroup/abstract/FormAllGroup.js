@@ -5,6 +5,7 @@ import HelpBlockErrors from "../../common/help/HelpBlockErrors";
 import InputGroupIcon from "../../common/input/InputGroupIcon";
 import { Col, FormGroup, Input, InputGroup, Label } from "reactstrap";
 import { faAlignJustify } from "@fortawesome/free-solid-svg-icons";
+import { fieldInputPropTypes, fieldMetaPropTypes } from "redux-form";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { translate } from "react-i18next";
 
@@ -19,7 +20,7 @@ const FormAllGroup = (props) => {
     isLoading,
     meta: { asyncValidating, error, form, submitting, touched },
     type,
-    t,
+    t
   } = props;
 
   const label = t("form." + form + "." + input.name + ".label");
@@ -56,10 +57,10 @@ FormAllGroup.defaultProps = {
 FormAllGroup.propTypes = {
   children: PropTypes.any,
   disabled: PropTypes.bool,
-  input: PropTypes.object.isRequired, //redux-form
-  icon: PropTypes.string, //The XXXFormGroup
   helpBlock: PropTypes.bool,
-  meta: PropTypes.object.isRequired, //redux-form
+  icon: PropTypes.string, //The XXXFormGroup
+  input: PropTypes.shape(fieldInputPropTypes).isRequired, //redux-form
+  meta: PropTypes.shape(fieldMetaPropTypes).isRequired, //redux-form
   t: PropTypes.func.isRequired, //translate
   type: PropTypes.oneOf(["text", "password", "email", "confirmation"]) //The XXXFormGroup
 };

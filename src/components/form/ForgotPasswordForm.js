@@ -5,12 +5,12 @@ import StatusAlert from "../common/alert/StatusAlert";
 import Submit from "../common/button/Submit";
 import isEmail from "validator/lib/isEmail";
 import isEmpty from "validator/lib/isEmpty";
-import { Field, reduxForm } from "redux-form";
+import { Field, reduxForm, propTypes } from "redux-form";
 import { Card, CardBody, CardFooter, CardHeader, Form } from "reactstrap";
 import { Link } from "react-router-dom";
-import {bindActionCreators} from "redux";
-import {connect} from "react-redux";
-import {sendMail} from "../../actions/forgotPasswordActions";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import { sendMail } from "../../actions/forgotPasswordActions";
 import { translate } from "react-i18next";
 
 export const validate = (values) => {
@@ -40,7 +40,12 @@ const ForgotPasswordForm = (props) => {
           <Field component={FormEmailGroup} disabled={submitting} isLoading={submitting} name="email" required />
         </CardBody>
         <CardFooter className="text-right">
-          <Submit disabled={submitting || pristine} isPending={submitting} name="forgot-password" onClick={handleSubmit(actions.sendMail)} />
+          <Submit
+            disabled={submitting || pristine}
+            isPending={submitting}
+            name="forgot-password"
+            onClick={handleSubmit(actions.sendMail)}
+          />
           <Link to="/" title={t("link.home-page-title")} className="ml-2 btn btn-secondary">
             {t("link.home-page")}
           </Link>
@@ -51,17 +56,15 @@ const ForgotPasswordForm = (props) => {
 };
 
 ForgotPasswordForm.propTypes = {
-  handleSubmit: PropTypes.func.isRequired,
-  pristine: PropTypes.bool.isRequired,
-  reset: PropTypes.func.isRequired,
+  actions: PropTypes.object.isRequired,
   status: PropTypes.shape({
     error: PropTypes.object.isRequired,
     isError: PropTypes.bool.isRequired,
     isSuccess: PropTypes.bool.isRequired,
     success: PropTypes.object.isRequired
   }).isRequired,
-  submitting: PropTypes.bool.isRequired,
-  t: PropTypes.func.isRequired
+  t: PropTypes.func.isRequired,
+  ...propTypes
 };
 
 function mapDispatchToProps(dispatch) {
@@ -71,8 +74,13 @@ function mapDispatchToProps(dispatch) {
 }
 
 // Redux form begin here
-export default connect(null, mapDispatchToProps)(reduxForm({
-  form: "forgot-password",
-  validate
-})(translate(["translations", "validators"])(ForgotPasswordForm)));
+export default connect(
+  null,
+  mapDispatchToProps
+)(
+  reduxForm({
+    form: "forgot-password",
+    validate
+  })(translate(["translations", "validators"])(ForgotPasswordForm))
+);
 //Be careful, do not remove validators, because if it is not preloaded, form is destroy and rebuild.

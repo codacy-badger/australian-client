@@ -1,9 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Button, Col, FormGroup, Input, Label } from "reactstrap";
-import { translate } from "react-i18next";
 import HelpBlock from "../../common/help/HelpBlock";
 import HelpBlockErrors from "../../common/help/HelpBlockErrors";
+import { Button, Col, FormGroup, Input, Label } from "reactstrap";
+import { fieldInputPropTypes, fieldMetaPropTypes } from "redux-form";
+import { translate } from "react-i18next";
 
 const FormCheckBoxGroup = (props) => {
   const getLabel = () => {
@@ -66,8 +67,8 @@ FormCheckBoxGroup.defaultProps = {
 FormCheckBoxGroup.propTypes = {
   children: PropTypes.any,
   disabled: PropTypes.bool,
-  input: PropTypes.object.isRequired, //redux-form
-  meta: PropTypes.object.isRequired, //redux-form
+  input: PropTypes.shape(fieldInputPropTypes).isRequired, //redux-form
+  meta: PropTypes.shape(fieldMetaPropTypes).isRequired, //redux-form
   onClick: PropTypes.func,
   required: PropTypes.bool,
   t: PropTypes.func.isRequired

@@ -5,7 +5,7 @@ import Reset from "../common/button/Reset";
 import Submit from "../common/button/Submit";
 import FormTextGroup from "../formgroup/abstract/FormTextGroup";
 import { Form } from "reactstrap";
-import { Field, reduxForm } from "redux-form";
+import { Field, reduxForm, propTypes } from "redux-form";
 import { faUser, faUserMd } from "@fortawesome/free-solid-svg-icons";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
@@ -69,12 +69,10 @@ class ProfileForm extends React.Component {
 
 // The propTypes.
 ProfileForm.propTypes = {
-  handleSubmit: PropTypes.func.isRequired,
-  reset: PropTypes.func.isRequired,
-  pristine: PropTypes.bool.isRequired,
-  initialValues: PropTypes.object.isRequired,
+  actions: PropTypes.object.isRequired,
   isLoading: PropTypes.bool.isRequired,
-  t: PropTypes.func.isRequired
+  t: PropTypes.func.isRequired,
+  ...propTypes
 };
 
 // Redux connect begin here

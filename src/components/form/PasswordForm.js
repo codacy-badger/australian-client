@@ -4,7 +4,7 @@ import FormPasswordGroup from "../formgroup/abstract/FormPasswordGroup";
 import Reset from "../common/button/Reset";
 import Submit from "../common/button/Submit";
 import isEmpty from "validator/lib/isEmpty";
-import { Field, reduxForm } from "redux-form";
+import { Field, reduxForm, propTypes } from "redux-form";
 import { Form } from "reactstrap";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
@@ -54,11 +54,9 @@ const PasswordForm = (props) => {
 
 //PropTypes
 PasswordForm.propTypes = {
-  handleSubmit: PropTypes.func.isRequired,
-  reset: PropTypes.func.isRequired,
-  pristine: PropTypes.bool.isRequired,
-  submitting: PropTypes.bool.isRequired,
-  t: PropTypes.func.isRequired
+  actions: PropTypes.object.isRequired,
+  t: PropTypes.func.isRequired,
+  ...propTypes
 };
 
 function mapDispatchToProps(dispatch) {

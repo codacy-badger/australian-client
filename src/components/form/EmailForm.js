@@ -5,7 +5,7 @@ import Reset from "../common/button/Reset";
 import Submit from "../common/button/Submit";
 import isEmpty from "validator/lib/isEmpty";
 import isEmail from "validator/lib/isEmail";
-import { Field, reduxForm } from "redux-form";
+import { Field, reduxForm, propTypes } from "redux-form";
 import { Form } from "reactstrap";
 import { translate } from "react-i18next";
 import { bindActionCreators } from "redux";
@@ -52,11 +52,9 @@ const EmailForm = (props) => {
 };
 
 EmailForm.propTypes = {
-  handleSubmit: PropTypes.func.isRequired,
-  reset: PropTypes.func.isRequired,
-  pristine: PropTypes.bool.isRequired,
-  submitting: PropTypes.bool.isRequired,
-  t: PropTypes.func.isRequired
+  actions: PropTypes.object.isRequired,
+  t: PropTypes.func.isRequired,
+  ...propTypes
 };
 
 //Redux connect

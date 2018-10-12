@@ -5,7 +5,7 @@ import FormEmailGroup from "../formgroup/abstract/FormEmailGroup";
 import FormPasswordGroup from "../formgroup/abstract/FormPasswordGroup";
 import isEmpty from "validator/lib/isEmpty";
 import isEmail from "validator/lib/isEmail";
-import { Field, reduxForm } from "redux-form";
+import { Field, reduxForm, propTypes } from "redux-form";
 import { Form } from "reactstrap";
 import { translate } from "react-i18next";
 
@@ -62,9 +62,8 @@ const RegisterForm = (props) => {
 };
 
 RegisterForm.propTypes = {
-  handleSubmit: PropTypes.func.isRequired,
   onClickTos: PropTypes.func.isRequired,
-  submitting: PropTypes.bool.isRequired
+  ...propTypes
 };
 
 //Redux-form

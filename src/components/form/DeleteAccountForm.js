@@ -5,7 +5,7 @@ import Reset from "../common/button/Reset";
 import ButtonIcon from "../common/button/Button";
 import isEmpty from "validator/lib/isEmpty";
 import { Button, Form, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
-import { Field, reduxForm } from "redux-form";
+import { Field, reduxForm, propTypes } from "redux-form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -96,11 +96,8 @@ class DeleteAccountForm extends Component {
 }
 
 DeleteAccountForm.propTypes = {
-  handleSubmit: PropTypes.func.isRequired,
-  reset: PropTypes.func.isRequired,
-  pristine: PropTypes.bool.isRequired,
-  submitting: PropTypes.bool.isRequired,
-  t: PropTypes.func.isRequired
+  t: PropTypes.func.isRequired,
+  ...propTypes
 };
 
 export default reduxForm({
