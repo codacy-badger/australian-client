@@ -1,23 +1,23 @@
 import React from "react";
-import EmailActivationForm from "../form/EmailActivationForm";
+import EmailRestorationForm from "../form/EmailRestorationForm";
 import Header from "../common/Header";
 import Meta from "../common/Meta";
 import { Container } from "reactstrap";
 
-const EmailActivationPage = (props) => {
+const EmailRestorationPage = (props) => {
   const values = {
-    activation: props.match.params.activationCode
+    restoration: props.match.params.restorationCode
   };
 
   return (
     <div>
-      <Meta code="email-activation" />
+      <Meta code="email-restoration" />
       <Header />
       <Container className="mt-3 text-justify">
-        <EmailActivationForm initialValues={values} />
+        <EmailRestorationForm initialValues={values} />
       </Container>
     </div>
   );
 };
 
-export default EmailActivationPage;
+export default EmailRestorationPage;

@@ -14,6 +14,7 @@
     "60": "Il n’existe pas de compte avec cette adresse email. N’hésitez pas à vous inscrire !",
     "account-activation-failed": "L’activation de votre compte a échoué !",
     "email-activation-failed": "L’activation de votre nouvel email a échoué !",
+    "restore-email-server-error": "La restauration de votre ancien email a échoué !",
     "delete-account-password-invalid": "Votre compte n’a pas été supprimé en raison d’une erreur de mot de passe.",
     "update-email-server-error": "Votre adresse email n’a pas été modifiée en raison d’un souci de communication avec notre serveur.",
     "profile-password-invalid-password": "Le mot de passe que vous avez entré est incorrect. Votre mot de passe n’a pas été modifié.",
@@ -25,7 +26,7 @@
       "activation": {
         "label": "Code d’activation",
         "placeholder": "",
-        "helpBlock": "Le code d’activation se trouve dans le mail que vous avez reçu."
+        "helpBlock": "Le code d’activation se trouve dans le mail que vous avez reçu à l’adresse déclarée pour vous connecter."
       },
       "submit": "Activer",
       "submitting": "Activation en cours…"
@@ -34,10 +35,19 @@
       "activation": {
         "label": "Code d’activation",
         "placeholder": "",
-        "helpBlock": "Le code d’activation se trouve dans le mail que vous avez reçu."
+        "helpBlock": "Le code d’activation se trouve dans le mail que vous avez reçu sur votre nouvelle messagerie."
       },
       "submit": "Activer",
       "submitting": "Activation en cours…"
+    },
+    "email-restoration": {
+      "restoration": {
+        "label": "Code de restauration",
+        "placeholder": "",
+        "helpBlock": "Le code de restauration se trouve dans le mail que vous avez reçu sur votre ancienne messagerie."
+      },
+      "submit": "Restaurer",
+      "submitting": "Restauration en cours…"
     },
     "forgot-password": {
       "email": {
@@ -200,6 +210,7 @@
       }
     },
     "email-activation" : "Pour activer votre nouvelle adresse email, veuillez entrer le code d’activation qui vous a été envoyé par mail.",
+    "email-restoration" : "Pour restaurer votre ancienne adresse email, veuillez entrer le code de restauration qui vous a été envoyé par mail.",
     "profile-address": "Ce formulaire vous permet de renseigner vos coordonnées. Vous pouvez faire glisser le marqueur et le déplacer pour changer votre position.",
     "profile-email": "Compléter ce formulaire pour changer d’adresse email. Un email avec un code de confirmation sera envoyé à la nouvelle adresse. Un email avec un code de d’annulation sera envoyé à l’ancienne adresse.",
     "forgot-your-password" : "Vous avez perdu votre mot de passe ? Entrez votre adresse email et vous recevrez un mail qui vous guidera étape par étape pour que vous puissiez créer un nouveau mot de passe et vous reconnecter au site.",
@@ -220,6 +231,9 @@
     },
     "email-activation": {
       "10": "Votre nouvelle adresse email a bien été activée, vous pouvez désormais vous connecter."
+    },
+    "email-restoration": {
+      "success": "Votre ancienne adresse email a bien été restaurée, vous pouvez la réutiliser pour vous connecter."
     },
     "forgot-your-password": {
       "10": "Un mail pour modifier votre mot de passe vient de vous être envoyé.",
@@ -260,8 +274,9 @@
   "meta": {
     "description": {
       "404": "Page non trouvée.",
-      "account-activation": "Formulaire d’activation de votre compte.",
-      "email-activation": "Formulaire d’activation de votre nouvelle adresse email.",
+      "account-activation": "Formulaire pour activer de votre compte.",
+      "email-activation": "Formulaire pour activer votre nouvelle adresse email.",
+      "email-restoration": "Formulaire pour restaurer votre anciennce adresse email.",
       "forgotten-password": "Procédure de récupération de mot de passe perdu.",
       "homepage": "Recensement des bergers australiens.",
       "login": "Formulaire de connexion au site référençant les bergers australiens.",
@@ -273,6 +288,7 @@
       "404": "404,berger,australien,base de données,chien,aussie",
       "account-activation": "compte,activation,berger,australien,base de données,chien,aussie",
       "email-activation": "email,activation,berger,australien,base de données,chien,aussie",
+      "email-restoration": "email,restauration,berger,australien,base de données,chien,aussie",
       "forgotten-password": "compte,récupération,mot de passe,berger,australien,base de données,chien,aussie",
       "homepage": "berger,australien,base de données,chien,aussie",
       "login": "login,berger,australien,base de données,chien,aussie",
@@ -284,6 +300,7 @@
       "404": "Berger australien",
       "account-activation": "Activation de votre compte",
       "email-activation": "Activation de votre nouvelle adresse email",
+      "email-restoration": "Restauration de votre ancienne adresse email",
       "forgotten-password": "Mot de passe perdu",
       "homepage": "Berger australien",
       "login": "Berger australien - Page de connexion",
@@ -315,6 +332,8 @@
   "title": {
     "account-activation": "Activation de votre compte",
     "app": "Bienvenue à react utilisant i18n",
+    "email-activation": "Activation de votre nouvelle adresse email",
+    "email-restoration": "Restauration de votre ancienne adresse email",
     "tos": "Conditions générales d’utilisation",
     "forgot-your-password": "Mot de passe perdu ?",
     "ooops": "Oups !",

@@ -5,6 +5,7 @@ import authReducer from "./authReducer";
 import deleteAccountReducer from "./deleteAccountReducer";
 import emailActivationReducer from "./emailActivationReducer";
 import emailReducer from "./emailReducer";
+import emailRestorationReducer from "./emailRestorationReducer";
 import forgotPasswordReducer from "./forgotPasswordReducer";
 import passwordReducer from "./passwordReducer";
 import profileReducer from "./profileReducer";
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   deleteAccountReducer,
   emailReducer,
   emailActivationReducer,
+  emailRestorationReducer,
   forgotPasswordReducer,
   passwordReducer,
   profileReducer,

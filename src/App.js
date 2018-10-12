@@ -19,6 +19,7 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "react-redux-toastr/lib/css/react-redux-toastr.min.css";
 import EmailActivationPage from "./components/page/EmailActivationPage";
+import EmailRestorationPage from "./components/page/EmailRestorationPage";
 
 class App extends Component {
   componentDidUpdate() {
@@ -43,6 +44,8 @@ class App extends Component {
           <Route exact path="/activate/account/:activationCode" component={AccountActivationPage} />
           <Route exact path="/activate/email" component={EmailActivationPage} />
           <Route exact path="/activate/email/:activationCode" component={EmailActivationPage} />
+          <Route exact path="/restore/email" component={EmailRestorationPage} />
+          <Route exact path="/restore/email/:restorationCode" component={EmailRestorationPage} />
           <Route exact path="/forgot-your-password" component={ForgotPasswordPage} />
           <Route exact path="/tos" component={CguPage} />
           <NonAuthenticatedRoute exact path="/register" component={RegisterPage} />

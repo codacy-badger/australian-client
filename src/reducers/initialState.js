@@ -42,6 +42,13 @@ export default {
     isActivationError: false,
     nextStep: {}
   },
+  emailRestoration: {
+    error: {},
+    isEmailRestorationPending: false,
+    isEmailRestorationSuccess: false,
+    isEmailRestorationError: false,
+    success: {}
+  },
   forgotPassword: {
     error: {},
     isForgotPasswordPending: false,
