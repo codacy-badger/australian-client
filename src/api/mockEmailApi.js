@@ -1,4 +1,5 @@
 import delay, { sleep } from "./mockDelay";
+import { SubmissionError } from "redux-form";
 //import * as codes from './errorCode';
 
 // This file mocks a web API by working with the hard-coded data below.
@@ -13,19 +14,22 @@ const successfulResponse = {
 
 const errorResponse = {
   code: "update-email-server-error",
-  message: "Email update failed."
+  message: "Email update failed.",
+  password: "bad password",
+  email: "email already exists"
 };
 
+//TODO Create a change email confirmation page which verify a validation code.
 class EmailApi {
   static callEmailApi(data, callback) {
-    return sleep(delay)
-      .then(() => {
-        if ("42@example.org" === data["old-email"]) {
-          return callback(successfulResponse);
-        } else {
-          return callback(errorResponse);
-        }
-      });
+    return sleep(delay).then(() => {
+      if ("42" === data.password) {
+        return callback(successfulResponse);
+      } else {
+        callback(errorResponse);
+        throw new SubmissionError(errorResponse);
+      }
+    });
   }
 }
 

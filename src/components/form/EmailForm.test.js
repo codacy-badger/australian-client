@@ -5,39 +5,38 @@ describe("ForgotPassword validator", () => {
     const values = {};
     const actual = validate(values);
     const expected = {
-      "new-email": "new-email is required",
-      "old-email": "old-email is required"
+      email: "email is required",
+      password: "password is required"
     };
     expect(actual).toEqual(expected);
   });
   it("return errors when values are defined and empty", () => {
     const values = {
-      "new-email": "",
-      "old-email": ""
+      email: "",
+      password: ""
     };
     const actual = validate(values);
     const expected = {
-      "new-email": "new-email is required",
-      "old-email": "old-email is required"
+      email: "email is required",
+      password: "password is required"
     };
     expect(actual).toEqual(expected);
   });
   it("return an error when email is invalid", () => {
     const values = {
-      "new-email": "33",
-      "old-email": "42"
+      email: "33",
+      password: "42"
     };
     const actual = validate(values);
     const expected = {
-      "old-email": "old-email is not a valid email",
-      "new-email": "new-email is not a valid email"
+      email: "email is not a valid email"
     };
     expect(actual).toEqual(expected);
   });
   it("return no error when values are valid", () => {
     const values = {
-      "old-email": "foobar@example.org",
-      "new-email": "foobar@example.org"
+      email: "foobar@example.org",
+      password: "42"
     };
     const actual = validate(values);
     const expected = {};

@@ -30,7 +30,6 @@ class AuthApi {
         return callback(auth);
       } else {
         callback(error);
-        //FIXME add this line in other mock api like forgotPassword
         throw new SubmissionError(error);
       }
     });

@@ -126,15 +126,15 @@
       }
     },
     "profile-email": {
-      "new-email": {
+      "email": {
         "label": "Nouvelle adresse",
         "placeholder": "nouvel-email@example.org",
         "helpBlock": "Entrez votre nouvelle adresse email."
       },
-      "old-email": {
-        "label": "Adresse actuelle",
-        "placeholder": "email-à-remplacer@example.org",
-        "helpBlock": "Entrez votre adresse actuelle, celle utilisée pour vous connecter."
+      "password": {
+        "label": "Mot de passe",
+        "placeholder": "",
+        "helpBlock": "Pour des raisons de sécurité, entrez votre mot de passe actuel."
       },
       "submit": "Modifier"
     },

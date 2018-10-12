@@ -126,15 +126,15 @@
       }
     },
     "profile-email": {
-      "new-email": {
+      "email": {
         "label": "New email",
         "placeholder": "new-email@example.org",
         "helpBlock": "Enter your new email"
       },
-      "old-email": {
-        "label": "Current email",
-        "placeholder": "old-email@example.org",
-        "helpBlock": "Enter current email, the email used to login"
+      "password": {
+        "label": "Password",
+        "placeholder": "",
+        "helpBlock": "For security reason, please enter your password."
       },
       "submit": "Save"
     },

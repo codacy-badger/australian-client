@@ -1,4 +1,5 @@
 import delay, { sleep } from "./mockDelay";
+import { SubmissionError } from "redux-form";
 //import * as codes from './errorCode';
 
 // This file mocks a web API by working with the hard-coded data below.
@@ -18,14 +19,14 @@ const erroredResponse = {
 
 class ForgotPasswordApi {
   static callForgotPasswordApi(email, callback) {
-    return sleep(delay)
-      .then(() => {
-        if ("42@example.org" === email) {
-          return callback(successfulResponse);
-        } else {
-          return callback(erroredResponse);
-        }
-      });
+    return sleep(delay).then(() => {
+      if ("42@example.org" === email) {
+        return callback(successfulResponse);
+      } else {
+        callback(erroredResponse);
+        throw new SubmissionError(erroredResponse);
+      }
+    });
   }
 }
 
