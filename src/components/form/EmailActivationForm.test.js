@@ -1,11 +1,11 @@
-import { validate } from "./AccountActivationForm";
+import { validate } from "./EmailActivationForm";
 
-describe("Account activation validator", () => {
+describe("Email activation validator", () => {
   it("return errors when values is undefined", () => {
     const values = {};
     const actual = validate(values);
     const expected = {
-      activation: "account-activation is required"
+      activation: "email-activation is required"
     };
     expect(actual).toEqual(expected);
   });
@@ -15,7 +15,7 @@ describe("Account activation validator", () => {
     };
     const actual = validate(values);
     const expected = {
-      activation: "account-activation is required"
+      activation: "email-activation is required"
     };
     expect(actual).toEqual(expected);
   });
