@@ -25,20 +25,20 @@ function setRegisterError(isRegisterError, error = {}) {
   };
 }
 
-export function register(data) {
-  return (dispatch) => {
+export function register(data, dispatch) {
+  return () => {
     dispatch(setRegisterPending(true));
     dispatch(setRegisterSuccess(false));
     dispatch(setRegisterError(false));
 
     const { email, password } = data;
 
-    registerActionApi.callRegisterApi(email, password, (result) => {
+    return registerActionApi.callRegisterApi(email, password, (result) => {
       dispatch(setRegisterPending(false));
       if (result.nextStep) {
         dispatch(setRegisterSuccess(true, result.nextStep));
       } else {
-        dispatch(setRegisterError(true, result.error));
+        dispatch(setRegisterError(true, result));
       }
     });
   };

@@ -1,4 +1,5 @@
-import delay from "./mockDelay";
+import delay, { sleep } from "./mockDelay";
+import { SubmissionError } from "redux-form";
 //import * as codes from './errorCode';
 
 // This file mocks a web API by working with the hard-coded data below.
@@ -12,22 +13,20 @@ const successfulResponse = {
 };
 
 const erroredResponse = {
-  error: {
-    code: 30,
-    message: "Mail already exists"
-  }
+  code: 30,
+  message: "Mail already exists",
+  email: "email already exists"
 };
 
 class RegisterApi {
   static callRegisterApi(email, password, callback) {
-    return new Promise(() => {
-      setTimeout(() => {
-        if ("42" === password) {
-          return callback(successfulResponse);
-        } else {
-          return callback(erroredResponse);
-        }
-      }, delay);
+    return sleep(delay).then(() => {
+      if ("42" === password) {
+        return callback(successfulResponse);
+      } else {
+        callback(erroredResponse);
+        throw new SubmissionError(erroredResponse);
+      }
     });
   }
 }

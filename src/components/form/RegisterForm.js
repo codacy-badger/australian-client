@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Form } from "reactstrap";
-import isEmpty from "validator/lib/isEmpty";
-import isEmail from "validator/lib/isEmail";
+import FormCheckBoxGroup from "../formgroup/abstract/FormCheckBoxGroup";
 import FormEmailGroup from "../formgroup/abstract/FormEmailGroup";
 import FormPasswordGroup from "../formgroup/abstract/FormPasswordGroup";
+import isEmpty from "validator/lib/isEmpty";
+import isEmail from "validator/lib/isEmail";
 import { Field, reduxForm } from "redux-form";
-import FormCheckBoxGroup from "../formgroup/abstract/FormCheckBoxGroup";
+import { Form } from "reactstrap";
 import { translate } from "react-i18next";
 
 export const validate = (values) => {
@@ -41,31 +41,33 @@ export const validate = (values) => {
 };
 
 const RegisterForm = (props) => {
-  const { handleSubmit, onClickTos, submitting, isPending } = props;
-
-  const fieldProps = {
-    disabled: isPending || submitting,
-    isLoading: isPending || submitting
-  };
+  const { handleSubmit, onClickTos, submitting } = props;
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Field name="email" component={FormEmailGroup} {...fieldProps} required />
-      <Field name="password" component={FormPasswordGroup} {...fieldProps} required />
-      <Field name="confirmation" component={FormPasswordGroup} {...fieldProps} required />
-      <Field name="read" type="checkbox" component={FormCheckBoxGroup} {...fieldProps} onClick={onClickTos} required />
+      <Field name="email" component={FormEmailGroup} disabled={submitting} isLoading={submitting} required />
+      <Field name="password" component={FormPasswordGroup} disabled={submitting} isLoading={submitting} required />
+      <Field name="confirmation" component={FormPasswordGroup} disabled={submitting} isLoading={submitting} required />
+      <Field
+        name="read"
+        type="checkbox"
+        component={FormCheckBoxGroup}
+        disabled={submitting}
+        isLoading={submitting}
+        onClick={onClickTos}
+        required
+      />
     </Form>
   );
 };
 
-// The propTypes.
 RegisterForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
-  isPending: PropTypes.bool.isRequired,
   onClickTos: PropTypes.func.isRequired,
   submitting: PropTypes.bool.isRequired
 };
 
+//Redux-form
 export default reduxForm({
   form: "register",
   validate

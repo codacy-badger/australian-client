@@ -62,7 +62,7 @@ class RegisterPage extends Component {
             </CardHeader>
             <CardBody>
               <StatusAlert code="register" status={status} />
-              <RegisterForm isPending={isPending} onClickTos={this.toggleTos} onSubmit={actions.register} />
+              <RegisterForm onClickTos={this.toggleTos} onSubmit={actions.register} />
             </CardBody>
             <CardFooter className="text-right">
               <Submit

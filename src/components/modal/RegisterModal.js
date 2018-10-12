@@ -57,7 +57,7 @@ class RegisterModal extends Component {
           </ModalHeader>
           <ModalBody>
             <StatusAlert code="register" status={status} />
-            <RegisterForm isPending={isPending} onClickTos={this.toggleTos} onSubmit={actions.register} />
+            <RegisterForm onClickTos={this.toggleTos} onSubmit={actions.register} />
           </ModalBody>
           <ModalFooter>
             <Submit
