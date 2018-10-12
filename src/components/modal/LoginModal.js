@@ -15,6 +15,7 @@ import { translate } from "react-i18next";
 
 library.add(faInfoCircle, faSignInAlt);
 
+//TODO create a login page
 const LoginModal = (props) => {
   const { actions, dispatch, status, isOpen, t, toggle, warning } = props;
   const { error, isError, isPending } = status;
@@ -36,7 +37,7 @@ const LoginModal = (props) => {
             {t("error." + error.code)}
           </Alert>
         )}
-        <LoginForm isPending={isPending} onSubmit={actions.login} />
+        <LoginForm onSubmit={actions.login} />
       </ModalBody>
       <ModalFooter>
         <Submit icon="sign-in-alt" name="login" isPending={isPending} onClick={() => dispatch(submit("login"))} />

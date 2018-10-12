@@ -5,9 +5,12 @@ import CguPage from "./components/page/TosPage";
 import Error404Page from "./components/page/Error404Page";
 import ForgotPasswordPage from "./components/page/ForgotPasswordPage";
 import HomePage from "./components/page/HomePage";
+import LoginPage from "./components/page/LoginPage";
 import ProfilePage from "./components/page/ProfilePage";
 import ReduxToastr from "react-redux-toastr";
+import RegisterPage from "./components/page/RegisterPage";
 import { AuthenticatedRoute } from "./components/AuthenticatedRoute";
+import { NonAuthenticatedRoute } from "./components/NonAuthenticatedRoute";
 import { Switch, Route, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { toastr } from "react-redux-toastr";
@@ -15,7 +18,6 @@ import { translate } from "react-i18next";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "react-redux-toastr/lib/css/react-redux-toastr.min.css";
-import RegisterPage from "./components/page/RegisterPage";
 
 class App extends Component {
   componentDidUpdate() {
@@ -29,20 +31,20 @@ class App extends Component {
     }
   }
 
+  //TODO https://hackernoon.com/animated-page-transitions-with-react-router-4-reacttransitiongroup-and-animated-1ca17bd97a1a
+  //TODO https://www.cookiebot.com/fr/cookie-consent/?utm_source=bing&utm_medium=cpc&utm_campaign=BING%3A%20FR%20-%20Generic&utm_content=FR%20-%20FR%20-%20Cookie%20Consent*
   render() {
     return (
       <div className="App">
-        {/* TODO https://hackernoon.com/animated-page-transitions-with-react-router-4-reacttransitiongroup-and-animated-1ca17bd97a1a */}
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/activate" component={ActivationPage} />
           <Route exact path="/activate/:activationCode" component={ActivationPage} />
           <Route exact path="/forgot-your-password" component={ForgotPasswordPage} />
-          <Route exact path="/register" component={RegisterPage} />
+          <NonAuthenticatedRoute exact path="/register" component={RegisterPage} />
+          <NonAuthenticatedRoute exact path="/login" component={LoginPage} />
           <Route exact path="/tos" component={CguPage} />
-          {/* TODO Redirect profile to profile/general */}
           <AuthenticatedRoute exact path="/profile/*" component={ProfilePage} />
-          {/* TODO https://www.cookiebot.com/fr/cookie-consent/?utm_source=bing&utm_medium=cpc&utm_campaign=BING%3A%20FR%20-%20Generic&utm_content=FR%20-%20FR%20-%20Cookie%20Consent*/}
           <Route path="*" component={Error404Page} />
         </Switch>
         <ReduxToastr
@@ -72,15 +74,4 @@ function mapStateToProps(state) {
   };
 }
 
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     //login: (email, password) => dispatch(login(email, password))
-//   };
-// }
-
-export default withRouter(
-  connect(
-    mapStateToProps,
-    null
-  )(translate("translations")(App))
-);
+export default withRouter(connect(mapStateToProps)(translate("translations")(App)));
