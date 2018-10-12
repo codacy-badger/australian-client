@@ -1,7 +1,7 @@
 {
   "accept tos": "To register, please accept usage general conditions.",
-  "activation is non-valid": "This activation code isn't valid",
-  "activation is required": "Please enter activation code provided in our email",
+  "account-activation is non-valid": "This activation code isn't valid",
+  "account-activation is required": "Please enter activation code provided in our email",
   "bad password": "Incorrect password, please check it",
   "confirmation is different from password": "Confirmation is different from password",
   "confirmation is required": "Please confirm your password to avoid typo.",

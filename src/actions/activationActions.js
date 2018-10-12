@@ -25,7 +25,7 @@ function setActivationError(isActivationError, error = {}) {
   };
 }
 
-export function activate(data, dispatch) {
+export function accountActivate(data, dispatch) {
   return () => {
     dispatch(setActivationPending(true));
     dispatch(setActivationSuccess(false));
@@ -33,7 +33,7 @@ export function activate(data, dispatch) {
 
     const { activation } = data;
 
-    return activationActionApi.callActivationApi(activation, (result) => {
+    return activationActionApi.callAccountActivationApi(activation, (result) => {
       dispatch(setActivationPending(false));
       if (result.nextStep) {
         dispatch(setActivationSuccess(true, result.nextStep));

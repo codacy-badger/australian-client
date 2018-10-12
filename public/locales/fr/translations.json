@@ -12,7 +12,7 @@
     "40": "Le mot de passe choisi n’est pas suffisamment fort. Pour le complexifier, ajoutez des caractères, des nombres et symboles.",
     "50": "L’adresse email fournie n’est pas valide.",
     "60": "Il n’existe pas de compte avec cette adresse email. N’hésitez pas à vous inscrire !",
-    "activation-failed": "L’activation a échoué !",
+    "account-activation-failed": "L’activation a échoué !",
     "delete-account-password-invalid": "Votre compte n’a pas été supprimé en raison d’une erreur de mot de passe.",
     "update-email-server-error": "Votre adresse email n’a pas été modifiée en raison d’un souci de communication avec notre serveur.",
     "profile-password-invalid-password": "Le mot de passe que vous avez entré est incorrect. Votre mot de passe n’a pas été modifié.",
@@ -20,7 +20,7 @@
     "update-address-failed": "Votre position n’a pas été mise à jour en raison d’un souci de communication avec notre serveur."
   },
   "form": {
-    "activation": {
+    "account-activation": {
       "activation": {
         "label": "Code d’activation",
         "placeholder": "",
@@ -182,7 +182,7 @@
     }
   },
   "help": {
-    "activation" : "Pour activer votre compte, veuillez entrer le code d’activation qui vous a été envoyé par mail.",
+    "account-activation" : "Pour activer votre compte, veuillez entrer le code d’activation qui vous a été envoyé par mail.",
     "are-you-sure": {
       "delete-account": {
         "title": "Êtes vous sûr de vouloir supprimer votre compte ?",
@@ -204,7 +204,7 @@
   },
   "message": {
     "404-explanation": "La page que vous demandez n’existe pas, ou n’existe plus.",
-    "activation": {
+    "account-activation": {
       "10": "Votre compte a bien été activé, vous pouvez désormais vous connecter."
     },
     "forgot-your-password": {
@@ -296,7 +296,7 @@
     }
   },
   "title": {
-    "activation": "Activation de votre compte",
+    "account-activation": "Activation de votre compte",
     "app": "Bienvenue à react utilisant i18n",
     "tos": "Conditions générales d’utilisation",
     "forgot-your-password": "Mot de passe perdu ?",

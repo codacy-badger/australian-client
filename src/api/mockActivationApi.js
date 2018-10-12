@@ -13,13 +13,13 @@ const successfulResponse = {
 };
 
 const erroredResponse = {
-  activation: "activation is non-valid",
-  code: "activation-failed",
-  message: "Activation failed."
+  activation: "account-activation is non-valid",
+  code: "account-activation-failed",
+  message: "Account activation failed."
 };
 
 class ActivationApi {
-  static callActivationApi(activationCode, callback) {
+  static callAccountActivationApi(activationCode, callback) {
     return sleep(delay) // simulate server latency
       .then(() => {
         if ("42" === activationCode) {

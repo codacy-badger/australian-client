@@ -7,7 +7,7 @@ import isEmpty from "validator/lib/isEmpty";
 import { Field, reduxForm } from "redux-form";
 import { Card, CardBody, CardFooter, CardHeader, Form } from "reactstrap";
 import { Link } from "react-router-dom";
-import { activate } from "../../actions/activationActions";
+import { accountActivate } from "../../actions/activationActions";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { faCheckDouble } from "@fortawesome/free-solid-svg-icons";
@@ -20,7 +20,7 @@ export const validate = (values) => {
   const errors = {};
 
   if (!values.activation || isEmpty(values.activation)) {
-    errors.activation = "activation is required";
+    errors.activation = "account-activation is required";
   }
 
   return errors;
@@ -30,11 +30,11 @@ const AccountActivationForm = (props) => {
   const { actions, handleSubmit, status, submitting, t } = props;
 
   return (
-    <Form onSubmit={handleSubmit(actions.activate)}>
+    <Form onSubmit={handleSubmit(actions.accountActivate)}>
       <Card>
-        <CardHeader>{t("title.activation")}</CardHeader>
+        <CardHeader>{t("title.account-activation")}</CardHeader>
         <CardBody>
-          <StatusAlert code="activation" status={status} />
+          <StatusAlert code="account-activation" status={status} />
           <Field
             type="text"
             component={FormTextGroup}
@@ -49,8 +49,8 @@ const AccountActivationForm = (props) => {
             icon="check-double"
             disabled={submitting}
             isPending={submitting}
-            name="activation"
-            onClick={handleSubmit(actions.activate)}
+            name="account-activation"
+            onClick={handleSubmit(actions.accountActivate)}
           />
           <Link to="/" title={t("link.home-page-title")} className="ml-2 btn btn-secondary">
             {t("link.home-page")}
@@ -87,7 +87,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators({ activate }, dispatch)
+    actions: bindActionCreators({ accountActivate: accountActivate }, dispatch)
   };
 }
 
@@ -97,7 +97,7 @@ export default connect(
 )(
   // Redux form begin here
   reduxForm({
-    form: "activation",
+    form: "account-activation",
     validate
   })(translate(["translations", "validators"])(AccountActivationForm))
 );

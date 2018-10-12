@@ -1,5 +1,5 @@
 import React from "react";
-import ActivationForm from "../form/AccountActivationForm";
+import AccountActivationForm from "../form/AccountActivationForm";
 import Header from "../common/Header";
 import Meta from "../common/Meta";
 import { Container } from "reactstrap";
@@ -11,10 +11,10 @@ const AccountActivationPage = (props) => {
 
   return (
     <div>
-      <Meta code="activation" />
+      <Meta code="account-activation" />
       <Header />
       <Container className="mt-3 text-justify">
-        <ActivationForm initialValues={values} />
+        <AccountActivationForm initialValues={values} />
       </Container>
     </div>
   );

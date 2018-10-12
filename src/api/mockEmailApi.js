@@ -19,7 +19,6 @@ const errorResponse = {
   email: "email already exists"
 };
 
-//TODO Create a change email confirmation page which verify a validation code.
 class EmailApi {
   static callEmailApi(data, callback) {
     return sleep(delay).then(() => {
