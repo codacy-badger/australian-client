@@ -15,7 +15,6 @@ import { translate } from "react-i18next";
 
 library.add(faInfoCircle, faSignInAlt);
 
-//TODO create a login page
 const LoginModal = (props) => {
   const { actions, dispatch, status, isOpen, t, toggle, warning } = props;
   const { error, isError, isPending } = status;
