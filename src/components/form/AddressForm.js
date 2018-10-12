@@ -5,37 +5,34 @@ import Reset from "../common/button/Reset";
 import Submit from "../common/button/Submit";
 import isFloat from "validator/lib/isFloat";
 import { Col, Form, Row } from "reactstrap";
-import { change, Field, reduxForm, propTypes, touch } from "redux-form";
-import { Map as LeafletMap, Marker, Popup, TileLayer } from "react-leaflet";
+import { change, Field, reduxForm, propTypes, touch, formValueSelector } from "redux-form";
+import { Map as LeafletMap, Marker, TileLayer } from "react-leaflet";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faCity, faGlobe, faGlobeAfrica } from "@fortawesome/free-solid-svg-icons";
 import { updateAddress } from "../../actions/addressActions";
+import FormCheckBoxGroup from "../formgroup/abstract/FormCheckBoxGroup";
 
 library.add(faCity, faGlobe, faGlobeAfrica);
 
-//TODO Test this function.
 export const validate = (values) => {
   const errors = {};
-  const { latitude, longitude } = values;
-  const options = {
-    min: "-90",
-    max: "90"
-  };
+  const { latitude, longitude, setPosition } = values;
 
-  if (latitude && !isFloat(latitude.toString(), options)) {
+  console.dir(values);
+
+  if (setPosition && latitude && !isFloat(latitude.toString(), { min: "-90", max: "90" })) {
     errors.latitude = "latitude must be a Float between -90 and +90";
   }
 
-  if (longitude && !isFloat(longitude.toString(), options)) {
-    errors.longitude = "longitude must be a Float between -90 and +90";
+  if (setPosition && longitude && !isFloat(longitude.toString(), { min: "-180", max: "180" })) {
+    errors.longitude = "longitude must be a Float between -180 and +180";
   }
 
   return errors;
 };
 
-//TODO user should set latitude and longitude to null
 class AddressForm extends Component {
   constructor(props, context) {
     super(props, context);
@@ -48,11 +45,13 @@ class AddressForm extends Component {
         lat: props.initialValues.latitude,
         lng: props.initialValues.longitude
       },
+      //FIXME Update zoom to avoid "zoom" when moving marker.
       zoom: 13,
       draggable: true
     };
 
     this.refMarker = React.createRef();
+    this.updatePosition = this.updatePosition.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -70,10 +69,6 @@ class AddressForm extends Component {
     }
   }
 
-  toggleDraggable = () => {
-    this.setState({ draggable: !this.state.draggable });
-  };
-
   updatePosition = () => {
     const { lat, lng } = this.refMarker.current.leafletElement.getLatLng();
     this.props.actions.change("profile-address", "latitude", lat);
@@ -90,7 +85,7 @@ class AddressForm extends Component {
   render() {
     const position = [this.state.center.lat, this.state.center.lng];
     const markerPosition = [this.state.marker.lat, this.state.marker.lng];
-    const { actions, handleSubmit, isLoading, pristine, reset, submitting } = this.props;
+    const { actions, handleSubmit, isLoading, isPositioning, pristine, reset, submitting } = this.props;
     const isSpinning = submitting || isLoading;
 
     const fieldProps = {
@@ -102,17 +97,29 @@ class AddressForm extends Component {
       <Form onSubmit={handleSubmit(actions.updateAddress)}>
         <Row>
           <Col sm={6}>
-            <Field
-              type="text"
-              name="longitude"
-              isLoading={isSpinning}
-              component={FormTextGroup}
-              icon="globe"
-              disabled
-            />
-            <Field type="text" name="latitude" isLoading={isSpinning} component={FormTextGroup} icon="globe" disabled />
             <Field type="text" name="city" {...fieldProps} component={FormTextGroup} icon="city" />
             <Field type="text" name="country" {...fieldProps} component={FormTextGroup} icon="globe-africa" />
+            <Field type="checkbox" name="setPosition" {...fieldProps} component={FormCheckBoxGroup} />
+            {isPositioning && (
+              <Field
+                type="text"
+                name="latitude"
+                isLoading={isSpinning}
+                component={FormTextGroup}
+                icon="globe"
+                disabled
+              />
+            )}
+            {isPositioning && (
+              <Field
+                type="text"
+                name="longitude"
+                isLoading={isSpinning}
+                component={FormTextGroup}
+                icon="globe"
+                disabled
+              />
+            )}
             <div className="text-right">
               <Reset onClick={reset} disabled={pristine || submitting} />
               <Submit
@@ -130,16 +137,9 @@ class AddressForm extends Component {
                   attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
                   url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
                 />
-                <Marker
-                  draggable={this.state.draggable}
-                  onDragend={this.updatePosition}
-                  position={markerPosition}
-                  ref={this.refMarker}
-                >
-                  <Popup minWidth={90}>
-                    <span onClick={this.toggleDraggable}>{this.state.draggable ? "DRAG MARKER" : "MARKER FIXED"}</span>
-                  </Popup>
-                </Marker>
+                {isPositioning && (
+                  <Marker draggable onDragend={this.updatePosition} position={markerPosition} ref={this.refMarker} />
+                )}
               </LeafletMap>
             </div>
           </Col>
@@ -150,8 +150,13 @@ class AddressForm extends Component {
 }
 
 // The propTypes.
+AddressForm.defaultProps = {
+  isPositioning: false
+};
+
 AddressForm.propTypes = {
   actions: PropTypes.object.isRequired,
+  isPositioning: PropTypes.bool,
   isLoading: PropTypes.bool.isRequired,
   ...propTypes
 };
@@ -159,6 +164,7 @@ AddressForm.propTypes = {
 // Redux connect begin here
 function mapStateToProps(state) {
   return {
+    isPositioning: selector(state, "setPosition"),
     isLoading: state.addressReducer.isAddressLoading,
     initialValues: state.addressReducer.address
   };
@@ -169,6 +175,9 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators({ change, touch, updateAddress }, dispatch)
   };
 }
+
+// Decorate with connect to read form values
+const selector = formValueSelector("profile-address");
 
 export default connect(
   mapStateToProps,

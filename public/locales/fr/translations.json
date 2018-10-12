@@ -143,6 +143,10 @@
         "label": "Longitude",
         "placeholder": "0",
         "helpBlock": "Glisser-déposer le marqueur pour changer de position."
+      },
+      "setPosition": {
+        "label": "Me positionner",
+        "helpBlock": ""
       }
     },
     "profile-email": {

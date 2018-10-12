@@ -40,10 +40,10 @@ const FormCheckBoxGroup = (props) => {
   const label = onClick ? getButton() : getLabel();
   const className = disabled ? "text-muted" : "";
   const helpBlock = t("form." + form + "." + input.name + ".helpBlock");
-  const messages = [t("form." + form + "." + input.name + ".unchecked")];
+  const messages = ["form-" + form + "-" + input.name + "-unchecked"];
 
   return (
-    <FormGroup check>
+    <FormGroup check className="mb-3">
       <Col sm={{ size: 8, offset: 4 }}>
         <Label check className={className}>
           <Input {...input} type="checkbox" disabled={disabled} required={required} />

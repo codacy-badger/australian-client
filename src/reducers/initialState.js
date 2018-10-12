@@ -18,6 +18,7 @@ export default {
     address: {
       latitude: 0,
       longitude: 45,
+      setPosition: true,
       city: "",
       country: ""
     }

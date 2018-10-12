@@ -10,6 +10,7 @@ const getAddressSuccess = {
   address: {
     latitude: 45,
     longitude: -1,
+    setPosition: true,
     city: "Lacanau",
     country: "France"
   },

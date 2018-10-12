@@ -143,6 +143,10 @@
         "label": "Longitude",
         "placeholder": "0",
         "helpBlock": "Drag and drop the marker to change location."
+      },
+      "setPosition": {
+        "label": "Set my position",
+        "helpBlock": ""
       }
     },
     "profile-email": {
