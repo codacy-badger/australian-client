@@ -82,7 +82,7 @@ export default {
     error: {},
     isPasswordError: false,
     isPasswordPending: false,
-    isPasswordSuccess: true,
+    isPasswordSuccess: false,
     success: {}
   },
   profile: {
