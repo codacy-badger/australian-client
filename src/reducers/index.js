@@ -7,11 +7,14 @@ import emailActivationReducer from "./emailActivationReducer";
 import emailReducer from "./emailReducer";
 import emailRestorationReducer from "./emailRestorationReducer";
 import forgotPasswordReducer from "./forgotPasswordReducer";
+import notificationReducer from "./notificationsReducer";
 import passwordReducer from "./passwordReducer";
 import profileReducer from "./profileReducer";
 import registerReducer from "./registerReducer";
 import { reducer as formReducer } from "redux-form";
 import { reducer as toastrReducer } from "react-redux-toastr";
+
+//FIXME Replace toastrReducer by redux-notif https://github.com/indexiatech/re-notif
 
 const rootReducer = combineReducers({
   accountActivationReducer,
@@ -22,6 +25,7 @@ const rootReducer = combineReducers({
   emailActivationReducer,
   emailRestorationReducer,
   forgotPasswordReducer,
+  notificationReducer,
   passwordReducer,
   profileReducer,
   registerReducer,

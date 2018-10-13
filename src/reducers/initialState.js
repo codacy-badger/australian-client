@@ -69,6 +69,15 @@ export default {
     sendLoginMessage: false,
     sendLogoutMessage: false
   },
+  notification: {
+    notifications: {
+      unread: [],
+      read: []
+    },
+    isNotificationLoaded: false,
+    isNotificationLoading: false,
+    isNotificationUnloadable: false
+  },
   password: {
     error: {},
     isPasswordError: false,

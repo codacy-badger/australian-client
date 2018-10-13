@@ -2,9 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Collapse, Navbar, NavbarToggler, Nav } from "reactstrap";
 import { Link } from "react-router-dom";
-import LanguageDropdown from "./dropdown/LanguageDropdown";
-import UserDropdown from "./dropdown/UserDropdown";
 import AnonymousDropdown from "./dropdown/AnonymousDropdown";
+import LanguageDropdown from "./dropdown/LanguageDropdown";
+import NotificationItem from "./navitem/NotificationItem";
+import UserDropdown from "./dropdown/UserDropdown";
 import { connect } from "react-redux";
 import { translate, Trans } from "react-i18next";
 
@@ -35,6 +36,7 @@ class Header extends React.Component {
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <LanguageDropdown />
+            {isAuthenticated && <NotificationItem />}
             {!isAuthenticated && <AnonymousDropdown register={register} />}
             {isAuthenticated && <UserDropdown />}
           </Nav>
@@ -68,9 +70,4 @@ function mapStateToProps(state) {
 //   };
 // }
 
-export default translate("translations")(
-  connect(
-    mapStateToProps,
-    null
-  )(Header)
-);
+export default translate("translations")(connect(mapStateToProps)(Header));
