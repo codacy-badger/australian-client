@@ -15,8 +15,14 @@ export default function notificationReducer(state = initialState.notification, a
       });
 
     case types.SET_NOTIFICATION_UNLOADABLE:
+      if (action.isNotificationUnloadable) {
+        return Object.assign({}, state, {
+          isNotificationUnloadable: true,
+          message: action.message
+        });
+      }
       return Object.assign({}, state, {
-        isNotificationUnloadable: action.isNotificationUnloadable
+        isNotificationUnloadable: false
       });
 
     default:

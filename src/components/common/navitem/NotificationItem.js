@@ -67,7 +67,8 @@ function mapStateToProps(state) {
     actions: PropTypes.object.isRequired,
     isLoaded: state.notificationReducer.isNotificationLoaded,
     isLoading: state.notificationReducer.isNotificationLoading,
-    unread: state.notificationReducer.notifications.unread.length
+    //Filter return only notification which are read.
+    unread: state.notificationReducer.notifications.filter((notification) => notification.read).length
   };
 }
 

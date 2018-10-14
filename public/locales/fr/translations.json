@@ -16,6 +16,7 @@
     "email-activation-failed": "L’activation de votre nouvel email a échoué !",
     "restore-email-server-error": "La restauration de votre ancien email a échoué !",
     "delete-account-password-invalid": "Votre compte n’a pas été supprimé en raison d’une erreur de mot de passe.",
+    "loading": "Chargement en cours…",
     "update-email-server-error": "Votre adresse email n’a pas été modifiée en raison d’un souci de communication avec notre serveur.",
     "profile-password-invalid-password": "Le mot de passe que vous avez entré est incorrect. Votre mot de passe n’a pas été modifié.",
     "profile-server-error": "Votre profil n’a pas été mis à jour en raison d’un souci de communication avec notre serveur.",
@@ -249,6 +250,7 @@
     "login-successful": "Identification réussie.",
     "logout-successful": "Déconnexion confirmée.",
     "logout-successful-explanations": "Votre déconnexion a été correctement enregistrée. À bientôt !",
+    "no-notification": "Aucune notification pour le moment.",
     "register": {
       "10": "Vous pouvez vous connecter au site.",
       "20": "Un administrateur du site va activer votre compte rapidement. Vous en serez averti par mail.",
@@ -284,6 +286,7 @@
       "forgotten-password": "Procédure de récupération de mot de passe perdu.",
       "homepage": "Recensement des bergers australiens.",
       "login": "Formulaire de connexion au site référençant les bergers australiens.",
+      "notification": "Notifications.",
       "profile": "Formulaires de gestion de votre profil.",
       "register": "Formulaire d’inscription",
       "tos": "Détail complet des conditions générales d’utilisation du site."
@@ -296,21 +299,23 @@
       "forgotten-password": "compte,récupération,mot de passe,berger,australien,base de données,chien,aussie",
       "homepage": "berger,australien,base de données,chien,aussie",
       "login": "login,berger,australien,base de données,chien,aussie",
+      "notification": "notification,berger,australien,base de données,chien,aussie",
       "profile": "profil,gestion,berger,australien,base de données,chien,aussie",
       "register": "register,berger,australien,base de données,chien,aussie",
       "tos": "Détail,conditions générales d’utilisation, cgu, cgv."
     },
     "title": {
       "404": "Berger australien",
-      "account-activation": "Activation de votre compte",
-      "email-activation": "Activation de votre nouvelle adresse email",
-      "email-restoration": "Restauration de votre ancienne adresse email",
-      "forgotten-password": "Mot de passe perdu",
+      "account-activation": "Berger australien - Activation de votre compte",
+      "email-activation": "Berger australien - Activation de votre nouvelle adresse email",
+      "email-restoration": "Berger australien - Restauration de votre ancienne adresse email",
+      "forgotten-password": "Berger australien - Mot de passe perdu",
       "homepage": "Berger australien",
       "login": "Berger australien - Page de connexion",
-      "profile": "Gestion du profil utilisateur",
-      "register": "Inscription",
-      "tos": "Conditions générales d’utilisation"
+      "notifications": "Berger australien - Notifications",
+      "profile": "Berger australien - Gestion du profil utilisateur",
+      "register": "Berger australien - Inscription",
+      "tos": "Berger australien - Conditions générales d’utilisation"
     }
   },
   "navbar": {

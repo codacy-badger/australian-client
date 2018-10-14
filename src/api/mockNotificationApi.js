@@ -14,44 +14,45 @@ const notification1 = {
     userId: 33,
     userName: "toto",
     userAvatar: ""
-  }
+  },
+  read: false
 };
 
 const notification2 = {
+  id: 33,
   kind: "info",
   level: "info",
-  id: 33,
   meta: {
     title: "Foo title",
     message: "A sample message"
-  }
+  },
+  read: false
 };
 
 const notification3 = {
+  id: 13,
   kind: "info",
   level: "alert",
-  id: 13,
   meta: {
     title: "Foo alert title",
     message: "A sample alert message"
-  }
+  },
+  read: true
 };
 
 const notification4 = {
+  id: 23,
   kind: "info",
   level: "warning",
-  id: 13,
   meta: {
     title: "Foo warning level title",
     message: "A warning message"
-  }
+  },
+  read: true
 };
 
 const successfulResponse = {
-  notifications: {
-    unread: [notification1, notification2],
-    read: [notification3, notification4]
-  },
+  notifications: [notification1, notification2, notification3, notification4],
   success: {
     code: "get-notification",
     message: "Notifications are up to date"

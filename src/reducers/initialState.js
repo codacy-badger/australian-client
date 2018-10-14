@@ -70,10 +70,8 @@ export default {
     sendLogoutMessage: false
   },
   notification: {
-    notifications: {
-      unread: [],
-      read: []
-    },
+    message: "",
+    notifications: [],
     isNotificationLoaded: false,
     isNotificationLoading: false,
     isNotificationUnloadable: false

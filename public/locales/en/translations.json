@@ -16,6 +16,7 @@
     "email-activation-failed": "Email activation failed!",
     "restore-email-server-error": "Email restoration failed!",
     "delete-account-password-invalid": "Account was not deleted, because of non-valid password",
+    "loading": "Loading…",
     "update-email-server-error": "Email update failed, because of a communication error with our server.",
     "profile-password-invalid-password": "Password submitted invalid! Your password had not been updated.",
     "profile-server-error": "Your profile was not updated because of a communication error with our server.",
@@ -249,6 +250,7 @@
     "login-successful": "Login successful.",
     "logout-successful": "Logout successful",
     "logout-successful-explanations": "Your disconnection has been logged. Hope to see you soon!",
+    "no-notification": "You don't have any notification.",
     "password": {
       "110": "Password updated.",
       "120": "Please verify your password"
@@ -284,6 +286,7 @@
       "forgotten-password": "This process help you to recover your forgotten password.",
       "homepage": "Australian shepherd census.",
       "login": "Login form",
+      "notification": "Notifications",
       "profile": "Profile forms.",
       "register": "Inscription",
       "tos": "Integral content of usage general conditions."
@@ -296,21 +299,23 @@
       "forgotten-password": "account,recovering,password,shepherd,australian,database,dog,aussie",
       "homepage": "shepherd,australian,database,dog,aussie",
       "login": "login,shepherd,australian,database,dog,aussie",
+      "notification": "notifications,shepherd,australian,database,dog,aussie",
       "profile": "profile,management,shepherd,australian,database,dog,aussie",
       "register": "register,shepherd,australian,database,dog,aussie",
       "tos": "Usage general conditions, ugc, sgc."
     },
     "title": {
       "404": "Page not found",
-      "account-activation": "Account activation",
-      "email-activation": "Email activation",
-      "email-restoration": "Email restoration",
-      "forgotten-password": "Forgotten password",
+      "account-activation": "Australian shepherd - Account activation",
+      "email-activation": "Australian shepherd - Email activation",
+      "email-restoration": "Australian shepherd - Email restoration",
+      "forgotten-password": "Australian shepherd - Forgotten password",
       "homepage": "Australian shepherd",
       "login": "Australian shepherd - Login",
-      "profile": "User profile",
-      "register": "Registration",
-      "tos": "Usage general conditions"
+      "notification":"Australian shepherd - Notification",
+      "profile": "Australian shepherd - User profile",
+      "register": "Australian shepherd - Registration",
+      "tos": "Australian shepherd - Usage general conditions"
     }
   },
   "navbar": {

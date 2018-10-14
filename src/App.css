@@ -17,6 +17,27 @@ img.flag-in-navbar {
   width: 100%;
 }
 
+h2 {
+  border-bottom: thin solid gray;
+}
+h2.article {
+  width: 100%;
+  padding-bottom: 0.2em;
+}
+
+h2.article:before {
+  content: counter(h2) ". ";
+  counter-increment: h2;
+}
+
+.jumbotron.loading {
+  font-size: xx-large;
+}
+
+div.card.unread {
+  background-color: #ddf0ff;
+}
+
 /* Default app values, can be deleted */
 .App {
   text-align: center;
@@ -35,21 +56,4 @@ img.flag-in-navbar {
 
 .App-intro {
   font-size: large;
-}
-
-h2{
-  border-bottom: thin solid gray;
-}
-h2.article {
-  width: 100%;
-  padding-bottom: 0.2em;
-}
-
-h2.article:before {
-  content: counter(h2) ". ";
-  counter-increment: h2;
-}
-
-.jumbotron.loading {
-  font-size: xx-large;
 }
