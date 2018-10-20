@@ -30,7 +30,7 @@ class Header extends React.Component {
     return (
       <Navbar color="light" light expand="md">
         <Link to="/" className="navbar-brand">
-          <Trans i18nKey="navbar.brand">Australian shepherd</Trans>
+          <Trans i18nKey="navbar.brand">My Application</Trans>
         </Link>
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>

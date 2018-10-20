@@ -1,8 +1,8 @@
 {
-  "name": "australien-client",
+  "name": "reactjs-application-template",
   "version": "0.1.0",
   "private": true,
-  "description": "Web application for australian sheperd using australian sheperd API",
+  "description": "ReactJS application template.",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.4.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.5",
