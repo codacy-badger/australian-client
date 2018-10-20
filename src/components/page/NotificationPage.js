@@ -12,12 +12,7 @@ import { change } from "redux-form";
 import { translate } from "react-i18next";
 import NotificationCard from "../common/card/NotificationCard";
 
-
 class NotificationPage extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const {
       status: { message, isLoaded, isLoading, isUnloadable },
