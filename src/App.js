@@ -1,14 +1,17 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import AccountActivationPage from "./components/page/AccountActivationPage";
-import CguPage from "./components/page/TosPage";
+import EmailActivationPage from "./components/page/EmailActivationPage";
+import EmailRestorationPage from "./components/page/EmailRestorationPage";
 import Error404Page from "./components/page/Error404Page";
 import ForgotPasswordPage from "./components/page/ForgotPasswordPage";
 import HomePage from "./components/page/HomePage";
 import LoginPage from "./components/page/LoginPage";
+import NotificationPage from "./components/page/NotificationPage";
 import ProfilePage from "./components/page/ProfilePage";
 import ReduxToastr from "react-redux-toastr";
 import RegisterPage from "./components/page/RegisterPage";
+import TosPage from "./components/page/TosPage";
 import { AuthenticatedRoute } from "./components/AuthenticatedRoute";
 import { NonAuthenticatedRoute } from "./components/NonAuthenticatedRoute";
 import { Switch, Route, withRouter } from "react-router-dom";
@@ -18,9 +21,6 @@ import { translate } from "react-i18next";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "react-redux-toastr/lib/css/react-redux-toastr.min.css";
-import EmailActivationPage from "./components/page/EmailActivationPage";
-import EmailRestorationPage from "./components/page/EmailRestorationPage";
-import NotificationPage from "./components/page/NotificationPage";
 
 class App extends Component {
   componentDidUpdate() {
@@ -48,7 +48,7 @@ class App extends Component {
           <Route exact path="/restore/email" component={EmailRestorationPage} />
           <Route exact path="/restore/email/:restorationCode" component={EmailRestorationPage} />
           <Route exact path="/forgot-your-password" component={ForgotPasswordPage} />
-          <Route exact path="/tos" component={CguPage} />
+          <Route exact path="/tos" component={TosPage} />
           <Route exact path="/notification" component={NotificationPage} />
           <NonAuthenticatedRoute exact path="/register" component={RegisterPage} />
           <NonAuthenticatedRoute exact path="/login" component={LoginPage} />
