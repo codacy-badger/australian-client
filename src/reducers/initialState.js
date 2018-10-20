@@ -57,6 +57,14 @@ export default {
     isForgotPasswordError: false,
     nextStep: {}
   },
+  lastDog: {
+    message: "",
+    code: "",
+    dogs: [],
+    isLastDogLoaded: false,
+    isLastDogLoading: false,
+    isLastDogUnloadable: false
+  },
   login: {
     username: AppStorage.getItem("username", ""),
     error: {},

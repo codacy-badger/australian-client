@@ -1,30 +1,23 @@
 import React from "react";
-import PropTypes from "prop-types";
 import Header from "../common/Header";
-import { translate, Trans } from "react-i18next";
+import LastDogCard from "../common/card/LastDogCard";
 import Meta from "../common/Meta";
+import { Col, Row } from "reactstrap";
 
-const HomePage = ({ t }) => {
+const HomePage = () => {
   return (
     <div>
       <Meta code="homepage" />
       <Header />
-      <div className="App-header">
-        <h1>{t("title.app")}</h1>
-      </div>
-      <div className="App-intro">
-        <Trans i18nKey="description.part1">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </Trans>
-      </div>
-      <div>{t("description.part2")}</div>
+      <Row className="mx-1 mt-3">
+        <Col sm={2}>Two</Col>
+        <Col sm={8}>Three</Col>
+        <Col sm={2}>
+          <LastDogCard />
+        </Col>
+      </Row>
     </div>
   );
 };
 
-// The propTypes.
-HomePage.propTypes = {
-  t: PropTypes.func.isRequired
-};
-
-export default translate("translations")(HomePage);
+export default HomePage;

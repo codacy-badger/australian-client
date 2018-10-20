@@ -3,7 +3,8 @@
     "cancel": "Annuler",
     "login": "Se connecter",
     "register": "S’inscrire",
-    "reset": "Réinitialiser"
+    "reset": "Réinitialiser",
+    "retry": "Réessayer"
   },
   "error": {
     "10": "Identifiants invalides.",
@@ -345,6 +346,7 @@
     "email-restoration": "Restauration de votre ancienne adresse email",
     "tos": "Conditions générales d’utilisation",
     "forgot-your-password": "Mot de passe perdu ?",
+    "last-dogs": "Derniers chiens",
     "ooops": "Oups !",
     "profile": "Gestion de votre compte",
     "profile-account": "Suppression de votre compte",

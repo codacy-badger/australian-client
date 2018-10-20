@@ -3,7 +3,8 @@
     "cancel": "Cancel",
     "login": "Login",
     "register": "Register",
-    "reset": "Reset"
+    "reset": "Reset",
+    "retry": "Retry"
   },
   "error": {
     "10": "Invalid credentials.",
@@ -345,6 +346,7 @@
     "app": "Welcome to react using react-i18next",
     "tos": "Terms of service",
     "forgot-your-password": "Forgot your password?",
+    "last-dogs": "Last dogs",
     "ooops": "Oooops!",
     "profile": "Your profile",
     "profile-account": "Account deletion",
