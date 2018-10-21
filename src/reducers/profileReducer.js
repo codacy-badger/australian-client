@@ -17,7 +17,7 @@ export default function profileReducer(state = initialState.profile, action) {
     case types.SET_PROFILE_UNLOADABLE:
       return Object.assign({}, state, {
         isProfileUnloadable: action.isProfileUnloadable,
-        user: action.user
+        error: action.error
       });
 
     case types.SET_PROFILE_PENDING:

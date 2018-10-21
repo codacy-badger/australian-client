@@ -18,6 +18,7 @@ const FormAllGroup = (props) => {
     input,
     icon,
     isLoading,
+    isUnloadable,
     meta: { asyncValidating, error, form, submitting, touched },
     type,
     t
@@ -35,8 +36,18 @@ const FormAllGroup = (props) => {
       </Label>
       <Col sm={8}>
         <InputGroup>
-          <InputGroupIcon icon={icon} isLoading={isLoading || submitting || asyncValidating} />
-          <Input {...input} placeholder={placeholder} type={type} className={className} disabled={disabled} />
+          <InputGroupIcon
+            icon={icon}
+            isLoading={isLoading || submitting || asyncValidating}
+            isUnloadable={isUnloadable}
+          />
+          <Input
+            {...input}
+            placeholder={placeholder}
+            type={type}
+            className={className}
+            disabled={disabled || isUnloadable}
+          />
         </InputGroup>
         {touched && error && <HelpBlockErrors errors={[error]} />}
         {help.length > 0 && ((touched && !!error) || <HelpBlock>{help}</HelpBlock>)}
@@ -50,6 +61,7 @@ FormAllGroup.defaultProps = {
   disabled: false,
   helpBlock: false,
   icon: "align-justify",
+  isUnloadable: false,
   type: "text"
 };
 
@@ -60,6 +72,8 @@ FormAllGroup.propTypes = {
   helpBlock: PropTypes.bool,
   icon: PropTypes.string, //The XXXFormGroup
   input: PropTypes.shape(fieldInputPropTypes).isRequired, //redux-form
+  isLoading: PropTypes.bool.isRequired,
+  isUnloadable: PropTypes.bool,
   meta: PropTypes.shape(fieldMetaPropTypes).isRequired, //redux-form
   t: PropTypes.func.isRequired, //translate
   type: PropTypes.oneOf(["text", "password", "email", "confirmation"]) //The XXXFormGroup

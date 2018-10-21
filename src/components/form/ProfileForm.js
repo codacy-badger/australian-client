@@ -30,13 +30,14 @@ export const validate = (values) => {
 //FIRST HAVE A LOOK ON : https://github.com/erikras/redux-form/issues/3435#issuecomment-357231919
 class ProfileForm extends React.Component {
   render() {
-    const { actions, asyncValidating, handleSubmit, isLoading, pristine, reset, submitting } = this.props;
+    const { actions, asyncValidating, handleSubmit, isLoading, pristine, reset, submitting, isUnloadable } = this.props;
 
     const asyncNameValidating = false !== asyncValidating;
 
     const fieldProps = {
       disabled: submitting || isLoading,
-      isLoading: submitting || isLoading
+      isLoading: submitting || isLoading,
+      isUnloadable
     };
 
     return (
@@ -46,6 +47,7 @@ class ProfileForm extends React.Component {
           component={FormTextGroup}
           disabled={submitting || isLoading}
           isLoading={submitting || isLoading || asyncNameValidating}
+          isUnloadable={isUnloadable}
           name="name"
           required
         />

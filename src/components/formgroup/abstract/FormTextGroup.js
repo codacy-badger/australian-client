@@ -15,6 +15,7 @@ FormTextGroup.defaultProps = {
   disabled: false,
   helpBlock: false,
   icon: "align-justify",
+  isUnloadable: false,
   required: false
 };
 
@@ -22,9 +23,11 @@ FormTextGroup.defaultProps = {
 FormTextGroup.propTypes = {
   children: PropTypes.any,
   disabled: PropTypes.bool,
-  icon: PropTypes.string,
   helpBlock: PropTypes.bool,
+  icon: PropTypes.string,
   input: PropTypes.shape(fieldInputPropTypes).isRequired, //redux-form
+  isLoading: PropTypes.bool.isRequired,
+  isUnloadable: PropTypes.bool.isRequired,
   meta: PropTypes.shape(fieldMetaPropTypes).isRequired //redux-form
 };
 

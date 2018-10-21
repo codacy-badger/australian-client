@@ -1,6 +1,6 @@
 import delay, { sleep } from "./mockDelay";
 import AppStorage from "../tools/AppStorage";
-import {SubmissionError} from "redux-form";
+import { SubmissionError } from "redux-form";
 //import * as codes from './errorCode';
 
 // This file mocks a web API by working with the hard-coded data below.
@@ -17,7 +17,10 @@ const getProfileSuccess = {
 };
 const getProfileError = {
   success: false,
-  message: "Profil unavailable"
+  error: {
+    code: "profile-loading-server-error",
+    message: "Profile unavailable"
+  }
 };
 const successfulResponse = {
   success: {
@@ -61,27 +64,18 @@ class ProfileApi {
           //throw new Error({ name: "username is already taken" });
         }
       });
-    // return new Promise(() => {
-    //   setTimeout(() => {
-    //     const { name } = data;
-    //     if (["John", "john", "george", "ringo"].includes(name)) {
-    //       throw { name: 'That username is already taken'};
-    //       }
-    //   }, delay);
-    // });
   }
 
   static callUpdateApi(data, callback) {
-    return sleep(delay)
-      .then(() => {
-        const { jobTitle } = data;
-        if ("42" === jobTitle) {
-          return callback(successfulResponse);
-        } else {
-          callback(erroredResponse);
-          throw new SubmissionError(erroredResponse);
-        }
-      }, delay);
+    return sleep(delay).then(() => {
+      const { jobTitle } = data;
+      if ("42" === jobTitle) {
+        return callback(successfulResponse);
+      } else {
+        callback(erroredResponse);
+        throw new SubmissionError(erroredResponse);
+      }
+    }, delay);
   }
 }
 

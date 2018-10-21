@@ -5,18 +5,18 @@ import { translate, Trans } from "react-i18next";
 
 class StatusAlert extends Component {
   getColor() {
-    const { isError, isSuccess } = this.props.status;
+    const { isError, isSuccess, isUnloadable } = this.props.status;
 
-    return isError ? "danger" : isSuccess ? "success" : "info";
+    return isError || isUnloadable ? "danger" : isSuccess ? "success" : "info";
   }
 
   getKey() {
     const {
       code,
-      status: { error, isError, isSuccess, success }
+      status: { error, isError, isSuccess, isUnloadable, success }
     } = this.props;
 
-    if (isError && error && error.code) {
+    if ((isError || isUnloadable) && error && error.code) {
       return "error." + error.code;
     }
 
@@ -30,11 +30,11 @@ class StatusAlert extends Component {
   getMessage() {
     const {
       code,
-      status: { error, isError, isSuccess, success },
+      status: { error, isError, isSuccess, isUnloadable, success },
       t
     } = this.props;
 
-    if (isError && error && error.message) {
+    if ((isError || isUnloadable) && error && error.message) {
       return error.message;
     }
     if (isSuccess && success && success.message) {
@@ -62,9 +62,15 @@ StatusAlert.propTypes = {
     error: PropTypes.object.isRequired,
     isError: PropTypes.bool.isRequired,
     isSuccess: PropTypes.bool.isRequired,
+    isUnloadable: PropTypes.bool,
     success: PropTypes.object.isRequired
   }).isRequired,
   t: PropTypes.func.isRequired
 };
 
+StatusAlert.defaultProps = {
+  status: {
+    isUnloadable: false
+  }
+};
 export default translate("translations")(StatusAlert);

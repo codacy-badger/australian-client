@@ -16,13 +16,13 @@ class ProfileContainer extends React.Component {
 
   render() {
     const { status, t } = this.props;
-    const { isLoading } = status;
+    const { isLoading, isUnloadable } = status;
 
     return (
       <div>
         <h2>{t("title.profile-general")}</h2>
         <StatusAlert code="profile" status={status} />
-        <ProfileForm isLoading={isLoading} />
+        <ProfileForm isLoading={isLoading} isUnloadable={isUnloadable} />
       </div>
     );
   }
@@ -35,6 +35,7 @@ ProfileContainer.propTypes = {
     isError: PropTypes.bool.isRequired,
     isLoading: PropTypes.bool.isRequired,
     isSuccess: PropTypes.bool.isRequired,
+    isUnloadable: PropTypes.bool.isRequired,
     success: PropTypes.object.isRequired
   }).isRequired
 };
@@ -47,6 +48,7 @@ function mapStateToProps(state) {
       isError: state.profileReducer.isProfileError,
       isLoading: state.profileReducer.isProfileLoading,
       isSuccess: state.profileReducer.isProfileSuccess,
+      isUnloadable: state.profileReducer.isProfileUnloadable,
       success: state.profileReducer.success
     }
   };

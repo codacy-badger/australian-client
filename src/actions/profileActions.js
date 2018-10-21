@@ -19,11 +19,11 @@ export function setProfileLoaded(isProfileLoaded, user = initialState.profile.us
   };
 }
 
-function setProfileUnloadable(isProfileUnloadable, message = "Unkonwn error") {
+function setProfileUnloadable(isProfileUnloadable, error = initialState.profile.error) {
   return {
     type: types.SET_PROFILE_UNLOADABLE,
     isProfileUnloadable,
-    message
+    error
   };
 }
 
@@ -90,9 +90,8 @@ export function getProfile() {
       dispatch(setProfileLoading(false));
       if (result.success) {
         dispatch(setProfileLoaded(true, result.user));
-        // dispatch(setProfileSuccess(true, result.user, result.success));
       } else {
-        dispatch(setProfileUnloadable(true, result.message));
+        dispatch(setProfileUnloadable(true, result.error));
       }
     });
   };

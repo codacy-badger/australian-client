@@ -19,6 +19,7 @@
     "loading": "Chargement en cours…",
     "update-email-server-error": "Votre adresse email n’a pas été modifiée en raison d’un souci de communication avec notre serveur.",
     "profile-password-invalid-password": "Le mot de passe que vous avez entré est incorrect. Votre mot de passe n’a pas été modifié.",
+    "profile-loading-server-error": "Votre profil n’a pas pu être récupéré en raison d’un souci de communication avec notre serveur.",
     "profile-server-error": "Votre profil n’a pas été mis à jour en raison d’un souci de communication avec notre serveur.",
     "update-address-failed": "Votre position n’a pas été mise à jour en raison d’un souci de communication avec notre serveur."
   },
