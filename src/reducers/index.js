@@ -12,6 +12,7 @@ import notificationReducer from "./notificationsReducer";
 import passwordReducer from "./passwordReducer";
 import profileReducer from "./profileReducer";
 import registerReducer from "./registerReducer";
+import searchReducer from "./searchReducer";
 import { reducer as formReducer } from "redux-form";
 import { reducer as toastrReducer } from "react-redux-toastr";
 
@@ -31,6 +32,7 @@ const rootReducer = combineReducers({
   passwordReducer,
   profileReducer,
   registerReducer,
+  searchReducer,
   toastr: toastrReducer, // <- Mounted at toastr.
   // you have to pass formReducer under 'form' key,
   // for custom keys look up the docs for 'getFormState'

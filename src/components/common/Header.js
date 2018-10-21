@@ -8,6 +8,11 @@ import NotificationItem from "./navitem/NotificationItem";
 import UserDropdown from "./dropdown/UserDropdown";
 import { connect } from "react-redux";
 import { translate, Trans } from "react-i18next";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPaw } from "@fortawesome/free-solid-svg-icons";
+import { library } from "@fortawesome/fontawesome-svg-core";
+
+library.add(faPaw);
 
 class Header extends React.Component {
   constructor(props) {
@@ -30,7 +35,10 @@ class Header extends React.Component {
     return (
       <Navbar color="light" light expand="md">
         <Link to="/" className="navbar-brand">
-          <Trans i18nKey="navbar.brand">Australian shepherd</Trans>
+          <FontAwesomeIcon icon="paw" className="mr-2" />
+          <span className="d-none d-sm-inline">
+            <Trans i18nKey="navbar.brand">Australian shepherd</Trans>
+          </span>
         </Link>
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>

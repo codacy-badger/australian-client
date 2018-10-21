@@ -33,6 +33,10 @@
       "submit": "Activer",
       "submitting": "Activation en cours…"
     },
+    "dog-search": {
+      "submit": "Rechercher",
+      "submitting": "Recherche en cours…"
+    },
     "email-activation": {
       "activation": {
         "label": "Code d’activation",
@@ -354,7 +358,8 @@
     "profile-email": "Changement d’adresse email",
     "profile-general": "Généralité",
     "profile-password": "Changement de mot de passe",
-    "register": "Inscription"
+    "register": "Inscription",
+    "search": "Recherche"
   },
   "description": {
     "part1": "Pour débuter, éditer <1>src/App.js</1> et sauvegarder pour lancer le rechargement automatique.",

@@ -33,6 +33,10 @@
       "submit": "Activation",
       "submitting": "Activating…"
     },
+    "dog-search": {
+      "submit": "Search",
+      "submitting": "Searching…"
+    },
     "email-activation": {
       "activation": {
         "label": "Activation code",
@@ -354,7 +358,8 @@
     "profile-email": "Change your email",
     "profile-general": "Generalities",
     "profile-password": "Change your password",
-    "register": "Register form"
+    "register": "Register form",
+    "search": "Search"
   },
   "description": {
     "part1": "To get started, edit <1>src/App.js</1> and save to reload.",

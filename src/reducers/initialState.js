@@ -112,5 +112,13 @@ export default {
     isRegisterSuccess: false,
     isRegisterError: false,
     nextStep: {}
+  },
+  search: {
+    dogs: [],
+    error: {},
+    isPasswordError: false,
+    isPasswordPending: false,
+    isPasswordSuccess: false,
+    success: {}
   }
 };
