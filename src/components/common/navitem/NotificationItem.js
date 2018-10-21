@@ -13,8 +13,6 @@ library.add(faBell);
 
 /**
  * Notification item
- *
- * TODO : create notification page.
  */
 class NotificationItem extends Component {
   constructor(props) {
