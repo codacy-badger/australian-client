@@ -5,9 +5,14 @@ import { SubmissionError } from "redux-form";
 // This file mocks a web API by working with the hard-coded data below.
 // It uses setTimeout to simulate the delay of an AJAX call.
 // All calls return promises.
-const auth = {
+const auth42 = {
   username: "John",
   token: "foo42bar"
+};
+
+const auth13 = {
+  username: "Murphy",
+  token: "foo13bar"
 };
 
 const error = {
@@ -19,18 +24,19 @@ const error = {
 class AuthApi {
   static callLoginApi(email, password, remember = false, callback) {
     return sleep(delay).then(() => {
-      if (email && password === "42") {
-        if (remember) {
-          localStorage.setItem("username", auth.username);
-          localStorage.setItem("accessToken", auth.token);
-        } else {
-          sessionStorage.setItem("username", auth.username);
-          sessionStorage.setItem("accessToken", auth.token);
-        }
-        return callback(auth);
-      } else {
-        callback(error);
-        throw new SubmissionError(error);
+      const storage = remember ? localStorage : sessionStorage;
+      switch (password) {
+        case "13":
+          storage.setItem("username", auth13.username);
+          storage.setItem("accessToken", auth13.token);
+          return callback(auth13);
+        case "42":
+          storage.setItem("username", auth42.username);
+          storage.setItem("accessToken", auth42.token);
+          return callback(auth42);
+        default:
+          callback(error);
+          throw new SubmissionError(error);
       }
     });
   }
