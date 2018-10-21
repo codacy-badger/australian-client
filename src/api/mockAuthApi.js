@@ -14,7 +14,9 @@ const auth42 = {
 
 const auth13 = {
   username: "Murphy",
-  token: "foo13bar"
+  token: "foo13bar",
+  isBreeder: false,
+  isOwner: false
 };
 
 const error = {
