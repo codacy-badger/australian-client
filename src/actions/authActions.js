@@ -1,6 +1,9 @@
 import * as types from "./actionTypes";
 //import authActionApi from "../api/authApi";
 import authActionApi from "../api/mockAuthApi";
+import {setProfileLoaded} from "./profileActions";
+import {setNotificationLoaded} from "./notificationActions";
+import {setAddressLoaded} from "./addressActions";
 
 function setLoginPending(isLoginPending) {
   return {
@@ -85,6 +88,10 @@ export function logout() {
       dispatch(setLogoutPending(false));
       dispatch(setLogoutSuccess(true));
       dispatch(setLoginSuccess(false));
+      //All reducers with a is*Loaded must be set to false to avoid cache bugs.
+      dispatch(setAddressLoaded(false));
+      dispatch(setNotificationLoaded(false));
+      dispatch(setProfileLoaded(false));
       setTimeout(() => {
         dispatch(setLogoutMessagePrinted(false));
       }, 1000);

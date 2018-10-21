@@ -11,7 +11,7 @@ function setAddressLoading(isAddressLoading) {
   };
 }
 
-function setAddressLoaded(isAddressLoaded, address = initialState.address.address) {
+export function setAddressLoaded(isAddressLoaded, address = initialState.address.address) {
   return {
     type: types.SET_ADDRESS_LOADED,
     isAddressLoaded,

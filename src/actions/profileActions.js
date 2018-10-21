@@ -11,7 +11,7 @@ function setProfileLoading(isProfileLoading) {
   };
 }
 
-function setProfileLoaded(isProfileLoaded, user = initialState.profile.user) {
+export function setProfileLoaded(isProfileLoaded, user = initialState.profile.user) {
   return {
     type: types.SET_PROFILE_LOADED,
     isProfileLoaded,

@@ -10,7 +10,7 @@ function setNotificationLoading(isNotificationLoading) {
   };
 }
 
-function setNotificationLoaded(isNotificationLoaded, notifications) {
+export function setNotificationLoaded(isNotificationLoaded, notifications) {
   return {
     type: types.SET_NOTIFICATION_LOADED,
     isNotificationLoaded,
