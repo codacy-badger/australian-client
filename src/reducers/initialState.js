@@ -87,8 +87,10 @@ export default {
     error: {},
     isProfileError: false,
     isProfileLoading: true,
+    isProfileLoaded: false,
     isProfilePending: false,
     isProfileSuccess: false,
+    isProfileUnloadable: false,
     success: {},
     user: {
       additionalName: "",

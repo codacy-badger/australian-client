@@ -10,12 +10,13 @@ export default function profileReducer(state = initialState.profile, action) {
 
     case types.SET_PROFILE_LOADED:
       return Object.assign({}, state, {
-        isProfileLoading: !action.isProfileLoaded,
+        isProfileLoaded: action.isProfileLoaded,
         user: action.user
       });
 
     case types.SET_PROFILE_UNLOADABLE:
       return Object.assign({}, state, {
+        isProfileUnloadable: action.isProfileUnloadable,
         user: action.user
       });
 
