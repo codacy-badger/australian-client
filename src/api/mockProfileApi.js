@@ -1,6 +1,6 @@
 import delay, { sleep } from "./mockDelay";
 import AppStorage from "../tools/AppStorage";
-import {SubmissionError} from "redux-form";
+import { SubmissionError } from "redux-form";
 //import * as codes from './errorCode';
 
 // This file mocks a web API by working with the hard-coded data below.
@@ -11,7 +11,9 @@ const getProfileSuccess = {
     givenName: "Johann",
     familyName: "Doe" + Math.round(Math.random() * 100).toString(),
     name: "John",
-    jobTitle: "Administrator"
+    jobTitle: "Administrator",
+    isBreeder: true,
+    isOwner: true
   },
   success: true
 };
@@ -72,16 +74,15 @@ class ProfileApi {
   }
 
   static callUpdateApi(data, callback) {
-    return sleep(delay)
-      .then(() => {
-        const { jobTitle } = data;
-        if ("42" === jobTitle) {
-          return callback(successfulResponse);
-        } else {
-          callback(erroredResponse);
-          throw new SubmissionError(erroredResponse);
-        }
-      }, delay);
+    return sleep(delay).then(() => {
+      const { jobTitle } = data;
+      if ("42" === jobTitle) {
+        return callback(successfulResponse);
+      } else {
+        callback(erroredResponse);
+        throw new SubmissionError(erroredResponse);
+      }
+    }, delay);
   }
 }
 

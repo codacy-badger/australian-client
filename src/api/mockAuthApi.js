@@ -7,16 +7,12 @@ import { SubmissionError } from "redux-form";
 // All calls return promises.
 const auth42 = {
   username: "John",
-  token: "foo42bar",
-  isBreeder: true,
-  isOwner: true
+  token: "foo42bar"
 };
 
 const auth13 = {
   username: "Murphy",
-  token: "foo13bar",
-  isBreeder: false,
-  isOwner: false
+  token: "foo13bar"
 };
 
 const error = {

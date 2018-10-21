@@ -105,7 +105,9 @@ export default {
       name: "",
       familyName: "",
       givenName: "",
-      jobTitle: ""
+      jobTitle: "",
+      isBreeder: false,
+      isOwner: false
     }
   },
   register: {
