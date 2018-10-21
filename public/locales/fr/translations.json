@@ -6,6 +6,10 @@
     "reset": "Réinitialiser",
     "retry": "Réessayer"
   },
+  "common": {
+    "breeder": "Éleveur",
+    "owner": "Propriétaire"
+  },
   "error": {
     "10": "Identifiants invalides.",
     "20": "Il existe déjà un compte enregistré avec cette adresse mail.",

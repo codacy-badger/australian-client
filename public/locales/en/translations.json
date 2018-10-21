@@ -6,6 +6,10 @@
     "reset": "Reset",
     "retry": "Retry"
   },
+  "common": {
+    "breeder": "Breeder",
+    "owner": "Owner"
+  },
   "error": {
     "10": "Invalid credentials.",
     "20": "An account already exist with this email.",

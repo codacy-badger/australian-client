@@ -7,7 +7,9 @@ import { SubmissionError } from "redux-form";
 // All calls return promises.
 const auth = {
   username: "John",
-  token: "foo42bar"
+  token: "foo42bar",
+  isBreeder: true,
+  isOwner: true
 };
 
 const error = {
