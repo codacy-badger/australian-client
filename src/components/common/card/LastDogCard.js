@@ -105,10 +105,6 @@ LastDogCard.propTypes = {
 
 // Redux connect begin here
 function mapStateToProps(state) {
-  console.dir(
-    state.lastDogReducer.dogs,
-    "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
-  );
   return {
     status: {
       message: state.lastDogReducer.message,
