@@ -20,7 +20,7 @@ const NotificationDefaultCard = (props) => {
   );
 };
 
-Notification.defaultProps = {
+NotificationDefaultCard.defaultProps = {
   level: "secondary"
 };
 

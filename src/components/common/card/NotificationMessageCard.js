@@ -20,7 +20,7 @@ const NotificationMessageCard = (props) => {
   );
 };
 
-Notification.messageProps = {
+NotificationMessageCard.messageProps = {
   level: "secondary"
 };
 
