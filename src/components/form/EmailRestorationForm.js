@@ -28,7 +28,7 @@ export const validate = (values) => {
 
 const EmailRestorationForm = (props) => {
   const { actions, handleSubmit, status, submitting, t } = props;
-  console.dir(status);
+
   return (
     <Form onSubmit={handleSubmit(actions.emailActivate)}>
       <Card>
