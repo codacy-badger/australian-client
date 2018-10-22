@@ -20,8 +20,6 @@ export const validate = (values) => {
   const errors = {};
   const { latitude, longitude, setPosition } = values;
 
-  console.dir(values);
-
   if (setPosition && latitude && !isFloat(latitude.toString(), { min: "-90", max: "90" })) {
     errors.latitude = "latitude must be a Float between -90 and +90";
   }

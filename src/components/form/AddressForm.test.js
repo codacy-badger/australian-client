@@ -11,6 +11,7 @@ describe("Address form validator", () => {
     const values = {
       latitude: 0,
       longitude: 0,
+      setPosition: false,
       city: "",
       country: ""
     };
@@ -22,6 +23,7 @@ describe("Address form validator", () => {
     const values = {
       latitude: 91,
       longitude: -91,
+      setPosition: true,
       city: "",
       country: ""
     };
@@ -35,13 +37,14 @@ describe("Address form validator", () => {
     const values = {
       latitude: 181,
       longitude: -181,
+      setPosition: true,
       city: "",
       country: ""
     };
     const actual = validate(values);
     const expected = {
       latitude: "latitude must be a Float between -90 and +90",
-      longitude: "latitude must be a Float between -180 and +180"
+      longitude: "longitude must be a Float between -180 and +180"
     };
     expect(actual).toEqual(expected);
   });
@@ -49,6 +52,7 @@ describe("Address form validator", () => {
     const values = {
       latitude: 42,
       longitude: 42,
+      setPosition: true,
       city: "Lacanau",
       country: "France"
     };
