@@ -17,7 +17,7 @@ import { NonAuthenticatedRoute } from "./components/NonAuthenticatedRoute";
 import { Switch, Route, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { toastr } from "react-redux-toastr";
-import { translate } from "react-i18next";
+import { withNamespaces } from "react-i18next";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "react-redux-toastr/lib/css/react-redux-toastr.min.css";
@@ -82,4 +82,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default withRouter(connect(mapStateToProps)(translate("translations")(App)));
+export default withRouter(connect(mapStateToProps)(withNamespaces("translations")(App)));

@@ -7,7 +7,15 @@ describe("Submit", () => {
     // const t = (arg) => {
     //   return "++" + arg + "++";
     // };
-    // const wrapper = shallow((<Submit />));
-    // expect(wrapper.html()).toEqual("<div></div>");
+    const fake = () => {
+      return null
+    };
+
+    const wrapper = shallow((<Submit isPending={false} name={"foo"} onClick={fake} />));
+    // console.log(wrapper.html());
+    //FIXME : find why this is returning < />
+    expect(wrapper.text()).toEqual("form.foo.submit");
+    //FIXME : find why this is returning false!
+    expect(wrapper.is("button")).toEqual(true);
   });
 });
