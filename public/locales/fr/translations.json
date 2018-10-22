@@ -3,7 +3,8 @@
     "cancel": "Annuler",
     "login": "Se connecter",
     "register": "S’inscrire",
-    "reset": "Réinitialiser"
+    "reset": "Réinitialiser",
+    "retry": "Recharger"
   },
   "error": {
     "10": "Identifiants invalides.",

@@ -1,22 +1,28 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Alert } from "reactstrap";
+import {Alert, Button} from "reactstrap";
 import { translate, Trans } from "react-i18next";
 
 class StatusAlert extends Component {
-  getColor() {
-    const { isError, isSuccess, isUnloadable } = this.props.status;
+  hasError() {
+    const { isError, isUnloadable } = this.props.status;
 
-    return isError || isUnloadable ? "danger" : isSuccess ? "success" : "info";
+    return isError || isUnloadable;
+  }
+
+  getColor() {
+    const { isSuccess } = this.props.status;
+
+    return this.hasError() ? "danger" : isSuccess ? "success" : "info";
   }
 
   getKey() {
     const {
       code,
-      status: { error, isError, isSuccess, isUnloadable, success }
+      status: { error, isSuccess, success }
     } = this.props;
 
-    if ((isError || isUnloadable) && error && error.code) {
+    if (this.hasError() && error && error.code) {
       return "error." + error.code;
     }
 
@@ -30,11 +36,11 @@ class StatusAlert extends Component {
   getMessage() {
     const {
       code,
-      status: { error, isError, isSuccess, isUnloadable, success },
+      status: { error, isSuccess, success },
       t
     } = this.props;
 
-    if ((isError || isUnloadable) && error && error.message) {
+    if (this.hasError() && error && error.message) {
       return error.message;
     }
     if (isSuccess && success && success.message) {
@@ -44,6 +50,24 @@ class StatusAlert extends Component {
     return t("help." + code);
   }
 
+  shouldReload() {
+    const {isUnloadable} = this.props.status;
+    const {onReload} = this.props;
+
+    return isUnloadable && typeof onReload === "function";
+  }
+
+  renderReload() {
+    const {isLoading} = this.props.status;
+    const {onReload, t} = this.props;
+
+    return (
+      <Button onClick={onReload} size="sm" color="danger" className="ml-1" disabled={isLoading}>
+        {t("button.retry")}
+      </Button>
+    );
+  }
+
   render() {
     const key = this.getKey();
 
@@ -51,6 +75,7 @@ class StatusAlert extends Component {
       <Alert color={this.getColor()} className="text-center">
         {null !== key && <Trans i18nKey={key}>{this.getMessage()}</Trans>}
         {null === key && this.getMessage()}
+        {this.shouldReload() && this.renderReload()}
       </Alert>
     );
   }
@@ -65,6 +90,7 @@ StatusAlert.propTypes = {
     isUnloadable: PropTypes.bool,
     success: PropTypes.object.isRequired
   }).isRequired,
+  onReload: PropTypes.func,
   t: PropTypes.func.isRequired
 };
 
@@ -73,4 +99,5 @@ StatusAlert.defaultProps = {
     isUnloadable: false
   }
 };
+
 export default translate("translations")(StatusAlert);

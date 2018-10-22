@@ -15,13 +15,13 @@ class ProfileContainer extends React.Component {
   }
 
   render() {
-    const { status, t } = this.props;
+    const { actions, status, t } = this.props;
     const { isLoading, isUnloadable } = status;
 
     return (
       <div>
         <h2>{t("title.profile-general")}</h2>
-        <StatusAlert code="profile" status={status} />
+        <StatusAlert code="profile" status={status} onReload={actions.getProfile}/>
         <ProfileForm isLoading={isLoading} isUnloadable={isUnloadable} />
       </div>
     );

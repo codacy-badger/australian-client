@@ -3,7 +3,8 @@
     "cancel": "Cancel",
     "login": "Login",
     "register": "Register",
-    "reset": "Reset"
+    "reset": "Reset",
+    "retry": "Retry"
   },
   "error": {
     "10": "Invalid credentials.",
