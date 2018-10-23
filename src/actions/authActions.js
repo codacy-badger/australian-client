@@ -19,7 +19,7 @@ function setLoginMessagePrinted(sendMessage) {
   };
 }
 
-function setLoginSuccess(isLoginSuccess, auth = {}) {
+function setLoginSuccess(isLoginSuccess, auth= {email: "", gravatar: false, username: ""}) {
   return {
     type: types.SET_LOGIN_SUCCESS,
     isLoginSuccess,
@@ -49,11 +49,10 @@ function setLogoutMessagePrinted(sendMessage) {
   };
 }
 
-export function setLogoutSuccess(isLogoutSuccess, auth = {}) {
+export function setLogoutSuccess(isLogoutSuccess) {
   return {
     type: types.SET_LOGOUT_SUCCESS,
-    isLogoutSuccess,
-    auth
+    isLogoutSuccess
   };
 }
 

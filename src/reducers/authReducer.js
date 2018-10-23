@@ -40,13 +40,22 @@ export default function authReducer(state = initialState.login, action) {
       });
 
     case types.SET_LOGOUT_SUCCESS:
-      return Object.assign({}, state, {
-        isLogoutSuccess: action.isLogoutSuccess,
-        isAuthenticated: !action.isLogoutSuccess,
-        sendLogoutMessage: action.isLogoutSuccess,
-        //FIXME this is an error with the log!
-        auth: action.auth
-      });
+      if (action.isLogoutSuccess) {
+        return Object.assign({}, state, {
+          isLogoutSuccess: true,
+          isAuthenticated: false,
+          sendLogoutMessage: true,
+          email: "",
+          gravatar: false,
+          username: ""
+        });
+      } else {
+        return Object.assign({}, state, {
+          isLogoutSuccess: false,
+          sendLogoutMessage: false,
+        });
+
+      }
 
     default:
       return state;
