@@ -21,7 +21,11 @@ class NotificationItem extends Component {
     this.reload = this.reload.bind(this);
 
     this.reload();
-    setInterval(this.reload, 120 * 1000);
+    this.intervalId = setInterval(this.reload, 120 * 1000);
+  }
+
+  componentWillUnmount () {
+    clearInterval(this.intervalId);
   }
 
   reload() {
