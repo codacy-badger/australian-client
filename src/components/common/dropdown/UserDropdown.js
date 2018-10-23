@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Gravatar from "../Gravatar";
 import { DropdownItem, DropdownMenu, DropdownToggle, UncontrolledDropdown } from "reactstrap";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -23,12 +24,14 @@ class UserDropdown extends React.Component {
   }
 
   render() {
-    const { t, username } = this.props;
+    const { email, gravatar, t, username } = this.props;
 
     return (
       <UncontrolledDropdown nav inNavbar>
         <DropdownToggle nav caret>
-          <FontAwesomeIcon icon="user" fixedWidth className="mr-1" /> {username}
+          {gravatar && <Gravatar email={email} size={20} className="mr-1"/>}
+          {!gravatar && <FontAwesomeIcon icon="user" fixedWidth className="mr-1" />}
+          {username}
         </DropdownToggle>
         <DropdownMenu right>
           <DropdownItem to="/profile/general" tag={NavLink}>
@@ -51,6 +54,8 @@ UserDropdown.contextTypes = {
 };
 
 UserDropdown.propTypes = {
+  email: PropTypes.string.isRequired,
+  gravatar: PropTypes.bool.isRequired,
   t: PropTypes.func.isRequired,
   username: PropTypes.string.isRequired
 };
@@ -58,6 +63,8 @@ UserDropdown.propTypes = {
 // Redux connect begin here
 function mapStateToProps(state) {
   return {
+    email: state.authReducer.email,
+    gravatar: state.authReducer.gravatar,
     username: state.authReducer.username
   };
 }

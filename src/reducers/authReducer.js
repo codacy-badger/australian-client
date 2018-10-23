@@ -18,7 +18,9 @@ export default function authReducer(state = initialState.login, action) {
         isLoginSuccess: action.isLoginSuccess,
         isAuthenticated: action.isLoginSuccess,
         sendLoginMessage: action.isLoginSuccess,
-        username: action.auth.username
+        gravatar: action.auth.gravatar,
+        username: action.auth.username,
+        email: action.auth.email
       });
 
     case types.SET_LOGIN_ERROR:
@@ -42,6 +44,7 @@ export default function authReducer(state = initialState.login, action) {
         isLogoutSuccess: action.isLogoutSuccess,
         isAuthenticated: !action.isLogoutSuccess,
         sendLogoutMessage: action.isLogoutSuccess,
+        //FIXME this is an error with the log!
         auth: action.auth
       });
 

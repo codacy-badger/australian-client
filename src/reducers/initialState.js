@@ -58,8 +58,9 @@ export default {
     nextStep: {}
   },
   login: {
-    username: AppStorage.getItem("username", ""),
+    email: AppStorage.getItem("email", ""),
     error: {},
+    gravatar: AppStorage.getItem("gravatar", false),
     isAuthenticated: !!AppStorage.getItem("accessToken", false),
     isLoginPending: false,
     isLoginSuccess: false,
@@ -67,7 +68,8 @@ export default {
     isLogoutPending: false,
     isLogoutSuccess: false,
     sendLoginMessage: false,
-    sendLogoutMessage: false
+    sendLogoutMessage: false,
+    username: AppStorage.getItem("username", "")
   },
   notification: {
     message: "",

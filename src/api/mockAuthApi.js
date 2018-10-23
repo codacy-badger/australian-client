@@ -6,11 +6,15 @@ import { SubmissionError } from "redux-form";
 // It uses setTimeout to simulate the delay of an AJAX call.
 // All calls return promises.
 const auth42 = {
+  email: "john@example.org",
+  gravatar: true,
   username: "John",
   token: "foo42bar"
 };
 
 const auth13 = {
+  email: "murphy@example.org",
+  gravatar: false,
   username: "Murphy",
   token: "foo13bar"
 };
@@ -27,10 +31,14 @@ class AuthApi {
       const storage = remember ? localStorage : sessionStorage;
       switch (password) {
         case "13":
+          storage.setItem("email", auth13.email);
+          storage.setItem("gravatar", auth13.gravatar);
           storage.setItem("username", auth13.username);
           storage.setItem("accessToken", auth13.token);
           return callback(auth13);
         case "42":
+          storage.setItem("email", auth42.email);
+          storage.setItem("gravatar", auth42.gravatar);
           storage.setItem("username", auth42.username);
           storage.setItem("accessToken", auth42.token);
           return callback(auth42);
