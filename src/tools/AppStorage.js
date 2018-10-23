@@ -1,5 +1,4 @@
 class AppStorage {
-
   static getItem(item, defaultValue = false) {
     if (localStorage.getItem(item)) {
       return localStorage.getItem(item);

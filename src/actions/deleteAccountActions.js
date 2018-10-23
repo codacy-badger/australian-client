@@ -26,7 +26,7 @@ export function deleteAccount(data, dispatch) {
     const { password } = data;
 
     return deleteAccountActionApi.callDeleteAccountApi(password, (result) => {
-      const { error, ...other} = result;
+      const { error, ...other } = result;
       dispatch(setDeleteAccountPending(false));
       if (error) {
         dispatch(setDeleteAccountError(true, other));

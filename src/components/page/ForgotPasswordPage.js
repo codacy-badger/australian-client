@@ -40,6 +40,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(
-  mapStateToProps
-)(ForgotPasswordPage);
+export default connect(mapStateToProps)(ForgotPasswordPage);

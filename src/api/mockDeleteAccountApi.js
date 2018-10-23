@@ -13,17 +13,16 @@ const erroredResponse = {
 
 class DeleteAccountApi {
   static callDeleteAccountApi(deleteAccountCode, callback) {
-    return sleep(delay)
-      .then(() => {
-        if ("42" === deleteAccountCode) {
-          localStorage.clear();
-          sessionStorage.clear();
-          return callback({error: false});
-        } else {
-          callback(erroredResponse);
-          return new SubmissionError(erroredResponse);
-        }
-      });
+    return sleep(delay).then(() => {
+      if ("42" === deleteAccountCode) {
+        localStorage.clear();
+        sessionStorage.clear();
+        return callback({ error: false });
+      } else {
+        callback(erroredResponse);
+        return new SubmissionError(erroredResponse);
+      }
+    });
   }
 }
 

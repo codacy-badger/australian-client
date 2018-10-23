@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { translate } from "react-i18next";
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 
-const Meta = ({code, description, keywords, t, title}) => {
+const Meta = ({ code, description, keywords, t, title }) => {
   return (
     <Helmet>
       {title && <title>{t("meta.title." + code)}</title>}

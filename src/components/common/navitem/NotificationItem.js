@@ -24,7 +24,7 @@ class NotificationItem extends Component {
     this.intervalId = setInterval(this.reload, 120 * 1000);
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     clearInterval(this.intervalId);
   }
 

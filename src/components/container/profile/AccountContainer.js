@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import DeleteAccountForm from "../../form/DeleteAccountForm";
 import ErrorAlert from "../../common/alert/ErrorAlert";
-import { Trans, translate} from "react-i18next";
+import { Trans, translate } from "react-i18next";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { deleteAccount } from "../../../actions/deleteAccountActions";
@@ -23,8 +23,12 @@ const AccountContainer = (props) => {
     <div className="text-danger">
       <h2>{t("title.profile-account")}</h2>
       <p>{t("form.profile-account.description")}</p>
-      {isError && <ErrorAlert><Trans i18nKey={"error."+code}>{message}</Trans></ErrorAlert>}
-      <DeleteAccountForm onSubmit={actions.deleteAccount}/>
+      {isError && (
+        <ErrorAlert>
+          <Trans i18nKey={"error." + code}>{message}</Trans>
+        </ErrorAlert>
+      )}
+      <DeleteAccountForm onSubmit={actions.deleteAccount} />
     </div>
   );
 };
@@ -40,7 +44,7 @@ AccountContainer.propTypes = {
 function mapStateToProps(state) {
   return {
     error: state.deleteAccountReducer.error,
-    isError: state.deleteAccountReducer.isDeleteAccountError,
+    isError: state.deleteAccountReducer.isDeleteAccountError
   };
 }
 

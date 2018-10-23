@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { translate } from "react-i18next";
 
-const TosContent = ({t}) => {
+const TosContent = ({ t }) => {
   return (
     <div>
       <h2 className="article mt-3">{t("tos.article1.title")}</h2>

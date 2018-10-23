@@ -17,7 +17,7 @@ const NotFoundJumbotron = ({ t }) => {
       <hr />
       <div className="text-right">
         <Link to="/" title={t("link.home-page-title")} className="btn btn-primary">
-          <FontAwesomeIcon icon="home" className="mr-1"/>
+          <FontAwesomeIcon icon="home" className="mr-1" />
           {t("link.home-page")}
         </Link>
       </div>

@@ -29,7 +29,7 @@ class UserDropdown extends React.Component {
     return (
       <UncontrolledDropdown nav inNavbar>
         <DropdownToggle nav caret>
-          {gravatar && <Gravatar email={email} size={20} className="mr-1"/>}
+          {gravatar && <Gravatar email={email} size={20} className="mr-1" />}
           {!gravatar && <FontAwesomeIcon icon="user" fixedWidth className="mr-1" />}
           {username}
         </DropdownToggle>

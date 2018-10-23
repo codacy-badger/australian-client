@@ -40,6 +40,4 @@ function mapStateToProps(state) {
 }
 
 //connect is returning a function, that explains the )(
-export default connect(
-  mapStateToProps
-)(translate()(EmailContainer));
+export default connect(mapStateToProps)(translate()(EmailContainer));

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import {Alert, Button} from "reactstrap";
+import { Alert, Button } from "reactstrap";
 import { translate, Trans } from "react-i18next";
 
 class StatusAlert extends Component {
@@ -51,15 +51,15 @@ class StatusAlert extends Component {
   }
 
   shouldReload() {
-    const {isUnloadable} = this.props.status;
-    const {onReload} = this.props;
+    const { isUnloadable } = this.props.status;
+    const { onReload } = this.props;
 
     return isUnloadable && typeof onReload === "function";
   }
 
   renderReload() {
-    const {isLoading} = this.props.status;
-    const {onReload, t} = this.props;
+    const { isLoading } = this.props.status;
+    const { onReload, t } = this.props;
 
     return (
       <Button onClick={onReload} size="sm" color="danger" className="ml-1" disabled={isLoading}>

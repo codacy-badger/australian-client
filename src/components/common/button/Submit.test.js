@@ -8,10 +8,10 @@ describe("Submit", () => {
     //   return "++" + arg + "++";
     // };
     const fake = () => {
-      return null
+      return null;
     };
 
-    const wrapper = shallow((<Submit isPending={false} name={"foo"} onClick={fake} />));
+    const wrapper = shallow(<Submit isPending={false} name={"foo"} onClick={fake} />);
     // console.log(wrapper.html());
     //FIXME : find why this is returning < />
     expect(wrapper.text()).toEqual("form.foo.submit");

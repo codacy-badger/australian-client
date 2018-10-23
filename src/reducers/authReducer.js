@@ -52,9 +52,8 @@ export default function authReducer(state = initialState.login, action) {
       } else {
         return Object.assign({}, state, {
           isLogoutSuccess: false,
-          sendLogoutMessage: false,
+          sendLogoutMessage: false
         });
-
       }
 
     default:

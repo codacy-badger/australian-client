@@ -12,7 +12,9 @@ const Gravatar = (props) => {
 
   const url = "//www.gravatar.com/avatar/" + md5(email) + "?" + params.join("&");
 
-  return <img src={url} alt="Gravatar" style={{ width: size, height: size, borderRadius: "50%" }} className={className}/>;
+  return (
+    <img src={url} alt="Gravatar" style={{ width: size, height: size, borderRadius: "50%" }} className={className} />
+  );
 };
 
 //PropTypes

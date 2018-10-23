@@ -21,7 +21,7 @@ class ProfileContainer extends React.Component {
     return (
       <div>
         <h2>{t("title.profile-general")}</h2>
-        <StatusAlert code="profile" status={status} onReload={actions.getProfile}/>
+        <StatusAlert code="profile" status={status} onReload={actions.getProfile} />
         <ProfileForm isLoading={isLoading} isUnloadable={isUnloadable} />
       </div>
     );

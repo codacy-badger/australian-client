@@ -1,9 +1,9 @@
 import * as types from "./actionTypes";
 //import authActionApi from "../api/authApi";
 import authActionApi from "../api/mockAuthApi";
-import {setProfileLoaded} from "./profileActions";
-import {setNotificationLoaded} from "./notificationActions";
-import {setAddressLoaded} from "./addressActions";
+import { setProfileLoaded } from "./profileActions";
+import { setNotificationLoaded } from "./notificationActions";
+import { setAddressLoaded } from "./addressActions";
 
 function setLoginPending(isLoginPending) {
   return {
@@ -19,7 +19,7 @@ function setLoginMessagePrinted(sendMessage) {
   };
 }
 
-function setLoginSuccess(isLoginSuccess, auth= {email: "", gravatar: false, username: ""}) {
+function setLoginSuccess(isLoginSuccess, auth = { email: "", gravatar: false, username: "" }) {
   return {
     type: types.SET_LOGIN_SUCCESS,
     isLoginSuccess,
